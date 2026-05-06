@@ -14,7 +14,6 @@ interface Dataset extends IsPartOfNode {
 
   imports: [CommonModule, LinkWidget],
   templateUrl: './dataset-widget.component.html',
-  styleUrls: ['./dataset-widget.component.scss'],
 })
 export class DatasetWidget extends BaseWidget {
   datasets: Signal<Dataset[]> = computed<Dataset[]>(() => {
