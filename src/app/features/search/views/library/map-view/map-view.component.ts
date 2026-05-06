@@ -18,10 +18,11 @@ import { NodeComponent } from '../../../../../shared/node/node.component';
 import { NodeModel } from '../../../../../shared/node/types/node.model';
 import { MapService } from '../../../../../shared/map/map.service';
 import { GeoCoordinates } from '../../../../../shared/map/geo-coordinates.model';
+import { TooltipBadge } from '../../../../../shared/tooltip-badge/tooltip-badge';
 
 @Component({
   selector: 'app-map-view',
-  imports: [],
+  imports: [TooltipBadge],
   templateUrl: './map-view.component.html',
   styleUrl: './map-view.component.scss',
 })
