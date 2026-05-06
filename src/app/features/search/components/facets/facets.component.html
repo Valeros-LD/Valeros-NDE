@@ -1,9 +1,7 @@
 <div class="space-y-2">
   @for (facet of store.facets(); track facet.name) {
     @if (facet.orderedItems.length > 0) {
-      <div
-        class="collapse collapse-arrow border border-base-300 rounded-lg bg-base-100"
-      >
+      <div class="collapse collapse-arrow rounded-none bg-base-100">
         <input type="checkbox" class="peer" checked />
         <div
           class="collapse-title flex items-center font-semibold text-sm capitalize"
