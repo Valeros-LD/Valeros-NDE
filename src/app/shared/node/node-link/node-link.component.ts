@@ -11,14 +11,14 @@ import { normalizeToFirst } from '../../data-utils/value-normalization.util';
 import { NodeModel } from '../types/node.model';
 import { NodeLinkService } from './node-link.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { featherExternalLink } from '@ng-icons/feather-icons';
+import { featherExternalLink, featherInfo } from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-node-link',
   imports: [RouterModule, NgTemplateOutlet, NgIcon],
   templateUrl: './node-link.component.html',
   styleUrl: './node-link.component.scss',
-  viewProviders: [provideIcons({ featherExternalLink })],
+  viewProviders: [provideIcons({ featherExternalLink, featherInfo })],
 })
 export class NodeLinkComponent {
   readonly node = input.required<NodeModel>();

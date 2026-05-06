@@ -37,23 +37,31 @@
 }
 
 <ng-template #imageCardContent let-showExternalIcon="showExternalIcon">
-  <!-- TODO: Support ImageObject here as well, see https://schema.org/image -->
-  <img
-    [src]="node()['image']"
-    [alt]="getNodeName(node())"
-    class="w-full h-24 object-cover"
-  />
-  <div class="overlay" [class.with-icon]="showExternalIcon">
-    <span class="underline text-white truncate block">{{
-      getNodeName(node())
-    }}</span>
-    @if (showExternalIcon) {
-      <ng-icon
-        name="featherExternalLink"
-        size="14"
-        class="text-white flex-shrink-0"
-      />
-    }
+  <div class="image-wrapper">
+    <!-- TODO: Support ImageObject here as well, see https://schema.org/image -->
+    <img
+      [src]="node()['image']"
+      [alt]="getNodeName(node())"
+      class="w-full h-24 object-cover"
+    />
+    <div class="overlay" [class.with-icon]="showExternalIcon">
+      <span class="text-sm underline text-white truncate block">{{
+        getNodeName(node())
+      }}</span>
+      @if (showExternalIcon) {
+        <ng-icon
+          name="featherExternalLink"
+          size="14"
+          class="text-white flex-shrink-0"
+        />
+      }
+    </div>
+  </div>
+  <div
+    class="badge badge-warning absolute -top-2 -right-2 gap-1 tooltip tooltip-top"
+    data-tip="Let op: Deze afbeeldingen zijn illustratief en komen niet voor in de oorspronkelijke dataset"
+  >
+    <ng-icon name="featherInfo" size="14" />
   </div>
 </ng-template>
 

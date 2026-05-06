@@ -2,10 +2,14 @@ a {
   @apply inline-flex items-center gap-2;
 
   &.image-card {
-    @apply block relative rounded overflow-hidden cursor-pointer;
+    @apply block relative rounded overflow-visible cursor-pointer;
+
+    .image-wrapper {
+      @apply rounded overflow-hidden;
+    }
 
     .overlay {
-      @apply absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-2;
+      @apply absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-2 rounded-b;
 
       &.with-icon {
         @apply flex items-center gap-1;
