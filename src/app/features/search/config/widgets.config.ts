@@ -26,6 +26,7 @@ import {
   featherUser,
   featherUsers,
 } from '@ng-icons/feather-icons';
+import { TextWidget } from '../../../shared/widgets/library/generic/text-widget/text-widget.component';
 
 export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
   mappings: [
@@ -41,7 +42,7 @@ export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-mock-data',
       properties: ['isMockData'],
-      component: JsonWidget,
+      component: TextWidget,
       config: {
         propertyLabel: 'Testdata',
         icon: featherAlertTriangle,

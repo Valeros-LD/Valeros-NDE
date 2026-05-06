@@ -11,6 +11,8 @@ export class MockDataService {
   placeDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/places/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'Place',
       name: 'Physisch Laboratorium',
       address: {
@@ -33,6 +35,8 @@ export class MockDataService {
   organizationDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/organizations/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'Organization',
       name: 'Example Museum',
       location: {
@@ -47,6 +51,8 @@ export class MockDataService {
   personDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/persons/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'Person',
       name: 'John Doe',
       birthPlace: {
@@ -75,6 +81,8 @@ export class MockDataService {
   occupationDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/occupations/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'Occupation',
       name: 'Schilder',
     });
@@ -84,6 +92,8 @@ export class MockDataService {
   mediaObjectDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/media-objects/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: ['MediaObject', 'ImageObject'],
       license: {
         id: 'https://example.org/v1/licenses/{id}',
@@ -107,6 +117,8 @@ export class MockDataService {
   licenseDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/licenses/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'CreativeWork',
       name: 'Creative Commons: publieke domein',
       isBasedOn: {
@@ -120,6 +132,8 @@ export class MockDataService {
   termDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/terms/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'DefinedTerm',
       name: 'fotoafdruk zwart-wit',
       image: 'https://picsum.photos/seed/fotoafdruk-zwart-wit/200/200',
@@ -130,6 +144,8 @@ export class MockDataService {
   datasetDetails(id: string): Observable<NodeModel> {
     return of({
       id: 'https://example.org/v1/datasets/{id}',
+      isMockData:
+        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
       type: 'Dataset',
       name: 'Example Dataset',
       publisher: {
