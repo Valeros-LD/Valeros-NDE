@@ -46,12 +46,14 @@ export class ApiService {
   }
 
   details(id: string): Observable<NodeModel> {
+    const extractedId = id.split('/').pop() || id;
     let mockObservable: Observable<NodeModel> | null = null;
 
     if (id.includes('v1/heritage-objects/')) {
-      const extractedId = id.split('/').pop() || id;
       const url = `${this.apiBaseUrl}/heritage-objects/${extractedId}`;
-
+      mockObservable = this.http.get<NodeModel>(url);
+    } else if (id.includes('v1/terms/')) {
+      const url = `${this.apiBaseUrl}/terms/${extractedId}`;
       mockObservable = this.http.get<NodeModel>(url);
     } else if (id.includes('v1/places/')) {
       mockObservable = this.mockDataService.placeDetails(id);
@@ -65,8 +67,6 @@ export class ApiService {
       mockObservable = this.mockDataService.mediaObjectDetails(id);
     } else if (id.includes('v1/licenses/')) {
       mockObservable = this.mockDataService.licenseDetails(id);
-    } else if (id.includes('v1/terms/')) {
-      mockObservable = this.mockDataService.termDetails(id);
     } else if (id.includes('v1/datasets/')) {
       mockObservable = this.mockDataService.datasetDetails(id);
     } else {
