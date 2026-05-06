@@ -37,7 +37,7 @@
 }
 
 <ng-template #imageCardContent let-showExternalIcon="showExternalIcon">
-  <div class="image-wrapper">
+  <div class="image-wrapper hover:opacity-90 transition-opacity">
     <!-- TODO: Support ImageObject here as well, see https://schema.org/image -->
     <img
       [src]="node()['image']"
