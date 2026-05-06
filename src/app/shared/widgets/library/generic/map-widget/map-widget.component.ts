@@ -10,10 +10,11 @@ import * as L from 'leaflet';
 import { BaseWidget } from '../../../infrastructure/base-widget';
 import { MapService } from '../../../../map/map.service';
 import { isNodeModel, NodeModel } from '../../../../node/types/node.model';
+import { TooltipBadge } from '../../../../tooltip-badge/tooltip-badge';
 
 @Component({
   selector: 'app-map-widget',
-  imports: [],
+  imports: [TooltipBadge],
   templateUrl: './map-widget.component.html',
 })
 export class MapWidget extends BaseWidget implements AfterViewInit {

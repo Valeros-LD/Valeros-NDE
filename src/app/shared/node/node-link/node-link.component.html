@@ -57,12 +57,10 @@
       }
     </div>
   </div>
-  <div
-    class="badge badge-warning absolute -top-2 -right-2 gap-1 tooltip tooltip-top"
-    data-tip="Let op: Deze afbeeldingen zijn illustratief en komen niet voor in de oorspronkelijke dataset"
-  >
-    <ng-icon name="featherInfo" size="14" />
-  </div>
+  <app-tooltip-badge
+    tooltipText="Let op: Deze afbeeldingen zijn illustratief en komen niet voor in de oorspronkelijke dataset"
+    tooltipPosition="top"
+  />
 </ng-template>
 
 <ng-template #inlineContent>
