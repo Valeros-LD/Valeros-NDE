@@ -65,7 +65,7 @@ export class MockDataService {
         {
           id: 'https://example.org/v1/occupations/{id}',
           type: 'Occupation',
-          name: 'Carpenter',
+          name: 'Schilder',
         },
       ],
     });
@@ -76,7 +76,7 @@ export class MockDataService {
     return of({
       id: 'https://example.org/v1/occupations/{id}',
       type: 'Occupation',
-      name: 'Carpenter',
+      name: 'Schilder',
     });
   }
 
