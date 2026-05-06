@@ -7,6 +7,7 @@ export const FACET_LABELS: Record<string, string> = {
   license: 'Licentie',
   material: 'Materiaal',
   publisher: 'Uitgever',
+  subject: 'Onderwerp',
 };
 
 export function getFacetLabel(facetName: string): string {
