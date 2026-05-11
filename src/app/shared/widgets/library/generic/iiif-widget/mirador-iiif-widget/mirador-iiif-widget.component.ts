@@ -1,16 +1,16 @@
 import { Component, AfterViewInit, OnDestroy, computed } from '@angular/core';
 import Mirador, { MiradorInstance, MiradorConfig } from 'mirador';
-import { BaseWidget } from '../../../infrastructure/base-widget';
+import { BaseWidget } from '../../../../infrastructure/base-widget';
 import {
   AssociatedMediaNode,
   isIIIFPresentationManifest,
-} from '../../../../node/types/associated-media.node';
+} from '../../../../../node/types/associated-media.node';
 
 @Component({
-  selector: 'app-iiif-widget',
+  selector: 'app-mirador-iiif-widget',
 
   imports: [],
-  templateUrl: './iiif-widget.component.html',
+  templateUrl: './mirador-iiif-widget.component.html',
 })
 export class IiifWidget extends BaseWidget implements AfterViewInit, OnDestroy {
   private miradorInstances: Map<string, MiradorInstance> = new Map();

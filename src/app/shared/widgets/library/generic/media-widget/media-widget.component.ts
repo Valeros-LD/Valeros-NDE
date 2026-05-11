@@ -4,13 +4,12 @@ import {
   AssociatedMediaNode,
   hasIIIFPresentationManifest,
 } from '../../../../node/types/associated-media.node';
-import { IiifWidget } from '../iiif-widget/iiif-widget.component';
 import { ImageGalleryWidget } from '../image-gallery-widget/image-gallery-widget.component';
-import { TifyIiifWidget } from "../tify-iiif-widget/tify-iiif-widget.component";
+import { TifyIiifWidget } from '../iiif-widget/tify-iiif-widget/tify-iiif-widget.component';
 
 @Component({
   selector: 'app-media-widget',
-  imports: [IiifWidget, ImageGalleryWidget, TifyIiifWidget],
+  imports: [ImageGalleryWidget, TifyIiifWidget],
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {

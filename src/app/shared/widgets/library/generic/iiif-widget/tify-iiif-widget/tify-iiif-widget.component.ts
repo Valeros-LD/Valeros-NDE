@@ -1,10 +1,10 @@
 import { Component, AfterViewInit, OnDestroy, computed } from '@angular/core';
 import Tify from 'tify';
-import { BaseWidget } from '../../../infrastructure/base-widget';
+import { BaseWidget } from '../../../../infrastructure/base-widget';
 import {
   AssociatedMediaNode,
   isIIIFPresentationManifest,
-} from '../../../../node/types/associated-media.node';
+} from '../../../../../node/types/associated-media.node';
 import 'tify/dist/tify.css';
 
 @Component({
