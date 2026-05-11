@@ -73,9 +73,14 @@ export class AutocompleteDropdownComponent {
             this.loading.set(false);
             return;
           }
-          const suggestions: string[] = response.orderedItems
-            .map((item) => normalizeToFirst<string>(item.name))
-            .filter((name): name is string => !!name);
+          // TODO: Because of de-duplication by the term's name field, we might show too few suggestions even though more are available
+          const suggestions: string[] = Array.from(
+            new Set(
+              response.orderedItems
+                .map((item) => normalizeToFirst<string>(item.name))
+                .filter((name): name is string => !!name),
+            ),
+          );
 
           this.suggestions.set(suggestions);
           this.show.set(true);
