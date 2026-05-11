@@ -37,7 +37,15 @@ export class NodeLinkComponent {
   });
 
   getNodeName(node: NodeModel): string {
-    return normalizeToFirst<string>(node.name) || node.id;
+    const name = normalizeToFirst<string>(node.name);
+    if (name) return name;
+
+    try {
+      const url = new URL(node.id);
+      return url.hostname;
+    } catch {
+      return node.id;
+    }
   }
 
   getNodeType(node: NodeModel): string | undefined {
