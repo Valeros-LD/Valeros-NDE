@@ -22,6 +22,7 @@ export class DrawerLayoutComponent implements AfterViewInit {
   closeLabel = input<string>('Close drawer');
   initiallyOpen = input<boolean>(true);
   sidebarTitle = input<string>('');
+  sidebarTitleBadge = input<string>();
 
   drawerCheckbox = viewChild<ElementRef<HTMLInputElement>>('drawerCheckbox');
 

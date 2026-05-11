@@ -20,7 +20,15 @@
     <div class="bg-app-bg-dark min-h-full p-4" [style.width]="sidebarWidth()">
       @if (sidebarTitle()) {
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-lg font-bold">{{ sidebarTitle() }}</h2>
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg font-bold">{{ sidebarTitle() }}</h2>
+
+            @if (sidebarTitleBadge()) {
+              <span class="badge badge-primary badge-sm">{{
+                sidebarTitleBadge()
+              }}</span>
+            }
+          </div>
           <app-drawer-toggle-button
             [drawerId]="drawerId()"
             [isOpen]="isOpen()"
