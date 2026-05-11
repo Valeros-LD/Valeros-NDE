@@ -6,10 +6,11 @@ import {
 } from '../../../../node/types/associated-media.node';
 import { ImageGalleryWidget } from '../image-gallery-widget/image-gallery-widget.component';
 import { TifyIiifWidget } from '../iiif-widget/tify-iiif-widget/tify-iiif-widget.component';
+import { MiradorIiifWidget } from "../iiif-widget/mirador-iiif-widget/mirador-iiif-widget.component";
 
 @Component({
   selector: 'app-media-widget',
-  imports: [ImageGalleryWidget, TifyIiifWidget],
+  imports: [ImageGalleryWidget, TifyIiifWidget, MiradorIiifWidget],
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {
