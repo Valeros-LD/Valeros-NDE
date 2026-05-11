@@ -6,10 +6,11 @@ import {
 } from '../../../../node/types/associated-media.node';
 import { IiifWidget } from '../iiif-widget/iiif-widget.component';
 import { ImageGalleryWidget } from '../image-gallery-widget/image-gallery-widget.component';
+import { TifyIiifWidget } from "../tify-iiif-widget/tify-iiif-widget.component";
 
 @Component({
   selector: 'app-media-widget',
-  imports: [IiifWidget, ImageGalleryWidget],
+  imports: [IiifWidget, ImageGalleryWidget, TifyIiifWidget],
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {
