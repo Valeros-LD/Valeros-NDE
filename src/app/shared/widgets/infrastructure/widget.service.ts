@@ -5,7 +5,7 @@ import {
   WidgetsSettings,
   WidgetPosition,
 } from '../types/widget-config';
-import { BASE_WIDGETS_SETTINGS } from '../../../features/search/config/widgets.config';
+import { BASE_WIDGETS_SETTINGS } from '../../../features/search/config/widgets/base-widgets.config';
 import { DETAILS_WIDGETS_SETTINGS } from '../../../features/details/config/widgets.config';
 import {
   WidgetsByPosition,

@@ -3,11 +3,9 @@ import { ViewsSettings } from '../views/types/view-config';
 import { MasonryViewComponent } from '../views/library/masonry-view/masonry-view.component';
 import { ListViewComponent } from '../views/library/list-view/list-view.component';
 import { MapViewComponent } from '../views/library/map-view/map-view.component';
-import {
-  GRID_VIEW_WIDGETS_SETTINGS,
-  LIST_VIEW_WIDGETS_SETTINGS,
-  MAP_VIEW_WIDGETS_SETTINGS,
-} from './widgets.config';
+import { GRID_VIEW_WIDGETS_SETTINGS } from './widgets/grid-widgets.config';
+import { LIST_VIEW_WIDGETS_SETTINGS } from './widgets/list-widgets.config';
+import { MAP_VIEW_WIDGETS_SETTINGS } from './widgets/map-widgets.config';
 
 export const SEARCH_VIEWS_CONFIG: ViewsSettings = {
   mappings: [
