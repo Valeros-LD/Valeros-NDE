@@ -4,9 +4,14 @@
       <div class="collapse collapse-arrow rounded-none bg-base-100">
         <input type="checkbox" class="peer" checked />
         <div
-          class="collapse-title flex items-center font-semibold text-sm capitalize"
+          class="collapse-title flex items-center justify-between font-semibold text-sm capitalize"
         >
-          {{ getFacetLabel(facet.name) }}
+          <span>{{ getFacetLabel(facet.name) }}</span>
+          @if (getActiveFilterCount(facet.name) > 0) {
+            <span class="badge badge-primary badge-sm">{{
+              getActiveFilterCount(facet.name)
+            }}</span>
+          }
         </div>
         <div class="collapse-content">
           <div class="mb-3 relative">

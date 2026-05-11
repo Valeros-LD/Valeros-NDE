@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchStore } from '../../state/search.store';
 import { FilterStore } from '../../state/filter.store';
 import { getFacetLabel } from '../../config/facet-labels.config';
-import { TooltipBadge } from "../../../../shared/tooltip-badge/tooltip-badge";
+import { TooltipBadge } from '../../../../shared/tooltip-badge/tooltip-badge';
 
 @Component({
   selector: 'app-facets',
@@ -27,5 +27,10 @@ export class FacetsComponent {
 
   isSelected(facetName: string, value: string): boolean {
     return this.filterStore.isFilterSelected(facetName, value);
+  }
+
+  getActiveFilterCount(facetName: string): number {
+    const filters = this.filterStore.selectedFilters();
+    return filters[facetName]?.size ?? 0;
   }
 }
