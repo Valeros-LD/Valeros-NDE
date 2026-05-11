@@ -1,0 +1,13 @@
+@if (hasManifest()) {
+  <app-iiif-widget
+    [node]="node()"
+    [property]="property()"
+    [config]="config()"
+  />
+} @else {
+  <app-image-gallery-widget
+    [node]="node()"
+    [property]="property()"
+    [config]="config()"
+  />
+}

@@ -1,7 +1,10 @@
 import { Component, AfterViewInit, OnDestroy, computed } from '@angular/core';
 import Mirador, { MiradorInstance, MiradorConfig } from 'mirador';
 import { BaseWidget } from '../../../infrastructure/base-widget';
-import { AssociatedMediaNode } from '../../../../node/types/associated-media.node';
+import {
+  AssociatedMediaNode,
+  isIIIFPresentationManifest,
+} from '../../../../node/types/associated-media.node';
 
 @Component({
   selector: 'app-iiif-widget',
@@ -15,7 +18,7 @@ export class IiifWidget extends BaseWidget implements AfterViewInit, OnDestroy {
 
   manifestUrls = computed(() => {
     return (this.values() as AssociatedMediaNode[])
-      .filter((v) => this.isIIIFManifest(v))
+      .filter(isIIIFPresentationManifest)
       .map((v) => v.id)
       .filter((url): url is string => typeof url === 'string' && url !== '');
   });
@@ -65,15 +68,6 @@ export class IiifWidget extends BaseWidget implements AfterViewInit, OnDestroy {
     const instance = Mirador.viewer(config);
 
     this.miradorInstances.set(elementId, instance);
-  }
-
-  private isIIIFManifest(valueObj: AssociatedMediaNode): boolean {
-    // TODO: Find more robust way to check if the MediaObject value is a IIIF manifest or not
-    const encodingFormat: string | undefined = valueObj.encodingFormat;
-    const isIIIFManifest =
-      typeof encodingFormat === 'string' &&
-      encodingFormat.includes('iiif.io/api/presentation');
-    return isIIIFManifest;
   }
 
   getMiradorElementId(index: number): string {

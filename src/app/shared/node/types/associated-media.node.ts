@@ -26,3 +26,20 @@ export function toImageModel(media: AssociatedMediaNode): ImageModel {
     iiifInfoUrl: getIiifInfoJsonUrl(media),
   };
 }
+
+export function isIIIFPresentationManifest(
+  media: AssociatedMediaNode,
+): boolean {
+  // TODO: Find more robust way to check if the value is a IIIF manifest or not
+  const encodingFormat = media.encodingFormat;
+  return (
+    typeof encodingFormat === 'string' &&
+    encodingFormat.includes('iiif.io/api/presentation')
+  );
+}
+
+export function hasIIIFPresentationManifest(
+  mediaNodes: AssociatedMediaNode[],
+): boolean {
+  return mediaNodes.some(isIIIFPresentationManifest);
+}

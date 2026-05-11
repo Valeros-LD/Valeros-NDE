@@ -5,7 +5,7 @@ import { LinkWidget } from '../../../shared/widgets/library/generic/link-widget/
 import { TextWidget } from '../../../shared/widgets/library/generic/text-widget/text-widget.component';
 import { MapWidget } from '../../../shared/widgets/library/generic/map-widget/map-widget.component';
 import { AddressWidget } from '../../../shared/widgets/library/domain-specific/address-widget/address-widget.component';
-import { ImageGalleryWidget } from '../../../shared/widgets/library/generic/image-gallery-widget/image-gallery-widget.component';
+import { MediaWidget } from '../../../shared/widgets/library/generic/media-widget/media-widget.component';
 import {
   featherAlertTriangle,
   featherBriefcase,
@@ -118,9 +118,9 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
       },
     },
     {
-      id: 'image-gallery',
+      id: 'media',
       properties: ['associatedMedia'],
-      component: ImageGalleryWidget,
+      component: MediaWidget,
       config: {
         showPropertyLabel: false,
         position: 'left',
@@ -227,7 +227,7 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     },
     {
       widgetIds: [
-        'image-gallery',
+        'media',
         'type',
         'additional-type',
         '*',
