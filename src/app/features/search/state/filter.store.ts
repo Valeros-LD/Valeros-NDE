@@ -1,4 +1,4 @@
-import { Injectable, signal, inject } from '@angular/core';
+import { Injectable, signal, inject, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { Filters, SerializableFilters } from '../types/filters';
 import { FacetValue } from '../types/facet';
@@ -11,8 +11,24 @@ export class FilterStore {
 
   selectedFilters = signal<Filters>({});
 
+  activeFilterCount = computed(() => {
+    const filters = this.selectedFilters();
+    return Object.values(filters).reduce(
+      (total, values) => total + values.size,
+      0,
+    );
+  });
+
+  private deepCopyFilters(filters: Filters): Filters {
+    const copy: Filters = {};
+    for (const [key, values] of Object.entries(filters)) {
+      copy[key] = new Set(values);
+    }
+    return copy;
+  }
+
   toggleFilter(facetName: string, value: string): void {
-    const currentFilters: Filters = { ...this.selectedFilters() };
+    const currentFilters = this.deepCopyFilters(this.selectedFilters());
 
     if (!currentFilters[facetName]) {
       currentFilters[facetName] = new Set<string>();
@@ -27,6 +43,7 @@ export class FilterStore {
       currentFilters[facetName].add(value);
     }
 
+    this.selectedFilters.set(currentFilters);
     this.updateUrlWithFilters(currentFilters);
   }
 

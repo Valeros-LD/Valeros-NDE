@@ -1,9 +1,16 @@
 <ng-template #buttonContent>
-  @if (icon()) {
-    <ng-icon [svg]="icon()" [size]="iconSize()"></ng-icon>
-  }
-  @if (!iconOnly()) {
-    {{ isOpen() ? labelWhenOpen() : labelWhenClosed() }}
+  <div class="flex items-center gap-2">
+    @if (icon()) {
+      <ng-icon [svg]="icon()" [size]="iconSize()"></ng-icon>
+    }
+    @if (!iconOnly()) {
+      <span>{{ isOpen() ? labelWhenOpen() : labelWhenClosed() }}</span>
+    }
+  </div>
+  @if (badge()) {
+    <span class="badge badge-primary badge-sm absolute -top-2 -right-2">{{
+      badge()
+    }}</span>
   }
 </ng-template>
 
@@ -11,7 +18,7 @@
 <button
   (click)="onToggle()"
   [class]="buttonClass()"
-  class="hidden lg:inline-flex"
+  class="hidden lg:inline-flex relative"
   [attr.aria-label]="isOpen() ? labelWhenOpen() : labelWhenClosed()"
 >
   <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
@@ -21,7 +28,7 @@
 <label
   [for]="drawerId()"
   [class]="buttonClass()"
-  class="lg:hidden"
+  class="lg:hidden relative"
   [attr.aria-label]="isOpen() ? labelWhenOpen() : labelWhenClosed()"
 >
   <ng-container *ngTemplateOutlet="buttonContent"></ng-container>

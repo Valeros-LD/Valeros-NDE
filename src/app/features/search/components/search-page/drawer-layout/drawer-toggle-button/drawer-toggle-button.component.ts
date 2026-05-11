@@ -17,6 +17,7 @@ export class DrawerToggleButtonComponent {
   icon = input<IconType>();
   iconSize = input<string>('16');
   iconOnly = input<boolean>(false);
+  badge = input<string>();
 
   toggle = output<void>();
 
