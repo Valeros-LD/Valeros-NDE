@@ -1,43 +1,14 @@
-import { Component, AfterViewInit, OnDestroy, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import Mirador, { MiradorInstance, MiradorConfig } from 'mirador';
-import { BaseWidget } from '../../../../infrastructure/base-widget';
-import {
-  AssociatedMediaNode,
-  isIIIFPresentationManifest,
-} from '../../../../../node/types/associated-media.node';
+import { BaseIiifWidget } from '../base-iiif-widget';
 
 @Component({
   selector: 'app-mirador-iiif-widget',
-
   imports: [],
-  templateUrl: './mirador-iiif-widget.component.html',
+  templateUrl: '../base-iiif-widget.html',
 })
-export class IiifWidget extends BaseWidget implements AfterViewInit, OnDestroy {
-  private miradorInstances: Map<string, MiradorInstance> = new Map();
-  readonly instanceId = crypto.randomUUID();
-
-  manifestUrls = computed(() => {
-    return (this.values() as AssociatedMediaNode[])
-      .filter(isIIIFPresentationManifest)
-      .map((v) => v.id)
-      .filter((url): url is string => typeof url === 'string' && url !== '');
-  });
-
-  ngAfterViewInit(): void {
-    this.manifestUrls().forEach((manifestUrl, index) => {
-      const elementId = this.getMiradorElementId(index);
-      this.initializeMirador(manifestUrl, elementId);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.miradorInstances.forEach((instance: MiradorInstance) => {
-      instance.unmount();
-    });
-    this.miradorInstances.clear();
-  }
-
-  private initializeMirador(manifestUrl: string, elementId: string): void {
+export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {
+  protected initializeViewer(manifestUrl: string, elementId: string): void {
     const element = document.getElementById(elementId);
     if (!element) {
       return;
@@ -70,10 +41,12 @@ export class IiifWidget extends BaseWidget implements AfterViewInit, OnDestroy {
 
     const instance = Mirador.viewer(config);
 
-    this.miradorInstances.set(elementId, instance);
+    this.instances.set(elementId, instance);
   }
 
-  getMiradorElementId(index: number): string {
-    return `mirador-${this.instanceId}-${index}`;
+  protected destroyInstances(): void {
+    this.instances.forEach((instance: MiradorInstance) => {
+      instance.unmount();
+    });
   }
 }

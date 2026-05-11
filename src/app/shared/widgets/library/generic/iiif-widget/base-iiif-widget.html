@@ -1,0 +1,4 @@
+@if (manifestUrls().length > 0) { @for (manifestUrl of manifestUrls(); track
+$index) {
+<div [id]="getElementId($index)" class="relative w-full h-[600px] mb-4"></div>
+} }
