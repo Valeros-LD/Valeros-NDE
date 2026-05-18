@@ -39,3 +39,7 @@ Thumbs.db
 
 # Angular
 /.angular/cache
+
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
