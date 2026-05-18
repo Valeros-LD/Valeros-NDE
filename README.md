@@ -1,4 +1,4 @@
-# Valeros: NDE-compatible, configuration-driven linked data browser
+# Valeros - NDE-compatible linked data browser
 
 > [!WARNING]  
 > This project is currently in active development and not yet ready for production use.
