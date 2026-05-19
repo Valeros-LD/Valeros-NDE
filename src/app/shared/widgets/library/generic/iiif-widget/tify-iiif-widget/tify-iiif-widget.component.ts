@@ -28,6 +28,7 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
     const instance = new Tify({
       container: `#${elementId}`,
       manifestUrl: proxiedManifestUrl,
+      view: 'thumbnails',
     });
 
     this.instances.set(elementId, instance);
