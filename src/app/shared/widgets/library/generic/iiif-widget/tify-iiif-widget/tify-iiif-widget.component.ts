@@ -32,18 +32,15 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
       return;
     }
 
-    // TODO: Remove dev CORS proxy
-    const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
-
     const instance = new Tify({
       container: `#${elementId}`,
-      manifestUrl: proxiedManifestUrl,
+      manifestUrl: manifestUrl,
       view: this.defaultView,
     });
 
     this.instances.set(elementId, instance);
 
-    this.setViewBasedOnManifest(proxiedManifestUrl, instance);
+    this.setViewBasedOnManifest(manifestUrl, instance);
   }
 
   private async setViewBasedOnManifest(

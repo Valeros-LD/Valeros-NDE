@@ -14,14 +14,11 @@ export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {
       return;
     }
 
-    // TODO: Remove dev CORS proxy
-    const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
-
     const config: MiradorConfig = {
       id: elementId,
       windows: [
         {
-          manifestId: proxiedManifestUrl,
+          manifestId: manifestUrl,
           thumbnailNavigationPosition: 'far-right',
           thumbnailNavigationVisible: true,
         },

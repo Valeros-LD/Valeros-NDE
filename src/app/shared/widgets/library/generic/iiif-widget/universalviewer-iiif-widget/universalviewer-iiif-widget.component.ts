@@ -18,10 +18,8 @@ export class UniversalviewerIiifWidget extends BaseIiifWidget<Viewer> {
 
     element.classList.add('uv');
 
-    const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
-
     const instance = init(elementId, {
-      manifest: proxiedManifestUrl,
+      manifest: manifestUrl,
       embedded: true,
     });
 
