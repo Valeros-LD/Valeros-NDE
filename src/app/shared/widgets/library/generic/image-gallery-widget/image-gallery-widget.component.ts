@@ -1,4 +1,11 @@
-import { Component, OnDestroy, signal, inject, effect } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  signal,
+  inject,
+  effect,
+  computed,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
@@ -14,10 +21,15 @@ import { BaseWidget } from '../../../infrastructure/base-widget';
 import { IiifImageService } from '../iiif-widget/iiif-image.service';
 import { ImageGalleryWidgetConfig } from './image-gallery-widget.config';
 import { ImageGalleryItemComponent } from './image-gallery-item/image-gallery-item.component';
+import { ImageGallerySkeletonComponent } from './image-gallery-skeleton/image-gallery-skeleton.component';
 
 @Component({
   selector: 'app-image-gallery-widget',
-  imports: [CommonModule, ImageGalleryItemComponent],
+  imports: [
+    CommonModule,
+    ImageGalleryItemComponent,
+    ImageGallerySkeletonComponent,
+  ],
   templateUrl: './image-gallery-widget.component.html',
   styleUrl: './image-gallery-widget.component.scss',
 })
@@ -26,13 +38,36 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
   private lightbox?: PhotoSwipeLightbox;
   readonly galleryId = `gallery-${crypto.randomUUID()}`;
   readonly imagesWithDimensions = signal<ImageModel[]>([]);
-  readonly displayedThumbnails = signal<ImageModel[]>([]);
   readonly imageLoadingStates = signal<Map<number, boolean>>(new Map());
+
+  protected readonly Array = Array;
+
+  private get maxThumbnails(): number | undefined {
+    const config = this.config() as ImageGalleryWidgetConfig;
+    return config.maxThumbnails;
+  }
+
+  readonly displayedThumbnails = computed(() => {
+    const images = this.imagesWithDimensions();
+    const max = this.maxThumbnails;
+    return max ? images.slice(0, max) : images;
+  });
+
+  readonly expectedThumbnailCount = computed(() => {
+    const images = this.getImagesData();
+    const max = this.maxThumbnails;
+    return max ? Math.min(images.length, max) : images.length;
+  });
 
   get isLightboxEnabled(): boolean {
     const config = this.config() as ImageGalleryWidgetConfig;
     return config.enableLightbox ?? true;
   }
+
+  readonly isLoadingImageDimensions = computed(() => {
+    // TODO: Ensure that this returns false when loading finishes, but no images are available
+    return this.imagesWithDimensions().length === 0;
+  });
 
   constructor() {
     super();
@@ -81,13 +116,6 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
     forkJoin(dimensionRequests).subscribe(
       (imagesWithDimensions: ImageModel[]) => {
         this.imagesWithDimensions.set(imagesWithDimensions);
-
-        const config = this.config() as ImageGalleryWidgetConfig;
-        const maxThumbnails = config.maxThumbnails;
-        const thumbnails = maxThumbnails
-          ? imagesWithDimensions.slice(0, maxThumbnails)
-          : imagesWithDimensions;
-        this.displayedThumbnails.set(thumbnails);
 
         if (this.isLightboxEnabled) {
           setTimeout(() => {
