@@ -1,6 +1,7 @@
 import { Component, input, inject, computed, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ArrowIndicatorComponent } from './arrow-indicator/arrow-indicator.component';
 import { WidgetService } from '../widgets/infrastructure/widget.service';
 import { DynamicWidgetComponent } from '../widgets/infrastructure/dynamic-widget/dynamic-widget.component';
 import { WidgetsByPosition } from '../widgets/types/widgets-by-position';
@@ -9,10 +10,14 @@ import { NodeModel } from './types/node.model';
 
 @Component({
   selector: 'app-node',
-  imports: [CommonModule, DynamicWidgetComponent, RouterLink],
+  imports: [
+    CommonModule,
+    DynamicWidgetComponent,
+    RouterLink,
+    ArrowIndicatorComponent,
+  ],
   templateUrl: './node.component.html',
   styleUrl: './node.component.scss',
-
   host: {
     class: 'block',
   },
