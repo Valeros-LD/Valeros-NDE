@@ -39,6 +39,7 @@ export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {
       },
     };
 
+    // TODO: Fix UI updating issue (Mirador UI does not seem to update on page changes)
     const instance = Mirador.viewer(config);
 
     this.instances.set(elementId, instance);
