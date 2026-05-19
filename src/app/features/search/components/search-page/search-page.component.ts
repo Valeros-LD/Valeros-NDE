@@ -26,6 +26,7 @@ import { BreakpointService } from '../../../../shared/breakpoint/breakpoint.serv
 import { featherFilter } from '@ng-icons/feather-icons';
 import { PageTitleService } from '../../../../shared/page-title/page-title.service';
 import { FilterStore } from '../../state/filter.store';
+import { HeaderBannerComponent } from '../../../../shared/header-banner/header-banner.component';
 
 @Component({
   selector: 'app-search-page',
@@ -39,6 +40,7 @@ import { FilterStore } from '../../state/filter.store';
     ResultsCount,
     Pagination,
     ViewSwitcherComponent,
+    HeaderBannerComponent,
   ],
   templateUrl: './search-page.component.html',
 })
