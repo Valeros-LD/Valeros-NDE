@@ -1,9 +1,18 @@
 declare module 'tify' {
+  export type TifyView =
+    | 'export'
+    | 'help'
+    | 'info'
+    | 'text'
+    | 'thumbnails'
+    | 'toc'
+    | null;
+
   // TODO: Expand this type
   export interface TifyOptions {
     container: string;
     manifestUrl: string;
-    view: 'export' | 'help' | 'info' | 'text' | 'thumbnails' | 'toc' | null;
+    view: TifyView;
   }
 
   export default class Tify {

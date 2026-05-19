@@ -29,7 +29,7 @@ export abstract class BaseIiifWidget<T = unknown>
   ngAfterViewInit(): void {
     this.manifestUrls().forEach((manifestUrl, index) => {
       const elementId = this.getElementId(index);
-      this.initializeViewer(manifestUrl, elementId);
+      void this.initializeViewer(manifestUrl, elementId);
     });
   }
 
@@ -41,7 +41,7 @@ export abstract class BaseIiifWidget<T = unknown>
   protected abstract initializeViewer(
     manifestUrl: string,
     elementId: string,
-  ): void;
+  ): void | Promise<void>;
 
   protected abstract destroyInstances(): void;
 

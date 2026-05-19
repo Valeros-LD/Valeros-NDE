@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import Tify from 'tify';
+import Tify, { TifyView } from 'tify';
 import { BaseIiifWidget } from '../base-iiif-widget';
 import 'tify/dist/tify.css';
+
+interface IIIFManifest {
+  sequences?: Array<{ canvases?: unknown[] }>;
+  items?: unknown[];
+}
 
 @Component({
   selector: 'app-tify-iiif-widget',
@@ -16,7 +21,10 @@ import 'tify/dist/tify.css';
   ],
 })
 export class TifyIiifWidget extends BaseIiifWidget<Tify> {
-  protected initializeViewer(manifestUrl: string, elementId: string): void {
+  protected async initializeViewer(
+    manifestUrl: string,
+    elementId: string,
+  ): Promise<void> {
     const element = document.getElementById(elementId);
     if (!element) {
       return;
@@ -25,13 +33,38 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
     // TODO: Remove dev CORS proxy
     const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
 
+    const view = await this.determineView(proxiedManifestUrl);
+
     const instance = new Tify({
       container: `#${elementId}`,
       manifestUrl: proxiedManifestUrl,
-      view: 'thumbnails',
+      view,
     });
 
     this.instances.set(elementId, instance);
+  }
+
+  private async determineView(manifestUrl: string): Promise<TifyView> {
+    try {
+      const response = await fetch(manifestUrl);
+      const manifest: IIIFManifest = await response.json();
+
+      const canvasCount =
+        manifest.sequences?.reduce(
+          (total, seuquence) => total + (seuquence.canvases?.length ?? 0),
+          0,
+        ) ??
+        manifest.items?.length ??
+        0;
+
+      return canvasCount > 1 ? 'thumbnails' : null;
+    } catch (error) {
+      console.error(
+        'Failed to fetch manifest, defaulting to thumbnails view:',
+        error,
+      );
+      return 'thumbnails';
+    }
   }
 
   protected destroyInstances(): void {
