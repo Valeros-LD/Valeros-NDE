@@ -6,13 +6,19 @@ import { NodeComponent } from '../../../../shared/node/node.component';
 import { BreadcrumbService } from '../../../../shared/breadcrumbs/breadcrumb.service';
 import { normalizeToFirst } from '../../../../shared/data-utils/value-normalization.util';
 import { BreadcrumbComponent } from '../../../../shared/breadcrumbs/breadcrumb/breadcrumb.component';
+import { BackToSearchComponent } from '../../../../shared/back-to-search/back-to-search.component';
 import { ApiService } from '../../../../shared/api/api.service';
 import { NodeModel } from '../../../../shared/node/types/node.model';
 import { PageTitleService } from '../../../../shared/page-title/page-title.service';
 
 @Component({
   selector: 'app-details',
-  imports: [CommonModule, NodeComponent, BreadcrumbComponent],
+  imports: [
+    CommonModule,
+    NodeComponent,
+    BreadcrumbComponent,
+    BackToSearchComponent,
+  ],
   templateUrl: './details.component.html',
 })
 export class DetailsComponent implements OnInit, OnDestroy {
