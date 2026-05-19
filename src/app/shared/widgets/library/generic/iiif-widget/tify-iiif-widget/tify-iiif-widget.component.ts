@@ -7,6 +7,13 @@ import 'tify/dist/tify.css';
   selector: 'app-tify-iiif-widget',
   imports: [],
   templateUrl: '../base-iiif-widget.html',
+  styles: [
+    `
+      :host ::ng-deep {
+        --tify-body-bg: lightgrey;
+      }
+    `,
+  ],
 })
 export class TifyIiifWidget extends BaseIiifWidget<Tify> {
   protected initializeViewer(manifestUrl: string, elementId: string): void {
