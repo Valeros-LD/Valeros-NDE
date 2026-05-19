@@ -33,18 +33,21 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
     // TODO: Remove dev CORS proxy
     const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
 
-    const view = await this.determineView(proxiedManifestUrl);
-
     const instance = new Tify({
       container: `#${elementId}`,
       manifestUrl: proxiedManifestUrl,
-      view,
+      view: 'thumbnails',
     });
 
     this.instances.set(elementId, instance);
+
+    this.setViewBasedOnManifest(proxiedManifestUrl, instance);
   }
 
-  private async determineView(manifestUrl: string): Promise<TifyView> {
+  private async setViewBasedOnManifest(
+    manifestUrl: string,
+    instance: Tify,
+  ): Promise<void> {
     try {
       const response = await fetch(manifestUrl);
       const manifest: IIIFManifest = await response.json();
@@ -57,13 +60,15 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
         manifest.items?.length ??
         0;
 
-      return canvasCount > 1 ? 'thumbnails' : null;
+      const view = canvasCount > 1 ? 'thumbnails' : null;
+      if (view !== 'thumbnails') {
+        instance.setView(view);
+      }
     } catch (error) {
       console.error(
         'Failed to fetch manifest, defaulting to thumbnails view:',
         error,
       );
-      return 'thumbnails';
     }
   }
 

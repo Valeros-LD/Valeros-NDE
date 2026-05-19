@@ -10,13 +10,14 @@ declare module 'tify' {
 
   // TODO: Expand this type
   export interface TifyOptions {
-    container: string;
+    container?: string;
     manifestUrl: string;
-    view: TifyView;
+    view?: TifyView;
   }
 
   export default class Tify {
     constructor(options: TifyOptions);
     destroy(): void;
+    setView(name: TifyView): void;
   }
 }
