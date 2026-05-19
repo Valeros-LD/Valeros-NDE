@@ -4,6 +4,7 @@ import { ImageModel } from '../../../../../image/types/image.model';
 @Component({
   selector: 'app-image-gallery-item',
   templateUrl: './image-gallery-item.component.html',
+  styleUrl: './image-gallery-item.component.scss',
 })
 export class ImageGalleryItemComponent {
   image = input.required<ImageModel>();

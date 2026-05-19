@@ -5,11 +5,7 @@
     @apply mb-2;
   }
 
-  img {
-    @apply w-full h-auto object-cover;
-  }
-
-  &.single img {
+  &.single app-image-gallery-item img {
     @apply max-h-[33dvh];
   }
 }
