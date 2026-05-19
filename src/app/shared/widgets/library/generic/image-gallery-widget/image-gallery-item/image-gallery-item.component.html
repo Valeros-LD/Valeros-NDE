@@ -1,0 +1,22 @@
+<img
+  [src]="image().thumbnail"
+  [alt]="image().alt"
+  [class]="
+    isLoading()
+      ? 'absolute opacity-0 pointer-events-none'
+      : 'block transition-opacity duration-300'
+  "
+  (load)="imageLoaded.emit()"
+  (error)="imageError.emit($event)"
+/>
+@if (isLoading()) {
+  <div
+    class="skeleton w-full rounded-none"
+    [style.aspect-ratio]="
+      image().dimensions
+        ? image().dimensions?.width + '/' + image().dimensions?.height
+        : '4/3'
+    "
+    [style.min-height.px]="100"
+  ></div>
+}

@@ -24,21 +24,23 @@
           [attr.aria-label]="'View ' + image.alt + ' in fullscreen'"
           [class]="
             containerClass +
-            ' hover:opacity-90 transition-opacity cursor-pointer'
+            ' hover:opacity-90 transition-opacity cursor-pointer relative'
           "
         >
-          <img
-            [src]="image.thumbnail"
-            [alt]="image.alt"
-            (error)="onThumbnailError($event)"
+          <app-image-gallery-item
+            [image]="image"
+            [isLoading]="isImageLoading($index)"
+            (imageLoaded)="onImageLoaded($index)"
+            (imageError)="onThumbnailError($event)"
           />
         </a>
       } @else {
-        <div [class]="containerClass">
-          <img
-            [src]="image.thumbnail"
-            [alt]="image.alt"
-            (error)="onThumbnailError($event)"
+        <div [class]="containerClass + ' relative'">
+          <app-image-gallery-item
+            [image]="image"
+            [isLoading]="isImageLoading($index)"
+            (imageLoaded)="onImageLoaded($index)"
+            (imageError)="onThumbnailError($event)"
           />
         </div>
       }

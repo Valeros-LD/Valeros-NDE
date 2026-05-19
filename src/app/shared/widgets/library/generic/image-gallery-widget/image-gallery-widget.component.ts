@@ -13,10 +13,11 @@ import {
 import { BaseWidget } from '../../../infrastructure/base-widget';
 import { IiifImageService } from '../iiif-widget/iiif-image.service';
 import { ImageGalleryWidgetConfig } from './image-gallery-widget.config';
+import { ImageGalleryItemComponent } from './image-gallery-item/image-gallery-item.component';
 
 @Component({
   selector: 'app-image-gallery-widget',
-  imports: [CommonModule],
+  imports: [CommonModule, ImageGalleryItemComponent],
   templateUrl: './image-gallery-widget.component.html',
   styleUrl: './image-gallery-widget.component.scss',
 })
@@ -26,6 +27,7 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
   readonly galleryId = `gallery-${crypto.randomUUID()}`;
   readonly imagesWithDimensions = signal<ImageModel[]>([]);
   readonly displayedThumbnails = signal<ImageModel[]>([]);
+  readonly imageLoadingStates = signal<Map<number, boolean>>(new Map());
 
   get isLightboxEnabled(): boolean {
     const config = this.config() as ImageGalleryWidgetConfig;
@@ -46,6 +48,18 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
     return (this.values() as AssociatedMediaNode[])
       .map((media: AssociatedMediaNode) => toImageModel(media))
       .filter((img) => img.src !== '');
+  }
+
+  onImageLoaded(index: number): void {
+    this.imageLoadingStates.update((states) => {
+      const newStates = new Map(states);
+      newStates.set(index, false);
+      return newStates;
+    });
+  }
+
+  isImageLoading(index: number): boolean {
+    return this.imageLoadingStates().get(index) ?? true;
   }
 
   private loadImageDimensions(images: ImageModel[]): void {
