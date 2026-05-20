@@ -9,10 +9,11 @@
     <button
       class="btn btn-primary btn-xs rounded-full text-center inline-block w-9 sm:w-10 h-9 sm:h-10 float-right"
       type="button"
-      aria-label="Help"
+      aria-label="Configuratie"
+      (click)="goToConfig()"
     >
       <span class="text-lg sm:text-2xl font-light">
-        <span class="relative bottom-[0.1rem]">?</span>
+        <ng-icon name="featherSettings" size="20"></ng-icon>
       </span>
     </button>
   </div>
