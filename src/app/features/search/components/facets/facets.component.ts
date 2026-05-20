@@ -2,13 +2,19 @@ import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchStore } from '../../state/search.store';
 import { FilterStore } from '../../state/filter.store';
-import { getFacetLabel } from '../../config/facet-labels.config';
+import {
+  getFacetLabel,
+  getFacetIcon,
+  isFacetHidden,
+  sortFacets,
+} from '../../config/facets.config';
 import { TooltipBadge } from '../../../../shared/tooltip-badge/tooltip-badge';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-facets',
 
-  imports: [CommonModule, TooltipBadge],
+  imports: [CommonModule, TooltipBadge, NgIcon],
   templateUrl: './facets.component.html',
 })
 export class FacetsComponent {
@@ -16,9 +22,16 @@ export class FacetsComponent {
   filterStore = inject(FilterStore);
 
   protected readonly getFacetLabel = getFacetLabel;
+  protected readonly getFacetIcon = getFacetIcon;
+
+  visibleFacets = computed(() => {
+    const facets = this.store.facets();
+    const filtered = facets.filter((facet) => !isFacetHidden(facet.name));
+    return sortFacets(filtered);
+  });
 
   hasFacetWithItems = computed(() =>
-    this.store.facets().some((facet) => facet.orderedItems.length > 0),
+    this.visibleFacets().some((facet) => facet.orderedItems.length > 0),
   );
 
   onFacetToggle(facetName: string, value: string): void {
