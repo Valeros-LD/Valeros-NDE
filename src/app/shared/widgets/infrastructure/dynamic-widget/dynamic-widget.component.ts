@@ -18,6 +18,7 @@ import { BaseWidget } from '../base-widget';
 import { NodeModel } from '../../../node/types/node.model';
 import { LinkWidget } from '../../library/generic/link-widget/link-widget.component';
 import { normalizeToArray } from '../../../data-utils/value-normalization.util';
+import { getWidgetComponent } from '../../widget-component.registry';
 
 @Component({
   selector: 'app-dynamic-widget',
@@ -52,9 +53,8 @@ export class DynamicWidgetComponent implements AfterViewInit {
 
   private createWidget() {
     const widget = this.widget();
-    this.componentRef = this.widgetContainer().createComponent(
-      widget.component,
-    );
+    const componentClass = getWidgetComponent(widget.component);
+    this.componentRef = this.widgetContainer().createComponent(componentClass);
     this.componentRef.setInput('node', this.data());
     this.componentRef.setInput('property', this.property());
     this.componentRef.setInput('config', widget.config);

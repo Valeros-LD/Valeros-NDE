@@ -1,6 +1,5 @@
-import { Type } from '@angular/core';
-import { IconType } from '@ng-icons/core';
-import { BaseWidget } from '../infrastructure/base-widget';
+import { WidgetComponentKey } from '../widget-component.registry';
+import { IconKey } from '../../icons/icon.registry';
 
 export interface WidgetsSettings {
   mappings: WidgetMapping[];
@@ -18,7 +17,7 @@ export interface WidgetOrderGroup {
 
 export interface WidgetMapping {
   id?: string;
-  component: Type<BaseWidget>;
+  component: WidgetComponentKey;
   properties: string[];
   config?: WidgetConfig;
 }
@@ -31,7 +30,7 @@ export interface BaseWidgetConfig {
   showPropertyLabel?: boolean;
   propertyLabel?: string;
   propertyPath?: string;
-  icon?: IconType;
+  icon?: IconKey;
   position?: WidgetPosition;
   fullWidth?: boolean;
   showOriginalLink?: boolean;

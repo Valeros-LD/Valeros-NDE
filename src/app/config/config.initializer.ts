@@ -6,6 +6,7 @@ import { LIST_VIEW_WIDGETS_SETTINGS } from './widgets/list-widgets.config';
 import { GRID_VIEW_WIDGETS_SETTINGS } from './widgets/grid-widgets.config';
 import { MAP_VIEW_WIDGETS_SETTINGS } from './widgets/map-widgets.config';
 import { FACETS_CONFIG } from './facets.config';
+import { SEARCH_VIEWS_CONFIG } from './views.config';
 
 export function initializeAppConfig() {
   const configService = inject(ConfigService);
@@ -21,8 +22,6 @@ export function initializeAppConfig() {
         map: MAP_VIEW_WIDGETS_SETTINGS,
       },
     },
-    views: {
-      defaultView: 'list',
-    },
+    views: SEARCH_VIEWS_CONFIG,
   });
 }

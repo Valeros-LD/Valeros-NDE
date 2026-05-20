@@ -1,24 +1,4 @@
 import { WidgetsSettings } from '../../shared/widgets/types/widget-config';
-import { JsonWidget } from '../../shared/widgets/library/generic/json-widget/json-widget.component';
-import { LinkWidget } from '../../shared/widgets/library/generic/link-widget/link-widget.component';
-import { TextWidget } from '../../shared/widgets/library/generic/text-widget/text-widget.component';
-import { MapWidget } from '../../shared/widgets/library/generic/map-widget/map-widget.component';
-import { AddressWidget } from '../../shared/widgets/library/domain-specific/address-widget/address-widget.component';
-import { MediaWidget } from '../../shared/widgets/library/generic/media-widget/media-widget.component';
-import {
-  featherAlertTriangle,
-  featherBriefcase,
-  featherCalendar,
-  featherExternalLink,
-  featherFileText,
-  featherHome,
-  featherInfo,
-  featherMapPin,
-  featherPackage,
-  featherTag,
-  featherUser,
-  featherUsers,
-} from '@ng-icons/feather-icons';
 import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
 
 export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
@@ -27,7 +7,7 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'description-header',
       properties: ['description'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         showPropertyLabel: false,
         largeFont: true,
@@ -36,91 +16,91 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-mock-data',
       properties: ['isMockData'],
-      component: TextWidget,
+      component: 'text-widget',
       config: {
         propertyLabel: 'Testdata',
-        icon: featherAlertTriangle,
+        icon: 'feather-alert-triangle',
       },
     },
     {
       id: 'license',
       properties: ['license'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Licentie',
-        icon: featherFileText,
+        icon: 'feather-file-text',
       },
     },
     {
       id: 'publisher',
       properties: ['publisher'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Uitgever',
-        icon: featherUsers,
+        icon: 'feather-users',
       },
     },
     {
       id: 'has-occupation',
       properties: ['hasOccupation'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Beroep',
-        icon: featherBriefcase,
+        icon: 'feather-briefcase',
       },
     },
     {
       id: 'genre',
       properties: ['genre'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Genre',
-        icon: featherTag,
+        icon: 'feather-tag',
       },
     },
     {
       id: 'about',
       properties: ['about'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Over',
-        icon: featherInfo,
+        icon: 'feather-info',
       },
     },
     {
       id: 'content-location',
       properties: ['contentLocation', 'location'],
-      component: MapWidget,
+      component: 'map-widget',
       config: {
         propertyLabel: 'Locatie',
-        icon: featherMapPin,
+        icon: 'feather-map-pin',
         showOriginalLink: true,
       },
     },
     {
       id: 'birth-place',
       properties: ['birthPlace'],
-      component: MapWidget,
+      component: 'map-widget',
       config: {
         propertyLabel: 'Geboorteplaats',
-        icon: featherMapPin,
+        icon: 'feather-map-pin',
         showOriginalLink: true,
       },
     },
     {
       id: 'death-place',
       properties: ['deathPlace'],
-      component: MapWidget,
+      component: 'map-widget',
       config: {
         propertyLabel: 'Plaats van overlijden',
-        icon: featherMapPin,
+        icon: 'feather-map-pin',
         showOriginalLink: true,
       },
     },
     {
       id: 'media',
       properties: ['associatedMedia'],
-      component: MediaWidget,
+      component: 'media-widget',
       config: {
         showPropertyLabel: false,
         position: 'left',
@@ -129,95 +109,95 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'material',
       properties: ['material'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Materiaal',
-        icon: featherPackage,
+        icon: 'feather-package',
       },
     },
     {
       id: 'creator',
       properties: ['creator'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Vervaardiger',
-        icon: featherUser,
+        icon: 'feather-user',
       },
     },
     {
       id: 'date-created',
       properties: ['dateCreated'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Vervaardigingsdatum',
-        icon: featherCalendar,
+        icon: 'feather-calendar',
       },
     },
     {
       id: 'birth-date',
       properties: ['birthDate'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Geboortedatum',
-        icon: featherCalendar,
+        icon: 'feather-calendar',
       },
     },
     {
       id: 'death-date',
       properties: ['deathDate'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Overlijdensdatum',
-        icon: featherCalendar,
+        icon: 'feather-calendar',
       },
     },
     {
       id: 'geo',
       properties: ['geo'],
-      component: MapWidget,
+      component: 'map-widget',
       config: {},
     },
     {
       id: 'address',
       properties: ['address'],
-      component: AddressWidget,
+      component: 'address-widget',
       config: {
         propertyLabel: 'Adres',
-        icon: featherHome,
+        icon: 'feather-home',
       },
     },
     {
       id: 'is-part-of-license',
       properties: ['isPartOf'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Licentie',
         propertyPath: 'license',
-        icon: featherFileText,
+        icon: 'feather-file-text',
       },
     },
     {
       id: 'is-part-of-publisher',
       properties: ['isPartOf'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Uitgever',
         propertyPath: 'publisher',
-        icon: featherUsers,
+        icon: 'feather-users',
       },
     },
     {
       id: 'is-based-on',
       properties: ['isBasedOn'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Gebaseerd op',
-        icon: featherExternalLink,
+        icon: 'feather-external-link',
       },
     },
   ],
   defaultWidget: {
-    component: JsonWidget,
+    component: 'json-widget',
     properties: [],
     config: {},
   },

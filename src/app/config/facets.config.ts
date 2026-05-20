@@ -1,32 +1,27 @@
 import { IconType } from '@ng-icons/core';
-import {
-  featherArchive,
-  featherFileText,
-  featherGrid,
-  featherUsers,
-  featherUser,
-  featherMapPin,
-  featherPackage,
-  featherTag,
-} from '@ng-icons/feather-icons';
+import { IconKey, getIcon } from '../shared/icons/icon.registry';
 
 export interface FacetConfig {
   name: string;
   label: string;
-  icon?: IconType;
+  icon?: IconKey;
   hidden?: boolean;
 }
 
 export const FACETS_CONFIG: FacetConfig[] = [
-  { name: 'dataset', label: 'Dataset', icon: featherArchive },
-  { name: 'contentLocation', label: 'Locatie', icon: featherMapPin },
-  { name: 'creator', label: 'Vervaardiger', icon: featherUser },
-  { name: 'subject', label: 'Onderwerp', icon: featherTag },
-  { name: 'genre', label: 'Genre', icon: featherTag },
-  { name: 'material', label: 'Materiaal', icon: featherPackage },
-  { name: 'additionalType', label: 'Soort (aanvullend)', icon: featherGrid },
-  { name: 'publisher', label: 'Uitgever', icon: featherUsers },
-  { name: 'license', label: 'Licentie', icon: featherFileText },
+  { name: 'dataset', label: 'Dataset', icon: 'feather-archive' },
+  { name: 'contentLocation', label: 'Locatie', icon: 'feather-map-pin' },
+  { name: 'creator', label: 'Vervaardiger', icon: 'feather-user' },
+  { name: 'subject', label: 'Onderwerp', icon: 'feather-tag' },
+  { name: 'genre', label: 'Genre', icon: 'feather-tag' },
+  { name: 'material', label: 'Materiaal', icon: 'feather-package' },
+  {
+    name: 'additionalType',
+    label: 'Soort (aanvullend)',
+    icon: 'feather-grid',
+  },
+  { name: 'publisher', label: 'Uitgever', icon: 'feather-users' },
+  { name: 'license', label: 'Licentie', icon: 'feather-file-text' },
 ];
 
 const facetConfigMap = new Map(
@@ -41,8 +36,13 @@ export function isFacetHidden(facetName: string): boolean {
   return facetConfigMap.get(facetName)?.hidden ?? false;
 }
 
-export function getFacetIcon(facetName: string): IconType | undefined {
+export function getFacetIconKey(facetName: string): IconKey | undefined {
   return facetConfigMap.get(facetName)?.icon;
+}
+
+export function getFacetIcon(facetName: string): IconType | undefined {
+  const iconKey = getFacetIconKey(facetName);
+  return iconKey ? getIcon(iconKey) : undefined;
 }
 
 export function sortFacets<T extends { name: string }>(facets: T[]): T[] {

@@ -3,6 +3,7 @@ import { NgIconComponent } from '@ng-icons/core';
 import { ViewType } from '../../views/types/view-type';
 import { ViewService } from '../../views/infrastructure/view.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { getIcon } from '../../../../shared/icons/icon.registry';
 
 @Component({
   selector: 'app-view-switcher',
@@ -18,6 +19,7 @@ export class ViewSwitcherComponent {
   viewChange = output<ViewType>();
 
   protected readonly availableViews = this.viewService.getAllViewMappings();
+  protected readonly getIcon = getIcon;
 
   onViewChange(viewType: ViewType): void {
     this.router.navigate([], {

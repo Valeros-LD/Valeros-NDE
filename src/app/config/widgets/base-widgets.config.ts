@@ -1,20 +1,11 @@
 import { WidgetsSettings } from '../../shared/widgets/types/widget-config';
-import { JsonWidget } from '../../shared/widgets/library/generic/json-widget/json-widget.component';
-import { ImageGalleryWidget } from '../../shared/widgets/library/generic/image-gallery-widget/image-gallery-widget.component';
-import { DatasetWidget } from '../../shared/widgets/library/domain-specific/dataset-widget/dataset-widget.component';
-import { LinkWidget } from '../../shared/widgets/library/generic/link-widget/link-widget.component';
-import {
-  featherAlignLeft,
-  featherArchive,
-  featherGrid,
-} from '@ng-icons/feather-icons';
 
 export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
   mappings: [
     {
       id: 'name',
       properties: ['name'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         showPropertyLabel: false,
         asHeader: true,
@@ -23,7 +14,7 @@ export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'image-thumb',
       properties: ['associatedMedia'],
-      component: ImageGalleryWidget,
+      component: 'image-gallery-widget',
       config: {
         showPropertyLabel: false,
         position: 'top',
@@ -35,35 +26,35 @@ export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'type',
       properties: ['type'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Soort',
-        icon: featherGrid,
+        icon: 'feather-grid',
       },
     },
     {
       id: 'additional-type',
       properties: ['additionalType'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Soort (aanvullend)',
         propertyPath: 'name',
-        icon: featherGrid,
+        icon: 'feather-grid',
       },
     },
     {
       id: 'description',
       properties: ['description'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Beschrijving',
-        icon: featherAlignLeft,
+        icon: 'feather-align-left',
       },
     },
     {
       id: 'description-without-label',
       properties: ['description'],
-      component: LinkWidget,
+      component: 'link-widget',
       config: {
         propertyLabel: 'Beschrijving',
         showPropertyLabel: false,
@@ -73,15 +64,15 @@ export const BASE_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'dataset',
       properties: ['isPartOf'],
-      component: DatasetWidget,
+      component: 'dataset-widget',
       config: {
         propertyLabel: 'Dataset',
-        icon: featherArchive,
+        icon: 'feather-archive',
       },
     },
   ],
   defaultWidget: {
-    component: JsonWidget,
+    component: 'json-widget',
     properties: [],
     config: {},
   },
