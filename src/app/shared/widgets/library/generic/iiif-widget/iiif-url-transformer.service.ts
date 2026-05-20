@@ -6,17 +6,6 @@ import { isDevMode } from '@angular/core';
 })
 export class IiifUrlTransformerService {
   transformManifestUrl(originalUrl: string): string {
-    if (isDevMode()) {
-      // TODO: Replace with Angular proxy for development
-      return `https://corsproxy.io/?${encodeURIComponent(originalUrl)}`;
-    }
-
-    try {
-      const encodedUrl = encodeURIComponent(originalUrl);
-      return `/iiif-proxy?url=${encodedUrl}`;
-    } catch (error) {
-      console.error('Invalid manifest URL:', originalUrl);
-      return originalUrl;
-    }
+    return `https://proxy.valeros.nl/${originalUrl}`;
   }
 }
