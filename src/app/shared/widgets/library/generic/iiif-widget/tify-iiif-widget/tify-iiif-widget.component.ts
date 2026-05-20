@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import Tify, { TifyView } from 'tify';
 import { BaseIiifWidget } from '../base-iiif-widget';
-import 'tify/dist/tify.css';
 
 interface IIIFManifest {
   sequences?: Array<{ canvases?: unknown[] }>;
