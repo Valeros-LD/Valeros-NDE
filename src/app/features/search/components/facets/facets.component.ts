@@ -16,6 +16,7 @@ import { NgIcon } from '@ng-icons/core';
 
   imports: [CommonModule, TooltipBadge, NgIcon],
   templateUrl: './facets.component.html',
+  styleUrl: './facets.component.scss',
 })
 export class FacetsComponent {
   store = inject(SearchStore);
