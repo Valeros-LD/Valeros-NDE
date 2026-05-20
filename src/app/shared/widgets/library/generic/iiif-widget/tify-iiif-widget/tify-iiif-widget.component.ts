@@ -38,36 +38,6 @@ export class TifyIiifWidget extends BaseIiifWidget<Tify> {
     });
 
     this.instances.set(elementId, instance);
-
-    this.setViewBasedOnManifest(manifestUrl, instance);
-  }
-
-  private async setViewBasedOnManifest(
-    manifestUrl: string,
-    instance: Tify,
-  ): Promise<void> {
-    try {
-      const response = await fetch(manifestUrl);
-      const manifest: IIIFManifest = await response.json();
-
-      const canvasCount =
-        manifest.sequences?.reduce(
-          (total, seuquence) => total + (seuquence.canvases?.length ?? 0),
-          0,
-        ) ??
-        manifest.items?.length ??
-        0;
-
-      const view = canvasCount > 1 ? 'thumbnails' : null;
-      if (view !== this.defaultView) {
-        setTimeout(() => instance.setView(view));
-      }
-    } catch (error) {
-      console.error(
-        'Failed to fetch manifest, defaulting to thumbnails view:',
-        error,
-      );
-    }
   }
 
   protected destroyInstances(): void {
