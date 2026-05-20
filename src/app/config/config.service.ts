@@ -84,6 +84,13 @@ export class ConfigService {
     }
   }
 
+  updateViews(views: ViewsSettings): void {
+    const current = this.config();
+    if (current) {
+      this.config.set({ ...current, views });
+    }
+  }
+
   getConfig(): AppConfig | null {
     return this.config();
   }

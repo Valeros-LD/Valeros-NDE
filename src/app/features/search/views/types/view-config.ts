@@ -8,6 +8,7 @@ export interface BaseViewConfig {
   showPagination?: boolean;
   showResultsCount?: boolean;
   showSort?: boolean;
+  hidden?: boolean;
 }
 
 export type ViewConfig = BaseViewConfig & Record<string, unknown>;

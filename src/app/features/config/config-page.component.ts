@@ -11,10 +11,11 @@ import { FacetsService } from '../search/components/facets/facets.service';
 import { FacetsComponent } from '../search/components/facets/facets.component';
 import { FacetsConfig } from './facets-config/facets-config.component';
 import { ViewsConfig } from './views-config/views-config.component';
+import { HeaderBannerComponent } from "../../shared/header-banner/header-banner.component";
 
 @Component({
   selector: 'app-config-page',
-  imports: [FacetsConfig, ViewsConfig],
+  imports: [FacetsConfig, ViewsConfig, HeaderBannerComponent],
   templateUrl: './config-page.component.html',
   styleUrl: './config-page.component.scss',
 })

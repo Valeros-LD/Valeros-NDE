@@ -1,19 +1,14 @@
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDropList,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
-import { Component, inject } from '@angular/core';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, inject, computed } from '@angular/core';
 import { ConfigService } from '../../../config/config.service';
 import { FacetsService } from '../../search/components/facets/facets.service';
-import { NgIcon } from '@ng-icons/core';
+import { DraggableList } from '../../../shared/draggable-list/draggable-list.component';
+import { DraggableListItem } from '../../../shared/draggable-list/draggable-list-item';
 
 @Component({
   selector: 'app-facets-config',
-  imports: [CdkDropList, CdkDrag, NgIcon],
+  imports: [DraggableList],
   templateUrl: './facets-config.component.html',
-  styleUrl: './facets-config.component.scss',
 })
 export class FacetsConfig {
   protected configService = inject(ConfigService);
@@ -21,13 +16,28 @@ export class FacetsConfig {
 
   protected readonly facets = this.configService.facets;
 
-  drop(event: CdkDragDrop<string[]>): void {
+  protected readonly items = computed<DraggableListItem[]>(() =>
+    this.facets().map((facet) => ({
+      label: facet.label,
+      sublabel: facet.name,
+      icon: this.facetsService.getFacetIcon(facet.name),
+      hidden: facet.hidden,
+    })),
+  );
+
+  protected readonly trackByName = () => (item: DraggableListItem) =>
+    this.facets().find((f) => f.label === item.label)?.name ?? '';
+
+  protected onReorder(event: {
+    previousIndex: number;
+    currentIndex: number;
+  }): void {
     const facets = [...this.configService.facets()];
     moveItemInArray(facets, event.previousIndex, event.currentIndex);
     this.configService.updateFacets(facets);
   }
 
-  toggleHidden(index: number): void {
+  protected onToggle(index: number): void {
     const facets = [...this.configService.facets()];
     facets[index] = {
       ...facets[index],

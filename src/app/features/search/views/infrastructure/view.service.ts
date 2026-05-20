@@ -27,7 +27,7 @@ export class ViewService {
 
   getAllViewMappings(): ViewMapping[] {
     const views = this.configService.views();
-    return views?.mappings || [];
+    return views?.mappings.filter((m) => !m.config.hidden) || [];
   }
 
   getDefaultViewType(): ViewType {

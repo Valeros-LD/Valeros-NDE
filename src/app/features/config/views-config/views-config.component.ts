@@ -1,12 +1,60 @@
-import { Component, inject } from '@angular/core';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, inject, computed } from '@angular/core';
 import { ConfigService } from '../../../config/config.service';
-import { FacetsService } from '../../search/components/facets/facets.service';
-import { NgIcon } from '@ng-icons/core';
+import { getIcon } from '../../../shared/icons/icon.registry';
+import { DraggableList } from '../../../shared/draggable-list/draggable-list.component';
+import { DraggableListItem } from '../../../shared/draggable-list/draggable-list-item';
 
 @Component({
   selector: 'app-views-config',
-  imports: [NgIcon],
+  imports: [DraggableList],
   templateUrl: './views-config.component.html',
-  styleUrl: './views-config.component.scss',
 })
-export class ViewsConfig {}
+export class ViewsConfig {
+  protected configService = inject(ConfigService);
+
+  protected readonly viewsSettings = this.configService.views;
+  protected readonly mappings = computed(
+    () => this.viewsSettings()?.mappings ?? [],
+  );
+
+  protected readonly items = computed<DraggableListItem[]>(() =>
+    this.mappings().map((mapping) => ({
+      label: mapping.label,
+      sublabel: mapping.type,
+      icon: getIcon(mapping.icon),
+      hidden: mapping.config.hidden,
+    })),
+  );
+
+  protected readonly trackByViewType = () => (item: DraggableListItem) =>
+    this.mappings().find((m) => m.label === item.label)?.type ?? '';
+
+  protected onReorder(event: {
+    previousIndex: number;
+    currentIndex: number;
+  }): void {
+    const viewsSettings = this.configService.views();
+    if (!viewsSettings) return;
+
+    const mappings = [...viewsSettings.mappings];
+    moveItemInArray(mappings, event.previousIndex, event.currentIndex);
+    this.configService.updateViews({ ...viewsSettings, mappings });
+  }
+
+  protected onToggle(index: number): void {
+    const viewsSettings = this.configService.views();
+    if (!viewsSettings) return;
+
+    const mappings = [...viewsSettings.mappings];
+    const mapping = mappings[index];
+    mappings[index] = {
+      ...mapping,
+      config: {
+        ...mapping.config,
+        hidden: !mapping.config.hidden,
+      },
+    };
+    this.configService.updateViews({ ...viewsSettings, mappings });
+  }
+}

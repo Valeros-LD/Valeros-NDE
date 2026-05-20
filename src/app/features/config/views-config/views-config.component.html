@@ -1,1 +1,6 @@
-TODO
+<app-draggable-list
+  [items]="items()"
+  [trackBy]="trackByViewType()"
+  (itemsReordered)="onReorder($event)"
+  (itemToggled)="onToggle($event)"
+/>
