@@ -10,10 +10,11 @@ import { ConfigService } from '../../config/config.service';
 import { FacetsService } from '../search/components/facets/facets.service';
 import { FacetsComponent } from '../search/components/facets/facets.component';
 import { FacetsConfig } from './facets-config/facets-config.component';
+import { ViewsConfig } from './views-config/views-config.component';
 
 @Component({
   selector: 'app-config-page',
-  imports: [FacetsConfig],
+  imports: [FacetsConfig, ViewsConfig],
   templateUrl: './config-page.component.html',
   styleUrl: './config-page.component.scss',
 })
