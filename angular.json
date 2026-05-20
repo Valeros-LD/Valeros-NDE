@@ -34,7 +34,10 @@
             "styles": [
               "src/styles.scss",
               "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/tify/dist/tify.css"
+              "node_modules/tify/dist/tify.css",
+              "node_modules/photoswipe/dist/photoswipe.css",
+              "node_modules/universalviewer/dist/uv.css",
+              "node_modules/universalviewer/dist/esm/index.css"
             ]
           },
           "configurations": {

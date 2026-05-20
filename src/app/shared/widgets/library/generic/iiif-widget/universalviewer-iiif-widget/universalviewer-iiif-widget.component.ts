@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { init, Viewer } from 'universalviewer';
 import { BaseIiifWidget } from '../base-iiif-widget';
-import 'universalviewer/dist/uv.css';
-import 'universalviewer/dist/esm/index.css';
 
 @Component({
   selector: 'app-universalviewer-iiif-widget',

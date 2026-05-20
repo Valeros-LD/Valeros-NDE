@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/style.css';
 import { forkJoin, from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Dimensions } from '../../../../image/types/dimensions';
