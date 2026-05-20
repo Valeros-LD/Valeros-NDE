@@ -7,14 +7,14 @@
           class="collapse-title flex items-center justify-between font-semibold text-sm capitalize"
         >
           <span class="flex items-center gap-2">
-            @if (getFacetIcon(facet.name)) {
+            @if (facetsService.getFacetIcon(facet.name)) {
               <ng-icon
                 class="flex-shrink-0 inline-flex items-center"
-                [svg]="getFacetIcon(facet.name)"
+                [svg]="facetsService.getFacetIcon(facet.name)"
                 size="16"
               />
             }
-            <span>{{ getFacetLabel(facet.name) }}</span>
+            <span>{{ facetsService.getFacetLabel(facet.name) }}</span>
           </span>
           @if (getActiveFilterCount(facet.name) > 0) {
             <span class="badge badge-primary badge-sm">{{

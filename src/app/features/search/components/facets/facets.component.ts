@@ -5,12 +5,7 @@ import { FilterStore } from '../../state/filter.store';
 
 import { TooltipBadge } from '../../../../shared/tooltip-badge/tooltip-badge';
 import { NgIcon } from '@ng-icons/core';
-import {
-  getFacetLabel,
-  getFacetIcon,
-  isFacetHidden,
-  sortFacets,
-} from '../../../../config/facets.config';
+import { FacetsService } from './facets.service';
 
 @Component({
   selector: 'app-facets',
@@ -22,14 +17,14 @@ import {
 export class FacetsComponent {
   store = inject(SearchStore);
   filterStore = inject(FilterStore);
-
-  protected readonly getFacetLabel = getFacetLabel;
-  protected readonly getFacetIcon = getFacetIcon;
+  facetsService = inject(FacetsService);
 
   visibleFacets = computed(() => {
     const facets = this.store.facets();
-    const filtered = facets.filter((facet) => !isFacetHidden(facet.name));
-    return sortFacets(filtered);
+    const filtered = facets.filter(
+      (facet) => !this.facetsService.isFacetHidden(facet.name),
+    );
+    return this.facetsService.sortFacets(filtered);
   });
 
   hasFacetWithItems = computed(() =>
