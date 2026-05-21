@@ -6,7 +6,11 @@
   @if (hasResults()) {
     <div class="space-y-2">
       <div class="text-sm text-gray-600 mb-2">
-        {{ totalReferringNodes() }} objecten verwijzen naar {{ node().name }}
+        {{ totalReferringNodes() }}
+        {{
+          totalReferringNodes() === 1 ? 'object verwijst' : 'objecten verwijzen'
+        }}
+        naar {{ node().name }}
       </div>
 
       <app-node-link-list [nodes]="referringNodes()" [showType]="false" />
