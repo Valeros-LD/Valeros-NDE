@@ -51,14 +51,16 @@ export class ConfigService {
   }
 
   private loadConfigFromSessionStorage(): AppConfig | null {
-    const stored = sessionStorage.getItem(this.STORAGE_KEY);
-    if (!stored) return null;
+    return null;
 
-    try {
-      return JSON.parse(stored);
-    } catch {
-      return null;
-    }
+    // const stored = sessionStorage.getItem(this.STORAGE_KEY);
+    // if (!stored) return null;
+
+    // try {
+    //   return JSON.parse(stored);
+    // } catch {
+    //   return null;
+    // }
   }
 
   updateConfig(updates: Partial<AppConfig>): void {
