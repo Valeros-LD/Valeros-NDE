@@ -195,6 +195,15 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
         icon: 'feather-external-link',
       },
     },
+    {
+      id: 'referring-nodes',
+      properties: ['id'],
+      component: 'referring-nodes-widget',
+      config: {
+        propertyLabel: 'Verwijzende objecten',
+        icon: 'feather-link',
+      },
+    },
   ],
   defaultWidget: {
     component: 'json-widget',
@@ -217,8 +226,11 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       widgetIds: ['dataset', 'is-part-of-publisher', 'is-based-on'],
     },
+    {
+      widgetIds: ['referring-nodes'],
+    },
   ],
-  hiddenProperties: ['id'],
+  hiddenProperties: [],
   hiddenWidgetsById: [
     'image-thumb',
     'description',

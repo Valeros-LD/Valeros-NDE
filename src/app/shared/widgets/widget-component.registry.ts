@@ -11,6 +11,7 @@ import { TifyIiifWidget } from './library/generic/iiif-widget/tify-iiif-widget/t
 import { DatasetWidget } from './library/domain-specific/dataset-widget/dataset-widget.component';
 import { AddressWidget } from './library/domain-specific/address-widget/address-widget.component';
 import { UniversalviewerIiifWidget } from './library/generic/iiif-widget/universalviewer-iiif-widget/universalviewer-iiif-widget.component';
+import { ReferringNodesWidget } from './library/generic/referring-nodes-widget/referring-nodes-widget.component';
 
 export const WIDGET_COMPONENT_REGISTRY = {
   'text-widget': TextWidget,
@@ -24,6 +25,7 @@ export const WIDGET_COMPONENT_REGISTRY = {
   'universalviewer-iiif-widget': UniversalviewerIiifWidget,
   'dataset-widget': DatasetWidget,
   'address-widget': AddressWidget,
+  'referring-nodes-widget': ReferringNodesWidget,
 } as const;
 
 export type WidgetComponentKey = keyof typeof WIDGET_COMPONENT_REGISTRY;
