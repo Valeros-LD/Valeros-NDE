@@ -1,46 +1,56 @@
-@if (imagesWithDimensions().length > 0) {
+@if (expectedThumbnailCount() > 0) {
   <div
     [id]="galleryId"
     [class]="
-      displayedThumbnails().length === 1
-        ? 'gap-2'
-        : 'columns-1 sm:columns-2 gap-2'
+      expectedThumbnailCount() === 1 ? 'gap-2' : 'columns-1 sm:columns-2 gap-2'
     "
     (click)="$event.stopPropagation()"
   >
-    @for (image of imagesWithDimensions(); track $index) {
-      @let isVisible = $index < displayedThumbnails().length;
-      @let containerClass =
-        isVisible
-          ? 'image-container' +
-            (displayedThumbnails().length === 1 ? ' single' : ' multiple')
-          : 'hidden';
-
-      @if (isLightboxEnabled) {
-        <a
-          [href]="image.src"
-          [attr.data-pswp-width]="image.dimensions?.width || 1280"
-          [attr.data-pswp-height]="image.dimensions?.height || 720"
-          [attr.aria-label]="'View ' + image.alt + ' in fullscreen'"
+    @if (isLoadingImageDimensions()) {
+      @for (i of Array(expectedThumbnailCount()); track $index) {
+        <div
           [class]="
-            containerClass +
-            ' hover:opacity-90 transition-opacity cursor-pointer'
+            'image-container' +
+            (expectedThumbnailCount() === 1 ? ' single' : ' multiple')
           "
         >
-          <img
-            [src]="image.thumbnail"
-            [alt]="image.alt"
-            (error)="onThumbnailError($event)"
-          />
-        </a>
-      } @else {
-        <div [class]="containerClass">
-          <img
-            [src]="image.thumbnail"
-            [alt]="image.alt"
-            (error)="onThumbnailError($event)"
-          />
+          <app-image-gallery-skeleton />
         </div>
+      }
+    } @else {
+      @for (image of displayedThumbnails(); track $index) {
+        @let containerClass =
+          'image-container' +
+          (displayedThumbnails().length === 1 ? ' single' : ' multiple');
+
+        @if (isLightboxEnabled) {
+          <a
+            [href]="image.src"
+            [attr.data-pswp-width]="image.dimensions?.width || 1280"
+            [attr.data-pswp-height]="image.dimensions?.height || 720"
+            [attr.aria-label]="'View ' + image.alt + ' in fullscreen'"
+            [class]="
+              containerClass +
+              ' hover:opacity-90 transition-opacity cursor-pointer relative'
+            "
+          >
+            <app-image-gallery-item
+              [image]="image"
+              [isLoading]="isImageLoading($index)"
+              (imageLoaded)="onImageLoaded($index)"
+              (imageError)="onThumbnailError($event)"
+            />
+          </a>
+        } @else {
+          <div [class]="containerClass + ' relative'">
+            <app-image-gallery-item
+              [image]="image"
+              [isLoading]="isImageLoading($index)"
+              (imageLoaded)="onImageLoaded($index)"
+              (imageError)="onThumbnailError($event)"
+            />
+          </div>
+        }
       }
     }
   </div>

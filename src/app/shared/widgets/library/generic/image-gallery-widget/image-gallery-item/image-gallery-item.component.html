@@ -1,0 +1,14 @@
+@if (isLoading()) {
+  <app-image-gallery-skeleton [aspectRatio]="aspectRatio()" />
+}
+<img
+  [src]="image().thumbnail"
+  [alt]="image().alt"
+  [class]="
+    isLoading()
+      ? 'absolute opacity-0 pointer-events-none'
+      : 'block transition-opacity duration-300'
+  "
+  (load)="imageLoaded.emit()"
+  (error)="imageError.emit($event)"
+/>

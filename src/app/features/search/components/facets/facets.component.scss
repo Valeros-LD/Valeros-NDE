@@ -1,0 +1,9 @@
+.collapse-title,
+:where(.collapse > input[type='checkbox']),
+:where(.collapse > input[type='radio']) {
+  @apply py-3 pl-4 pr-10 min-h-6;
+}
+
+.collapse-arrow > .collapse-title::after {
+  @apply top-6;
+}

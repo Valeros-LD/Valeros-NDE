@@ -1,26 +1,40 @@
 import { Component } from '@angular/core';
-import Tify from 'tify';
+import Tify, { TifyView } from 'tify';
 import { BaseIiifWidget } from '../base-iiif-widget';
-import 'tify/dist/tify.css';
+
+interface IIIFManifest {
+  sequences?: Array<{ canvases?: unknown[] }>;
+  items?: unknown[];
+}
 
 @Component({
   selector: 'app-tify-iiif-widget',
   imports: [],
   templateUrl: '../base-iiif-widget.html',
+  styles: [
+    `
+      :host ::ng-deep {
+        --tify-body-bg: lightgrey;
+      }
+    `,
+  ],
 })
 export class TifyIiifWidget extends BaseIiifWidget<Tify> {
-  protected initializeViewer(manifestUrl: string, elementId: string): void {
+  private readonly defaultView: TifyView = null;
+
+  protected async initializeViewer(
+    manifestUrl: string,
+    elementId: string,
+  ): Promise<void> {
     const element = document.getElementById(elementId);
     if (!element) {
       return;
     }
 
-    // TODO: Remove dev CORS proxy
-    const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
-
     const instance = new Tify({
       container: `#${elementId}`,
-      manifestUrl: proxiedManifestUrl,
+      manifestUrl: manifestUrl,
+      view: this.defaultView,
     });
 
     this.instances.set(elementId, instance);

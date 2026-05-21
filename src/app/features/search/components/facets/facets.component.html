@@ -1,12 +1,21 @@
 <div class="space-y-2">
-  @for (facet of store.facets(); track facet.name) {
+  @for (facet of visibleFacets(); track facet.name) {
     @if (facet.orderedItems.length > 0) {
       <div class="collapse collapse-arrow rounded-none bg-base-100">
         <input type="checkbox" class="peer" />
         <div
           class="collapse-title flex items-center justify-between font-semibold text-sm capitalize"
         >
-          <span>{{ getFacetLabel(facet.name) }}</span>
+          <span class="flex items-center gap-2">
+            @if (facetsService.getFacetIcon(facet.name)) {
+              <ng-icon
+                class="flex-shrink-0 inline-flex items-center"
+                [svg]="facetsService.getFacetIcon(facet.name)"
+                size="16"
+              />
+            }
+            <span>{{ facetsService.getFacetLabel(facet.name) }}</span>
+          </span>
           @if (getActiveFilterCount(facet.name) > 0) {
             <span class="badge badge-primary badge-sm">{{
               getActiveFilterCount(facet.name)

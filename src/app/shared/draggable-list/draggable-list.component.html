@@ -1,0 +1,33 @@
+<ul cdkDropList (cdkDropListDropped)="onDrop($event)" class="space-y-1">
+  @for (item of items(); track trackBy()(item); let i = $index) {
+    <li
+      cdkDrag
+      class="flex items-center gap-3 p-3 bg-white rounded cursor-move hover:shadow-md transition-all"
+      [class.opacity-40]="item.hidden"
+    >
+      <input
+        type="checkbox"
+        class="checkbox checkbox-sm"
+        [checked]="!item.hidden"
+        (click)="onToggle(i, $event)"
+      />
+
+      <div class="flex items-center gap-2 flex-1">
+        @if (item.icon) {
+          <ng-icon
+            class="flex-shrink-0 inline-flex items-center"
+            [svg]="item.icon"
+            size="16"
+          />
+        }
+        <span
+          >{{ item.label }}
+          <span class="font-mono opacity-50 text-sm"
+            >({{ item.sublabel }})</span
+          ></span
+        >
+      </div>
+      <span class="text-gray-400">⋮⋮</span>
+    </li>
+  }
+</ul>

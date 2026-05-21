@@ -8,7 +8,7 @@
       [attr.aria-label]="view.label"
       [attr.aria-pressed]="currentView() === view.type"
     >
-      <ng-icon [svg]="view.icon" size="20" />
+      <ng-icon [svg]="getIcon(view.icon)" size="20" />
     </button>
   }
 </div>

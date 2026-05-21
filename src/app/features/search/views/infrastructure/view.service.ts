@@ -1,15 +1,19 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable, Type, inject } from '@angular/core';
 import { ViewType } from '../types/view-type';
-import { ViewMapping, ViewsSettings, ViewConfig } from '../types/view-config';
+import { ViewMapping, ViewConfig } from '../types/view-config';
 import { BaseResultsView } from './base-results-view';
-import { SEARCH_VIEWS_CONFIG } from '../../config/views.config';
+import { ConfigService } from '../../../../config/config.service';
+import { WidgetsSettings } from '../../../../shared/widgets/types/widget-config';
+import { getViewComponent } from '../view-component.registry';
+import { getIcon } from '../../../../shared/icons/icon.registry';
 
 @Injectable({ providedIn: 'root' })
 export class ViewService {
-  private settings: ViewsSettings = SEARCH_VIEWS_CONFIG;
+  private configService = inject(ConfigService);
 
   getViewComponent(viewType: ViewType): Type<BaseResultsView> | null {
-    return this.getViewMapping(viewType)?.component || null;
+    const mapping = this.getViewMapping(viewType);
+    return mapping ? getViewComponent(mapping.component) : null;
   }
 
   getViewConfig(viewType: ViewType): ViewConfig {
@@ -17,18 +21,22 @@ export class ViewService {
   }
 
   getViewMapping(viewType: ViewType): ViewMapping | null {
-    return this.settings.mappings.find((m) => m.type === viewType) || null;
+    const views = this.configService.views();
+    return views?.mappings.find((m) => m.type === viewType) || null;
   }
 
   getAllViewMappings(): ViewMapping[] {
-    return this.settings.mappings;
+    const views = this.configService.views();
+    return views?.mappings.filter((m) => !m.config.hidden) || [];
   }
 
   getDefaultViewType(): ViewType {
-    return this.settings.defaultView;
+    return this.configService.defaultView();
   }
 
-  getViewWidgetsSettings(viewType: ViewType) {
-    return this.getViewMapping(viewType)?.widgetsSettings;
+  getViewWidgetsSettings(viewType: ViewType): WidgetsSettings | undefined {
+    const widgets = this.configService.widgets();
+    const searchWidgets = widgets?.search as Record<string, unknown>;
+    return searchWidgets?.[viewType] as WidgetsSettings | undefined;
   }
 }

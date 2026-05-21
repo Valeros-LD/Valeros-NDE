@@ -1,27 +1,25 @@
-# Valeros (NDE pilot)
+# Valeros - NDE-compatible linked data browser
 
-> ⚠️ **This project is currently in active development and not yet ready for production use.**
+> [!WARNING]  
+> This project is currently in active development and not yet ready for production use.
 
-## Installation
+Valeros is a reusable, NDE-compatible linked data browser for [targeted search](https://netwerkdigitaalerfgoed.nl/activiteiten/gedragsprofielen/) and [browsing and discovery](https://netwerkdigitaalerfgoed.nl/activiteiten/gedragsprofielen/) of heritage data.
 
-```bash
-npm install
-```
+**For end users**, Valeros provides an intuitive interface to explore, search, and discover heritage collections, without needing to understand the complexities of linked data.
 
-## Development
+**For developers**, Valeros lets you control what, how, and when data is shown to end users through simple configuration files. No Angular, linked data, or SPARQL knowledge required.
 
-Start the development server:
+## Architecture
 
-```bash
-npm start
-```
+Valeros follows the [NDE vision](https://zenodo.org/records/17541400) of **explicit separation between data and presentation layers**:
 
-The application will be available at http://localhost:4200
+- The **data layer** retrieves datasets registered in the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl/) and provides a standardized API to the presentation layer ([implementation details](https://github.com/netwerk-digitaal-erfgoed/prototypes-data-layers/)).
+- The **presentation layer** (this project) consumes the API and allows configuration of how data is displayed to end users.
 
-## Build
+## Documentation
 
-Build the application for production:
+_TODO: Add link to guide here._
 
-```bash
-npm run build
-```
+## License
+
+See [LICENSE.md](LICENSE.md)

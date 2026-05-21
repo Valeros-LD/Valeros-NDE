@@ -1,6 +1,4 @@
-import { DatasetWidget } from '../../../../shared/widgets/library/domain-specific/dataset-widget/dataset-widget.component';
-import { ImageGalleryWidget } from '../../../../shared/widgets/library/generic/image-gallery-widget/image-gallery-widget.component';
-import { WidgetsSettings } from '../../../../shared/widgets/types/widget-config';
+import { WidgetsSettings } from '../../shared/widgets/types/widget-config';
 import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
 
 export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
@@ -10,7 +8,7 @@ export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'image-thumb-left',
       properties: ['associatedMedia'],
-      component: ImageGalleryWidget,
+      component: 'image-gallery-widget',
       config: {
         showPropertyLabel: false,
         position: 'left',
@@ -22,7 +20,7 @@ export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'dataset-without-label',
       properties: ['isPartOf'],
-      component: DatasetWidget,
+      component: 'dataset-widget',
       config: {
         showPropertyLabel: false,
       },
@@ -30,12 +28,7 @@ export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
   ],
   widgetOrder: [
     {
-      widgetIds: [
-        'image-thumb-left',
-        'name',
-        'description-without-label',
-        // 'dataset-without-label',
-      ],
+      widgetIds: ['image-thumb-left', 'name', 'description-without-label'],
     },
   ],
 };

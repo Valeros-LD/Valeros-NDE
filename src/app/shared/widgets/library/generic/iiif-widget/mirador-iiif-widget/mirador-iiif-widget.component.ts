@@ -14,14 +14,11 @@ export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {
       return;
     }
 
-    // TODO: Remove dev CORS proxy
-    const proxiedManifestUrl = `https://corsproxy.io/?${encodeURIComponent(manifestUrl)}`;
-
     const config: MiradorConfig = {
       id: elementId,
       windows: [
         {
-          manifestId: proxiedManifestUrl,
+          manifestId: manifestUrl,
           thumbnailNavigationPosition: 'far-right',
           thumbnailNavigationVisible: true,
         },
@@ -39,6 +36,7 @@ export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {
       },
     };
 
+    // TODO: Fix UI updating issue (Mirador UI does not seem to update on page changes)
     const instance = Mirador.viewer(config);
 
     this.instances.set(elementId, instance);
