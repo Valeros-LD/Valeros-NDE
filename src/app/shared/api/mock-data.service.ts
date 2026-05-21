@@ -195,21 +195,11 @@ export class MockDataService {
     }));
   }
 
-  addRandomImageToDefinedTermObjects(
-    value: any | any[] | undefined,
-  ): any | any[] | undefined {
-    return this.enrichObjectsByType(value, 'DefinedTerm', (obj) => ({
-      ...obj,
-      image: `https://picsum.photos/seed/${encodeURIComponent(obj.name?.['@value'] || obj.name || 'term')}/200/200`,
-    }));
-  }
-
   enrichNodeWithMockData(node: NodeModel): NodeModel {
     const enrichedNode: NodeModel = { ...node };
 
     for (const [property, value] of Object.entries(node)) {
-      let processed = this.addRandomGeoToPlaceObjects(value);
-      processed = this.addRandomImageToDefinedTermObjects(processed ?? value);
+      const processed = this.addRandomGeoToPlaceObjects(value);
       if (processed !== undefined) {
         enrichedNode[property] = processed;
       }
