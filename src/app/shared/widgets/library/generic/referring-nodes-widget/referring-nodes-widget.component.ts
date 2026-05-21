@@ -9,14 +9,18 @@ import {
 import { BaseWidget } from '../../../infrastructure/base-widget';
 import { ApiService } from '../../../../api/api.service';
 import { SearchResponse } from '../../../../../features/search/types/search-response';
-import { NodeLinkComponent } from '../../../../node/node-link/node-link.component';
+import { NodeLinkListComponent } from '../../../../node/node-link-list/node-link-list.component';
 import { LoadingSpinnerComponent } from '../../../../ui/loading-spinner/loading-spinner.component';
 import { ErrorAlertComponent } from '../../../../ui/error-alert/error-alert.component';
 import { normalizeToFirst } from '../../../../data-utils/value-normalization.util';
 
 @Component({
   selector: 'app-referring-nodes-widget',
-  imports: [NodeLinkComponent, LoadingSpinnerComponent, ErrorAlertComponent],
+  imports: [
+    NodeLinkListComponent,
+    LoadingSpinnerComponent,
+    ErrorAlertComponent,
+  ],
   templateUrl: './referring-nodes-widget.component.html',
 })
 export class ReferringNodesWidget extends BaseWidget {

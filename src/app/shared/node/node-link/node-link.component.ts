@@ -10,6 +10,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
 import { NodeModel } from '../types/node.model';
 import { NodeLinkService } from './node-link.service';
+import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherExternalLink } from '@ng-icons/feather-icons';
 import { TooltipBadge } from '../../tooltip-badge/tooltip-badge';
@@ -27,13 +28,16 @@ export class NodeLinkComponent {
   readonly mode = input<'inline' | 'image-card'>('inline');
 
   private nodeLinkService = inject(NodeLinkService);
+  private imageResolver = inject(NodeImageResolverService);
 
   readonly isInternalLink = computed(() => {
     return this.nodeLinkService.isInternalLink(this.node());
   });
 
   readonly isImageCard = computed(() => {
-    return this.mode() === 'image-card' && !!this.node()['image'];
+    return (
+      this.mode() === 'image-card' && this.imageResolver.hasImage(this.node())
+    );
   });
 
   getNodeName(node: NodeModel): string {
@@ -50,5 +54,9 @@ export class NodeLinkComponent {
 
   getNodeType(node: NodeModel): string | undefined {
     return normalizeToFirst<string>(node.type);
+  }
+
+  getImageUrl(node: NodeModel): string | null {
+    return this.imageResolver.getImageUrl(node);
   }
 }

@@ -7,12 +7,14 @@ import { GRID_VIEW_WIDGETS_SETTINGS } from './widgets/grid-widgets.config';
 import { MAP_VIEW_WIDGETS_SETTINGS } from './widgets/map-widgets.config';
 import { FACETS_CONFIG } from './facets.config';
 import { SEARCH_VIEWS_CONFIG } from './views.config';
+import { IMAGE_PATHS_CONFIG } from './image-paths.config';
 
 export function initializeAppConfig() {
   const configService = inject(ConfigService);
 
   configService.initialize({
     facets: FACETS_CONFIG,
+    // TODO: Refactor/rename this to be more "node presentation" focused, separate widgets from generic node presentation properties (eg showArrowIndicator)
     widgets: {
       default: BASE_WIDGETS_SETTINGS,
       details: DETAILS_WIDGETS_SETTINGS,
@@ -23,5 +25,6 @@ export function initializeAppConfig() {
       },
     },
     views: SEARCH_VIEWS_CONFIG,
+    imagePaths: IMAGE_PATHS_CONFIG,
   });
 }

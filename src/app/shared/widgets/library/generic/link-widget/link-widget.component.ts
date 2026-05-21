@@ -4,11 +4,11 @@ import { BaseWidget } from '../../../infrastructure/base-widget';
 import { isNodeModel, NodeModel } from '../../../../node/types/node.model';
 import { TextWidgetConfig } from '../text-widget/text-widget.config';
 import { TextWidget } from '../text-widget/text-widget.component';
-import { NodeLinkComponent } from '../../../../node/node-link/node-link.component';
+import { NodeLinkListComponent } from '../../../../node/node-link-list/node-link-list.component';
 
 @Component({
   selector: 'app-link-widget',
-  imports: [CommonModule, TextWidget, NodeLinkComponent],
+  imports: [CommonModule, TextWidget, NodeLinkListComponent],
   templateUrl: './link-widget.component.html',
 })
 export class LinkWidget extends BaseWidget {

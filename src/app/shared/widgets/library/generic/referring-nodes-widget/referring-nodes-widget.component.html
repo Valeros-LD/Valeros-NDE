@@ -4,16 +4,12 @@
   <app-error-alert [message]="error()!" />
 } @else {
   @if (hasResults()) {
-    <div class="space-y-2 space-x-2">
-      <div class="text-sm text-gray-600">
+    <div class="space-y-2">
+      <div class="text-sm text-gray-600 mb-2">
         {{ totalReferringNodes() }} objecten verwijzen naar {{ node().name }}
       </div>
 
-      @for (item of referringNodes(); track item.id) {
-        <div class="badge badge-primary py-4 px-4">
-          <app-node-link [node]="item" [showType]="false" />
-        </div>
-      }
+      <app-node-link-list [nodes]="referringNodes()" [showType]="false" />
     </div>
   } @else {
     <p class="text-gray-500">

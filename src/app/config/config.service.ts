@@ -16,6 +16,7 @@ export interface AppConfig {
     };
   };
   views: ViewsSettings;
+  imagePaths: string[];
 }
 
 @Injectable({ providedIn: 'root' })
