@@ -17,13 +17,18 @@ import {
   switchMap,
 } from 'rxjs/operators';
 import { AutocompleteSuggestionItemComponent } from './autocomplete-suggestion-item/autocomplete-suggestion-item.component';
+import { LoadingSpinnerComponent } from '../../../../shared/ui/loading-spinner/loading-spinner.component';
 import { SearchResponse } from '../../types/search-response';
 import { ApiService } from '../../../../shared/api/api.service';
 import { normalizeToFirst } from '../../../../shared/data-utils/value-normalization.util';
 
 @Component({
   selector: 'app-autocomplete-dropdown',
-  imports: [CommonModule, AutocompleteSuggestionItemComponent],
+  imports: [
+    CommonModule,
+    AutocompleteSuggestionItemComponent,
+    LoadingSpinnerComponent,
+  ],
   templateUrl: './autocomplete-dropdown.component.html',
 })
 export class AutocompleteDropdownComponent {

@@ -1,0 +1,20 @@
+@if (centered()) {
+  <div
+    class="spinner-container"
+    [class.padding-sm]="padding() === 'sm'"
+    [class.padding-lg]="padding() === 'lg'"
+  >
+    <ng-container *ngTemplateOutlet="spinnerTemplate" />
+  </div>
+} @else {
+  <ng-container *ngTemplateOutlet="spinnerTemplate" />
+}
+
+<ng-template #spinnerTemplate>
+  <span
+    class="spinner"
+    [class.size-sm]="size() === 'sm'"
+    [class.size-md]="size() === 'md'"
+    [class.size-lg]="size() === 'lg'"
+  ></span>
+</ng-template>

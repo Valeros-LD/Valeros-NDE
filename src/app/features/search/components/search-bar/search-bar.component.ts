@@ -4,12 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchStore } from '../../state/search.store';
 import { AutocompleteDropdownComponent } from '../autocomplete-dropdown/autocomplete-dropdown.component';
+import { LoadingSpinnerComponent } from '../../../../shared/ui/loading-spinner/loading-spinner.component';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherSearch } from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-search-bar',
-  imports: [CommonModule, FormsModule, AutocompleteDropdownComponent, NgIcon],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AutocompleteDropdownComponent,
+    NgIcon,
+    LoadingSpinnerComponent,
+  ],
   templateUrl: './search-bar.component.html',
   viewProviders: [provideIcons({ featherSearch })],
 })

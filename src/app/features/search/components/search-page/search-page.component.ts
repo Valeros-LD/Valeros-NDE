@@ -27,6 +27,7 @@ import { featherFilter } from '@ng-icons/feather-icons';
 import { PageTitleService } from '../../../../shared/page-title/page-title.service';
 import { FilterStore } from '../../state/filter.store';
 import { HeaderBannerComponent } from '../../../../shared/header-banner/header-banner.component';
+import { ErrorAlertComponent } from '../../../../shared/ui/error-alert/error-alert.component';
 
 @Component({
   selector: 'app-search-page',
@@ -41,6 +42,7 @@ import { HeaderBannerComponent } from '../../../../shared/header-banner/header-b
     Pagination,
     ViewSwitcherComponent,
     HeaderBannerComponent,
+    ErrorAlertComponent,
   ],
   templateUrl: './search-page.component.html',
 })

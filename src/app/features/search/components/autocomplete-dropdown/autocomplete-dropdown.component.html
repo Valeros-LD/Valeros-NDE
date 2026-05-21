@@ -4,9 +4,7 @@
     (mousedown)="$event.preventDefault()"
   >
     @if (loading()) {
-      <div class="p-4 text-center">
-        <span class="loading loading-spinner loading-sm"></span>
-      </div>
+      <app-loading-spinner size="sm" />
     } @else {
       <div class="p-2">
         @for (suggestion of suggestions(); track suggestion) {

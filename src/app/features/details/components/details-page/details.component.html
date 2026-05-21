@@ -4,13 +4,9 @@
   <app-back-to-search />
 
   @if (loading()) {
-    <div class="flex items-center justify-center p-8">
-      <span class="loading loading-spinner loading-lg"></span>
-    </div>
+    <app-loading-spinner size="lg" padding="lg" />
   } @else if (error()) {
-    <div class="alert alert-error">
-      <span>{{ error() }}</span>
-    </div>
+    <app-error-alert [message]="error()!" />
   } @else if (data()) {
     <app-node [data]="data()!" [clickable]="false" />
   } @else {

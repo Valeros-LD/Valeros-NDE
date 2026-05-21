@@ -30,8 +30,8 @@
         </div>
 
         @if (store.error()) {
-          <div class="alert alert-error mt-6">
-            <span>{{ store.error() }}</span>
+          <div class="mt-6">
+            <app-error-alert [message]="store.error()!" />
           </div>
         }
       </div>

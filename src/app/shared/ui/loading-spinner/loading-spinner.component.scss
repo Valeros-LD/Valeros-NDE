@@ -1,0 +1,27 @@
+.spinner-container {
+  @apply flex items-center justify-center;
+
+  &.padding-sm {
+    @apply p-4;
+  }
+
+  &.padding-lg {
+    @apply p-8;
+  }
+}
+
+.spinner {
+  @apply loading loading-spinner;
+
+  &.size-sm {
+    @apply loading-sm;
+  }
+
+  &.size-md {
+    @apply loading-md;
+  }
+
+  &.size-lg {
+    @apply loading-lg;
+  }
+}

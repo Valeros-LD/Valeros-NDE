@@ -7,6 +7,8 @@ import { BreadcrumbService } from '../../../../shared/breadcrumbs/breadcrumb.ser
 import { normalizeToFirst } from '../../../../shared/data-utils/value-normalization.util';
 import { BreadcrumbComponent } from '../../../../shared/breadcrumbs/breadcrumb/breadcrumb.component';
 import { BackToSearchComponent } from '../../../../shared/back-to-search/back-to-search.component';
+import { LoadingSpinnerComponent } from '../../../../shared/ui/loading-spinner/loading-spinner.component';
+import { ErrorAlertComponent } from '../../../../shared/ui/error-alert/error-alert.component';
 import { ApiService } from '../../../../shared/api/api.service';
 import { NodeModel } from '../../../../shared/node/types/node.model';
 import { PageTitleService } from '../../../../shared/page-title/page-title.service';
@@ -18,6 +20,8 @@ import { PageTitleService } from '../../../../shared/page-title/page-title.servi
     NodeComponent,
     BreadcrumbComponent,
     BackToSearchComponent,
+    LoadingSpinnerComponent,
+    ErrorAlertComponent,
   ],
   templateUrl: './details.component.html',
 })

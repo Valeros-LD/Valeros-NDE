@@ -1,11 +1,7 @@
 @if (loading()) {
-  <div class="flex items-center justify-center p-4">
-    <span class="loading loading-spinner loading-md"></span>
-  </div>
+  <app-loading-spinner size="md" [centered]="false" />
 } @else if (error()) {
-  <div class="alert alert-error">
-    <span>{{ error() }}</span>
-  </div>
+  <app-error-alert [message]="error()!" />
 } @else {
   @if (hasResults()) {
     <div class="space-y-2 space-x-2">
