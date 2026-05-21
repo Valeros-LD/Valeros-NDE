@@ -6,7 +6,7 @@
   @if (hasResults()) {
     <div class="space-y-2 space-x-2">
       <div class="text-sm text-gray-600">
-        {{ totalReferringNodes() }} objecten verwijzen naar dit object
+        {{ totalReferringNodes() }} objecten verwijzen naar {{ node().name }}
       </div>
 
       @for (item of referringNodes(); track item.id) {
