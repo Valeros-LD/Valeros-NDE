@@ -7,6 +7,7 @@ import { DynamicWidgetComponent } from '../widgets/infrastructure/dynamic-widget
 import { WidgetsByPosition } from '../widgets/types/widgets-by-position';
 import { WidgetsSettings } from '../widgets/types/widget-config';
 import { NodeModel } from './types/node.model';
+import { addUriPrefix } from '../../config/details-page-uri-prefix.config';
 
 @Component({
   selector: 'app-node',
@@ -47,11 +48,6 @@ export class NodeComponent {
 
   detailsRoute = computed(() => {
     const id = this.data().id;
-    return id ? ['/details'] : null;
-  });
-
-  detailsQueryParams = computed(() => {
-    const id = this.data().id;
-    return id ? { id } : null;
+    return id ? ['/details', addUriPrefix(id)] : null;
   });
 }

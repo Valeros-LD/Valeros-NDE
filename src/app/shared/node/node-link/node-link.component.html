@@ -1,7 +1,6 @@
 @if (isInternalLink()) {
   <a
-    [routerLink]="['/details']"
-    [queryParams]="{ id: node().id }"
+    [routerLink]="['/details', addUriPrefix(node().id)]"
     [attr.aria-label]="'Bekijk details van ' + getNodeName(node())"
     [class.image-card]="isImageCard()"
     [class.group]="isImageCard()"

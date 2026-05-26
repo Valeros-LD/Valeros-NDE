@@ -1,7 +1,6 @@
 @if (clickable()) {
   <a
     [routerLink]="detailsRoute()"
-    [queryParams]="detailsQueryParams()"
     class="node-card cursor-pointer block no-underline relative group hover:opacity-90 transition-opacity"
   >
     <ng-container *ngTemplateOutlet="cardContent" />

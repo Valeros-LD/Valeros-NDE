@@ -14,6 +14,7 @@ import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherExternalLink } from '@ng-icons/feather-icons';
 import { TooltipBadge } from '../../tooltip-badge/tooltip-badge';
+import { addUriPrefix } from '../../../config/details-page-uri-prefix.config';
 
 @Component({
   selector: 'app-node-link',
@@ -59,4 +60,6 @@ export class NodeLinkComponent {
   getImageUrl(node: NodeModel): string | null {
     return this.imageResolver.getImageUrl(node);
   }
+
+  protected readonly addUriPrefix = addUriPrefix;
 }

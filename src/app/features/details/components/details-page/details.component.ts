@@ -2,6 +2,10 @@ import { Component, inject, OnInit, OnDestroy, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import {
+  removeUriPrefix,
+  addUriPrefix,
+} from '../../../../config/details-page-uri-prefix.config';
 import { NodeComponent } from '../../../../shared/node/node.component';
 import { BreadcrumbService } from '../../../../shared/breadcrumbs/breadcrumb.service';
 import { normalizeToFirst } from '../../../../shared/data-utils/value-normalization.util';
@@ -38,8 +42,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private routeSubscription?: Subscription;
 
   ngOnInit() {
-    this.routeSubscription = this.route.queryParamMap.subscribe((params) => {
-      this.id = params.get('id');
+    this.routeSubscription = this.route.paramMap.subscribe((params) => {
+      let id = params.get('id');
+
+      if (id) {
+        id = removeUriPrefix(id);
+      }
+
+      this.id = id;
       if (this.id) {
         this.fetchData();
       }
@@ -76,8 +86,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
       normalizeToFirst<string>(data.name) || data.id || 'Details';
     this.breadcrumbService.addBreadcrumb({
       label,
-      route: ['/details'],
-      queryParams: { id: this.id! },
+      route: ['/details', addUriPrefix(this.id!)],
     });
   }
 
