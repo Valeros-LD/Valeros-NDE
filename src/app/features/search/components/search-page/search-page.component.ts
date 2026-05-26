@@ -74,6 +74,7 @@ export class SearchPageComponent implements OnInit {
   constructor() {
     this.loadViewWhenContainerIsReady();
     this.updatePageTitleOnSearchChange();
+    this.scrollToTopOnSearchOrPageChange();
   }
 
   ngOnInit(): void {
@@ -117,6 +118,17 @@ export class SearchPageComponent implements OnInit {
         ? `Zoekresultaten "${searchTerm}"`
         : 'Zoekresultaten';
       this.pageTitleService.setTitle(title);
+    });
+  }
+
+  private scrollToTopOnSearchOrPageChange(): void {
+    effect(() => {
+      this.store.currentPage();
+      this.store.currentSort();
+      this.filterStore.activeFilterCount();
+      this.store.results();
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 }
