@@ -44,9 +44,12 @@
       class="w-full h-24 object-cover"
     />
     <div class="overlay" [class.with-icon]="showExternalIcon">
-      <span class="text-sm underline text-white truncate block">{{
-        getNodeName(node())
-      }}</span>
+      <span
+        class="text-xs underline text-white truncate block"
+        [title]="getNodeName(node())"
+      >
+        {{ getNodeName(node()) }}
+      </span>
       @if (showExternalIcon) {
         <ng-icon
           name="featherExternalLink"
