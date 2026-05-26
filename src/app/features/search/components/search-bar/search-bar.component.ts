@@ -29,9 +29,14 @@ export class SearchBarComponent {
 
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
   private skipFirstDebouncedSearch = true;
+  private enableDebounce = false;
 
   constructor() {
     effect(() => {
+      if (!this.enableDebounce) {
+        return;
+      }
+
       const searchTerm = this.store.searchTerm();
 
       if (this.debounceTimer) {
