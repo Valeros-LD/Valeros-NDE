@@ -1,11 +1,10 @@
 @if (breadcrumbs().length > 0) {
-  <nav aria-label="Breadcrumb" class="mb-4">
-    <ol class="flex flex-col text-sm md:flex-row md:items-center">
+  <nav aria-label="Breadcrumb" class="mb-2 md:overflow-x-auto md:pb-2">
+    <ol
+      class="flex flex-col text-sm md:flex-row md:items-center md:flex-nowrap"
+    >
       @for (crumb of breadcrumbs(); track $index; let last = $last) {
-        <li
-          class="flex items-center md:!pl-0"
-          [style.paddingLeft.rem]="$index * 1"
-        >
+        <li class="flex items-center md:!pl-0 md:flex-shrink-0">
           @if ($index > 0) {
             <span
               class="mr-2 md:mx-2 text-base-content/40 inline-flex items-center"
@@ -14,13 +13,16 @@
             </span>
           }
           @if (last) {
-            <span class="text-base-content font-medium" aria-current="page">
+            <span
+              class="text-base-content font-medium max-w-full md:max-w-xs truncate"
+              aria-current="page"
+            >
               {{ crumb.label }}
             </span>
           } @else {
             <a
               (click)="onBreadcrumbClick($index); $event.preventDefault()"
-              class="text-base-content/70 hover:underline cursor-pointer"
+              class="text-base-content/70 hover:underline cursor-pointer max-w-full md:max-w-xs truncate block"
             >
               {{ crumb.label }}
             </a>
