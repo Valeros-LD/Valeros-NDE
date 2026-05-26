@@ -47,6 +47,10 @@ export class ReferringNodesWidget extends BaseWidget {
     () => this.totalReferringNodes() > 0,
   );
 
+  override shouldHide = computed(() => {
+    return !this.loading() && !this.error() && !this.hasResults();
+  });
+
   constructor() {
     super();
     effect(() => {

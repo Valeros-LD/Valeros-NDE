@@ -2,22 +2,16 @@
   <app-loading-spinner size="md" [centered]="false" />
 } @else if (error()) {
   <app-error-alert [message]="error()!" />
-} @else {
-  @if (hasResults()) {
-    <div class="space-y-2">
-      <div class="text-sm text-gray-600 mb-2">
-        {{ totalReferringNodes() }}
-        {{
-          totalReferringNodes() === 1 ? 'object verwijst' : 'objecten verwijzen'
-        }}
-        naar {{ node().name }}
-      </div>
-
-      <app-node-link-list [nodes]="referringNodes()" [showType]="false" />
+} @else if (hasResults()) {
+  <div class="space-y-2">
+    <div class="text-sm text-gray-600 mb-2">
+      {{ totalReferringNodes() }}
+      {{
+        totalReferringNodes() === 1 ? 'object verwijst' : 'objecten verwijzen'
+      }}
+      naar {{ node().name }}
     </div>
-  } @else {
-    <p class="text-gray-500">
-      Er zijn geen objecten die naar dit object verwijzen
-    </p>
-  }
+
+    <app-node-link-list [nodes]="referringNodes()" [showType]="false" />
+  </div>
 }
