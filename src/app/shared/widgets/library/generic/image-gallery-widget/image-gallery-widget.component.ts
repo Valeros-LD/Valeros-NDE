@@ -6,7 +6,7 @@ import {
   effect,
   computed,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import { forkJoin, from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,15 +19,16 @@ import {
 import { BaseWidget } from '../../../infrastructure/base-widget';
 import { IiifImageService } from '../iiif-widget/iiif-image.service';
 import { ImageGalleryWidgetConfig } from './image-gallery-widget.config';
-import { ImageGalleryItemComponent } from './image-gallery-item/image-gallery-item.component';
-import { ImageGallerySkeletonComponent } from './image-gallery-skeleton/image-gallery-skeleton.component';
+import { ImageWithSkeletonComponent } from '../../../../image/image-with-skeleton/image-with-skeleton.component';
+import { ImageSkeletonComponent } from '../../../../image/image-skeleton/image-skeleton.component';
 
 @Component({
   selector: 'app-image-gallery-widget',
   imports: [
     CommonModule,
-    ImageGalleryItemComponent,
-    ImageGallerySkeletonComponent,
+    NgTemplateOutlet,
+    ImageWithSkeletonComponent,
+    ImageSkeletonComponent,
   ],
   templateUrl: './image-gallery-widget.component.html',
   styleUrl: './image-gallery-widget.component.scss',
@@ -37,7 +38,6 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
   private lightbox?: PhotoSwipeLightbox;
   readonly galleryId = `gallery-${crypto.randomUUID()}`;
   readonly imagesWithDimensions = signal<ImageModel[]>([]);
-  readonly imageLoadingStates = signal<Map<number, boolean>>(new Map());
 
   protected readonly Array = Array;
 
@@ -82,18 +82,6 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
     return (this.values() as AssociatedMediaNode[])
       .map((media: AssociatedMediaNode) => toImageModel(media))
       .filter((img) => img.src !== '');
-  }
-
-  onImageLoaded(index: number): void {
-    this.imageLoadingStates.update((states) => {
-      const newStates = new Map(states);
-      newStates.set(index, false);
-      return newStates;
-    });
-  }
-
-  isImageLoading(index: number): boolean {
-    return this.imageLoadingStates().get(index) ?? true;
   }
 
   private loadImageDimensions(images: ImageModel[]): void {

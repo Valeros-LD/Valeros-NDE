@@ -36,12 +36,12 @@
 }
 
 <ng-template #imageCardContent let-showExternalIcon="showExternalIcon">
-  <div class="image-wrapper hover:opacity-90 transition-opacity">
-    <!-- TODO: Add skeleton -->
-    <img
+  <div class="image-wrapper hover:opacity-90 transition-opacity h-24">
+    <app-image-with-skeleton
       [src]="getImageUrl(node())"
       [alt]="getNodeName(node())"
-      class="w-full h-24 object-cover"
+      [skeletonAspectRatio]="'1/1'"
+      [skeletonMinHeightPx]="96"
     />
     <div class="overlay" [class.with-icon]="showExternalIcon">
       <span

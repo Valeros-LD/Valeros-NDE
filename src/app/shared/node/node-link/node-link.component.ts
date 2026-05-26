@@ -16,10 +16,17 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherExternalLink } from '@ng-icons/feather-icons';
 import { TooltipBadge } from '../../tooltip-badge/tooltip-badge';
 import { addUriPrefix } from '../../../config/details-page-uri-prefix.config';
+import { ImageWithSkeletonComponent } from '../../image/image-with-skeleton/image-with-skeleton.component';
 
 @Component({
   selector: 'app-node-link',
-  imports: [RouterModule, NgTemplateOutlet, NgIcon, TooltipBadge],
+  imports: [
+    RouterModule,
+    NgTemplateOutlet,
+    NgIcon,
+    TooltipBadge,
+    ImageWithSkeletonComponent,
+  ],
   templateUrl: './node-link.component.html',
   styleUrl: './node-link.component.scss',
   viewProviders: [provideIcons({ featherExternalLink })],

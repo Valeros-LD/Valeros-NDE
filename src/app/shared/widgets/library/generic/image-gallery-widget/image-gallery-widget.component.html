@@ -14,7 +14,7 @@
             (expectedThumbnailCount() === 1 ? ' single' : ' multiple')
           "
         >
-          <app-image-gallery-skeleton />
+          <app-image-skeleton [aspectRatio]="'4/3'" />
         </div>
       }
     } @else {
@@ -34,20 +34,14 @@
               ' hover:opacity-90 transition-opacity cursor-pointer relative'
             "
           >
-            <app-image-gallery-item
-              [image]="image"
-              [isLoading]="isImageLoading($index)"
-              (imageLoaded)="onImageLoaded($index)"
-              (imageError)="onThumbnailError($event)"
+            <ng-container
+              *ngTemplateOutlet="imageTemplate; context: { image }"
             />
           </a>
         } @else {
           <div [class]="containerClass + ' relative'">
-            <app-image-gallery-item
-              [image]="image"
-              [isLoading]="isImageLoading($index)"
-              (imageLoaded)="onImageLoaded($index)"
-              (imageError)="onThumbnailError($event)"
+            <ng-container
+              *ngTemplateOutlet="imageTemplate; context: { image }"
             />
           </div>
         }
@@ -55,3 +49,16 @@
     }
   </div>
 }
+
+<ng-template #imageTemplate let-image="image">
+  <app-image-with-skeleton
+    [src]="image.thumbnail"
+    [alt]="image.alt"
+    [skeletonAspectRatio]="
+      image.dimensions
+        ? image.dimensions.width + '/' + image.dimensions.height
+        : '4/3'
+    "
+    (imageError)="onThumbnailError($event)"
+  />
+</ng-template>

@@ -1,0 +1,18 @@
+@if (isLoading()) {
+  <app-image-skeleton
+    [aspectRatio]="skeletonAspectRatio()"
+    [minHeightPx]="skeletonMinHeightPx()"
+  />
+}
+<img
+  [src]="src()"
+  [alt]="alt()"
+  [class]="
+    isLoading()
+      ? 'absolute opacity-0 pointer-events-none'
+      : 'w-full h-full block transition-opacity duration-300'
+  "
+  [style.object-fit]="objectFit()"
+  (load)="onImageLoaded()"
+  (error)="onImageError($event)"
+/>
