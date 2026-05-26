@@ -8,8 +8,9 @@ import {
   DestroyRef,
   ComponentRef,
   inject,
-  computed,
   Signal,
+  signal,
+  computed,
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { PropertyLabelWrapperComponent } from '../property-label-wrapper/property-label-wrapper.component';
@@ -38,6 +39,13 @@ export class DynamicWidgetComponent implements AfterViewInit {
   private componentRef?: ComponentRef<BaseWidget>;
   private destroyRef = inject(DestroyRef);
 
+  widgetInstance = signal<BaseWidget | undefined>(undefined);
+
+  shouldHideWidget = computed(() => {
+    const instance = this.widgetInstance();
+    return instance?.shouldHide() ?? false;
+  });
+
   constructor() {
     effect(() => {
       this.data();
@@ -59,6 +67,8 @@ export class DynamicWidgetComponent implements AfterViewInit {
     this.componentRef.setInput('property', this.property());
     this.componentRef.setInput('config', widget.config);
 
+    this.widgetInstance.set(this.componentRef.instance);
+
     this.destroyRef.onDestroy(() => {
       this.componentRef?.destroy();
     });
@@ -69,6 +79,7 @@ export class DynamicWidgetComponent implements AfterViewInit {
 
     this.componentRef.destroy();
     this.widgetContainer().clear();
+    this.widgetInstance.set(undefined);
     this.createWidget();
   }
 }

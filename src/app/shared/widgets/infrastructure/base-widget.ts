@@ -29,4 +29,6 @@ export abstract class BaseWidget {
 
     return propValues;
   });
+
+  shouldHide = computed(() => false);
 }
