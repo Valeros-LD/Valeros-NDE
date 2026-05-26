@@ -1,13 +1,12 @@
-# Valeros - NDE-compatible linked data browser
+# Valeros - Flexible heritage data browser
 
 > [!WARNING]  
 > This project is currently in active development and not yet ready for production use.
 
-Valeros is a reusable, NDE-compatible linked data browser for [targeted search](https://netwerkdigitaalerfgoed.nl/activiteiten/gedragsprofielen/) and [browsing and discovery](https://netwerkdigitaalerfgoed.nl/activiteiten/gedragsprofielen/) of heritage data.
+Valeros is a reusable and flexible heritage data browser. We focus on two main [user profiles](zenodo.org/records/14938780):
 
-**For end users**, Valeros provides an intuitive interface to explore, search, and discover heritage collections, without needing to understand the complexities of linked data.
-
-**For developers**, Valeros lets you control what, how, and when data is shown to end users through simple configuration files. No Angular, linked data, or SPARQL knowledge required.
+1. Targeted search
+2. Browsing and discovery
 
 ## Architecture
 
