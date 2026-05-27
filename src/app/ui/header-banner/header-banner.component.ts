@@ -1,11 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import {
-  featherHelpCircle,
-  featherSettings,
-  featherGithub,
-} from '@ng-icons/feather-icons';
+import { featherGithub } from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-header-banner',

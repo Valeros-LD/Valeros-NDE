@@ -1,7 +1,7 @@
 import { Directive, input } from '@angular/core';
 import { NodeModel } from '../../../node/types/node.model';
-import { BaseViewConfig } from '../types/view-config';
 import { WidgetsSettings } from '../../../widgets/types/widget-config';
+import { BaseViewConfig } from '../types/view-config';
 
 @Directive()
 export abstract class BaseResultsView {

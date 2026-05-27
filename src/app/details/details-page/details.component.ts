@@ -1,14 +1,14 @@
-import { Component, inject, OnInit, OnDestroy, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../../api/api.service';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
 import { NodeComponent } from '../../node/node.component';
 import { NodeModel } from '../../node/types/node.model';
 import {
-  removeUriPrefix,
   addUriPrefix,
+  removeUriPrefix,
 } from '../../routing/details-page-uri-prefix';
 import { BackToSearchComponent } from '../../ui/back-to-search/back-to-search.component';
 import { BreadcrumbService } from '../../ui/breadcrumbs/breadcrumb.service';

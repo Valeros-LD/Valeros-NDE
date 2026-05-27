@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseResultsView } from '../../infrastructure/base-results-view';
 import { NodeComponent } from '../../../../node/node.component';
+import { BaseResultsView } from '../../infrastructure/base-results-view';
 
 @Component({
   selector: 'app-masonry-view',

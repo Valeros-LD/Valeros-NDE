@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',

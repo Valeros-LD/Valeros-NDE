@@ -1,4 +1,4 @@
-import { Injectable, inject, computed } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { ConfigService } from '../config/config-page/config.service';
 import { getNestedValue } from '../data-utils/property-path.util';
 import { normalizeToFirst } from '../data-utils/value-normalization.util';

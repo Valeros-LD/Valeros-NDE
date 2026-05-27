@@ -1,6 +1,6 @@
-import { Component, computed, inject, input } from '@angular/core';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pagination',

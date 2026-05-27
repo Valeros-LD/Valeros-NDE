@@ -1,7 +1,7 @@
 import { Component, inject, Signal } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherChevronRight } from '@ng-icons/feather-icons';
-import { BreadcrumbService, BreadcrumbItem } from '../breadcrumb.service';
+import { BreadcrumbItem, BreadcrumbService } from '../breadcrumb.service';
 
 @Component({
   selector: 'app-breadcrumb',

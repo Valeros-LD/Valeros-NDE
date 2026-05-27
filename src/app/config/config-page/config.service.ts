@@ -1,8 +1,7 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
-import { WidgetsSettings } from '../../widgets/types/widget-config';
-import { ViewType } from '../../search/views/types/view-type';
-import { FacetConfig } from '../facets.config';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { ViewsSettings } from '../../search/views/types/view-config';
+import { WidgetsSettings } from '../../widgets/types/widget-config';
+import { FacetConfig } from '../facets.config';
 
 export interface AppConfig {
   facets: FacetConfig[];

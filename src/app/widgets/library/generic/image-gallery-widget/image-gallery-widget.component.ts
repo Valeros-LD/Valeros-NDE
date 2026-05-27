@@ -1,26 +1,26 @@
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
+  computed,
+  effect,
+  inject,
   OnDestroy,
   signal,
-  inject,
-  effect,
-  computed,
 } from '@angular/core';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import { forkJoin, from, Observable, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Dimensions } from '../../../../ui/image/types/dimensions';
-import { ImageModel } from '../../../../ui/image/types/image.model';
 import {
   AssociatedMediaNode,
   toImageModel,
 } from '../../../../node/types/associated-media.node';
+import { ImageSkeletonComponent } from '../../../../ui/image/image-skeleton/image-skeleton.component';
+import { ImageWithSkeletonComponent } from '../../../../ui/image/image-with-skeleton/image-with-skeleton.component';
+import { Dimensions } from '../../../../ui/image/types/dimensions';
+import { ImageModel } from '../../../../ui/image/types/image.model';
 import { BaseWidget } from '../../../infrastructure/base-widget';
 import { IiifImageService } from '../iiif-widget/iiif-image.service';
 import { ImageGalleryWidgetConfig } from './image-gallery-widget.config';
-import { ImageWithSkeletonComponent } from '../../../../ui/image/image-with-skeleton/image-with-skeleton.component';
-import { ImageSkeletonComponent } from '../../../../ui/image/image-skeleton/image-skeleton.component';
 
 @Component({
   selector: 'app-image-gallery-widget',

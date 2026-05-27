@@ -1,6 +1,6 @@
-import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgIcon, IconType } from '@ng-icons/core';
+import { Component, input, output } from '@angular/core';
+import { IconType, NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-drawer-toggle-button',

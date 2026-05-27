@@ -1,10 +1,10 @@
-import { Component, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseWidget } from '../../../infrastructure/base-widget';
-import { isNodeModel, NodeModel } from '../../../../node/types/node.model';
-import { TextWidgetConfig } from '../text-widget/text-widget.config';
-import { TextWidget } from '../text-widget/text-widget.component';
+import { Component, computed } from '@angular/core';
 import { NodeLinkListComponent } from '../../../../node/node-link-list/node-link-list.component';
+import { isNodeModel, NodeModel } from '../../../../node/types/node.model';
+import { BaseWidget } from '../../../infrastructure/base-widget';
+import { TextWidget } from '../text-widget/text-widget.component';
+import { TextWidgetConfig } from '../text-widget/text-widget.config';
 
 @Component({
   selector: 'app-link-widget',

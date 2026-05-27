@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import Mirador, { MiradorInstance, MiradorConfig } from 'mirador';
+import Mirador, { MiradorConfig, MiradorInstance } from 'mirador';
 import { BaseIiifWidget } from '../base-iiif-widget';
 
 @Component({

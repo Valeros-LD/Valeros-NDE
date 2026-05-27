@@ -1,9 +1,9 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, inject, computed } from '@angular/core';
-import { ConfigService } from '../config.service';
-import { getIcon } from '../../icon.registry';
-import { DraggableList } from '../../../ui/draggable-list/draggable-list.component';
+import { Component, computed, inject } from '@angular/core';
 import { DraggableListItem } from '../../../ui/draggable-list/draggable-list-item';
+import { DraggableList } from '../../../ui/draggable-list/draggable-list.component';
+import { getIcon } from '../../icon.registry';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-views-config',

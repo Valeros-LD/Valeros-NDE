@@ -1,8 +1,8 @@
-import { Component, input, inject, computed } from '@angular/core';
-import { NodeModel } from '../types/node.model';
+import { Component, inject, input } from '@angular/core';
+import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeLinkMode } from '../node-link/node-link-mode';
 import { NodeLinkComponent } from '../node-link/node-link.component';
-import { NodeImageResolverService } from '../node-image-resolver.service';
+import { NodeModel } from '../types/node.model';
 
 @Component({
   selector: 'app-node-link-list',

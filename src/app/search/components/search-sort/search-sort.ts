@@ -1,5 +1,5 @@
-import { Component, inject, signal, effect } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, effect, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchStore } from '../../state/search.store';
 
 const SORT_OPTIONS = [

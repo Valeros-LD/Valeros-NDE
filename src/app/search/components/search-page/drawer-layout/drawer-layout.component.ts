@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   input,
   signal,
   viewChild,
-  ElementRef,
-  AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
 import { featherX } from '@ng-icons/feather-icons';
+import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
 
 @Component({
   selector: 'app-drawer-layout',

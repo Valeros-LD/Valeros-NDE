@@ -1,13 +1,13 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
+  effect,
   inject,
   input,
   output,
   signal,
-  effect,
-  computed,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { Subject } from 'rxjs';
 import {
@@ -16,11 +16,11 @@ import {
   skip,
   switchMap,
 } from 'rxjs/operators';
-import { AutocompleteSuggestionItemComponent } from './autocomplete-suggestion-item/autocomplete-suggestion-item.component';
+import { ApiService } from '../../../api/api.service';
+import { normalizeToFirst } from '../../../data-utils/value-normalization.util';
 import { LoadingSpinnerComponent } from '../../../ui/loading-spinner/loading-spinner.component';
 import { SearchResponse } from '../../types/search-response';
-import { normalizeToFirst } from '../../../data-utils/value-normalization.util';
-import { ApiService } from '../../../api/api.service';
+import { AutocompleteSuggestionItemComponent } from './autocomplete-suggestion-item/autocomplete-suggestion-item.component';
 
 @Component({
   selector: 'app-autocomplete-dropdown',

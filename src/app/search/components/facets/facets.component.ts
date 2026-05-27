@@ -1,10 +1,10 @@
-import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchStore } from '../../state/search.store';
+import { Component, computed, inject } from '@angular/core';
 import { FilterStore } from '../../state/filter.store';
+import { SearchStore } from '../../state/search.store';
 
-import { TooltipBadge } from '../../../ui/tooltip-badge/tooltip-badge';
 import { NgIcon } from '@ng-icons/core';
+import { TooltipBadge } from '../../../ui/tooltip-badge/tooltip-badge';
 import { FacetsService } from './facets.service';
 
 @Component({

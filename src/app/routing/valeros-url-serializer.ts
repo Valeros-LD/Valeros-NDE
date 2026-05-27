@@ -1,6 +1,6 @@
 import { DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
+import { addUriPrefix, hasUriPrefix } from './details-page-uri-prefix';
 import { isValidDetailsUri } from './details-route.matcher';
-import { hasUriPrefix, addUriPrefix } from './details-page-uri-prefix';
 
 /**
  * Custom URL serializer that handles details routes with unencoded URIs.

@@ -1,11 +1,10 @@
 import { Injectable, Type, inject } from '@angular/core';
-import { ViewType } from '../types/view-type';
-import { ViewMapping, ViewConfig } from '../types/view-config';
-import { BaseResultsView } from './base-results-view';
 import { ConfigService } from '../../../config/config-page/config.service';
-import { WidgetsSettings } from '../../../widgets/types/widget-config';
 import { getViewComponent } from '../../../config/view-component.registry';
-import { getIcon } from '../../../config/icon.registry';
+import { WidgetsSettings } from '../../../widgets/types/widget-config';
+import { ViewConfig, ViewMapping } from '../types/view-config';
+import { ViewType } from '../types/view-type';
+import { BaseResultsView } from './base-results-view';
 
 @Injectable({ providedIn: 'root' })
 export class ViewService {

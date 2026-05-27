@@ -1,11 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { buildHttpParams } from './http-params.util';
-import { MockDataService } from './mock-data.service';
 import { NodeModel } from '../node/types/node.model';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
+import { buildHttpParams } from './http-params.util';
+import { MockDataService } from './mock-data.service';
 
 @Injectable({
   providedIn: 'root',

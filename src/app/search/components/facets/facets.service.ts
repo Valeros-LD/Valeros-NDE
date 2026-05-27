@@ -1,7 +1,7 @@
-import { Injectable, inject, computed } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { IconType } from '@ng-icons/core';
-import { IconKey, getIcon } from '../../../config/icon.registry';
 import { ConfigService } from '../../../config/config-page/config.service';
+import { IconKey, getIcon } from '../../../config/icon.registry';
 
 @Injectable({ providedIn: 'root' })
 export class FacetsService {

@@ -1,9 +1,9 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, inject, computed } from '@angular/core';
-import { ConfigService } from '../config.service';
-import { DraggableList } from '../../../ui/draggable-list/draggable-list.component';
-import { DraggableListItem } from '../../../ui/draggable-list/draggable-list-item';
+import { Component, computed, inject } from '@angular/core';
 import { FacetsService } from '../../../search/components/facets/facets.service';
+import { DraggableListItem } from '../../../ui/draggable-list/draggable-list-item';
+import { DraggableList } from '../../../ui/draggable-list/draggable-list.component';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-facets-config',

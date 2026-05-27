@@ -1,15 +1,13 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged, map, skip, filter } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { FilterStore } from './filter.store';
-import { SearchResponse } from '../types/search-response';
-import { Facet } from '../types/facet';
-import { Filters } from '../types/filters';
-import { NodeModel } from '../../node/types/node.model';
-import { ViewType } from '../views/types/view-type';
-import { ViewService } from '../views/infrastructure/view.service';
+import { distinctUntilChanged, map } from 'rxjs';
 import { ApiService } from '../../api/api.service';
+import { NodeModel } from '../../node/types/node.model';
+import { Facet } from '../types/facet';
+import { SearchResponse } from '../types/search-response';
+import { ViewService } from '../views/infrastructure/view.service';
+import { ViewType } from '../views/types/view-type';
+import { FilterStore } from './filter.store';
 
 interface SearchUrlParams {
   q: string;

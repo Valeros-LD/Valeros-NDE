@@ -1,4 +1,4 @@
-import { UrlSegment, UrlMatchResult } from '@angular/router';
+import { UrlMatchResult, UrlSegment } from '@angular/router';
 import { hasUriPrefix } from './details-page-uri-prefix';
 
 export function isValidDetailsUri(uri: string): boolean {

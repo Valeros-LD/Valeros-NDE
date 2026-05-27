@@ -1,25 +1,23 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  ComponentRef,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
   input,
+  signal,
   viewChild,
   ViewContainerRef,
-  AfterViewInit,
-  effect,
-  DestroyRef,
-  ComponentRef,
-  inject,
-  Signal,
-  signal,
-  computed,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { PropertyLabelWrapperComponent } from '../property-label-wrapper/property-label-wrapper.component';
-import { WidgetMapping } from '../../types/widget-config';
-import { BaseWidget } from '../base-widget';
+import { getWidgetComponent } from '../../../config/widget-component.registry';
 import { NodeModel } from '../../../node/types/node.model';
 import { LinkWidget } from '../../library/generic/link-widget/link-widget.component';
-import { normalizeToArray } from '../../../data-utils/value-normalization.util';
-import { getWidgetComponent } from '../../../config/widget-component.registry';
+import { WidgetMapping } from '../../types/widget-config';
+import { BaseWidget } from '../base-widget';
+import { PropertyLabelWrapperComponent } from '../property-label-wrapper/property-label-wrapper.component';
 
 @Component({
   selector: 'app-dynamic-widget',

@@ -1,7 +1,7 @@
-import { Component, input, computed } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { NgIconComponent } from '@ng-icons/core';
-import { WidgetConfig } from '../../types/widget-config';
 import { getIconOrUndefined } from '../../../config/icon.registry';
+import { WidgetConfig } from '../../types/widget-config';
 
 @Component({
   selector: 'app-property-label-wrapper',

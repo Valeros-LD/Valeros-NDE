@@ -5,7 +5,7 @@ import {
   input,
   SecurityContext,
 } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { TruncatedTextComponent } from '../truncated-text/truncated-text.component';
 
 @Component({

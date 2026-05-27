@@ -1,5 +1,5 @@
-import { ImageModel } from '../../ui/image/types/image.model';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
+import { ImageModel } from '../../ui/image/types/image.model';
 import { NodeModel } from './node.model';
 
 export type AssociatedMediaNode = NodeModel & {

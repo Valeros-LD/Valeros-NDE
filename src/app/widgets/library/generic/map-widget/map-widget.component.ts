@@ -1,16 +1,16 @@
 import {
-  Component,
-  ElementRef,
-  viewChild,
   AfterViewInit,
-  inject,
+  Component,
   computed,
+  ElementRef,
+  inject,
+  viewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { BaseWidget } from '../../../infrastructure/base-widget';
-import { MapService } from '../../../../ui/map/map.service';
 import { isNodeModel, NodeModel } from '../../../../node/types/node.model';
+import { MapService } from '../../../../ui/map/map.service';
 import { TooltipBadge } from '../../../../ui/tooltip-badge/tooltip-badge';
+import { BaseWidget } from '../../../infrastructure/base-widget';
 
 @Component({
   selector: 'app-map-widget',

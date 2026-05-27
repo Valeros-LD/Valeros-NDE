@@ -1,16 +1,16 @@
 import {
-  Directive,
   AfterViewInit,
-  OnDestroy,
   computed,
+  Directive,
   inject,
+  OnDestroy,
   Signal,
 } from '@angular/core';
-import { BaseWidget } from '../../../infrastructure/base-widget';
 import {
   AssociatedMediaNode,
   isIIIFPresentationManifest,
 } from '../../../../node/types/associated-media.node';
+import { BaseWidget } from '../../../infrastructure/base-widget';
 import { IiifUrlTransformerService } from './iiif-url-transformer.service';
 
 @Directive()

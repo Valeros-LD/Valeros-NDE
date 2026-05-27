@@ -1,7 +1,7 @@
-import { ViewType } from './view-type';
-import { WidgetsSettings } from '../../../widgets/types/widget-config';
-import { ViewComponentKey } from '../../../config/view-component.registry';
 import { IconKey } from '../../../config/icon.registry';
+import { ViewComponentKey } from '../../../config/view-component.registry';
+import { WidgetsSettings } from '../../../widgets/types/widget-config';
+import { ViewType } from './view-type';
 
 export interface BaseViewConfig {
   pageSize?: number;

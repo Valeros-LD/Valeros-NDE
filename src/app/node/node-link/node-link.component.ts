@@ -1,22 +1,16 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-} from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { featherExternalLink } from '@ng-icons/feather-icons';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
+import { addUriPrefix } from '../../routing/details-page-uri-prefix';
+import { ImageWithSkeletonComponent } from '../../ui/image/image-with-skeleton/image-with-skeleton.component';
+import { TooltipBadge } from '../../ui/tooltip-badge/tooltip-badge';
+import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeModel } from '../types/node.model';
 import { NodeLinkMode } from './node-link-mode';
 import { NodeLinkService } from './node-link.service';
-import { NodeImageResolverService } from '../node-image-resolver.service';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { featherExternalLink } from '@ng-icons/feather-icons';
-import { TooltipBadge } from '../../ui/tooltip-badge/tooltip-badge';
-import { addUriPrefix } from '../../routing/details-page-uri-prefix';
-import { ImageWithSkeletonComponent } from '../../ui/image/image-with-skeleton/image-with-skeleton.component';
 
 @Component({
   selector: 'app-node-link',

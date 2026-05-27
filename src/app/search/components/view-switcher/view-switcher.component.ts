@@ -1,9 +1,9 @@
 import { Component, inject, input, output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgIconComponent } from '@ng-icons/core';
-import { ViewType } from '../../views/types/view-type';
-import { ViewService } from '../../views/infrastructure/view.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { getIcon } from '../../../config/icon.registry';
+import { ViewService } from '../../views/infrastructure/view.service';
+import { ViewType } from '../../views/types/view-type';
 
 @Component({
   selector: 'app-view-switcher',

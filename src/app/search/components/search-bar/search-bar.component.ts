@@ -1,12 +1,12 @@
-import { Component, inject, viewChild, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, effect, inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SearchStore } from '../../state/search.store';
-import { AutocompleteDropdownComponent } from '../autocomplete-dropdown/autocomplete-dropdown.component';
-import { LoadingSpinnerComponent } from '../../../ui/loading-spinner/loading-spinner.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherSearch } from '@ng-icons/feather-icons';
+import { LoadingSpinnerComponent } from '../../../ui/loading-spinner/loading-spinner.component';
+import { SearchStore } from '../../state/search.store';
+import { AutocompleteDropdownComponent } from '../autocomplete-dropdown/autocomplete-dropdown.component';
 
 @Component({
   selector: 'app-search-bar',

@@ -1,5 +1,5 @@
-import { WidgetComponentKey } from '../../config/widget-component.registry';
 import { IconKey } from '../../config/icon.registry';
+import { WidgetComponentKey } from '../../config/widget-component.registry';
 
 export interface WidgetsSettings {
   mappings: WidgetMapping[];

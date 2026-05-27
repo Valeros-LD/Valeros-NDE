@@ -1,14 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  WidgetMapping,
-  WidgetsSettings,
-  WidgetPosition,
-} from '../types/widget-config';
 import { ConfigService } from '../../config/config-page/config.service';
 import {
-  WidgetsByPosition,
+  WidgetMapping,
+  WidgetPosition,
+  WidgetsSettings,
+} from '../types/widget-config';
+import {
   WidgetGroup as WidgetGroupByPosition,
+  WidgetsByPosition,
 } from '../types/widgets-by-position';
 
 @Injectable({ providedIn: 'root' })

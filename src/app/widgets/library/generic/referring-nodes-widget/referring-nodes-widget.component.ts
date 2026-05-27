@@ -1,18 +1,18 @@
 import {
   Component,
   computed,
+  effect,
   inject,
   signal,
-  effect,
   Signal,
 } from '@angular/core';
-import { BaseWidget } from '../../../infrastructure/base-widget';
 import { ApiService } from '../../../../api/api.service';
-import { SearchResponse } from '../../../../search/types/search-response';
-import { NodeLinkListComponent } from '../../../../node/node-link-list/node-link-list.component';
-import { LoadingSpinnerComponent } from '../../../../ui/loading-spinner/loading-spinner.component';
-import { ErrorAlertComponent } from '../../../../ui/error-alert/error-alert.component';
 import { normalizeToFirst } from '../../../../data-utils/value-normalization.util';
+import { NodeLinkListComponent } from '../../../../node/node-link-list/node-link-list.component';
+import { SearchResponse } from '../../../../search/types/search-response';
+import { ErrorAlertComponent } from '../../../../ui/error-alert/error-alert.component';
+import { LoadingSpinnerComponent } from '../../../../ui/loading-spinner/loading-spinner.component';
+import { BaseWidget } from '../../../infrastructure/base-widget';
 
 @Component({
   selector: 'app-referring-nodes-widget',

@@ -1,8 +1,8 @@
-import { Directive, input, computed } from '@angular/core';
-import { normalizeToArray } from '../../data-utils/value-normalization.util';
-import { BaseWidgetConfig } from '../types/widget-config';
+import { computed, Directive, input } from '@angular/core';
 import { applyPropertyPath } from '../../data-utils/property-path.util';
+import { normalizeToArray } from '../../data-utils/value-normalization.util';
 import { NodeModel } from '../../node/types/node.model';
+import { BaseWidgetConfig } from '../types/widget-config';
 
 @Directive()
 export abstract class BaseWidget {

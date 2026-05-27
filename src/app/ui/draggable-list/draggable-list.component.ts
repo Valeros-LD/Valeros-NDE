@@ -1,9 +1,4 @@
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDropList,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { Component, input, output } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { DraggableListItem } from './draggable-list-item';

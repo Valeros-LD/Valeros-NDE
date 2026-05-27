@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Params, Router } from '@angular/router';
 import { SearchStateService } from '../../search/state/search-state.service';
 

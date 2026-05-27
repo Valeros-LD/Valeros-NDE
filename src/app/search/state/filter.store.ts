@@ -1,7 +1,6 @@
-import { Injectable, signal, inject, computed } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Filters, SerializableFilters } from '../types/filters';
-import { FacetValue } from '../types/facet';
 
 @Injectable({
   providedIn: 'root',

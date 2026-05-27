@@ -1,33 +1,32 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
+  effect,
   inject,
   OnInit,
-  ViewContainerRef,
   viewChild,
-  effect,
-  computed,
+  ViewContainerRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchStore } from '../../state/search.store';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { FacetsComponent } from '../facets/facets.component';
-import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
-import { DrawerToggleButtonComponent } from './drawer-layout/drawer-toggle-button/drawer-toggle-button.component';
-import { SearchSort } from '../search-sort/search-sort';
-import { ResultsCount } from '../results-count/results-count';
-import { Pagination } from '../pagination/pagination';
-import { ViewSwitcherComponent } from '../view-switcher/view-switcher.component';
-import { ViewService } from '../../views/infrastructure/view.service';
-import { ViewType } from '../../views/types/view-type';
-import { SearchStateService } from '../../state/search-state.service';
-import { BreakpointService } from '../../../ui/breakpoint/breakpoint.service';
 import { featherFilter } from '@ng-icons/feather-icons';
+import { BreadcrumbService } from '../../../ui/breadcrumbs/breadcrumb.service';
+import { BreakpointService } from '../../../ui/breakpoint/breakpoint.service';
+import { ErrorAlertComponent } from '../../../ui/error-alert/error-alert.component';
+import { HeaderBannerComponent } from '../../../ui/header-banner/header-banner.component';
 import { PageTitleService } from '../../../ui/page-title/page-title.service';
 import { FilterStore } from '../../state/filter.store';
-import { HeaderBannerComponent } from '../../../ui/header-banner/header-banner.component';
-import { ErrorAlertComponent } from '../../../ui/error-alert/error-alert.component';
-import { BreadcrumbService } from '../../../ui/breadcrumbs/breadcrumb.service';
+import { SearchStateService } from '../../state/search-state.service';
+import { SearchStore } from '../../state/search.store';
+import { ViewService } from '../../views/infrastructure/view.service';
+import { FacetsComponent } from '../facets/facets.component';
+import { Pagination } from '../pagination/pagination';
+import { ResultsCount } from '../results-count/results-count';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { SearchSort } from '../search-sort/search-sort';
+import { ViewSwitcherComponent } from '../view-switcher/view-switcher.component';
+import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
+import { DrawerToggleButtonComponent } from './drawer-layout/drawer-toggle-button/drawer-toggle-button.component';
 
 @Component({
   selector: 'app-search-page',

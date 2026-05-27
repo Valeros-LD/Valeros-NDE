@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { JsonPipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { BaseWidget } from '../../../infrastructure/base-widget';
 
 @Component({

@@ -1,24 +1,21 @@
 import {
-  Component,
-  ElementRef,
-  viewChild,
   AfterViewInit,
-  effect,
-  ComponentRef,
-  ViewContainerRef,
   ApplicationRef,
+  Component,
   createComponent,
+  effect,
+  ElementRef,
   EnvironmentInjector,
-  ViewEncapsulation,
   inject,
+  viewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { BaseResultsView } from '../../infrastructure/base-results-view';
 import { NodeComponent } from '../../../../node/node.component';
 import { NodeModel } from '../../../../node/types/node.model';
-import { MapService } from '../../../../ui/map/map.service';
 import { GeoCoordinates } from '../../../../ui/map/geo-coordinates.model';
+import { MapService } from '../../../../ui/map/map.service';
 import { TooltipBadge } from '../../../../ui/tooltip-badge/tooltip-badge';
+import { BaseResultsView } from '../../infrastructure/base-results-view';
 
 @Component({
   selector: 'app-map-view',

@@ -1,4 +1,4 @@
-import { Injectable, signal, DestroyRef, inject } from '@angular/core';
+import { DestroyRef, inject, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
