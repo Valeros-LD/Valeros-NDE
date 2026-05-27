@@ -40,7 +40,7 @@ export const COMMON_WIDGETS: PropertyWidget[] = [
   },
 ];
 
-export const SHARED_SEARCH_RESULT_WIDGETS: PropertyWidget[] = [
+export const COMMON_SEARCH_RESULT_WIDGETS: PropertyWidget[] = [
   {
     id: 'image-thumb',
     properties: ['associatedMedia'],
