@@ -1,8 +1,6 @@
 import { Injectable, Type, inject } from '@angular/core';
-import {
-  ConfigService,
-  SearchResultsPresentationConfig,
-} from '../../config/config-page/config.service';
+import { ConfigService } from '../../config/config-page/config.service';
+import { SearchResultsPresentationConfig } from '../../config/types/app-config';
 import { getViewComponent } from '../../config/view-component.registry';
 import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { BaseResultsView } from './base-results-view';
@@ -25,12 +23,14 @@ export class ViewService {
 
   getViewDefinition(viewType: ViewType): ViewDefinition | null {
     const views = this.configService.views();
-    return views?.views.find((v) => v.type === viewType) || null;
+    return (
+      views?.views.find((v: ViewDefinition) => v.type === viewType) || null
+    );
   }
 
   getAllViewDefinitions(): ViewDefinition[] {
     const views = this.configService.views();
-    return views?.views.filter((v) => !v.options.hidden) || [];
+    return views?.views.filter((v: ViewDefinition) => !v.options.hidden) || [];
   }
 
   getDefaultViewType(): ViewType {
