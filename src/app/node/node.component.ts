@@ -26,24 +26,20 @@ import { NodeModel } from './types/node.model';
 export class NodeComponent {
   data = input.required<NodeModel>();
   clickable = input<boolean>(true);
-  presentationConfig = input<NodePresentationConfig>();
+  presentationConfig = input.required<NodePresentationConfig>();
 
   private widgetService = inject(WidgetService);
-
-  private resolvedPresentationConfig = computed(
-    () => this.presentationConfig() ?? this.widgetService.getDefaultSettings(),
-  );
 
   widgetsByPosition: Signal<WidgetsByPosition> = computed(() => {
     const properties = Object.keys(this.data());
     return this.widgetService.getWidgetsByPosition(
       properties,
-      this.resolvedPresentationConfig(),
+      this.presentationConfig(),
     );
   });
 
   protected showArrowIndicator = computed(
-    () => this.resolvedPresentationConfig().showArrowIndicator ?? false,
+    () => this.presentationConfig().showArrowIndicator ?? false,
   );
 
   detailsRoute = computed(() => {

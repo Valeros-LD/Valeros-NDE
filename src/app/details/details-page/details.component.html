@@ -8,7 +8,11 @@
   } @else if (error()) {
     <app-error-alert [message]="error()!" />
   } @else if (data()) {
-    <app-node [data]="data()!" [clickable]="false" />
+    <app-node
+      [data]="data()!"
+      [clickable]="false"
+      [presentationConfig]="presentationConfig()"
+    />
   } @else {
     <p>No data available</p>
   }

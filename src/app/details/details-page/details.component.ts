@@ -1,8 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../../api/api.service';
+import { ConfigService } from '../../config/config-page/config.service';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
 import { NodeComponent } from '../../node/node.component';
 import { NodeModel } from '../../node/types/node.model';
@@ -39,7 +47,16 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private apiService = inject(ApiService);
   private breadcrumbService = inject(BreadcrumbService);
   private pageTitleService = inject(PageTitleService);
+  private configService = inject(ConfigService);
   private routeSubscription?: Subscription;
+
+  protected presentationConfig = computed(() => {
+    const presentation = this.configService.presentation();
+    if (!presentation) {
+      throw new Error('Config not initialized');
+    }
+    return presentation.details;
+  });
 
   ngOnInit() {
     this.routeSubscription = this.route.paramMap.subscribe((params) => {

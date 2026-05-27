@@ -1,6 +1,4 @@
-import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { ConfigService } from '../config/config-page/config.service';
+import { Injectable } from '@angular/core';
 import {
   NodePresentationConfig,
   PropertyWidget,
@@ -13,20 +11,6 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class WidgetService {
-  private router = inject(Router);
-  private configService = inject(ConfigService);
-
-  getDefaultSettings(): NodePresentationConfig {
-    const url = this.router.url;
-    const presentation = this.configService.presentation();
-    if (!presentation) {
-      throw new Error('Config not initialized');
-    }
-    return url.startsWith('/details')
-      ? presentation.details
-      : presentation.default;
-  }
-
   getWidgetsByPosition(
     properties: string[],
     presentationConfig: NodePresentationConfig,
