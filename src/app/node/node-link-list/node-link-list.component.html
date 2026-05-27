@@ -1,14 +1,18 @@
 <div class="flex flex-wrap gap-2">
   @for (node of nodes(); track node.id) {
-    @let nodeMode = getNodeMode(node);
-    @if (nodeMode === 'image-card') {
-      <app-node-link [node]="node" [showType]="showType()" [mode]="nodeMode" />
+    @let variant = getNodeLinkVariant(node);
+    @if (variant === 'image-card') {
+      <app-node-link
+        [node]="node"
+        [showType]="showType()"
+        [variant]="variant"
+      />
     } @else {
       <span class="badge badge-primary py-4 px-4">
         <app-node-link
           [node]="node"
           [showType]="showType()"
-          [mode]="nodeMode"
+          [variant]="variant"
         />
       </span>
     }

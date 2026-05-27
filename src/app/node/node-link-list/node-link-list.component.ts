@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { NodeImageResolverService } from '../node-image-resolver.service';
-import { NodeLinkMode } from '../node-link/node-link-mode';
+import { NodeLinkVariant } from '../node-link/node-link-variant';
 import { NodeLinkComponent } from '../node-link/node-link.component';
 import { NodeModel } from '../types/node.model';
 
@@ -12,13 +12,13 @@ import { NodeModel } from '../types/node.model';
 export class NodeLinkListComponent {
   readonly nodes = input.required<NodeModel[]>();
   readonly showType = input<boolean>(false);
-  readonly mode = input<NodeLinkMode | 'auto'>('auto');
+  readonly mode = input<NodeLinkVariant | 'auto'>('auto');
 
   protected imageResolver = inject(NodeImageResolverService);
 
-  protected getNodeMode(node: NodeModel): NodeLinkMode {
+  protected getNodeLinkVariant(node: NodeModel): NodeLinkVariant {
     if (this.mode() !== 'auto') {
-      return this.mode() as NodeLinkMode;
+      return this.mode() as NodeLinkVariant;
     }
     return this.imageResolver.hasImage(node) ? 'image-card' : 'inline';
   }

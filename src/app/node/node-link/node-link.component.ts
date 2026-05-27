@@ -9,7 +9,7 @@ import { ImageWithSkeletonComponent } from '../../ui/image/image-with-skeleton/i
 import { TooltipBadge } from '../../ui/tooltip-badge/tooltip-badge';
 import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeModel } from '../types/node.model';
-import { NodeLinkMode } from './node-link-mode';
+import { NodeLinkVariant } from './node-link-variant';
 import { NodeLinkService } from './node-link.service';
 
 @Component({
@@ -28,7 +28,7 @@ import { NodeLinkService } from './node-link.service';
 export class NodeLinkComponent {
   readonly node = input.required<NodeModel>();
   readonly showType = input<boolean>(true);
-  readonly mode = input<NodeLinkMode>('inline');
+  readonly variant = input<NodeLinkVariant>('inline');
 
   private nodeLinkService = inject(NodeLinkService);
   private imageResolver = inject(NodeImageResolverService);
@@ -38,7 +38,7 @@ export class NodeLinkComponent {
   });
 
   readonly isImageCard = computed(() => {
-    return this.mode() === 'image-card';
+    return this.variant() === 'image-card';
   });
 
   getNodeName(node: NodeModel): string {
