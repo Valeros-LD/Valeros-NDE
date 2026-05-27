@@ -10,7 +10,7 @@ import { ConfigService } from '../config.service';
   imports: [DraggableList],
   templateUrl: './views-config.component.html',
 })
-export class ViewsConfig {
+export class ViewsConfigComponent {
   protected configService = inject(ConfigService);
 
   protected readonly viewsSettings = this.configService.views;
