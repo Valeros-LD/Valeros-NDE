@@ -107,9 +107,9 @@ export class SearchStore {
         this.searchParams.set(params);
         saveSearchParamsToSessionStorage(params);
 
-        const viewConfig = this.viewService.getViewConfig(view);
-        if (viewConfig.pageSize) {
-          this.pageSize.set(viewConfig.pageSize);
+        const viewOptions = this.viewService.getViewOptions(view);
+        if (viewOptions.pageSize) {
+          this.pageSize.set(viewOptions.pageSize);
         }
 
         this.performSearch(query, page);

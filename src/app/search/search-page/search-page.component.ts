@@ -56,8 +56,8 @@ export class SearchPageComponent implements OnInit {
 
   viewContainer = viewChild('viewContainer', { read: ViewContainerRef });
 
-  currentViewConfig = computed(() => {
-    return this.viewService.getViewConfig(this.store.currentView());
+  currentViewOptions = computed(() => {
+    return this.viewService.getViewOptions(this.store.currentView());
   });
 
   activeFilterCount = computed(() => {
@@ -87,7 +87,7 @@ export class SearchPageComponent implements OnInit {
 
         const currentView = this.store.currentView();
         const component = this.viewService.getViewComponent(currentView);
-        const config = this.viewService.getViewConfig(currentView);
+        const options = this.viewService.getViewOptions(currentView);
         const presentationConfig =
           this.viewService.getViewPresentationConfig(currentView);
 
@@ -97,7 +97,7 @@ export class SearchPageComponent implements OnInit {
           componentRef.setInput('totalResults', this.store.totalResults());
           componentRef.setInput('currentPage', this.store.currentPage());
           componentRef.setInput('pageSize', this.store.pageSize());
-          componentRef.setInput('config', config);
+          componentRef.setInput('options', options);
           componentRef.setInput('presentationConfig', presentationConfig);
         }
       }

@@ -1,28 +1,19 @@
 import { IconKey } from '../../../config/icon.registry';
 import { ViewComponentKey } from '../../../config/view-component.registry';
 import { NodePresentationConfig } from '../../../widgets/core/types/node-presentation-config';
+import { ViewOptions } from './view-options';
 import { ViewType } from './view-type';
 
-export interface BaseViewConfig {
-  pageSize?: number;
-  showPagination?: boolean;
-  showResultsCount?: boolean;
-  showSort?: boolean;
-  hidden?: boolean;
-}
-
-export type ViewConfig = BaseViewConfig & Record<string, unknown>;
-
-export interface ViewMapping {
+export interface ViewDefinition {
   type: ViewType;
-  component: ViewComponentKey;
-  config: ViewConfig;
+  componentId: ViewComponentKey;
+  options: ViewOptions;
   icon: IconKey;
   label: string;
   presentationConfig: NodePresentationConfig;
 }
 
-export interface ViewsSettings {
-  mappings: ViewMapping[];
+export interface ViewsConfig {
+  views: ViewDefinition[];
   defaultView: ViewType;
 }

@@ -6,7 +6,8 @@ import {
 import { getViewComponent } from '../../config/view-component.registry';
 import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { BaseResultsView } from './base-results-view';
-import { ViewConfig, ViewMapping } from './types/view-config';
+import { ViewDefinition } from './types/view-config';
+import { ViewOptions } from './types/view-options';
 import { ViewType } from './types/view-type';
 
 @Injectable({ providedIn: 'root' })
@@ -14,22 +15,22 @@ export class ViewService {
   private configService = inject(ConfigService);
 
   getViewComponent(viewType: ViewType): Type<BaseResultsView> | null {
-    const mapping = this.getViewMapping(viewType);
-    return mapping ? getViewComponent(mapping.component) : null;
+    const definition = this.getViewDefinition(viewType);
+    return definition ? getViewComponent(definition.componentId) : null;
   }
 
-  getViewConfig(viewType: ViewType): ViewConfig {
-    return this.getViewMapping(viewType)?.config || {};
+  getViewOptions(viewType: ViewType): ViewOptions {
+    return this.getViewDefinition(viewType)?.options || {};
   }
 
-  getViewMapping(viewType: ViewType): ViewMapping | null {
+  getViewDefinition(viewType: ViewType): ViewDefinition | null {
     const views = this.configService.views();
-    return views?.mappings.find((m) => m.type === viewType) || null;
+    return views?.views.find((v) => v.type === viewType) || null;
   }
 
-  getAllViewMappings(): ViewMapping[] {
+  getAllViewDefinitions(): ViewDefinition[] {
     const views = this.configService.views();
-    return views?.mappings.filter((m) => !m.config.hidden) || [];
+    return views?.views.filter((v) => !v.options.hidden) || [];
   }
 
   getDefaultViewType(): ViewType {

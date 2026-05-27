@@ -14,21 +14,21 @@ export class ViewsConfigComponent {
   protected configService = inject(ConfigService);
 
   protected readonly viewsSettings = this.configService.views;
-  protected readonly mappings = computed(
-    () => this.viewsSettings()?.mappings ?? [],
+  protected readonly viewDefinitions = computed(
+    () => this.viewsSettings()?.views ?? [],
   );
 
   protected readonly items = computed<DraggableListItem[]>(() =>
-    this.mappings().map((mapping) => ({
-      label: mapping.label,
-      sublabel: mapping.type,
-      icon: getIcon(mapping.icon),
-      hidden: mapping.config.hidden,
+    this.viewDefinitions().map((definition) => ({
+      label: definition.label,
+      sublabel: definition.type,
+      icon: getIcon(definition.icon),
+      hidden: definition.options.hidden,
     })),
   );
 
   protected readonly trackByViewType = () => (item: DraggableListItem) =>
-    this.mappings().find((m) => m.label === item.label)?.type ?? '';
+    this.viewDefinitions().find((v) => v.label === item.label)?.type ?? '';
 
   protected onReorder(event: {
     previousIndex: number;
@@ -37,24 +37,24 @@ export class ViewsConfigComponent {
     const viewsSettings = this.configService.views();
     if (!viewsSettings) return;
 
-    const mappings = [...viewsSettings.mappings];
-    moveItemInArray(mappings, event.previousIndex, event.currentIndex);
-    this.configService.updateViews({ ...viewsSettings, mappings });
+    const views = [...viewsSettings.views];
+    moveItemInArray(views, event.previousIndex, event.currentIndex);
+    this.configService.updateViews({ ...viewsSettings, views });
   }
 
   protected onToggle(index: number): void {
     const viewsSettings = this.configService.views();
     if (!viewsSettings) return;
 
-    const mappings = [...viewsSettings.mappings];
-    const mapping = mappings[index];
-    mappings[index] = {
-      ...mapping,
-      config: {
-        ...mapping.config,
-        hidden: !mapping.config.hidden,
+    const views = [...viewsSettings.views];
+    const definition = views[index];
+    views[index] = {
+      ...definition,
+      options: {
+        ...definition.options,
+        hidden: !definition.options.hidden,
       },
     };
-    this.configService.updateViews({ ...viewsSettings, mappings });
+    this.configService.updateViews({ ...viewsSettings, views });
   }
 }

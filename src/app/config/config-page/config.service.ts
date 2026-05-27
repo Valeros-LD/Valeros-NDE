@@ -1,5 +1,5 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
-import { ViewsSettings } from '../../search/views/types/view-config';
+import { ViewsConfig } from '../../search/views/types/view-config';
 import { ViewType } from '../../search/views/types/view-type';
 import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { FacetConfig } from '../facets.config';
@@ -16,7 +16,7 @@ export interface AppConfig {
     details: NodePresentationConfig;
     searchResults: SearchResultsPresentationConfig;
   };
-  views: ViewsSettings;
+  views: ViewsConfig;
   imagePaths: string[];
 }
 
@@ -88,7 +88,7 @@ export class ConfigService {
     }
   }
 
-  updateViews(views: ViewsSettings): void {
+  updateViews(views: ViewsConfig): void {
     const current = this.config();
     if (current) {
       this.config.set({ ...current, views });
