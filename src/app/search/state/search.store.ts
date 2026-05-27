@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { distinctUntilChanged, map } from 'rxjs';
 import { ApiService } from '../../api/api.service';
 import { NodeModel } from '../../node/types/node.model';
@@ -8,6 +8,10 @@ import { SearchResponse } from '../types/search-response';
 import { ViewType } from '../views/types/view-type';
 import { ViewService } from '../views/view.service';
 import { FilterStore } from './filter.store';
+import {
+  loadSearchParamsFromSessionStorage,
+  saveSearchParamsToSessionStorage,
+} from './search-params-storage.util';
 
 interface SearchUrlParams {
   q: string;
@@ -38,9 +42,16 @@ export class SearchStore {
   prevPage = signal<string | undefined>(undefined);
   currentView = signal<ViewType>(this.viewService.getDefaultViewType());
   currentSort = signal<string | null>(null);
+  private searchParams = signal<Params>(
+    loadSearchParamsFromSessionStorage() || {},
+  );
 
   constructor() {
     this.initSearchOnUrlChanges();
+  }
+
+  getSearchParams(): Params {
+    return this.searchParams();
   }
 
   private initSearchOnUrlChanges(): void {
@@ -74,7 +85,9 @@ export class SearchStore {
           );
         }),
       )
-      .subscribe(({ q: query, filters, page, view, sort }: SearchUrlParams) => {
+      .subscribe((urlParams: SearchUrlParams) => {
+        const { q: query, filters, page, view, sort } = urlParams;
+
         this.filterStore.clearFiltersIfQueryChanged(query, previousQuery);
         this.filterStore.syncFiltersFromUrl(filters);
 
@@ -83,6 +96,16 @@ export class SearchStore {
         this.currentPage.set(page);
         this.currentView.set(view);
         this.currentSort.set(sort);
+
+        const params: Params = {
+          ...(query && { q: query }),
+          ...(filters && { filters }),
+          ...(page > 1 && { page: page.toString() }),
+          ...(view !== this.viewService.getDefaultViewType() && { view }),
+          ...(sort && { sort }),
+        };
+        this.searchParams.set(params);
+        saveSearchParamsToSessionStorage(params);
 
         const viewConfig = this.viewService.getViewConfig(view);
         if (viewConfig.pageSize) {

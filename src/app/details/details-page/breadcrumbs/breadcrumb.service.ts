@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Params, Router } from '@angular/router';
-import { SearchStateService } from '../../../search/state/search-state.service';
+import { SearchStore } from '../../../search/state/search.store';
 
 export interface BreadcrumbItem {
   label: string;
@@ -17,7 +17,7 @@ export interface NavigationState {
 })
 export class BreadcrumbService {
   private router = inject(Router);
-  private searchStateService = inject(SearchStateService);
+  private searchStore = inject(SearchStore);
   private breadcrumbs = signal<BreadcrumbItem[]>([]);
 
   getBreadcrumbs = computed(() => this.breadcrumbs());
@@ -48,7 +48,7 @@ export class BreadcrumbService {
   }
 
   private initSearchBreadcrumb(): void {
-    const searchParams: Params = this.searchStateService.getSearchParams();
+    const searchParams: Params = this.searchStore.getSearchParams();
     this.setSearchBreadcrumb(searchParams);
   }
 

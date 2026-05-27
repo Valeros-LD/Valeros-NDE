@@ -16,7 +16,6 @@ import { ErrorAlertComponent } from '../../ui/error-alert/error-alert.component'
 import { HeaderBannerComponent } from '../../ui/header-banner/header-banner.component';
 import { PageTitleService } from '../../ui/page-title/page-title.service';
 import { FilterStore } from '../state/filter.store';
-import { SearchStateService } from '../state/search-state.service';
 import { SearchStore } from '../state/search.store';
 import { ViewService } from '../views/view.service';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
@@ -49,7 +48,6 @@ export class SearchPageComponent implements OnInit {
   store = inject(SearchStore);
   filterStore = inject(FilterStore);
   private breadcrumbService = inject(BreadcrumbService);
-  private searchStateService = inject(SearchStateService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private breakpointService = inject(BreakpointService);
@@ -78,10 +76,6 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadcrumbService.reset();
-
-    this.route.queryParams.subscribe((params) => {
-      this.searchStateService.setSearchParams(params);
-    });
   }
 
   private loadViewWhenContainerIsReady(): void {
