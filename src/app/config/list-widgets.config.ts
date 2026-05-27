@@ -1,15 +1,19 @@
-import { WidgetsSettings } from '../widgets/core/types/widget-config';
-import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
+import { NodePresentationConfig } from '../widgets/core/types/node-presentation-config';
+import {
+  COMMON_WIDGETS,
+  FALLBACK_WIDGET,
+  SHARED_SEARCH_RESULT_WIDGETS,
+} from './common-widgets.config';
 
-export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
-  ...BASE_WIDGETS_SETTINGS,
-  mappings: [
-    ...BASE_WIDGETS_SETTINGS.mappings,
+export const LIST_PRESENTATION_CONFIG: NodePresentationConfig = {
+  widgets: [
+    ...COMMON_WIDGETS,
+    ...SHARED_SEARCH_RESULT_WIDGETS,
     {
       id: 'image-thumb-left',
       properties: ['associatedMedia'],
-      component: 'image-gallery-widget',
-      config: {
+      componentId: 'image-gallery-widget',
+      options: {
         showPropertyLabel: false,
         position: 'left',
         maxThumbnails: 1,
@@ -20,15 +24,17 @@ export const LIST_VIEW_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'dataset-without-label',
       properties: ['isPartOf'],
-      component: 'dataset-widget',
-      config: {
+      componentId: 'dataset-widget',
+      options: {
         showPropertyLabel: false,
       },
     },
   ],
-  widgetOrder: [
+  display: [
     {
       widgetIds: ['image-thumb-left', 'name', 'description-without-label'],
     },
   ],
+  fallbackWidget: FALLBACK_WIDGET,
+  showArrowIndicator: true,
 };

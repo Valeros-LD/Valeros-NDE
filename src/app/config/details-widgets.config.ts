@@ -1,14 +1,14 @@
-import { WidgetsSettings } from '../widgets/core/types/widget-config';
-import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
+import { NodePresentationConfig } from '../widgets/core/types/node-presentation-config';
+import { COMMON_WIDGETS, FALLBACK_WIDGET } from './common-widgets.config';
 
-export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
-  mappings: [
-    ...BASE_WIDGETS_SETTINGS.mappings,
+export const DETAILS_PRESENTATION_CONFIG: NodePresentationConfig = {
+  widgets: [
+    ...COMMON_WIDGETS,
     {
       id: 'description-header',
       properties: ['description'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         showPropertyLabel: false,
         largeFont: true,
       },
@@ -16,8 +16,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-mock-data',
       properties: ['isMockData'],
-      component: 'text-widget',
-      config: {
+      componentId: 'text-widget',
+      options: {
         propertyLabel: 'Testdata',
         icon: 'feather-alert-triangle',
       },
@@ -25,8 +25,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'license',
       properties: ['license'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Licentie',
         icon: 'feather-file-text',
       },
@@ -34,8 +34,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'publisher',
       properties: ['publisher'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Uitgever',
         icon: 'feather-users',
       },
@@ -43,8 +43,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'has-occupation',
       properties: ['hasOccupation'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Beroep',
         icon: 'feather-briefcase',
       },
@@ -52,8 +52,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'genre',
       properties: ['genre'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Genre',
         icon: 'feather-tag',
       },
@@ -61,8 +61,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'about',
       properties: ['about'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Over',
         icon: 'feather-info',
       },
@@ -70,8 +70,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'content-location',
       properties: ['contentLocation', 'location'],
-      component: 'map-widget',
-      config: {
+      componentId: 'map-widget',
+      options: {
         propertyLabel: 'Locatie',
         icon: 'feather-map-pin',
         showOriginalLink: true,
@@ -80,8 +80,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'birth-place',
       properties: ['birthPlace'],
-      component: 'map-widget',
-      config: {
+      componentId: 'map-widget',
+      options: {
         propertyLabel: 'Geboorteplaats',
         icon: 'feather-map-pin',
         showOriginalLink: true,
@@ -90,8 +90,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'death-place',
       properties: ['deathPlace'],
-      component: 'map-widget',
-      config: {
+      componentId: 'map-widget',
+      options: {
         propertyLabel: 'Plaats van overlijden',
         icon: 'feather-map-pin',
         showOriginalLink: true,
@@ -100,8 +100,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'media',
       properties: ['associatedMedia'],
-      component: 'media-widget',
-      config: {
+      componentId: 'media-widget',
+      options: {
         showPropertyLabel: false,
         position: 'left',
       },
@@ -109,8 +109,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'material',
       properties: ['material'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Materiaal',
         icon: 'feather-package',
       },
@@ -118,8 +118,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'creator',
       properties: ['creator'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Vervaardiger',
         icon: 'feather-user',
       },
@@ -127,8 +127,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'date-created',
       properties: ['dateCreated'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Vervaardigingsdatum',
         icon: 'feather-calendar',
       },
@@ -136,8 +136,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'birth-date',
       properties: ['birthDate'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Geboortedatum',
         icon: 'feather-calendar',
       },
@@ -145,8 +145,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'death-date',
       properties: ['deathDate'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Overlijdensdatum',
         icon: 'feather-calendar',
       },
@@ -154,14 +154,14 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'geo',
       properties: ['geo'],
-      component: 'map-widget',
-      config: {},
+      componentId: 'map-widget',
+      options: {},
     },
     {
       id: 'address',
       properties: ['address'],
-      component: 'address-widget',
-      config: {
+      componentId: 'address-widget',
+      options: {
         propertyLabel: 'Adres',
         icon: 'feather-home',
       },
@@ -169,8 +169,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-part-of-license',
       properties: ['isPartOf'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Licentie',
         propertyPath: 'license',
         icon: 'feather-file-text',
@@ -179,8 +179,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-part-of-publisher',
       properties: ['isPartOf'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Uitgever',
         propertyPath: 'publisher',
         icon: 'feather-users',
@@ -189,8 +189,8 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'is-based-on',
       properties: ['isBasedOn'],
-      component: 'link-widget',
-      config: {
+      componentId: 'link-widget',
+      options: {
         propertyLabel: 'Gebaseerd op',
         icon: 'feather-external-link',
       },
@@ -198,19 +198,14 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
     {
       id: 'referring-nodes',
       properties: ['id'],
-      component: 'referring-nodes-widget',
-      config: {
+      componentId: 'referring-nodes-widget',
+      options: {
         propertyLabel: 'Verwijzende objecten',
         icon: 'feather-link',
       },
     },
   ],
-  defaultWidget: {
-    component: 'json-widget',
-    properties: [],
-    config: {},
-  },
-  widgetOrder: [
+  display: [
     {
       widgetIds: ['name', 'description-header'],
     },
@@ -230,10 +225,6 @@ export const DETAILS_WIDGETS_SETTINGS: WidgetsSettings = {
       widgetIds: ['referring-nodes'],
     },
   ],
-  hiddenProperties: [],
-  hiddenWidgetsById: [
-    'image-thumb',
-    'description',
-    'description-without-label',
-  ],
+  fallbackWidget: FALLBACK_WIDGET,
+  showArrowIndicator: true,
 };

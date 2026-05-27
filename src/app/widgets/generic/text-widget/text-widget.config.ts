@@ -1,6 +1,6 @@
-import { BaseWidgetConfig } from '../../core/types/widget-config';
+import { BaseWidgetOptions } from '../../core/types/node-presentation-config';
 
-export interface TextWidgetConfig extends BaseWidgetConfig {
+export interface TextWidgetConfig extends BaseWidgetOptions {
   asHeader?: boolean;
   largeFont?: boolean;
   maxLength?: number;

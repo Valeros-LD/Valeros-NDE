@@ -1,32 +1,31 @@
 import { IconKey } from '../../../config/icon.registry';
 import { WidgetComponentKey } from '../../../config/widget-component.registry';
 
-export interface WidgetsSettings {
-  mappings: WidgetMapping[];
-  defaultWidget: WidgetMapping;
-  widgetOrder?: WidgetOrderGroup[];
-  hiddenProperties?: string[];
-  hiddenWidgetsById?: string[];
+export interface NodePresentationConfig {
+  widgets: PropertyWidget[];
+  display: DisplayGroup[];
+  fallbackWidget: PropertyWidget;
   showArrowIndicator?: boolean;
 }
 
-export interface WidgetOrderGroup {
+export interface DisplayGroup {
   label?: string;
   widgetIds: string[];
+  collapsible?: boolean;
 }
 
-export interface WidgetMapping {
-  id?: string;
-  component: WidgetComponentKey;
+export interface PropertyWidget {
+  id: string;
   properties: string[];
-  config?: WidgetConfig;
+  componentId: WidgetComponentKey;
+  options?: WidgetOptions;
 }
 
-export type WidgetConfig = BaseWidgetConfig & Record<string, unknown>;
+export type WidgetOptions = BaseWidgetOptions & Record<string, unknown>;
 
 export type WidgetPosition = 'top' | 'left' | 'main' | 'right' | 'bottom';
 
-export interface BaseWidgetConfig {
+export interface BaseWidgetOptions {
   showPropertyLabel?: boolean;
   propertyLabel?: string;
   propertyPath?: string;

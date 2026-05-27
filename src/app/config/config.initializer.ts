@@ -1,12 +1,11 @@
 import { inject } from '@angular/core';
-import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
 import { ConfigService } from './config-page/config.service';
-import { DETAILS_WIDGETS_SETTINGS } from './details-widgets.config';
+import { DETAILS_PRESENTATION_CONFIG } from './details-widgets.config';
 import { FACETS_CONFIG } from './facets.config';
-import { GRID_VIEW_WIDGETS_SETTINGS } from './grid-widgets.config';
+import { GRID_PRESENTATION_CONFIG } from './grid-widgets.config';
 import { IMAGE_PATHS_CONFIG } from './image-paths.config';
-import { LIST_VIEW_WIDGETS_SETTINGS } from './list-widgets.config';
-import { MAP_VIEW_WIDGETS_SETTINGS } from './map-widgets.config';
+import { LIST_PRESENTATION_CONFIG } from './list-widgets.config';
+import { MAP_PRESENTATION_CONFIG } from './map-widgets.config';
 import { SEARCH_VIEWS_CONFIG } from './views.config';
 
 export function initializeAppConfig() {
@@ -14,14 +13,13 @@ export function initializeAppConfig() {
 
   configService.initialize({
     facets: FACETS_CONFIG,
-    // TODO: Refactor/rename this to be more "node presentation" focused, separate widgets from generic node presentation properties (eg showArrowIndicator)
-    widgets: {
-      default: BASE_WIDGETS_SETTINGS,
-      details: DETAILS_WIDGETS_SETTINGS,
-      search: {
-        list: LIST_VIEW_WIDGETS_SETTINGS,
-        grid: GRID_VIEW_WIDGETS_SETTINGS,
-        map: MAP_VIEW_WIDGETS_SETTINGS,
+    presentation: {
+      default: LIST_PRESENTATION_CONFIG,
+      details: DETAILS_PRESENTATION_CONFIG,
+      searchResults: {
+        list: LIST_PRESENTATION_CONFIG,
+        grid: GRID_PRESENTATION_CONFIG,
+        map: MAP_PRESENTATION_CONFIG,
       },
     },
     views: SEARCH_VIEWS_CONFIG,

@@ -3,7 +3,7 @@ import { Component, computed, inject, input, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { addUriPrefix } from '../routing/details-page-uri-prefix';
 import { DynamicWidgetComponent } from '../widgets/core/dynamic-widget/dynamic-widget.component';
-import { WidgetsSettings } from '../widgets/core/types/widget-config';
+import { NodePresentationConfig } from '../widgets/core/types/node-presentation-config';
 import { WidgetsByPosition } from '../widgets/core/types/widgets-by-position';
 import { WidgetService } from '../widgets/widget.service';
 import { ArrowIndicatorComponent } from './arrow-indicator/arrow-indicator.component';
@@ -26,24 +26,24 @@ import { NodeModel } from './types/node.model';
 export class NodeComponent {
   data = input.required<NodeModel>();
   clickable = input<boolean>(true);
-  widgetsSettings = input<WidgetsSettings>();
+  presentationConfig = input<NodePresentationConfig>();
 
   private widgetService = inject(WidgetService);
 
-  private resolvedWidgetsSettings = computed(
-    () => this.widgetsSettings() ?? this.widgetService.getDefaultSettings(),
+  private resolvedPresentationConfig = computed(
+    () => this.presentationConfig() ?? this.widgetService.getDefaultSettings(),
   );
 
   widgetsByPosition: Signal<WidgetsByPosition> = computed(() => {
     const properties = Object.keys(this.data());
     return this.widgetService.getWidgetsByPosition(
       properties,
-      this.resolvedWidgetsSettings(),
+      this.resolvedPresentationConfig(),
     );
   });
 
   protected showArrowIndicator = computed(
-    () => this.resolvedWidgetsSettings().showArrowIndicator ?? false,
+    () => this.resolvedPresentationConfig().showArrowIndicator ?? false,
   );
 
   detailsRoute = computed(() => {

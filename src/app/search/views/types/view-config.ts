@@ -1,6 +1,6 @@
 import { IconKey } from '../../../config/icon.registry';
 import { ViewComponentKey } from '../../../config/view-component.registry';
-import { WidgetsSettings } from '../../../widgets/core/types/widget-config';
+import { NodePresentationConfig } from '../../../widgets/core/types/node-presentation-config';
 import { ViewType } from './view-type';
 
 export interface BaseViewConfig {
@@ -19,7 +19,7 @@ export interface ViewMapping {
   config: ViewConfig;
   icon: IconKey;
   label: string;
-  widgetsSettings: WidgetsSettings;
+  presentationConfig: NodePresentationConfig;
 }
 
 export interface ViewsSettings {

@@ -1,18 +1,20 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
 import { ViewsSettings } from '../../search/views/types/view-config';
-import { WidgetsSettings } from '../../widgets/core/types/widget-config';
+import { ViewType } from '../../search/views/types/view-type';
+import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { FacetConfig } from '../facets.config';
+
+export type SearchResultsPresentationConfig = Record<
+  ViewType,
+  NodePresentationConfig
+>;
 
 export interface AppConfig {
   facets: FacetConfig[];
-  widgets: {
-    default: WidgetsSettings;
-    details: WidgetsSettings;
-    search: {
-      list: WidgetsSettings;
-      grid: WidgetsSettings;
-      map: WidgetsSettings;
-    };
+  presentation: {
+    default: NodePresentationConfig;
+    details: NodePresentationConfig;
+    searchResults: SearchResultsPresentationConfig;
   };
   views: ViewsSettings;
   imagePaths: string[];
@@ -24,7 +26,7 @@ export class ConfigService {
   private config = signal<AppConfig | null>(null);
 
   readonly facets = computed(() => this.config()?.facets ?? []);
-  readonly widgets = computed(() => this.config()?.widgets);
+  readonly presentation = computed(() => this.config()?.presentation);
   readonly views = computed(() => this.config()?.views);
   readonly defaultView = computed(
     () => this.config()?.views?.defaultView ?? 'list',
@@ -76,12 +78,12 @@ export class ConfigService {
     }
   }
 
-  updateWidgets(widgets: Partial<AppConfig['widgets']>): void {
+  updatePresentation(presentation: Partial<AppConfig['presentation']>): void {
     const current = this.config();
     if (current) {
       this.config.set({
         ...current,
-        widgets: { ...current.widgets, ...widgets },
+        presentation: { ...current.presentation, ...presentation },
       });
     }
   }

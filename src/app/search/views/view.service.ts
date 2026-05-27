@@ -1,7 +1,10 @@
 import { Injectable, Type, inject } from '@angular/core';
-import { ConfigService } from '../../config/config-page/config.service';
+import {
+  ConfigService,
+  SearchResultsPresentationConfig,
+} from '../../config/config-page/config.service';
 import { getViewComponent } from '../../config/view-component.registry';
-import { WidgetsSettings } from '../../widgets/core/types/widget-config';
+import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { BaseResultsView } from './base-results-view';
 import { ViewConfig, ViewMapping } from './types/view-config';
 import { ViewType } from './types/view-type';
@@ -33,9 +36,12 @@ export class ViewService {
     return this.configService.defaultView();
   }
 
-  getViewWidgetsSettings(viewType: ViewType): WidgetsSettings | undefined {
-    const widgets = this.configService.widgets();
-    const searchWidgets = widgets?.search as Record<string, unknown>;
-    return searchWidgets?.[viewType] as WidgetsSettings | undefined;
+  getViewPresentationConfig(
+    viewType: ViewType,
+  ): NodePresentationConfig | undefined {
+    const presentation = this.configService.presentation();
+    const searchResults =
+      presentation?.searchResults as SearchResultsPresentationConfig;
+    return searchResults?.[viewType];
   }
 }

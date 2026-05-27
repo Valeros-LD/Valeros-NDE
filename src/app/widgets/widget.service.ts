@@ -2,10 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../config/config-page/config.service';
 import {
-  WidgetMapping,
+  NodePresentationConfig,
+  PropertyWidget,
   WidgetPosition,
-  WidgetsSettings,
-} from './core/types/widget-config';
+} from './core/types/node-presentation-config';
 import {
   WidgetGroup as WidgetGroupByPosition,
   WidgetsByPosition,
@@ -16,50 +16,35 @@ export class WidgetService {
   private router = inject(Router);
   private configService = inject(ConfigService);
 
-  getDefaultSettings(): WidgetsSettings {
+  getDefaultSettings(): NodePresentationConfig {
     const url = this.router.url;
-    const widgets = this.configService.widgets();
-    if (!widgets) {
+    const presentation = this.configService.presentation();
+    if (!presentation) {
       throw new Error('Config not initialized');
     }
-    return url.startsWith('/details') ? widgets.details : widgets.default;
+    return url.startsWith('/details')
+      ? presentation.details
+      : presentation.default;
   }
 
   getWidgetsByPosition(
     properties: string[],
-    widgetsSettings: WidgetsSettings,
+    presentationConfig: NodePresentationConfig,
   ): WidgetsByPosition {
-    const { hiddenProperties, widgetOrder, hiddenWidgetsById } =
-      widgetsSettings;
-
-    const filterHiddenProperties = (properties: string[]): string[] => {
-      if (hiddenProperties) {
-        return properties.filter((prop) => !hiddenProperties.includes(prop));
-      }
-      return properties;
-    };
-
-    const filterHiddenWidgets = (
-      widgets: Array<{ property: string; widget: WidgetMapping }>,
-    ): Array<{ property: string; widget: WidgetMapping }> => {
-      if (hiddenWidgetsById && hiddenWidgetsById.length > 0) {
-        return widgets.filter(
-          (item) => !hiddenWidgetsById.includes(item.widget.id || ''),
-        );
-      }
-      return widgets;
-    };
+    const { display } = presentationConfig;
 
     const collectWidgetsForProperties = (
       properties: string[],
-    ): Array<{ property: string; widget: WidgetMapping }> => {
-      const widgets: Array<{ property: string; widget: WidgetMapping }> = [];
+    ): Array<{ property: string; widget: PropertyWidget }> => {
+      const widgets: Array<{ property: string; widget: PropertyWidget }> = [];
 
-      const getWidgetsForProperty = (property: string): WidgetMapping[] => {
-        const widgets = widgetsSettings.mappings.filter((m) =>
-          m.properties.includes(property),
+      const getWidgetsForProperty = (property: string): PropertyWidget[] => {
+        const widgets = presentationConfig.widgets.filter((w) =>
+          w.properties.includes(property),
         );
-        return widgets.length > 0 ? widgets : [widgetsSettings.defaultWidget];
+        return widgets.length > 0
+          ? widgets
+          : [presentationConfig.fallbackWidget];
       };
 
       properties.forEach((property) => {
@@ -71,9 +56,9 @@ export class WidgetService {
     };
 
     const orderAndGroupWidgets = (
-      widgets: Array<{ property: string; widget: WidgetMapping }>,
+      widgets: Array<{ property: string; widget: PropertyWidget }>,
     ): WidgetGroupByPosition[] => {
-      if (!widgetOrder || widgetOrder.length === 0) {
+      if (!display || display.length === 0) {
         return [
           {
             items: widgets.sort((a, b) => a.property.localeCompare(b.property)),
@@ -83,7 +68,7 @@ export class WidgetService {
 
       const widgetMap = new Map<
         string,
-        Array<{ property: string; widget: WidgetMapping }>
+        Array<{ property: string; widget: PropertyWidget }>
       >();
 
       // Group widgets by ID
@@ -97,15 +82,15 @@ export class WidgetService {
 
       // Collect all widget IDs from all groups for checking
       const allOrderedIds = new Set<string>();
-      widgetOrder.forEach((group) => {
+      display.forEach((group) => {
         group.widgetIds.forEach((id) => allOrderedIds.add(id));
       });
 
       const groupedWidgets: WidgetGroupByPosition[] = [];
 
-      // Process widgetOrder groups
-      widgetOrder.forEach((group) => {
-        const groupItems: Array<{ property: string; widget: WidgetMapping }> =
+      // Process display groups
+      display.forEach((group) => {
+        const groupItems: Array<{ property: string; widget: PropertyWidget }> =
           [];
 
         group.widgetIds.forEach((widgetId) => {
@@ -146,7 +131,7 @@ export class WidgetService {
       groups.forEach((group) => {
         const positionGroups: Record<
           WidgetPosition,
-          Array<{ property: string; widget: WidgetMapping }>
+          Array<{ property: string; widget: PropertyWidget }>
         > = {
           top: [],
           left: [],
@@ -156,7 +141,7 @@ export class WidgetService {
         };
 
         group.items.forEach(({ property, widget }) => {
-          const position = widget.config?.position || 'main';
+          const position = widget.options?.position || 'main';
           positionGroups[position].push({ property, widget });
         });
 
@@ -174,13 +159,12 @@ export class WidgetService {
       return byPosition;
     };
 
-    const visibleProperties: string[] = filterHiddenProperties(properties);
-    const collectedWidgets: Array<{ property: string; widget: WidgetMapping }> =
-      collectWidgetsForProperties(visibleProperties);
-    const filteredWidgets: Array<{ property: string; widget: WidgetMapping }> =
-      filterHiddenWidgets(collectedWidgets);
+    const collectedWidgets: Array<{
+      property: string;
+      widget: PropertyWidget;
+    }> = collectWidgetsForProperties(properties);
     const groupedWidgets: WidgetGroupByPosition[] =
-      orderAndGroupWidgets(filteredWidgets);
+      orderAndGroupWidgets(collectedWidgets);
     return groupWidgetsByPosition(groupedWidgets);
   }
 }

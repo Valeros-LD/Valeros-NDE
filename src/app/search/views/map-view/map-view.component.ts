@@ -109,7 +109,7 @@ export class MapViewComponent extends BaseResultsView implements AfterViewInit {
     });
 
     componentRef.setInput('data', node);
-    componentRef.setInput('widgetsSettings', this.widgetsSettings());
+    componentRef.setInput('presentationConfig', this.presentationConfig());
 
     this.appRef.attachView(componentRef.hostView);
     container.appendChild(componentRef.location.nativeElement);

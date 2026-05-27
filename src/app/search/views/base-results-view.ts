@@ -1,6 +1,6 @@
 import { Directive, input } from '@angular/core';
 import { NodeModel } from '../../node/types/node.model';
-import { WidgetsSettings } from '../../widgets/core/types/widget-config';
+import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { BaseViewConfig } from './types/view-config';
 
 @Directive()
@@ -10,5 +10,5 @@ export abstract class BaseResultsView {
   currentPage = input.required<number>();
   pageSize = input.required<number>();
   config = input<BaseViewConfig>({});
-  widgetsSettings = input.required<WidgetsSettings>();
+  presentationConfig = input.required<NodePresentationConfig>();
 }

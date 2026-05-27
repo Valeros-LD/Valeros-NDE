@@ -1,6 +1,6 @@
 <div [class.hidden]="shouldHideWidget()">
   <ng-template #widgetContent>
-    @if (widget().config?.showOriginalLink) {
+    @if (widget().options?.showOriginalLink) {
       <div class="mb-2">
         <app-link-widget
           [node]="this.data()"
@@ -12,10 +12,10 @@
     <ng-container #widgetContainer></ng-container>
   </ng-template>
 
-  @if (widget().config?.showPropertyLabel !== false) {
+  @if (widget().options?.showPropertyLabel !== false) {
     <app-property-label-wrapper
       [property]="property()"
-      [config]="widget().config || {}"
+      [options]="widget().options || {}"
     >
       <ng-container *ngTemplateOutlet="widgetContent" />
     </app-property-label-wrapper>
