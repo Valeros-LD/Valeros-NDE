@@ -1,7 +1,7 @@
-import { ViewsSettings } from '../features/search/views/types/view-config';
-import { GRID_VIEW_WIDGETS_SETTINGS } from './widgets/grid-widgets.config';
-import { LIST_VIEW_WIDGETS_SETTINGS } from './widgets/list-widgets.config';
-import { MAP_VIEW_WIDGETS_SETTINGS } from './widgets/map-widgets.config';
+import { ViewsSettings } from '../search/views/types/view-config';
+import { GRID_VIEW_WIDGETS_SETTINGS } from './grid-widgets.config';
+import { LIST_VIEW_WIDGETS_SETTINGS } from './list-widgets.config';
+import { MAP_VIEW_WIDGETS_SETTINGS } from './map-widgets.config';
 
 export const SEARCH_VIEWS_CONFIG: ViewsSettings = {
   mappings: [

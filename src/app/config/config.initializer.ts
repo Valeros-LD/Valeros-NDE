@@ -1,13 +1,13 @@
 import { inject } from '@angular/core';
-import { ConfigService } from './config.service';
-import { BASE_WIDGETS_SETTINGS } from './widgets/base-widgets.config';
-import { DETAILS_WIDGETS_SETTINGS } from './widgets/details-widgets.config';
-import { LIST_VIEW_WIDGETS_SETTINGS } from './widgets/list-widgets.config';
-import { GRID_VIEW_WIDGETS_SETTINGS } from './widgets/grid-widgets.config';
-import { MAP_VIEW_WIDGETS_SETTINGS } from './widgets/map-widgets.config';
+import { BASE_WIDGETS_SETTINGS } from './base-widgets.config';
+import { DETAILS_WIDGETS_SETTINGS } from './details-widgets.config';
+import { LIST_VIEW_WIDGETS_SETTINGS } from './list-widgets.config';
+import { GRID_VIEW_WIDGETS_SETTINGS } from './grid-widgets.config';
+import { MAP_VIEW_WIDGETS_SETTINGS } from './map-widgets.config';
 import { FACETS_CONFIG } from './facets.config';
 import { SEARCH_VIEWS_CONFIG } from './views.config';
 import { IMAGE_PATHS_CONFIG } from './image-paths.config';
+import { ConfigService } from './config-page/config.service';
 
 export function initializeAppConfig() {
   const configService = inject(ConfigService);

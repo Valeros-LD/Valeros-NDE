@@ -1,4 +1,4 @@
-import { IconKey } from '../shared/icons/icon.registry';
+import { IconKey } from './icon.registry';
 
 export interface FacetConfig {
   name: string;
