@@ -7,76 +7,6 @@ import { SearchResponse } from '../search/types/search-response';
   providedIn: 'root',
 })
 export class MockDataService {
-  // TODO: Use proper endpoint when available (GET /v1/places/{id})
-  placeDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/places/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'Place',
-      name: 'Physisch Laboratorium',
-      address: {
-        type: 'PostalAddress',
-        streetAddress: 'Bijlhouwerstraat 6',
-        postalCode: '3511 ZC',
-        addressLocality: 'Utrecht',
-        addressRegion: 'Utrecht',
-        addressCountry: 'NL',
-      },
-      geo: {
-        type: 'GeoCoordinates',
-        latitude: 52.0815523,
-        longitude: 5.1203423,
-      },
-    });
-  }
-
-  // TODO: Use proper endpoint when available (GET /v1/organizations/{id})
-  organizationDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/organizations/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'Organization',
-      name: 'Example Museum',
-      location: {
-        id: 'https://example.org/v1/places/{id}',
-        type: 'Place',
-        name: 'Office location',
-      },
-    });
-  }
-
-  // TODO: Use proper endpoint when available (GET /v1/persons/{id})
-  personDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/persons/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'Person',
-      name: 'John Doe',
-      birthPlace: {
-        id: 'https://example.org/v1/places/{id}',
-        type: 'Place',
-        name: 'Utrecht',
-      },
-      birthDate: '1871-01-01',
-      deathPlace: {
-        id: 'https://example.org/v1/places/{id}',
-        type: 'Place',
-        name: 'Amsterdam',
-      },
-      deathDate: '1941-12-31',
-      hasOccupation: [
-        {
-          id: 'https://example.org/v1/occupations/{id}',
-          type: 'Occupation',
-          name: 'Schilder',
-        },
-      ],
-    });
-  }
-
   // TODO: Use proper endpoint when available (GET /v1/occupations/{id})
   occupationDetails(id: string): Observable<NodeModel> {
     return of({
@@ -109,54 +39,6 @@ export class MockDataService {
         id: 'https://collections.uu.nl/IIIF/33832',
         encodingFormat:
           "application/ld+json;profile='http://iiif.io/api/image/3/context.json'",
-      },
-    });
-  }
-
-  // TODO: Use proper endpoint when available (GET /v1/licenses/{id})
-  licenseDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/licenses/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'CreativeWork',
-      name: 'Creative Commons: publieke domein',
-      isBasedOn: {
-        id: 'https://creativecommons.org/public-domain/cc0/',
-        type: 'CreativeWork',
-      },
-    });
-  }
-
-  // TODO: Use proper endpoint when available (GET /v1/terms/{id})
-  termDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/terms/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'DefinedTerm',
-      name: 'fotoafdruk zwart-wit',
-      image: 'https://picsum.photos/seed/fotoafdruk-zwart-wit/200/200',
-    });
-  }
-
-  // TODO: Use proper endpoint when available (GET /v1/datasets/{id})
-  datasetDetails(id: string): Observable<NodeModel> {
-    return of({
-      id: 'https://example.org/v1/datasets/{id}',
-      isMockData:
-        'Let op: deze data komt niet voor in de oorspronkelijke dataset',
-      type: 'Dataset',
-      name: 'Example Dataset',
-      publisher: {
-        id: 'https://example.org/v1/organizations/{id}',
-        type: 'Organization',
-        name: 'Example Museum',
-      },
-      license: {
-        id: 'https://example.org/v1/licenses/{id}',
-        type: 'CreativeWork',
-        name: 'Creative Commons: publieke domein',
       },
     });
   }
