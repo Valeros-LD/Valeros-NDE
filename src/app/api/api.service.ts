@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, throwError } from 'rxjs';
 import { NodeModel } from '../node/types/node.model';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
@@ -68,7 +68,9 @@ export class ApiService {
     } else if (id.includes('v1/media-objects/')) {
       observable = this.mockDataService.mediaObjectDetails(id);
     } else {
-      throw new Error(`Unsupported resource type for ID: ${id}`);
+      return throwError(
+        () => new Error(`Unsupported resource type for ID: ${id}`),
+      );
     }
 
     return observable.pipe(
