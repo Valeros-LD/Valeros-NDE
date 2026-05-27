@@ -161,51 +161,44 @@ export class MockDataService {
     });
   }
 
-  private enrichObjectsByType(
-    value: any | any[] | undefined,
-    typeName: string,
-    enrichFn: (obj: any) => any,
-  ): any | any[] | undefined {
-    if (value === undefined || value === null) return undefined;
+  private generateRandomPlace(): any {
+    const cities = [
+      { name: 'Utrecht (mock data)', lat: 52.09, lon: 5.12 },
+      { name: 'Amsterdam (mock data)', lat: 52.37, lon: 4.89 },
+      { name: 'Rotterdam (mock data)', lat: 51.92, lon: 4.48 },
+      { name: 'Den Haag (mock data)', lat: 52.08, lon: 4.31 },
+      { name: 'Groningen (mock data)', lat: 53.22, lon: 6.56 },
+    ];
 
-    const processObject = (obj: any) => {
-      if (obj?.type === typeName) {
-        return enrichFn(obj);
-      }
-      return obj;
-    };
+    const city = cities[Math.floor(Math.random() * cities.length)];
+    const latVariation = (Math.random() - 0.5) * 0.2;
+    const lonVariation = (Math.random() - 0.5) * 0.2;
 
-    if (Array.isArray(value)) {
-      return value.map(processObject);
-    }
-
-    return processObject(value);
-  }
-
-  addRandomGeoToPlaceObjects(
-    value: any | any[] | undefined,
-  ): any | any[] | undefined {
-    return this.enrichObjectsByType(value, 'Place', (obj) => ({
-      ...obj,
+    return {
+      id: '404',
+      type: 'Place',
+      name: city.name,
       geo: {
         type: 'GeoCoordinates',
-        latitude: 50 + Math.random() * 3.5,
-        longitude: 3 + Math.random() * 4,
+        latitude: city.lat + latVariation,
+        longitude: city.lon + lonVariation,
       },
-    }));
+    };
   }
 
-  enrichNodeWithMockData(node: NodeModel): NodeModel {
+  addRandomPlaceObject(node: NodeModel): NodeModel {
     const enrichedNode: NodeModel = { ...node };
 
-    for (const [property, value] of Object.entries(node)) {
-      const processed = this.addRandomGeoToPlaceObjects(value);
-      if (processed !== undefined) {
-        enrichedNode[property] = processed;
-      }
+    const locationProperty = 'location';
+    if (!(locationProperty in enrichedNode)) {
+      enrichedNode[locationProperty] = this.generateRandomPlace();
     }
 
     return enrichedNode;
+  }
+
+  enrichNodeWithMockData(node: NodeModel): NodeModel {
+    return this.addRandomPlaceObject(node);
   }
 
   enrichSearchResponseWithMockData(response: SearchResponse): SearchResponse {
