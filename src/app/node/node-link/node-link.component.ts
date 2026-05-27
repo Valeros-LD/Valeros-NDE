@@ -6,7 +6,6 @@ import { featherExternalLink } from '@ng-icons/feather-icons';
 import { normalizeToFirst } from '../../data-utils/value-normalization.util';
 import { addUriPrefix } from '../../routing/details-page-uri-prefix';
 import { ImageWithSkeletonComponent } from '../../ui/image/image-with-skeleton/image-with-skeleton.component';
-import { TooltipBadge } from '../../ui/tooltip-badge/tooltip-badge';
 import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeModel } from '../types/node.model';
 import { NodeLinkVariant } from './node-link-variant';
@@ -14,13 +13,7 @@ import { NodeLinkService } from './node-link.service';
 
 @Component({
   selector: 'app-node-link',
-  imports: [
-    RouterModule,
-    NgTemplateOutlet,
-    NgIcon,
-    TooltipBadge,
-    ImageWithSkeletonComponent,
-  ],
+  imports: [RouterModule, NgTemplateOutlet, NgIcon, ImageWithSkeletonComponent],
   templateUrl: './node-link.component.html',
   styleUrl: './node-link.component.scss',
   viewProviders: [provideIcons({ featherExternalLink })],

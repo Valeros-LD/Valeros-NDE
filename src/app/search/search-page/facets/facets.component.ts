@@ -4,13 +4,12 @@ import { FilterStore } from '../../state/filter.store';
 import { SearchStore } from '../../state/search.store';
 
 import { NgIcon } from '@ng-icons/core';
-import { TooltipBadge } from '../../../ui/tooltip-badge/tooltip-badge';
 import { FacetsService } from './facets.service';
 
 @Component({
   selector: 'app-facets',
 
-  imports: [CommonModule, TooltipBadge, NgIcon],
+  imports: [CommonModule, NgIcon],
   templateUrl: './facets.component.html',
   styleUrl: './facets.component.scss',
 })
