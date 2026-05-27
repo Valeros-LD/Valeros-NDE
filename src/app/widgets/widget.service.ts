@@ -11,12 +11,14 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class WidgetService {
+  // TODO: Refactor for readability
   getWidgetsByPosition(
     properties: string[],
     presentationConfig: NodePresentationConfig,
   ): WidgetsByPosition {
     const { display } = presentationConfig;
 
+    // 1. Match properties to widget(s)
     const collectWidgetsForProperties = (
       properties: string[],
     ): Array<{ property: string; widget: PropertyWidget }> => {
@@ -39,6 +41,7 @@ export class WidgetService {
       return widgets;
     };
 
+    // 2. Order and group widgets based on the display configuration
     const orderAndGroupWidgets = (
       widgets: Array<{ property: string; widget: PropertyWidget }>,
     ): WidgetGroupByPosition[] => {
@@ -64,7 +67,7 @@ export class WidgetService {
         widgetMap.get(id)!.push(item);
       });
 
-      // Collect all widget IDs from all groups for checking
+      // Track which widget IDs are explicitly ordered in the config
       const allOrderedIds = new Set<string>();
       display.forEach((group) => {
         group.widgetIds.forEach((id) => allOrderedIds.add(id));
@@ -72,7 +75,7 @@ export class WidgetService {
 
       const groupedWidgets: WidgetGroupByPosition[] = [];
 
-      // Process display groups
+      // Build groups in the order specified by display config
       display.forEach((group) => {
         const groupItems: Array<{ property: string; widget: PropertyWidget }> =
           [];
@@ -101,6 +104,7 @@ export class WidgetService {
       return groupedWidgets;
     };
 
+    // 3. Split groups into position-based arrays
     const groupWidgetsByPosition = (
       groups: WidgetGroupByPosition[],
     ): WidgetsByPosition => {
