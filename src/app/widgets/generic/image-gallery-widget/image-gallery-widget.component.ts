@@ -20,7 +20,7 @@ import { Dimensions } from '../../../ui/image/types/dimensions';
 import { ImageModel } from '../../../ui/image/types/image.model';
 import { BaseWidget } from '../../base-widget';
 import { IiifImageService } from '../iiif-widget/iiif-image.service';
-import { ImageGalleryWidgetConfig } from './image-gallery-widget.config';
+import { ImageGalleryWidgetOptions } from './image-gallery-widget.config';
 
 @Component({
   selector: 'app-image-gallery-widget',
@@ -42,8 +42,8 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
   protected readonly Array = Array;
 
   private get maxThumbnails(): number | undefined {
-    const config = this.config() as ImageGalleryWidgetConfig;
-    return config.maxThumbnails;
+    const options = this.options() as ImageGalleryWidgetOptions;
+    return options.maxThumbnails;
   }
 
   readonly displayedThumbnails = computed(() => {
@@ -59,8 +59,8 @@ export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
   });
 
   get isLightboxEnabled(): boolean {
-    const config = this.config() as ImageGalleryWidgetConfig;
-    return config.enableLightbox ?? true;
+    const options = this.options() as ImageGalleryWidgetOptions;
+    return options.enableLightbox ?? true;
   }
 
   readonly isLoadingImageDimensions = computed(() => {

@@ -3,7 +3,7 @@ import { Component, computed } from '@angular/core';
 import { HighlightedTextComponent } from '../../../node/highlighted-text/highlighted-text.component';
 import { TruncatedTextComponent } from '../../../node/truncated-text/truncated-text.component';
 import { BaseWidget } from '../../base-widget';
-import { TextWidgetConfig } from './text-widget.config';
+import { TextWidgetOptions } from './text-widget.config';
 
 @Component({
   selector: 'app-text-widget',
@@ -13,18 +13,18 @@ import { TextWidgetConfig } from './text-widget.config';
 })
 export class TextWidget extends BaseWidget {
   asHeader = computed(() => {
-    return (this.config() as TextWidgetConfig).asHeader === true;
+    return (this.options() as TextWidgetOptions).asHeader === true;
   });
 
   largeFont = computed(() => {
-    return (this.config() as TextWidgetConfig).largeFont === true;
+    return (this.options() as TextWidgetOptions).largeFont === true;
   });
 
   maxLength = computed(() => {
-    return (this.config() as TextWidgetConfig).maxLength;
+    return (this.options() as TextWidgetOptions).maxLength;
   });
 
   enableHighlights = computed(() => {
-    return (this.config() as TextWidgetConfig).enableHighlights === true;
+    return (this.options() as TextWidgetOptions).enableHighlights === true;
   });
 }

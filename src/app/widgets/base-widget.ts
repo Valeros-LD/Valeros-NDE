@@ -8,21 +8,21 @@ import { BaseWidgetOptions } from './core/types/node-presentation-config';
 export abstract class BaseWidget {
   node = input.required<NodeModel>();
   property = input.required<string>();
-  config = input<BaseWidgetOptions & Record<string, unknown>>({});
+  options = input<BaseWidgetOptions & Record<string, unknown>>({});
 
   showPropertyLabel = computed(() => {
-    return this.config().showPropertyLabel !== false;
+    return this.options().showPropertyLabel !== false;
   });
 
   propertyLabel = computed(() => {
-    return this.config().propertyLabel;
+    return this.options().propertyLabel;
   });
 
   values = computed<any[]>(() => {
     const propValue = this.node()[this.property()];
     const propValues = normalizeToArray(propValue);
 
-    const propertyPath = this.config().propertyPath;
+    const propertyPath = this.options().propertyPath;
     if (propertyPath) {
       return applyPropertyPath(propValues, propertyPath) as any[];
     }

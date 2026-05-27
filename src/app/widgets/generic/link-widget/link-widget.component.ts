@@ -4,7 +4,7 @@ import { NodeLinkListComponent } from '../../../node/node-link-list/node-link-li
 import { isNodeModel, NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
 import { TextWidget } from '../text-widget/text-widget.component';
-import { TextWidgetConfig } from '../text-widget/text-widget.config';
+import { TextWidgetOptions } from '../text-widget/text-widget.config';
 
 @Component({
   selector: 'app-link-widget',
@@ -25,13 +25,13 @@ export class LinkWidget extends BaseWidget {
     literals: this.literalValues(),
   }));
 
-  typedConfig = computed(() => this.config() as TextWidgetConfig);
+  typedOptions = computed(() => this.options() as TextWidgetOptions);
 
-  textConfig = computed(() => ({
+  textOptions = computed(() => ({
     showPropertyLabel: false,
-    asHeader: this.typedConfig().asHeader,
-    largeFont: this.typedConfig().largeFont,
-    maxLength: this.typedConfig().maxLength,
-    enableHighlights: this.typedConfig().enableHighlights,
+    asHeader: this.typedOptions().asHeader,
+    largeFont: this.typedOptions().largeFont,
+    maxLength: this.typedOptions().maxLength,
+    enableHighlights: this.typedOptions().enableHighlights,
   }));
 }
