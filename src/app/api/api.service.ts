@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { NodeModel } from '../node/types/node.model';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
-import { buildHttpParams } from './http-params.util';
 import { MockDataService } from './mock-data.service';
 
 @Injectable({
@@ -17,7 +16,7 @@ export class ApiService {
 
   search(query: SearchQuery): Observable<SearchResponse> {
     const { page, ...queryParams } = query;
-    const params = buildHttpParams(queryParams);
+    const params = new HttpParams({ fromObject: queryParams });
     const url = `${this.apiBaseUrl}/heritage-objects/page/${page}`;
 
     // TODO: Remove mock data enrichment when API is ready
@@ -32,7 +31,7 @@ export class ApiService {
 
   autocomplete(query: SearchQuery): Observable<SearchResponse> {
     const { page, ...queryParams } = query;
-    const params = buildHttpParams({ ...queryParams });
+    const params = new HttpParams({ fromObject: queryParams });
     const url = `${this.apiBaseUrl}/terms/page/${page}`;
 
     return this.http.get<SearchResponse>(url, { params });
