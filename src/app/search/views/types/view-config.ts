@@ -1,5 +1,5 @@
 import { IconKey } from '../../../config/icon.registry';
-import { ViewComponentKey } from '../../../config/view-component.registry';
+import { ViewComponentKey } from '../../../config/views/view-component.registry';
 import { NodePresentationConfig } from '../../../widgets/core/types/node-presentation-config';
 import { ViewOptions } from './view-options';
 import { ViewType } from './view-type';

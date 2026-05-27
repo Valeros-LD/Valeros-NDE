@@ -1,12 +1,12 @@
 import { inject } from '@angular/core';
 import { ConfigService } from './config-page/config.service';
-import { DETAILS_PRESENTATION_CONFIG } from './details-widgets.config';
 import { FACETS_CONFIG } from './facets.config';
-import { GRID_PRESENTATION_CONFIG } from './grid-widgets.config';
 import { IMAGE_PATHS_CONFIG } from './image-paths.config';
-import { LIST_PRESENTATION_CONFIG } from './list-widgets.config';
-import { MAP_PRESENTATION_CONFIG } from './map-widgets.config';
-import { SEARCH_VIEWS_CONFIG } from './views.config';
+import { SEARCH_VIEWS_CONFIG } from './views/views.config';
+import { DETAILS_PRESENTATION_CONFIG } from './widgets/details-widgets.config';
+import { GRID_PRESENTATION_CONFIG } from './widgets/grid-widgets.config';
+import { LIST_PRESENTATION_CONFIG } from './widgets/list-widgets.config';
+import { MAP_PRESENTATION_CONFIG } from './widgets/map-widgets.config';
 
 export function initializeAppConfig() {
   const configService = inject(ConfigService);

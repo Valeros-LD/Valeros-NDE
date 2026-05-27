@@ -1,4 +1,4 @@
-import { NodePresentationConfig } from '../widgets/core/types/node-presentation-config';
+import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import {
   COMMON_SEARCH_RESULT_WIDGETS,
   COMMON_WIDGETS,
