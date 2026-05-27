@@ -2,9 +2,6 @@ import { Type } from '@angular/core';
 import { BaseWidget } from '../widgets/base-widget';
 import { AddressWidget } from '../widgets/domain-specific/address-widget/address-widget.component';
 import { DatasetWidget } from '../widgets/domain-specific/dataset-widget/dataset-widget.component';
-import { MiradorIiifWidget } from '../widgets/generic/iiif-widget/mirador-iiif-widget/mirador-iiif-widget.component';
-import { TifyIiifWidget } from '../widgets/generic/iiif-widget/tify-iiif-widget/tify-iiif-widget.component';
-import { UniversalviewerIiifWidget } from '../widgets/generic/iiif-widget/universalviewer-iiif-widget/universalviewer-iiif-widget.component';
 import { ImageGalleryWidget } from '../widgets/generic/image-gallery-widget/image-gallery-widget.component';
 import { JsonWidget } from '../widgets/generic/json-widget/json-widget.component';
 import { LinkWidget } from '../widgets/generic/link-widget/link-widget.component';
@@ -20,9 +17,6 @@ export const WIDGET_COMPONENT_REGISTRY = {
   'image-gallery-widget': ImageGalleryWidget,
   'map-widget': MapWidget,
   'media-widget': MediaWidget,
-  'mirador-iiif-widget': MiradorIiifWidget,
-  'tify-iiif-widget': TifyIiifWidget,
-  'universalviewer-iiif-widget': UniversalviewerIiifWidget,
   'dataset-widget': DatasetWidget,
   'address-widget': AddressWidget,
   'referring-nodes-widget': ReferringNodesWidget,
