@@ -1,4 +1,3 @@
-import { defineConfig } from 'vitepress';
 import { withMermaid } from 'vitepress-plugin-mermaid';
 
 export default withMermaid({
@@ -28,6 +27,10 @@ export default withMermaid({
         {
           text: 'Configuration',
           items: [
+            {
+              text: 'Configuration System',
+              link: '/guide/configuration-system',
+            },
             { text: 'Widget System', link: '/guide/widget-system' },
             { text: 'Built-in Widgets', link: '/guide/built-in-widgets' },
             { text: 'View Configurations', link: '/guide/view-configurations' },
