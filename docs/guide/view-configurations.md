@@ -102,9 +102,3 @@ Add screenshot here
 :::
 
 Users can switch between views using the view switcher component in the search interface.
-
-## Next Steps
-
-- Learn to create [custom views](/guide/custom-views)
-- Explore [built-in widgets](/guide/built-in-widgets)
-- Understand the [widget system](/guide/widget-system)

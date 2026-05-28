@@ -100,9 +100,3 @@ All widgets inherit these base configuration options:
   ```
 
 Widget-specific options are documented in the [Built-in Widgets](/guide/built-in-widgets) guide.
-
-## Next Steps
-
-- Explore [built-in widgets](/guide/built-in-widgets)
-- Learn to create [custom widgets](/guide/custom-widgets)
-- Understand [view configurations](/guide/view-configurations)

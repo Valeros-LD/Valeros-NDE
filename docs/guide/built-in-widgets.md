@@ -126,9 +126,3 @@ Shows [dataset](https://docs.nde.nl/schema-profile/#CreativeWork-isPartOf) infor
 ::: warning TODO
 Add note why this is a domain-specific widget (because it's part of isPartOf and needs a Dataset type filter in the widget)
 :::
-
-## Next Steps
-
-- Learn to create [custom widgets](/guide/custom-widgets)
-- Understand [view configurations](/guide/view-configurations)
-- See the [widget system](/guide/widget-system) overview

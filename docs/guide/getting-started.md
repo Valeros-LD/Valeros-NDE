@@ -46,24 +46,3 @@ Valeros-NDE/
 │   └── ...
 └── ...
 ```
-
-## Configuration Files
-
-::: warning TODO
-Centralize config for better dev experience?
-:::
-
-Widget configurations are located in:
-
-- `src/app/features/search/config/widgets/` - Widgets for search results
-- `src/app/features/details/config/widgets.config.ts` - Widgets for detail pages
-
-View configurations are in:
-
-- `src/app/features/search/config/views.config.ts` - View layouts
-
-## Next Steps
-
-- Learn about the [widget system](/guide/widget-system)
-- Explore [built-in widgets](/guide/built-in-widgets)
-- Configure [view layouts](/guide/view-configurations)

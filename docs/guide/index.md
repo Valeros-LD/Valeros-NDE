@@ -6,6 +6,10 @@ It is designed as a standard solution for **targeted search** and **browsing and
 
 As a developer, Valeros lets you control what, how, and when data is shown to end users through **simple configuration files**.
 
+::: warning TODO
+Add link to configuration system
+:::
+
 ## Key Features
 
 ### Search & Discovery
@@ -33,10 +37,4 @@ Add a Mermaid diagram here to visualize the architecture
 Valeros follows the [NDE vision](https://zenodo.org/records/17541400) of **explicit separation between data and presentation layers**:
 
 - The **data layer** retrieves datasets registered in the [**NDE Dataset Register**](https://datasetregister.netwerkdigitaalerfgoed.nl/) and provides a standardized API.
-- Valeros is a **presentation layer** that consumes the API and allows configuration of how data is displayed.
-
-## Next Steps
-
-- [Get started](/guide/getting-started) with installation and basic usage
-- Learn about the [widget system](/guide/widget-system)
-- Explore [built-in widgets](/guide/built-in-widgets)
+- The **presentation layer** (this project, Valeros) consumes the API and allows configuration of how data is displayed.
