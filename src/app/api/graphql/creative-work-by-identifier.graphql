@@ -1,0 +1,11 @@
+query CreativeWorkByIdentifier($identifier: String!) {
+  creativeWorks(
+    where: { identifier: { in: [$identifier] } }
+    page: 1
+    perPage: 1
+  ) {
+    items {
+      ...CreativeWorkFields
+    }
+  }
+}

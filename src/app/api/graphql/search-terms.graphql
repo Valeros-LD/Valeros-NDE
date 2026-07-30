@@ -1,0 +1,12 @@
+query SearchTerms($query: String, $page: Int, $perPage: Int) {
+  terms(query: $query, page: $page, perPage: $perPage) {
+    items {
+      ...TermFields
+    }
+    pagination {
+      total
+      page
+      perPage
+    }
+  }
+}

@@ -1,0 +1,157 @@
+fragment DatasetReferenceFields on DatasetReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
+fragment PersonReferenceFields on PersonReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
+fragment PlaceReferenceFields on PlaceReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
+fragment TermReferenceFields on TermReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
+fragment CreativeWorkFields on CreativeWork {
+  id
+  type
+  name {
+    value
+    language
+  }
+  sdDatePublished
+  isPartOf {
+    ...DatasetReferenceFields
+  }
+  creator {
+    ...PersonReferenceFields
+  }
+  creatorName {
+    value
+    language
+  }
+  identifier
+  additionalType {
+    ...TermReferenceFields
+  }
+  description {
+    value
+    language
+  }
+  abstract {
+    value
+    language
+  }
+  text {
+    value
+    language
+  }
+  size {
+    value
+    language
+  }
+  contentLocation {
+    ...PlaceReferenceFields
+  }
+  temporalCoverage
+  locationCreated {
+    ...PlaceReferenceFields
+  }
+  dateCreated
+  about {
+    ...TermReferenceFields
+  }
+  material {
+    ...TermReferenceFields
+  }
+  genre {
+    ...TermReferenceFields
+  }
+  thumbnailUrl
+  contentUrl
+  license
+  copyrightNotice {
+    value
+    language
+  }
+  iiifManifest
+  hasMedia
+}
+
+fragment CreativeWorkFacetFields on CreativeWorkFacets {
+  type {
+    value
+    count
+  }
+  isPartOf {
+    value
+    count
+  }
+  creator {
+    value
+    count
+  }
+  additionalType {
+    value
+    count
+  }
+  contentLocation {
+    value
+    count
+  }
+  temporalCoverage {
+    value
+    count
+  }
+  locationCreated {
+    value
+    count
+  }
+  about {
+    value
+    count
+  }
+  material {
+    value
+    count
+  }
+  genre {
+    value
+    count
+  }
+  license {
+    value
+    count
+  }
+  hasMedia {
+    value
+    count
+  }
+}
+
+fragment TermFields on Term {
+  id
+  label {
+    value
+    language
+  }
+  sameAs
+}

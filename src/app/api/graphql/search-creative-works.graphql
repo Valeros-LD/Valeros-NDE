@@ -1,0 +1,15 @@
+query SearchCreativeWorks($query: String, $page: Int, $perPage: Int) {
+  creativeWorks(query: $query, page: $page, perPage: $perPage) {
+    items {
+      ...CreativeWorkFields
+    }
+    pagination {
+      total
+      page
+      perPage
+    }
+    facets {
+      ...CreativeWorkFacetFields
+    }
+  }
+}
