@@ -97,7 +97,10 @@ export function normalizeGraphQlItem<T extends object>(
   );
 }
 
-export function toFacets(facets: CreativeWorkFacetFieldsFragment): Facet[] {
+export function toFacets(
+  facets: CreativeWorkFacetFieldsFragment,
+  preferredLanguage: string,
+): Facet[] {
   return Object.entries(facets)
     .filter(([, buckets]) => buckets.length > 0)
     .map(([name, buckets]) => ({
@@ -105,7 +108,8 @@ export function toFacets(facets: CreativeWorkFacetFieldsFragment): Facet[] {
       name,
       orderedItems: buckets.map((bucket) => ({
         type: 'FacetValue' as const,
-        value: bucket.value,
+        value:
+          pickLocalizedValue(bucket.label, preferredLanguage) ?? bucket.value,
         count: bucket.count,
       })),
     }));

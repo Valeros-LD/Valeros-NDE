@@ -46,7 +46,7 @@ export class GraphqlApiService extends ApiService {
           creativeWorks.pagination,
           creativeWorks.items,
           (item) => mapCreativeWork(item, this.preferredLanguage),
-          toFacets(creativeWorks.facets),
+          toFacets(creativeWorks.facets, this.preferredLanguage),
         ),
       ),
     );
