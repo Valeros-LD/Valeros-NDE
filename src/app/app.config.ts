@@ -8,6 +8,8 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { provideRouter, UrlSerializer } from '@angular/router';
+import { ApiService } from './api/api.service';
+import { RestApiService } from './api/rest-api.service';
 import { initializeAppConfig } from './config/config.initializer';
 import { appRoutes } from './routing/app.routes';
 import { ValerosUrlSerializer } from './routing/valeros-url-serializer';
@@ -21,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     { provide: LOCALE_ID, useValue: 'nl-NL' },
     { provide: UrlSerializer, useClass: ValerosUrlSerializer },
+    { provide: ApiService, useClass: RestApiService },
     provideAppInitializer(initializeAppConfig),
   ],
 };
