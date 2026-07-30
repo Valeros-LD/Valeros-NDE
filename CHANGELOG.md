@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.5.1...valeros-nde-v0.6.0) (2026-07-30)
+
+
+### Features
+
+* add GraphQL API service ([0e33280](https://github.com/Valeros-LD/valeros-NDE/commit/0e33280899e589a26156d9b6433d2bf561d15f69))
+* add NDE partner logo to home page ([dcfa50d](https://github.com/Valeros-LD/valeros-NDE/commit/dcfa50da8f0a669b27240001448e9be7a8d0e0d9))
+* retrieve labels for creative work facets ([9da6f6c](https://github.com/Valeros-LD/valeros-NDE/commit/9da6f6c3b652f51f44deb231348d4a0919b3cc71))
+* show random placeholder in search bar ([1264fe5](https://github.com/Valeros-LD/valeros-NDE/commit/1264fe539154b268fa2a1b8a377a6f397ce710b9))
+
 ## [0.5.1](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.5.0...valeros-nde-v0.5.1) (2026-06-22)
 
 
