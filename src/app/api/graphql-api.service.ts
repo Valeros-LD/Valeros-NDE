@@ -33,6 +33,7 @@ export class GraphqlApiService extends ApiService {
   private readonly preferredLanguage: string = inject(LOCALE_ID).split('-')[0];
 
   search(query: SearchQuery): Observable<SearchResponse> {
+    // TODO: Use selected facets here to generate search query
     const { page, perPage, searchTerm } = toSearchVariables(query);
 
     // TODO: Consider if we might want to search through other types as well (eg Place, Person, etc).
