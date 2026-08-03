@@ -31,4 +31,7 @@ export abstract class BaseWidget {
   });
 
   shouldHide = computed(() => false);
+
+  // Use this for interactive widgets like maps or IIIF viewers, prevents default navigation behavior on widget click
+  readonly stopClickPropagation: boolean = false;
 }

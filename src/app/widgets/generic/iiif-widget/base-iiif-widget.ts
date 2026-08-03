@@ -22,6 +22,8 @@ export abstract class BaseIiifWidget<T = unknown>
   protected readonly instanceId = crypto.randomUUID();
   protected readonly instances: Map<string, T> = new Map();
 
+  override readonly stopClickPropagation = true;
+
   manifestUrls: Signal<string[]> = computed(() => {
     return (this.values() as AssociatedMediaNode[])
       .filter(isIIIFPresentationManifest)

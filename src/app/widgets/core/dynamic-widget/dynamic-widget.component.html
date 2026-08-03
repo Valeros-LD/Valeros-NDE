@@ -1,4 +1,4 @@
-<div [class.hidden]="shouldHideWidget()">
+<div [class.hidden]="shouldHideWidget()" (click)="onClick($event)">
   <ng-template #widgetContent>
     @if (widget().options?.showOriginalLink) {
       <div class="mb-2">

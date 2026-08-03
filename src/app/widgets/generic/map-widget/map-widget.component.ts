@@ -18,6 +18,8 @@ import { BaseWidget } from '../../base-widget';
   templateUrl: './map-widget.component.html',
 })
 export class MapWidget extends BaseWidget implements AfterViewInit {
+  override readonly stopClickPropagation = true;
+
   mapContainer = viewChild.required<ElementRef>('mapContainer');
   private map?: L.Map;
   private mapService = inject(MapService);

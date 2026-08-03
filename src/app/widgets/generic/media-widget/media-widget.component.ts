@@ -21,6 +21,8 @@ import { MediaWidgetOptions } from './media-widget.options';
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {
+  override readonly stopClickPropagation = true;
+
   readonly hasManifest = computed(() => {
     const media = this.values() as AssociatedMediaNode[];
     return hasIIIFPresentationManifest(media);

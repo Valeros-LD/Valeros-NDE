@@ -34,6 +34,8 @@ import { ImageGalleryWidgetOptions } from './image-gallery-widget.options';
   styleUrl: './image-gallery-widget.component.scss',
 })
 export class ImageGalleryWidget extends BaseWidget implements OnDestroy {
+  override readonly stopClickPropagation = true;
+
   private iiifService = inject(IiifImageService);
   private lightbox?: PhotoSwipeLightbox;
   readonly galleryId = `gallery-${crypto.randomUUID()}`;

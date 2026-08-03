@@ -44,6 +44,17 @@ export class DynamicWidgetComponent implements AfterViewInit {
     return instance?.shouldHide() ?? false;
   });
 
+  stopClickPropagation = computed(
+    () => this.widgetInstance()?.stopClickPropagation ?? false,
+  );
+
+  onClick(event: MouseEvent) {
+    if (this.stopClickPropagation()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
   constructor() {
     effect(() => {
       this.data();
