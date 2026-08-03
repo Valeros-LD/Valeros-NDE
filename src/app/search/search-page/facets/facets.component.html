@@ -22,7 +22,7 @@
             }}</span>
           }
         </div>
-        <div class="collapse-content">
+        <div class="collapse-content min-w-0">
           <div class="mb-3 relative">
             <input
               type="text"
@@ -39,14 +39,14 @@
               <label
                 class="flex justify-between items-center text-sm cursor-pointer hover:bg-base-200 p-1 rounded gap-1"
               >
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 min-w-0 w-full">
                   <input
                     type="checkbox"
                     class="checkbox checkbox-sm"
                     [checked]="isSelected(facet.name, item.value)"
                     (click)="onFacetToggle(facet.name, item.value)"
                   />
-                  <span class="text-base-content/80">
+                  <span class="text-base-content/80 truncate">
                     {{ item.label ?? item.value }}
                   </span>
                 </div>
