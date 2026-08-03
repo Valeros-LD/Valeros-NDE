@@ -30,6 +30,18 @@ fragment TermReferenceFields on TermReference {
   }
 }
 
+fragment MediaObjectFields on MediaObject {
+  id
+  thumbnailUrl
+  contentUrl
+  license
+  copyrightNotice {
+    value
+    language
+  }
+  encodingFormat
+}
+
 fragment CreativeWorkFields on CreativeWork {
   id
   type
@@ -85,12 +97,8 @@ fragment CreativeWorkFields on CreativeWork {
   genre {
     ...TermReferenceFields
   }
-  thumbnailUrl
-  contentUrl
-  license
-  copyrightNotice {
-    value
-    language
+  associatedMedia {
+    ...MediaObjectFields
   }
   iiifManifest
   hasMedia
