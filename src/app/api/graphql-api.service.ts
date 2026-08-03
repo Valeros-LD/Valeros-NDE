@@ -9,6 +9,11 @@ import { SearchResponse } from '../search/types/search-response';
 import { ApiService } from './api.service';
 import {
   mapCreativeWork,
+  mapDataset,
+  mapOccupation,
+  mapOrganization,
+  mapPerson,
+  mapPlace,
   mapTerm,
   toCreativeWorkOrderBy,
   toCreativeWorkWhere,
@@ -17,9 +22,9 @@ import {
   toSearchVariables,
 } from './graphql-normalize';
 import {
-  CreativeWorkByIdDocument,
-  CreativeWorkByIdQuery,
-  CreativeWorkByIdQueryVariables,
+  NodeByIdDocument,
+  NodeByIdQuery,
+  NodeByIdQueryVariables,
   SearchCreativeWorksDocument,
   SearchCreativeWorksQuery,
   SearchCreativeWorksQueryVariables,
@@ -80,17 +85,36 @@ export class GraphqlApiService extends ApiService {
   }
 
   details(id: string): Observable<NodeModel> {
-    // TODO: Make this work for all node types, not just CreativeWork
-    return this.request<CreativeWorkByIdQuery, CreativeWorkByIdQueryVariables>(
-      CreativeWorkByIdDocument,
+    return this.request<NodeByIdQuery, NodeByIdQueryVariables>(
+      NodeByIdDocument,
       { id },
     ).pipe(
-      map(({ creativeWorks }) => {
-        const item = creativeWorks.items[0];
-        if (!item) {
-          throw new Error(`No CreativeWork found with id: ${id}`);
-        }
-        return mapCreativeWork(item, this.preferredLanguage);
+      map((data) => {
+        const preferredLanguage = this.preferredLanguage;
+        const creativeWork = data.creativeWorks.items[0];
+        if (creativeWork)
+          return mapCreativeWork(creativeWork, preferredLanguage);
+
+        const dataset = data.datasets.items[0];
+        if (dataset) return mapDataset(dataset, preferredLanguage);
+
+        const occupation = data.occupations.items[0];
+        if (occupation) return mapOccupation(occupation, preferredLanguage);
+
+        const organization = data.organizations.items[0];
+        if (organization)
+          return mapOrganization(organization, preferredLanguage);
+
+        const person = data.persons.items[0];
+        if (person) return mapPerson(person, preferredLanguage);
+
+        const place = data.places.items[0];
+        if (place) return mapPlace(place, preferredLanguage);
+
+        const term = data.terms.items[0];
+        if (term) return mapTerm(term, preferredLanguage);
+
+        throw new Error(`No node found with id: ${id}`);
       }),
     );
   }

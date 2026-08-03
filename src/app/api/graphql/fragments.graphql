@@ -30,6 +30,22 @@ fragment TermReferenceFields on TermReference {
   }
 }
 
+fragment OrganizationReferenceFields on OrganizationReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
+fragment OccupationReferenceFields on OccupationReference {
+  id
+  name {
+    value
+    language
+  }
+}
+
 fragment MediaObjectFields on MediaObject {
   id
   thumbnailUrl
@@ -210,4 +226,69 @@ fragment TermFields on Term {
     language
   }
   sameAs
+}
+
+fragment DatasetFields on Dataset {
+  id
+  label {
+    value
+    language
+  }
+  license
+  publisher {
+    ...OrganizationReferenceFields
+  }
+}
+
+fragment OccupationFields on Occupation {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment OrganizationFields on Organization {
+  id
+  label {
+    value
+    language
+  }
+  location {
+    ...PlaceReferenceFields
+  }
+}
+
+fragment PersonFields on Person {
+  id
+  label {
+    value
+    language
+  }
+  birthDate
+  birthPlace {
+    ...PlaceReferenceFields
+  }
+  deathDate
+  deathPlace {
+    ...PlaceReferenceFields
+  }
+  hasOccupation {
+    ...OccupationReferenceFields
+  }
+}
+
+fragment PlaceFields on Place {
+  id
+  label {
+    value
+    language
+  }
+  addressCountry
+  addressLocality
+  addressRegion
+  postalCode
+  streetAddress
+  latitude
+  longitude
 }

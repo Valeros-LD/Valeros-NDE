@@ -6,6 +6,11 @@ import { SearchResponse } from '../search/types/search-response';
 import {
   CreativeWorkFacetFieldsFragment,
   CreativeWorkFieldsFragment,
+  DatasetFieldsFragment,
+  OccupationFieldsFragment,
+  OrganizationFieldsFragment,
+  PersonFieldsFragment,
+  PlaceFieldsFragment,
   TermFieldsFragment,
 } from './graphql/generated';
 import {
@@ -195,6 +200,41 @@ export function toCreativeWorkOrderBy(
 
 export function mapCreativeWork(
   item: CreativeWorkFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+}
+
+export function mapDataset(
+  item: DatasetFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+}
+
+export function mapOccupation(
+  item: OccupationFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+}
+
+export function mapOrganization(
+  item: OrganizationFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+}
+
+export function mapPerson(
+  item: PersonFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+}
+
+export function mapPlace(
+  item: PlaceFieldsFragment,
   preferredLanguage: string,
 ): NodeModel {
   return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;

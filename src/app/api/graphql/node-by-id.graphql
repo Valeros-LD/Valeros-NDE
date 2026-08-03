@@ -1,0 +1,37 @@
+query NodeById($id: String!) {
+  creativeWorks(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...CreativeWorkFields
+    }
+  }
+  datasets(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...DatasetFields
+    }
+  }
+  occupations(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...OccupationFields
+    }
+  }
+  organizations(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...OrganizationFields
+    }
+  }
+  persons(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...PersonFields
+    }
+  }
+  places(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...PlaceFields
+    }
+  }
+  terms(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
+    items {
+      ...TermFields
+    }
+  }
+}
