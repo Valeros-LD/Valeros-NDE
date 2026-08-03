@@ -65,10 +65,11 @@ export class ReferringNodesWidget extends BaseWidget {
     this.loading.set(true);
     this.error.set(null);
 
+    // TODO: Remove rawFilter (only works for REST) and implement more generic approach that works for both GraphQL and REST (see https://codeberg.org/limburg/lol/issues/28#issuecomment-20481218)
     this.apiService
       .search({
         page: 0,
-        filter: `*.id:${id}`,
+        rawFilterRest: `*.id:${id}`,
       })
       .subscribe({
         next: (response: SearchResponse) => {

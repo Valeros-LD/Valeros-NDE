@@ -1,13 +1,18 @@
 import { NodeModel } from '../node/types/node.model';
 import { Facet } from '../search/types/facet';
+import { Filters } from '../search/types/filters';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
 import {
   CreativeWorkFacetFieldsFragment,
   CreativeWorkFieldsFragment,
-  Pagination,
   TermFieldsFragment,
 } from './graphql/generated';
+import {
+  CreativeWorkWhere,
+  Pagination,
+  StringFilter,
+} from './graphql/schema-types';
 
 // TODO: Skip most of this normalization logic in favor of using the GraphQL types directly
 // This module is mostly here to keep the previously existing REST API surface intact
@@ -108,8 +113,8 @@ export function toFacets(
       name,
       orderedItems: buckets.map((bucket) => ({
         type: 'FacetValue' as const,
-        value:
-          pickLocalizedValue(bucket.label, preferredLanguage) ?? bucket.value,
+        value: bucket.value,
+        label: pickLocalizedValue(bucket.label, preferredLanguage),
         count: bucket.count,
       })),
     }));
@@ -134,6 +139,23 @@ export function toSearchResponse<TItem>(
     startIndex: (page - 1) * pagination.perPage,
     orderedItems: items.map(mapItem),
   };
+}
+
+export function toCreativeWorkWhere(filters: Filters): CreativeWorkWhere {
+  const where: Record<string, StringFilter | boolean> = {};
+
+  for (const [facetName, values] of Object.entries(filters)) {
+    if (values.size === 0) continue;
+
+    if (facetName === 'hasMedia') {
+      where[facetName] = values.has('true');
+      continue;
+    }
+
+    where[facetName] = { in: Array.from(values) };
+  }
+
+  return where as CreativeWorkWhere;
 }
 
 export function toSearchVariables(query: SearchQuery): {

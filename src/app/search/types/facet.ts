@@ -1,6 +1,7 @@
 export interface FacetValue {
   type: 'FacetValue';
   value: string;
+  label?: string;
   count: number;
 }
 

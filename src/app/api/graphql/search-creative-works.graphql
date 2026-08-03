@@ -1,5 +1,10 @@
-query SearchCreativeWorks($query: String, $page: Int, $perPage: Int) {
-  creativeWorks(query: $query, page: $page, perPage: $perPage) {
+query SearchCreativeWorks(
+  $query: String
+  $page: Int
+  $perPage: Int
+  $where: CreativeWorkWhere
+) {
+  creativeWorks(query: $query, page: $page, perPage: $perPage, where: $where) {
     items {
       ...CreativeWorkFields
     }

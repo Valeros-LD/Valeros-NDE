@@ -66,21 +66,6 @@ export class FilterStore {
     });
   }
 
-  buildFilterStrings(): string[] {
-    const filterStrings: string[] = [];
-    const selectedFilters = this.selectedFilters();
-
-    for (const [facetName, values] of Object.entries(selectedFilters)) {
-      for (const value of values) {
-        const decodedValue = decodeURIComponent(value);
-        const escapedValue = decodedValue.replace(/`/g, '\\`');
-        filterStrings.push(`${facetName}:\`${escapedValue}\``);
-      }
-    }
-
-    return filterStrings;
-  }
-
   hasActiveFilters(): boolean {
     return Object.keys(this.selectedFilters()).length > 0;
   }

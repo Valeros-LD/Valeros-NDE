@@ -10,6 +10,7 @@ import { ApiService } from './api.service';
 import {
   mapCreativeWork,
   mapTerm,
+  toCreativeWorkWhere,
   toFacets,
   toSearchResponse,
   toSearchVariables,
@@ -33,14 +34,21 @@ export class GraphqlApiService extends ApiService {
   private readonly preferredLanguage: string = inject(LOCALE_ID).split('-')[0];
 
   search(query: SearchQuery): Observable<SearchResponse> {
-    // TODO: Use selected facets here to generate search query
     const { page, perPage, searchTerm } = toSearchVariables(query);
+    const where = query.filters
+      ? toCreativeWorkWhere(query.filters)
+      : undefined;
 
     // TODO: Consider if we might want to search through other types as well (eg Place, Person, etc).
     return this.request<
       SearchCreativeWorksQuery,
       SearchCreativeWorksQueryVariables
-    >(SearchCreativeWorksDocument, { query: searchTerm, page, perPage }).pipe(
+    >(SearchCreativeWorksDocument, {
+      query: searchTerm,
+      page,
+      perPage,
+      where,
+    }).pipe(
       map(({ creativeWorks }) =>
         toSearchResponse(
           page,

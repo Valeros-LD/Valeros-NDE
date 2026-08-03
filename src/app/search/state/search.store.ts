@@ -121,14 +121,14 @@ export class SearchStore {
     this.loading.set(true);
     this.error.set(null);
 
-    const filters = this.filterStore.buildFilterStrings();
+    const filters = this.filterStore.selectedFilters();
 
     this.searchApiService
       .search({
         q: trimmedTerm,
         size: this.pageSize(),
         page,
-        ...(filters.length > 0 && { filter: filters }),
+        ...(Object.keys(filters).length > 0 && { filters }),
         ...(this.currentSort() && { sort: this.currentSort()! }),
       })
       .subscribe({

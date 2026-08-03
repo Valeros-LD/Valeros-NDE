@@ -3,6 +3,7 @@ import { inject, Injectable, Signal } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
 import { ConfigService } from '../config/config-page/config.service';
 import { NodeModel } from '../node/types/node.model';
+import { Filters } from '../search/types/filters';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
 import { ApiService } from './api.service';
@@ -16,8 +17,17 @@ export class RestApiService extends ApiService {
   private readonly apiBaseUrl: Signal<string> = this.configService.apiBaseUrl;
 
   search(query: SearchQuery): Observable<SearchResponse> {
-    const { page, ...queryParams } = query;
-    const params = new HttpParams({ fromObject: queryParams });
+    const { page, filters, rawFilterRest: rawFilter, ...queryParams } = query;
+    const filterStrings = [
+      ...(filters ? this.buildFilterStrings(filters) : []),
+      ...(rawFilter ? [rawFilter].flat() : []),
+    ];
+    const params = new HttpParams({
+      fromObject: {
+        ...queryParams,
+        ...(filterStrings.length > 0 && { filter: filterStrings }),
+      },
+    });
     const url = `${this.apiBaseUrl()}/heritage-objects/page/${page}`;
 
     // TODO: Remove mock data enrichment when API is ready
@@ -31,7 +41,7 @@ export class RestApiService extends ApiService {
   }
 
   autocomplete(query: SearchQuery): Observable<SearchResponse> {
-    const { page, ...queryParams } = query;
+    const { page, filters: _filters, ...queryParams } = query;
     const params = new HttpParams({ fromObject: queryParams });
     const url = `${this.apiBaseUrl()}/terms/page/${page}`;
 
@@ -77,5 +87,19 @@ export class RestApiService extends ApiService {
     return observable.pipe(
       map((node) => this.mockDataService.enrichNodeWithMockData(node)),
     );
+  }
+
+  private buildFilterStrings(filters: Filters): string[] {
+    const filterStrings: string[] = [];
+
+    for (const [facetName, values] of Object.entries(filters)) {
+      for (const value of values) {
+        const decodedValue = decodeURIComponent(value);
+        const escapedValue = decodedValue.replace(/`/g, '\\`');
+        filterStrings.push(`${facetName}:\`${escapedValue}\``);
+      }
+    }
+
+    return filterStrings;
   }
 }
