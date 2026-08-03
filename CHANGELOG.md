@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.7.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.6.0...valeros-nde-v0.7.0) (2026-08-03)
+
+
+### Features
+
+* (temporarily) consider all links internal ([ef4421a](https://github.com/Valeros-LD/valeros-NDE/commit/ef4421a478e453c0118e11ae68f499ad6c147eda))
+* (temporarily) store node iiifManifest in associatedMedia array for GraphQL ([387e2d6](https://github.com/Valeros-LD/valeros-NDE/commit/387e2d636a6ad5f9d8d3798682f92d43c52f2b76))
+* add text widget ([dbd7a18](https://github.com/Valeros-LD/valeros-NDE/commit/dbd7a18409074ecbc0fad154b344eda74dcc3383))
+* configure facets appearance ([62ad68c](https://github.com/Valeros-LD/valeros-NDE/commit/62ad68ce54726a9f595d24ec44985d642d603f89))
+* get creative work by ID when using GraphQL ([38be733](https://github.com/Valeros-LD/valeros-NDE/commit/38be73391e2512498f8d24da3512bede10520268))
+* get node details through GraphQL regardless of type ([85bb737](https://github.com/Valeros-LD/valeros-NDE/commit/85bb737a4db471146d0eb34dae199a0287cea4af))
+* implement faceted filtering through GraphQL ([9136b18](https://github.com/Valeros-LD/valeros-NDE/commit/9136b18b2a4ebdc163e9dc9dcf752fb3cce30340))
+* implement sorting through GraphQL ([65ab9e5](https://github.com/Valeros-LD/valeros-NDE/commit/65ab9e5c4b64849b1c0763df059f0fef53b8a9fa))
+* prevent navigation when clicking inside interactive widgets ([0398b74](https://github.com/Valeros-LD/valeros-NDE/commit/0398b7440338811c94787880672e5918d72917b1))
+* stop truncating facets ([85b613e](https://github.com/Valeros-LD/valeros-NDE/commit/85b613e25fe120368321a2fc93b8af837700729f))
+* update GraphQL schema ([1a95f6d](https://github.com/Valeros-LD/valeros-NDE/commit/1a95f6dfa09dc257fa98ff2d78655504008ee8bd))
+
+
+### Bug Fixes
+
+* facet rendering issue ([f2f4528](https://github.com/Valeros-LD/valeros-NDE/commit/f2f45280c53e364919c5b8a5680cd70323342925))
+
 ## [0.6.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.5.1...valeros-nde-v0.6.0) (2026-07-30)
 
 
