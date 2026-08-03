@@ -9,6 +9,7 @@ export class NodeLinkService {
   private configService = inject(ConfigService);
 
   isInternalLink(node: NodeModel): boolean {
-    return node.id.startsWith(this.configService.apiBaseUrl());
+    // TODO: Bring back a way of considering links internal/external
+    return true;
   }
 }
