@@ -14,6 +14,16 @@ export const nameWidget: Widget = {
   } as TextWidgetOptions,
 };
 
+export const textWidget: Widget = {
+  id: 'text',
+  properties: ['text'],
+  componentId: 'text-widget',
+  options: {
+    propertyLabel: 'Tekst',
+    icon: 'file-text',
+  } as TextWidgetOptions,
+};
+
 export const typeWidget: Widget = {
   id: 'type',
   properties: ['type'],

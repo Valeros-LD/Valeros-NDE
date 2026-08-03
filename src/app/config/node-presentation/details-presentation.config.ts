@@ -26,6 +26,7 @@ import {
   nameWidget,
   publisherWidget,
   referringNodesWidget,
+  textWidget,
   typeWidget,
 } from './widgets/widgets';
 
@@ -33,6 +34,7 @@ export const DETAILS_PRESENTATION_CONFIG: NodePresentationConfig = {
   widgets: [
     nameWidget,
     descriptionHeaderWidget,
+    textWidget,
     mediaWidget,
     typeWidget,
     additionalTypeWidget,
