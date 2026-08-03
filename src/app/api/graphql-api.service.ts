@@ -15,9 +15,9 @@ import {
   toSearchVariables,
 } from './graphql-normalize';
 import {
-  CreativeWorkByIdentifierDocument,
-  CreativeWorkByIdentifierQuery,
-  CreativeWorkByIdentifierQueryVariables,
+  CreativeWorkByIdDocument,
+  CreativeWorkByIdQuery,
+  CreativeWorkByIdQueryVariables,
   SearchCreativeWorksDocument,
   SearchCreativeWorksQuery,
   SearchCreativeWorksQueryVariables,
@@ -69,20 +69,15 @@ export class GraphqlApiService extends ApiService {
   }
 
   details(id: string): Observable<NodeModel> {
-    const identifier = id.split('/').pop() || id;
-
     // TODO: Make this work for all node types, not just CreativeWork
-    // TODO: Use id instead of identifier for this (once GraphQL Schema supports it, see https://codeberg.org/limburg/lol/issues/28#issuecomment-20295886)
-    return this.request<
-      CreativeWorkByIdentifierQuery,
-      CreativeWorkByIdentifierQueryVariables
-    >(CreativeWorkByIdentifierDocument, { identifier }).pipe(
+    return this.request<CreativeWorkByIdQuery, CreativeWorkByIdQueryVariables>(
+      CreativeWorkByIdDocument,
+      { id },
+    ).pipe(
       map(({ creativeWorks }) => {
         const item = creativeWorks.items[0];
         if (!item) {
-          throw new Error(
-            `No CreativeWork found with identifier: ${identifier}`,
-          );
+          throw new Error(`No CreativeWork found with id: ${id}`);
         }
         return mapCreativeWork(item, this.preferredLanguage);
       }),

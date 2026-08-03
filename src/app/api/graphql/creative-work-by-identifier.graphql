@@ -1,9 +1,5 @@
-query CreativeWorkByIdentifier($identifier: String!) {
-  creativeWorks(
-    where: { identifier: { in: [$identifier] } }
-    page: 1
-    perPage: 1
-  ) {
+query CreativeWorkById($id: String!) {
+  creativeWorks(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
     items {
       ...CreativeWorkFields
     }
