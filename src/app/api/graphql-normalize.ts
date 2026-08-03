@@ -9,8 +9,11 @@ import {
   TermFieldsFragment,
 } from './graphql/generated';
 import {
+  CreativeWorkOrderBy,
+  CreativeWorkSortField,
   CreativeWorkWhere,
   Pagination,
+  SortDirection,
   StringFilter,
 } from './graphql/schema-types';
 
@@ -167,6 +170,26 @@ export function toSearchVariables(query: SearchQuery): {
     page: query.page ?? 1,
     perPage: query.size ?? 20,
     searchTerm: query.q && query.q !== '*' ? query.q : undefined,
+  };
+}
+
+const CREATIVE_WORK_SORT_FIELD_MAP: Record<string, CreativeWorkSortField> = {
+  title: CreativeWorkSortField.Name,
+  dateCreated: CreativeWorkSortField.DateCreated,
+};
+
+export function toCreativeWorkOrderBy(
+  sort: string | undefined,
+): CreativeWorkOrderBy | undefined {
+  if (!sort) return undefined;
+
+  const [fieldName, direction] = sort.split(':');
+  const field = CREATIVE_WORK_SORT_FIELD_MAP[fieldName];
+  if (!field) return undefined;
+
+  return {
+    field,
+    direction: direction === 'desc' ? SortDirection.Desc : SortDirection.Asc,
   };
 }
 

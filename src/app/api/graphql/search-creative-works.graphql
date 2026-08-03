@@ -3,8 +3,15 @@ query SearchCreativeWorks(
   $page: Int
   $perPage: Int
   $where: CreativeWorkWhere
+  $orderBy: CreativeWorkOrderBy
 ) {
-  creativeWorks(query: $query, page: $page, perPage: $perPage, where: $where) {
+  creativeWorks(
+    query: $query
+    page: $page
+    perPage: $perPage
+    where: $where
+    orderBy: $orderBy
+  ) {
     items {
       ...CreativeWorkFields
     }

@@ -10,6 +10,7 @@ import { ApiService } from './api.service';
 import {
   mapCreativeWork,
   mapTerm,
+  toCreativeWorkOrderBy,
   toCreativeWorkWhere,
   toFacets,
   toSearchResponse,
@@ -38,6 +39,7 @@ export class GraphqlApiService extends ApiService {
     const where = query.filters
       ? toCreativeWorkWhere(query.filters)
       : undefined;
+    const orderBy = toCreativeWorkOrderBy(query.sort);
 
     // TODO: Consider if we might want to search through other types as well (eg Place, Person, etc).
     return this.request<
@@ -48,6 +50,7 @@ export class GraphqlApiService extends ApiService {
       page,
       perPage,
       where,
+      orderBy,
     }).pipe(
       map(({ creativeWorks }) =>
         toSearchResponse(
