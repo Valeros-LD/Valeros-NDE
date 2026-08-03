@@ -202,7 +202,20 @@ export function mapCreativeWork(
   item: CreativeWorkFieldsFragment,
   preferredLanguage: string,
 ): NodeModel {
-  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+  const node = normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+
+  // TODO: Remove this when associatedMedia data becomes available through GraphQL, see https://codeberg.org/limburg/lol/issues/28#issuecomment-20480225
+  if (node['iiifManifest']) {
+    node['associatedMedia'] = [
+      {
+        id: node['iiifManifest'],
+        type: ['MediaObject'],
+        encodingFormat:
+          "application/ld+json;profile='http://iiif.io/api/presentation/3/context.json'",
+      },
+    ];
+  }
+  return node;
 }
 
 export function mapDataset(
