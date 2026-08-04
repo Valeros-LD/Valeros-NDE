@@ -5,7 +5,7 @@
         type="text"
         [placeholder]="placeholder()"
         class="grow min-w-0"
-        [ngModel]="store.searchTerm()"
+        [ngModel]="searchInputValue()"
         (ngModelChange)="onSearchTermChange($event)"
         (keyup.enter)="onSearch()"
         (focus)="onInputFocus()"
@@ -26,7 +26,7 @@
 
     <app-autocomplete-dropdown
       #autocomplete
-      [searchTerm]="store.searchTerm()"
+      [searchTerm]="searchInputValue()"
       (selectSuggestion)="onSuggestionSelect($event)"
     />
   </div>

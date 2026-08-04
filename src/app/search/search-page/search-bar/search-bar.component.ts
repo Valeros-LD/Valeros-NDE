@@ -40,13 +40,19 @@ export class SearchBarComponent {
   private skipFirstDebouncedSearch = true;
   private enableDebounce = false;
 
+  protected readonly searchInputValue = signal('');
+
   constructor() {
+    effect(() => {
+      this.searchInputValue.set(this.store.searchTerm());
+    });
+
     effect(() => {
       if (!this.enableDebounce) {
         return;
       }
 
-      const searchTerm = this.store.searchTerm();
+      const searchTerm = this.searchInputValue();
 
       if (this.debounceTimer) {
         clearTimeout(this.debounceTimer);
@@ -63,7 +69,7 @@ export class SearchBarComponent {
   }
 
   onSearchTermChange(value: string): void {
-    this.store.searchTerm.set(value);
+    this.searchInputValue.set(value);
   }
 
   private performSearch(searchTerm: string): void {
@@ -78,12 +84,11 @@ export class SearchBarComponent {
     if (this.debounceTimer) {
       clearTimeout(this.debounceTimer);
     }
-    const searchTerm = this.store.searchTerm();
-    this.performSearch(searchTerm);
+    this.performSearch(this.searchInputValue());
   }
 
   onSuggestionSelect(suggestion: string): void {
-    this.store.searchTerm.set(suggestion);
+    this.searchInputValue.set(suggestion);
     this.autocomplete()?.hideAndSuppress();
     this.performSearch(suggestion);
   }
