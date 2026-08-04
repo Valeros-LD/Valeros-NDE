@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.8.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.7.0...valeros-nde-v0.8.0) (2026-08-04)
+
+
+### Features
+
+* add date widget for showing ISO8601 dates ([f2af698](https://github.com/Valeros-LD/valeros-NDE/commit/f2af698647a5d46752a2090a5f998875e8a3cbc6))
+* allow changing page size from UI (or through URL) ([49f0cab](https://github.com/Valeros-LD/valeros-NDE/commit/49f0cab56160828ce0a0da5ab283179898466669))
+* allow entering specific page through input field ([c461f07](https://github.com/Valeros-LD/valeros-NDE/commit/c461f07c7828ba5f15897abe52502ae752bc70de))
+* hide config panel ([a7bb459](https://github.com/Valeros-LD/valeros-NDE/commit/a7bb45954fe90396c3d707d632a87f8f5fcaccbd))
+* remove iiifManifest from associatedMedia array ([9057969](https://github.com/Valeros-LD/valeros-NDE/commit/905796908bdb59ab9f7ca94113e063a95eeeb606))
+* support encodingFormat arrays for associatedMedia entries ([3560238](https://github.com/Valeros-LD/valeros-NDE/commit/35602380f3e1d7d73ec3a7e8447d370537643543))
+* update default page size for list view ([6a8ae95](https://github.com/Valeros-LD/valeros-NDE/commit/6a8ae9553125d6bc82361da95af535d2340c5b63))
+
+
+### Bug Fixes
+
+* only update page title on actual search ([b727585](https://github.com/Valeros-LD/valeros-NDE/commit/b727585f98c26ecc41e12f4bbac8aedba153dec9))
+
 ## [0.7.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.6.0...valeros-nde-v0.7.0) (2026-08-03)
 
 
