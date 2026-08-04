@@ -10,7 +10,7 @@ To create your own custom widget components, see [Creating Custom Widgets](/guid
 
 Simple text display for descriptive content.
 
-**Example Properties**: `description`, `dateCreated`, `birthDate`, `deathDate`
+**Example Properties**: `description`
 
 **Component-Specific Options** (`TextWidgetOptions`):
 
@@ -215,6 +215,28 @@ Displays [postal addresses](https://docs.nde.nl/schema-profile/#PostalAddress) i
   options: {
     propertyLabel: 'Address',
     icon: 'home',
+  },
+}
+```
+
+## DateWidget
+
+**Component ID**: `date-widget`
+
+Formats and displays [ISO 8601 dates](https://docs.nde.nl/schema-profile/#CreativeWork-dateCreated).
+
+**Example Properties**: `dateCreated`, `birthDate`, `deathDate`
+
+**Example**:
+
+```ts
+{
+  id: 'date-created',
+  properties: ['dateCreated'],
+  componentId: 'date-widget',
+  options: {
+    propertyLabel: 'Date Created',
+    icon: 'calendar',
   },
 }
 ```

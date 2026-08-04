@@ -216,7 +216,7 @@ export const creatorWidget: Widget = {
 export const dateCreatedWidget: Widget = {
   id: 'date-created',
   properties: ['dateCreated'],
-  componentId: 'link-widget',
+  componentId: 'date-widget',
   options: {
     propertyLabel: 'Vervaardigingsdatum',
     icon: 'calendar',
@@ -226,7 +226,7 @@ export const dateCreatedWidget: Widget = {
 export const birthDateWidget: Widget = {
   id: 'birth-date',
   properties: ['birthDate'],
-  componentId: 'link-widget',
+  componentId: 'date-widget',
   options: {
     propertyLabel: 'Geboortedatum',
     icon: 'calendar',
@@ -236,7 +236,7 @@ export const birthDateWidget: Widget = {
 export const deathDateWidget: Widget = {
   id: 'death-date',
   properties: ['deathDate'],
-  componentId: 'link-widget',
+  componentId: 'date-widget',
   options: {
     propertyLabel: 'Overlijdensdatum',
     icon: 'calendar',
