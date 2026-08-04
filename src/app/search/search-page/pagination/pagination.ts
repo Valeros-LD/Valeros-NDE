@@ -7,6 +7,8 @@ import {
   featherChevronRight,
 } from '@ng-icons/feather-icons';
 
+export const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
+
 @Component({
   selector: 'app-pagination',
   imports: [CommonModule, RouterLink, NgIconComponent],
@@ -21,6 +23,15 @@ export class Pagination {
   currentPage = input.required<number>();
   totalItems = input.required<number>();
   pageSize = input.required<number>();
+
+  protected readonly pageSizeOptions = computed(() => {
+    const pageSize = this.pageSize();
+    return PAGE_SIZE_OPTIONS.includes(
+      pageSize as (typeof PAGE_SIZE_OPTIONS)[number],
+    )
+      ? PAGE_SIZE_OPTIONS
+      : [...PAGE_SIZE_OPTIONS, pageSize].sort((a, b) => a - b);
+  });
 
   protected readonly totalPages = computed(() => {
     return Math.ceil(this.totalItems() / this.pageSize());
@@ -54,6 +65,20 @@ export class Pagination {
       this.goToPage(parsed);
     }
     input.value = String(this.currentPage());
+  }
+
+  onPageSizeChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const newPageSize = parseInt(select.value, 10);
+    if (Number.isNaN(newPageSize) || newPageSize === this.pageSize()) {
+      return;
+    }
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { pageSize: newPageSize, page: 1 },
+      queryParamsHandling: 'merge',
+    });
   }
 
   goToPrevious(): void {

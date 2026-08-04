@@ -19,6 +19,7 @@ interface SearchUrlParams {
   page: number;
   view: ViewType;
   sort: string | null;
+  pageSize: number | null;
 }
 
 @Injectable({
@@ -68,6 +69,9 @@ export class SearchStore {
               (params['view'] as ViewType) ||
               this.viewService.getDefaultViewType(),
             sort: params['sort'] || null,
+            pageSize: params['pageSize']
+              ? parseInt(params['pageSize'], 10)
+              : null,
           }),
         ),
         distinctUntilChanged((prev: SearchUrlParams, curr: SearchUrlParams) => {
@@ -79,7 +83,7 @@ export class SearchStore {
         }),
       )
       .subscribe((urlParams: SearchUrlParams) => {
-        const { q: query, filters, page, view, sort } = urlParams;
+        const { q: query, filters, page, view, sort, pageSize } = urlParams;
 
         this.filterStore.clearFiltersIfQueryChanged(query, previousQuery);
         this.filterStore.syncFiltersFromUrl(filters);
@@ -90,20 +94,23 @@ export class SearchStore {
         this.currentView.set(view);
         this.currentSort.set(sort);
 
+        const defaultPageSize =
+          this.viewService.getViewOptions(view).pageSize ?? 10;
+        const resolvedPageSize = pageSize ?? defaultPageSize;
+        this.pageSize.set(resolvedPageSize);
+
         const params: Params = {
           ...(query && { q: query }),
           ...(filters && { filters }),
           ...(page > 1 && { page: page.toString() }),
           ...(view !== this.viewService.getDefaultViewType() && { view }),
           ...(sort && { sort }),
+          ...(resolvedPageSize !== defaultPageSize && {
+            pageSize: resolvedPageSize.toString(),
+          }),
         };
         this.searchParams.set(params);
         saveSearchParamsToSessionStorage(params);
-
-        const viewOptions = this.viewService.getViewOptions(view);
-        if (viewOptions.pageSize) {
-          this.pageSize.set(viewOptions.pageSize);
-        }
 
         this.performSearch(query, page);
       });
