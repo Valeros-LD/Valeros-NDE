@@ -1,11 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import {
+  featherChevronLeft,
+  featherChevronRight,
+} from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-pagination',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NgIconComponent],
   templateUrl: './pagination.html',
+  styleUrl: './pagination.scss',
+  viewProviders: [provideIcons({ featherChevronLeft, featherChevronRight })],
 })
 export class Pagination {
   private router = inject(Router);
@@ -27,51 +34,26 @@ export class Pagination {
     return this.currentPage() < this.totalPages();
   });
 
-  protected readonly pages = computed(() => {
-    const total = this.totalPages();
-    const current = this.currentPage();
-    const pages: (number | string)[] = [];
-
-    if (total <= 7) {
-      for (let i = 1; i <= total; i++) {
-        pages.push(i);
-      }
-    } else {
-      pages.push(1);
-
-      if (current > 3) {
-        pages.push('...');
-      }
-
-      const start = Math.max(2, current - 1);
-      const end = Math.min(total - 1, current + 1);
-
-      for (let i = start; i <= end; i++) {
-        pages.push(i);
-      }
-
-      if (current < total - 2) {
-        pages.push('...');
-      }
-
-      pages.push(total);
-    }
-
-    return pages;
-  });
-
   goToPage(page: number): void {
-    const isInvalidPage = page < 1 || page > this.totalPages();
-    const isAlreadyOnPage = page === this.currentPage();
-    if (isInvalidPage || isAlreadyOnPage) {
+    const clampedPage = Math.min(Math.max(page, 1), this.totalPages());
+    const isAlreadyOnPage = clampedPage === this.currentPage();
+    if (isAlreadyOnPage) {
       return;
     }
 
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { page },
+      queryParams: { page: clampedPage },
       queryParamsHandling: 'merge',
     });
+  }
+
+  goToInputPage(value: string, input: HTMLInputElement): void {
+    const parsed = parseInt(value, 10);
+    if (!Number.isNaN(parsed)) {
+      this.goToPage(parsed);
+    }
+    input.value = String(this.currentPage());
   }
 
   goToPrevious(): void {

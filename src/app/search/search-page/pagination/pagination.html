@@ -12,30 +12,29 @@
     queryParamsHandling="merge"
     aria-label="Vorige pagina"
   >
-    Vorige
+    <ng-icon name="featherChevronLeft" size="20" aria-hidden="true" />
   </a>
   } @else {
   <span class="btn btn-sm btn-disabled" aria-label="Vorige pagina">
-    Vorige
+    <ng-icon name="featherChevronLeft" size="20" aria-hidden="true" />
   </span>
   }
 
-  <div class="join">
-    @for (page of pages(); track page) { @if (page === '...') {
-    <span class="join-item btn btn-sm btn-disabled">...</span>
-    } @else {
-    <a
-      class="join-item btn btn-sm"
-      [class.btn-active]="page === currentPage()"
-      [routerLink]="[]"
-      [queryParams]="getPageQueryParams($any(page))"
-      queryParamsHandling="merge"
-      [attr.aria-current]="page === currentPage() ? 'page' : null"
-      [attr.aria-label]="'Pagina ' + page"
-    >
-      {{ page }}
-    </a>
-    } }
+  <div class="flex items-center gap-1">
+    <label for="pagination-page-input" class="sr-only"> Ga naar pagina </label>
+    <input
+      id="pagination-page-input"
+      type="number"
+      min="1"
+      [max]="totalPages()"
+      [value]="currentPage()"
+      (keydown.enter)="
+        goToInputPage($any($event.target).value, $any($event.target))
+      "
+      (blur)="goToInputPage($any($event.target).value, $any($event.target))"
+      class="input input-sm w-20 text-center px-1"
+    />
+    <span>van {{ totalPages() }}</span>
   </div>
 
   @if (hasNext()) {
@@ -46,11 +45,11 @@
     queryParamsHandling="merge"
     aria-label="Volgende pagina"
   >
-    Volgende
+    <ng-icon name="featherChevronRight" size="20" aria-hidden="true" />
   </a>
   } @else {
   <span class="btn btn-sm btn-disabled" aria-label="Volgende pagina">
-    Volgende
+    <ng-icon name="featherChevronRight" size="20" aria-hidden="true" />
   </span>
   }
 </nav>
