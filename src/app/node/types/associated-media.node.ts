@@ -1,11 +1,14 @@
-import { normalizeToFirst } from '../../data-utils/value-normalization.util';
+import {
+  normalizeToArray,
+  normalizeToFirst,
+} from '../../data-utils/value-normalization.util';
 import { ImageModel } from '../../ui/image/types/image.model';
 import { NodeModel } from './node.model';
 
 export type AssociatedMediaNode = NodeModel & {
   contentUrl?: string;
   thumbnailUrl?: string;
-  encodingFormat?: string;
+  encodingFormat?: string | string[];
   isBasedOn?: {
     id?: string;
     encodingFormat?: string;
@@ -31,10 +34,8 @@ export function isIIIFPresentationManifest(
   media: AssociatedMediaNode,
 ): boolean {
   // TODO: Find more robust way to check if the value is a IIIF manifest or not
-  const encodingFormat = media.encodingFormat;
-  return (
-    typeof encodingFormat === 'string' &&
-    encodingFormat.includes('iiif.io/api/presentation')
+  return normalizeToArray(media.encodingFormat).some((encodingFormat) =>
+    encodingFormat.includes('iiif.io/api/presentation'),
   );
 }
 
