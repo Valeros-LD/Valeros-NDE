@@ -9,7 +9,7 @@ export const SEARCH_VIEWS_CONFIG: ViewsConfig = {
       type: 'list',
       componentId: 'list-view',
       options: {
-        pageSize: 20,
+        pageSize: 10,
         showPagination: true,
         showResultsCount: true,
       },
