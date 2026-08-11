@@ -12,9 +12,9 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
-    "test:a11y": "playwright test",
-    "test:a11y:ui": "playwright test --ui",
-    "test:a11y:install": "playwright install --with-deps chromium firefox webkit"
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:install": "playwright install --with-deps chromium firefox webkit"
   },
   "private": true,
   "overrides": {
