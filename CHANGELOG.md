@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.9.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.8.0...valeros-nde-v0.9.0) (2026-08-11)
+
+
+### Features
+
+* add e2e a11y test for details page ([9983811](https://github.com/Valeros-LD/valeros-NDE/commit/9983811256ace830b86e5a85613ec50653270c8c))
+* add e2e GH action workflow ([9d7fc58](https://github.com/Valeros-LD/valeros-NDE/commit/9d7fc58b95bc74ea80eb75c54ac78c4974c62d84))
+* add Playwright devices ([62e4de5](https://github.com/Valeros-LD/valeros-NDE/commit/62e4de54fed07138e701375dd87d1253a4f4ead1))
+* add Playwright e2e testing (including a11y tests) ([906a1a3](https://github.com/Valeros-LD/valeros-NDE/commit/906a1a34e2dd9ced44656d134ef0ad1f8d3e42bf))
+* rename e2e test job ([1a5503d](https://github.com/Valeros-LD/valeros-NDE/commit/1a5503d63c1f0f8e63cf4cd326944fbca4bb1fe6))
+* rename test:a11y scripts to test:e2e ([2cf165e](https://github.com/Valeros-LD/valeros-NDE/commit/2cf165ef4112e3fe28619bb96134c38356913858))
+* update e2e GH action versions ([c57ffc9](https://github.com/Valeros-LD/valeros-NDE/commit/c57ffc942d2ee2e97479a4465e282c4b16a9611c))
+* update search e2e test ([b30b5f7](https://github.com/Valeros-LD/valeros-NDE/commit/b30b5f7936d2815e37684fbf5b49bf3955d614ea))
+
+
+### Bug Fixes
+
+* add aria-label to facet checkbox ([12c22a8](https://github.com/Valeros-LD/valeros-NDE/commit/12c22a89032dfe84e9f74c53ef9d885a4252dbc2))
+* fix typo in e2e GH action ([f8dbb0e](https://github.com/Valeros-LD/valeros-NDE/commit/f8dbb0ec15d1fb66c24a5583c91f156450ec6c1f))
+* improve pagination accessibility (add role and aria-disabled attributes) ([09ef8c0](https://github.com/Valeros-LD/valeros-NDE/commit/09ef8c0445062120712feef4da1762f17ba8f3bd))
+* tweak color to fix WCAG contrast issue ([193a29a](https://github.com/Valeros-LD/valeros-NDE/commit/193a29ad489edc01e05775a899acc5aa37315c7e))
+* tweak primary color to fix WCAG contrast issue ([ca3e499](https://github.com/Valeros-LD/valeros-NDE/commit/ca3e4992961d44fb7efbffbe0fd7fe96958112b4))
+
 ## [0.8.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.7.0...valeros-nde-v0.8.0) (2026-08-04)
 
 
