@@ -32,7 +32,7 @@
     "@angular/router": "^22.1.1",
     "@ng-icons/core": "^33.2.2",
     "@ng-icons/feather-icons": "^33.2.2",
-    "graphql": "^16.14.2",
+    "graphql": "^17.0.2",
     "graphql-request": "^7.4.0",
     "leaflet": "^1.9.4",
     "mirador": "^4.0.0",
