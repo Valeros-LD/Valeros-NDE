@@ -6,12 +6,9 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     groups:
-      angular:
+      npm:
         patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-      dev-dependencies:
-        dependency-type: "development"
+          - "*"
     commit-message:
       prefix: "chore"
       include: "scope"
