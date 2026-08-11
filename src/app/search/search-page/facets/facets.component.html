@@ -2,7 +2,15 @@
   @for (facet of visibleFacets(); track facet.name) {
     @if (facet.orderedItems.length > 0) {
       <div class="collapse collapse-arrow rounded-none bg-base-100">
-        <input type="checkbox" class="peer" />
+        <input
+          type="checkbox"
+          class="peer"
+          [attr.aria-label]="
+            'Filter ' +
+            facetsService.getFacetLabel(facet.name) +
+            ' in-/uitklappen'
+          "
+        />
         <div
           class="collapse-title flex items-center justify-between font-semibold text-sm capitalize"
         >
