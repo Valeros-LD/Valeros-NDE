@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^22.1.1",
     "@angular/router": "^22.1.1",
     "@ng-icons/core": "^33.2.2",
-    "@ng-icons/feather-icons": "^33.2.2",
+    "@ng-icons/feather-icons": "^35.0.1",
     "graphql": "^16.14.2",
     "graphql-request": "^7.4.0",
     "leaflet": "^1.9.4",
