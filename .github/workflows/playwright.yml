@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx run test:e2e:install
+        run: npm run test:e2e:install
 
       - name: Run Playwright a11y tests
         run: npm run test:e2e
