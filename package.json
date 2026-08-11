@@ -14,6 +14,11 @@
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\""
   },
   "private": true,
+  "overrides": {
+    "react-i18next": {
+      "typescript": "$typescript"
+    }
+  },
   "dependencies": {
     "@angular/cdk": "^21.2.11",
     "@angular/common": "^22.1.1",
