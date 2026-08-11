@@ -1,0 +1,63 @@
+name: Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  e2e-test:
+    uses: ./.github/workflows/e2e.yml
+
+  build-and-deploy:
+    needs: e2e-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Build docs
+        run: npm run docs:build
+
+      - name: Package build artifacts
+        run: |
+          tar -czf app.tar.gz -C dist/valeros-nde/browser .
+          tar -czf docs.tar.gz -C docs/.vitepress/dist .
+
+      - name: Upload artifacts to VPS
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          source: 'app.tar.gz,docs.tar.gz'
+          target: '/tmp/valeros-deploy'
+          strip_components: 0
+
+      - name: Extract and publish on VPS
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            set -e
+            APP_DIR=/var/www/valeros
+            DOCS_DIR=/var/www/valeros-docs
+            mkdir -p "$APP_DIR" "$DOCS_DIR"
+            find "$APP_DIR" -mindepth 1 -delete
+            find "$DOCS_DIR" -mindepth 1 -delete
+            tar -xzf /tmp/valeros-deploy/app.tar.gz -C "$APP_DIR"
+            tar -xzf /tmp/valeros-deploy/docs.tar.gz -C "$DOCS_DIR"
+            rm -rf /tmp/valeros-deploy

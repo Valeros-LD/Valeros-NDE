@@ -1,4 +1,4 @@
-name: Playwright E2E Tests
+name: E2E Tests
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_call:
 
 jobs:
   e2e-test:
