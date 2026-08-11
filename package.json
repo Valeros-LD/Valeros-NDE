@@ -14,7 +14,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "test:a11y": "playwright test",
     "test:a11y:ui": "playwright test --ui",
-    "test:a11y:install": "playwright install --with-deps chromium webkit"
+    "test:a11y:install": "playwright install --with-deps chromium firefox webkit"
   },
   "private": true,
   "overrides": {
