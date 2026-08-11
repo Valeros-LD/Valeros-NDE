@@ -20,7 +20,7 @@ export const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
   imports: [CommonModule, RouterLink, NgIconComponent],
   templateUrl: './pagination.html',
   styleUrl: './pagination.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherChevronLeft, featherChevronRight })],
 })
 export class Pagination {

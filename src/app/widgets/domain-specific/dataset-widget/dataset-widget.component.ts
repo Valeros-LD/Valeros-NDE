@@ -18,7 +18,7 @@ interface Dataset extends IsPartOfNode {
   selector: 'app-dataset-widget',
 
   imports: [CommonModule, LinkWidget],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './dataset-widget.component.html',
 })
 export class DatasetWidget extends BaseWidget {

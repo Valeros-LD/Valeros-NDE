@@ -5,7 +5,7 @@ import { BaseIiifWidget } from '../base-iiif-widget';
 @Component({
   selector: 'app-mirador-iiif-widget',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: '../base-iiif-widget.html',
 })
 export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {

@@ -6,7 +6,7 @@ import { BaseWidget } from '../../base-widget';
   selector: 'app-json-widget',
 
   imports: [JsonPipe],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './json-widget.component.html',
 })
 export class JsonWidget extends BaseWidget {}

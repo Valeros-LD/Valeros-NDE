@@ -7,7 +7,7 @@ import { BreadcrumbService } from '../breadcrumbs/breadcrumb.service';
   selector: 'app-back-to-search',
   imports: [NgIconComponent],
   templateUrl: './back-to-search.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherArrowLeft })],
 })
 export class BackToSearchComponent {

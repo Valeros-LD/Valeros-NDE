@@ -5,7 +5,7 @@ import { BaseResultsView } from '../base-results-view';
 @Component({
   selector: 'app-grid-view',
   imports: [NodeComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './grid-view.component.html',
 })
 export class GridViewComponent extends BaseResultsView {}

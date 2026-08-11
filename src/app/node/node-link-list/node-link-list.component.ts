@@ -12,7 +12,7 @@ import { NodeModel } from '../types/node.model';
 @Component({
   selector: 'app-node-link-list',
   imports: [NodeLinkComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './node-link-list.component.html',
 })
 export class NodeLinkListComponent {

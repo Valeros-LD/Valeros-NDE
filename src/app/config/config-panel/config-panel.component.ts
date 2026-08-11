@@ -10,7 +10,7 @@ import { ConfigPageComponent } from '../config-page/config-page.component';
   templateUrl: './config-panel.component.html',
   styleUrl: './config-panel.component.scss',
   viewProviders: [provideIcons({ featherSettings, featherX })],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.escape)': 'handleEscape()',
   },

@@ -45,7 +45,7 @@ function parseIsoDate(value: string): ParsedIsoDate | undefined {
 @Component({
   selector: 'app-date-widget',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './date-widget.component.html',
 })
 export class DateWidget extends BaseWidget {

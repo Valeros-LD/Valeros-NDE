@@ -4,7 +4,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-results-count',
   imports: [DecimalPipe],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './results-count.html',
 })
 export class ResultsCount {

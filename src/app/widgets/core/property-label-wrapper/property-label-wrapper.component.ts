@@ -11,7 +11,7 @@ import { WidgetOptions } from '../types/node-presentation-config';
 @Component({
   selector: 'app-property-label-wrapper',
   imports: [NgIconComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './property-label-wrapper.component.html',
 })
 export class PropertyLabelWrapperComponent {

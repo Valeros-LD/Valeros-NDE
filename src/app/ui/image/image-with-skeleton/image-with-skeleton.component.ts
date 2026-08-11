@@ -11,7 +11,7 @@ import { ImageSkeletonComponent } from '../image-skeleton/image-skeleton.compone
   selector: 'app-image-with-skeleton',
   imports: [ImageSkeletonComponent],
   templateUrl: './image-with-skeleton.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block relative w-full h-full',
   },

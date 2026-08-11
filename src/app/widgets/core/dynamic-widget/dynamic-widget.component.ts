@@ -24,7 +24,7 @@ import { Widget } from '../types/node-presentation-config';
   selector: 'app-dynamic-widget',
 
   templateUrl: './dynamic-widget.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [PropertyLabelWrapperComponent, LinkWidget, NgTemplateOutlet],
 })
 export class DynamicWidgetComponent implements AfterViewInit {

@@ -16,7 +16,7 @@ import { BaseWidget } from '../../base-widget';
 @Component({
   selector: 'app-map-widget',
   imports: [TooltipBadge],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './map-widget.component.html',
 })
 export class MapWidget extends BaseWidget implements AfterViewInit {

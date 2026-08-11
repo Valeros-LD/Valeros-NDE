@@ -11,7 +11,7 @@ interface IIIFManifest {
   selector: 'app-tify-iiif-widget',
   imports: [],
   templateUrl: '../base-iiif-widget.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
       :host ::ng-deep {

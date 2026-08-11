@@ -6,7 +6,7 @@ import { SeparatorWidgetOptions } from './separator-widget.options';
 @Component({
   selector: 'app-separator-widget',
   imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './separator-widget.component.html',
 })
 export class SeparatorWidget extends BaseWidget {

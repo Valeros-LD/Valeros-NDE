@@ -13,7 +13,7 @@ import { ConfigService } from '../config.service';
 @Component({
   selector: 'app-facets-config',
   imports: [DraggableList],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './facets-config.component.html',
 })
 export class FacetsConfig {

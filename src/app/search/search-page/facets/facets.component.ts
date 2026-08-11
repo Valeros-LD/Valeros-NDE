@@ -16,7 +16,7 @@ import { FacetsService } from './facets.service';
 
   imports: [CommonModule, NgIcon],
   templateUrl: './facets.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './facets.component.scss',
 })
 export class FacetsComponent {

@@ -5,7 +5,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-loading-spinner',
   imports: [NgTemplateOutlet],
   templateUrl: './loading-spinner.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './loading-spinner.component.scss',
 })
 export class LoadingSpinnerComponent {

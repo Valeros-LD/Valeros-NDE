@@ -6,7 +6,7 @@ import { featherInfo } from '@ng-icons/feather-icons';
   selector: 'app-tooltip-badge',
   imports: [NgIconComponent],
   templateUrl: './tooltip-badge.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherInfo })],
 })
 export class TooltipBadge {

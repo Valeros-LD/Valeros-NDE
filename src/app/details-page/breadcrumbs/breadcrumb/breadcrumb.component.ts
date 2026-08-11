@@ -12,7 +12,7 @@ import { BreadcrumbItem, BreadcrumbService } from '../breadcrumb.service';
   selector: 'app-breadcrumb',
   imports: [NgIconComponent],
   templateUrl: './breadcrumb.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherChevronRight })],
 })
 export class BreadcrumbComponent {

@@ -36,7 +36,7 @@ import { BreadcrumbComponent } from './breadcrumbs/breadcrumb/breadcrumb.compone
     LoadingSpinnerComponent,
     ErrorAlertComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './details-page.component.html',
 })
 export class DetailsPageComponent implements OnInit, OnDestroy {

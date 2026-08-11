@@ -30,7 +30,7 @@ import { AutocompleteSuggestionItemComponent } from './autocomplete-suggestion-i
     AutocompleteSuggestionItemComponent,
     LoadingSpinnerComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './autocomplete-dropdown.component.html',
 })
 export class AutocompleteDropdownComponent {

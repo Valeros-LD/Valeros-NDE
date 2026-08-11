@@ -5,7 +5,7 @@ import { BaseResultsView } from '../base-results-view';
 @Component({
   selector: 'app-list-view',
   imports: [NodeComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './list-view.component.html',
 })
 export class ListViewComponent extends BaseResultsView {}

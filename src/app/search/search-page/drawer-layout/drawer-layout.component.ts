@@ -15,7 +15,7 @@ import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggl
   selector: 'app-drawer-layout',
 
   imports: [CommonModule, DrawerToggleButtonComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './drawer-layout.component.html',
 })
 export class DrawerLayoutComponent implements AfterViewInit {

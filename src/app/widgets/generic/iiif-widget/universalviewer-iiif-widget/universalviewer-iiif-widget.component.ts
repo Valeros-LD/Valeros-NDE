@@ -5,7 +5,7 @@ import { BaseIiifWidget } from '../base-iiif-widget';
 @Component({
   selector: 'app-universalviewer-iiif-widget',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: '../base-iiif-widget.html',
 })
 export class UniversalviewerIiifWidget extends BaseIiifWidget<Viewer> {

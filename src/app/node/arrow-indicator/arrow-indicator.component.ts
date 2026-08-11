@@ -6,7 +6,7 @@ import { featherArrowRight } from '@ng-icons/feather-icons';
   selector: 'app-arrow-indicator',
   imports: [NgIconComponent],
   providers: [provideIcons({ featherArrowRight })],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
       class="absolute bottom-2 right-2 bg-[#ffffffbb] rounded-full w-8 h-8 flex items-center justify-center transition-colors group-hover:bg-[#ffffffe9]"

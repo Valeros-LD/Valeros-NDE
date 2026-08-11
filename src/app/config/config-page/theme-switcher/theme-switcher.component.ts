@@ -17,7 +17,7 @@ interface Theme {
 @Component({
   selector: 'app-theme-switcher',
   imports: [NgIconComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './theme-switcher.component.html',
 })
 export class ThemeSwitcherComponent implements OnInit {

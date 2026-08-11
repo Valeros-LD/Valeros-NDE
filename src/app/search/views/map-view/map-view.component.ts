@@ -22,7 +22,7 @@ import { BaseResultsView } from '../base-results-view';
   selector: 'app-map-view',
   imports: [TooltipBadge],
   templateUrl: './map-view.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './map-view.component.scss',
 })
 export class MapViewComponent extends BaseResultsView implements AfterViewInit {

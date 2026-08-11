@@ -12,7 +12,7 @@ import { DraggableListItem } from './draggable-list-item';
   selector: 'app-draggable-list',
   imports: [CdkDropList, CdkDrag, NgIcon],
   templateUrl: './draggable-list.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './draggable-list.component.scss',
 })
 export class DraggableList {

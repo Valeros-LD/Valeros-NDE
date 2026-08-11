@@ -14,7 +14,7 @@ import { ViewsConfigComponent } from './views-config/views-config.component';
     ThemeSwitcherComponent,
   ],
   templateUrl: './config-page.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherAlertTriangle })],
 })
 export class ConfigPageComponent {}

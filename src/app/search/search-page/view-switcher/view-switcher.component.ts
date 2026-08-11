@@ -14,7 +14,7 @@ import { ViewService } from '../../views/view.service';
 @Component({
   selector: 'app-view-switcher',
   imports: [NgIconComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './view-switcher.component.html',
 })
 export class ViewSwitcherComponent {

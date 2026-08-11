@@ -19,7 +19,7 @@ const SORT_OPTIONS = [
 @Component({
   selector: 'app-search-sort',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search-sort.html',
 })
 export class SearchSort {

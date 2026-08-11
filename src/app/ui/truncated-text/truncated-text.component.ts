@@ -3,7 +3,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-truncated-text',
   template: `<span [innerHTML]="truncatedText()"></span>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: `
     :host ::ng-deep mark {
       @apply bg-transparent;

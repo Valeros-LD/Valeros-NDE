@@ -32,7 +32,7 @@ import { ImageGalleryWidgetOptions } from './image-gallery-widget.options';
     ImageSkeletonComponent,
   ],
   templateUrl: './image-gallery-widget.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './image-gallery-widget.component.scss',
 })
 export class ImageGalleryWidget extends BaseWidget implements OnDestroy {

@@ -44,7 +44,7 @@ import { ViewSwitcherComponent } from './view-switcher/view-switcher.component';
     HeaderBannerComponent,
     ErrorAlertComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search-page.component.html',
 })
 export class SearchPageComponent implements OnInit {

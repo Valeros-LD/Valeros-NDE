@@ -13,7 +13,7 @@ import { ConfigService } from '../config.service';
 @Component({
   selector: 'app-views-config',
   imports: [DraggableList],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './views-config.component.html',
 })
 export class ViewsConfigComponent {

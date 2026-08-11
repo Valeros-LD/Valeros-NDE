@@ -22,7 +22,7 @@ import { NodeLinkService } from './node-link.service';
   imports: [RouterModule, NgTemplateOutlet, NgIcon, ImageWithSkeletonComponent],
   templateUrl: './node-link.component.html',
   styleUrl: './node-link.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherExternalLink })],
 })
 export class NodeLinkComponent {

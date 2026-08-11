@@ -9,7 +9,7 @@ import { TextWidgetOptions } from './text-widget.options';
   selector: 'app-text-widget',
 
   templateUrl: './text-widget.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet, HighlightedTextComponent, TruncatedTextComponent],
 })
 export class TextWidget extends BaseWidget {

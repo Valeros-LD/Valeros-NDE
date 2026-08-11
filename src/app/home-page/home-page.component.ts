@@ -14,7 +14,7 @@ import { PageTitleService } from '../ui/page-title/page-title.service';
   selector: 'app-home-page',
   imports: [HeaderBannerComponent, SearchBarComponent, NgIcon],
   templateUrl: './home-page.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherBook, featherGithub })],
 })
 export class HomePageComponent implements OnInit {

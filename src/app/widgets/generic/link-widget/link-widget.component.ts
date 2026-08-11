@@ -9,7 +9,7 @@ import { TextWidgetOptions } from '../text-widget/text-widget.options';
 @Component({
   selector: 'app-link-widget',
   imports: [CommonModule, TextWidget, NodeLinkListComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './link-widget.component.html',
 })
 export class LinkWidget extends BaseWidget {

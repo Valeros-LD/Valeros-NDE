@@ -11,7 +11,7 @@ import { IconType, NgIcon } from '@ng-icons/core';
   selector: 'app-drawer-toggle-button',
 
   imports: [CommonModule, NgIcon],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './drawer-toggle-button.component.html',
 })
 export class DrawerToggleButtonComponent {

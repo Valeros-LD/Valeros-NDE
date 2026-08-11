@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-autocomplete-suggestion-item',
   imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './autocomplete-suggestion-item.component.html',
 })
 export class AutocompleteSuggestionItemComponent {

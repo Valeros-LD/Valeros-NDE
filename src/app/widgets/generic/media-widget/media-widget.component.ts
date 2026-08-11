@@ -18,7 +18,7 @@ import { MediaWidgetOptions } from './media-widget.options';
     MiradorIiifWidget,
     UniversalviewerIiifWidget,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {

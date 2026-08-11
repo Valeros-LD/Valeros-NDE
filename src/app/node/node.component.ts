@@ -26,7 +26,7 @@ import { NodeModel } from './types/node.model';
   ],
   templateUrl: './node.component.html',
   styleUrl: './node.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block',
   },

@@ -18,7 +18,7 @@ interface FormattedAddress extends PostalAddress {
 @Component({
   selector: 'app-address-widget',
   imports: [],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './address-widget.component.html',
 })
 export class AddressWidget extends BaseWidget {

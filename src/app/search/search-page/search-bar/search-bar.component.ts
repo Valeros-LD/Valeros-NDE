@@ -25,7 +25,7 @@ import { AutocompleteDropdownComponent } from './autocomplete-dropdown/autocompl
     LoadingSpinnerComponent,
   ],
   templateUrl: './search-bar.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherSearch })],
 })
 export class SearchBarComponent {

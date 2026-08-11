@@ -22,7 +22,7 @@ import { BaseWidget } from '../../base-widget';
     LoadingSpinnerComponent,
     ErrorAlertComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './referring-nodes-widget.component.html',
 })
 export class ReferringNodesWidget extends BaseWidget {
