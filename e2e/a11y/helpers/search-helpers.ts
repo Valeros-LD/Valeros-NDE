@@ -17,4 +17,7 @@ export async function goToSearchResults(
     state: 'visible',
     timeout: 5000,
   });
+
+  // Wait briefly to ensure everything's fully rendered and styled
+  await page.waitForTimeout(300);
 }
