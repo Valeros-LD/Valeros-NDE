@@ -6,6 +6,9 @@ test.describe('Home page', () => {
     await page.goto('/');
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 
+    // Wait briefly to ensure everything's fully rendered and styled
+    await page.waitForTimeout(300);
+
     const results = await axeBuilder(page).analyze();
 
     expect(results.violations).toEqual([]);
