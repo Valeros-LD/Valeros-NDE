@@ -58,5 +58,17 @@
     "vitepress": "^1.5.0",
     "vitepress-plugin-mermaid": "^2.0.17",
     "vue": "^3.5.13"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true,
+    "canvas@2.11.2": true,
+    "es5-ext@0.10.64": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.21.5": true,
+    "fsevents@2.3.3": true,
+    "lmdb@3.5.6": true,
+    "msgpackr-extract@3.0.4": true,
+    "tify@0.35.0": true
   }
 }
