@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { init, Viewer } from 'universalviewer';
 import { BaseIiifWidget } from '../base-iiif-widget';
 
 @Component({
   selector: 'app-universalviewer-iiif-widget',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: '../base-iiif-widget.html',
 })
 export class UniversalviewerIiifWidget extends BaseIiifWidget<Viewer> {

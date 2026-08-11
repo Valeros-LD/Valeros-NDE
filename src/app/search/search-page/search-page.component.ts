@@ -8,6 +8,7 @@ import {
   signal,
   viewChild,
   ViewContainerRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { featherFilter } from '@ng-icons/feather-icons';
@@ -43,6 +44,7 @@ import { ViewSwitcherComponent } from './view-switcher/view-switcher.component';
     HeaderBannerComponent,
     ErrorAlertComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './search-page.component.html',
 })
 export class SearchPageComponent implements OnInit {

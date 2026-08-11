@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input, Signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  Signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { addUriPrefix } from '../routing/details-page-uri-prefix';
 import { DynamicWidgetComponent } from '../widgets/core/dynamic-widget/dynamic-widget.component';
@@ -19,6 +26,7 @@ import { NodeModel } from './types/node.model';
   ],
   templateUrl: './node.component.html',
   styleUrl: './node.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'block',
   },

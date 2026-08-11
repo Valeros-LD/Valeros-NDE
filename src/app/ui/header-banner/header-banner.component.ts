@@ -1,9 +1,15 @@
-import { Component, inject, input } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-banner',
   templateUrl: './header-banner.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [],
 })
 export class HeaderBannerComponent {

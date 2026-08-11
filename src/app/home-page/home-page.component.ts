@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherBook, featherGithub } from '@ng-icons/feather-icons';
 import { SearchBarComponent } from '../search/search-page/search-bar/search-bar.component';
@@ -9,6 +14,7 @@ import { PageTitleService } from '../ui/page-title/page-title.service';
   selector: 'app-home-page',
   imports: [HeaderBannerComponent, SearchBarComponent, NgIcon],
   templateUrl: './home-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherBook, featherGithub })],
 })
 export class HomePageComponent implements OnInit {

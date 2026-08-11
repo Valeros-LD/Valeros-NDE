@@ -1,5 +1,11 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherExternalLink } from '@ng-icons/feather-icons';
@@ -16,6 +22,7 @@ import { NodeLinkService } from './node-link.service';
   imports: [RouterModule, NgTemplateOutlet, NgIcon, ImageWithSkeletonComponent],
   templateUrl: './node-link.component.html',
   styleUrl: './node-link.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherExternalLink })],
 })
 export class NodeLinkComponent {

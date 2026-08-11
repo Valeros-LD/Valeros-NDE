@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  signal,
+  viewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -18,6 +25,7 @@ import { AutocompleteDropdownComponent } from './autocomplete-dropdown/autocompl
     LoadingSpinnerComponent,
   ],
   templateUrl: './search-bar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherSearch })],
 })
 export class SearchBarComponent {

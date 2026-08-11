@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -14,6 +20,7 @@ export const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
   imports: [CommonModule, RouterLink, NgIconComponent],
   templateUrl: './pagination.html',
   styleUrl: './pagination.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherChevronLeft, featherChevronRight })],
 })
 export class Pagination {

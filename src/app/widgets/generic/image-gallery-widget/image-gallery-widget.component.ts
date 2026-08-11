@@ -6,6 +6,7 @@ import {
   inject,
   OnDestroy,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import { forkJoin, Observable, of } from 'rxjs';
@@ -31,6 +32,7 @@ import { ImageGalleryWidgetOptions } from './image-gallery-widget.options';
     ImageSkeletonComponent,
   ],
   templateUrl: './image-gallery-widget.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './image-gallery-widget.component.scss',
 })
 export class ImageGalleryWidget extends BaseWidget implements OnDestroy {

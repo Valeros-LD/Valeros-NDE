@@ -11,6 +11,7 @@ import {
   signal,
   viewChild,
   ViewContainerRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { getWidgetComponent } from '../../../config/node-presentation/widgets/widget-component.registry';
 import { NodeModel } from '../../../node/types/node.model';
@@ -23,6 +24,7 @@ import { Widget } from '../types/node-presentation-config';
   selector: 'app-dynamic-widget',
 
   templateUrl: './dynamic-widget.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [PropertyLabelWrapperComponent, LinkWidget, NgTemplateOutlet],
 })
 export class DynamicWidgetComponent implements AfterViewInit {

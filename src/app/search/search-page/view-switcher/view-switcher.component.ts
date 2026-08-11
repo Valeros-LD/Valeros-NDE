@@ -1,4 +1,10 @@
-import { Component, inject, input, output } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIconComponent } from '@ng-icons/core';
 import { getIcon } from '../../../config/icon.registry';
@@ -8,6 +14,7 @@ import { ViewService } from '../../views/view.service';
 @Component({
   selector: 'app-view-switcher',
   imports: [NgIconComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './view-switcher.component.html',
 })
 export class ViewSwitcherComponent {

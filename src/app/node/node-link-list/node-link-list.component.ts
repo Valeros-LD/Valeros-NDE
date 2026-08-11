@@ -1,4 +1,9 @@
-import { Component, inject, input } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeLinkVariant } from '../node-link/node-link-variant';
 import { NodeLinkComponent } from '../node-link/node-link.component';
@@ -7,6 +12,7 @@ import { NodeModel } from '../types/node.model';
 @Component({
   selector: 'app-node-link-list',
   imports: [NodeLinkComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './node-link-list.component.html',
 })
 export class NodeLinkListComponent {

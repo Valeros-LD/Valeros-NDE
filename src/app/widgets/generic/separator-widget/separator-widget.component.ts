@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed } from '@angular/core';
+import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
 import { BaseWidget } from '../../base-widget';
 import { SeparatorWidgetOptions } from './separator-widget.options';
 
 @Component({
   selector: 'app-separator-widget',
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './separator-widget.component.html',
 })
 export class SeparatorWidget extends BaseWidget {

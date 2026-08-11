@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed } from '@angular/core';
+import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
 import { NodeLinkListComponent } from '../../../node/node-link-list/node-link-list.component';
 import { isNodeModel, NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
@@ -9,6 +9,7 @@ import { TextWidgetOptions } from '../text-widget/text-widget.options';
 @Component({
   selector: 'app-link-widget',
   imports: [CommonModule, TextWidget, NodeLinkListComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './link-widget.component.html',
 })
 export class LinkWidget extends BaseWidget {

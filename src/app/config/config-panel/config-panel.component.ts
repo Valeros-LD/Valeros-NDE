@@ -1,5 +1,5 @@
 import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherSettings, featherX } from '@ng-icons/feather-icons';
 import { ConfigPageComponent } from '../config-page/config-page.component';
@@ -10,6 +10,7 @@ import { ConfigPageComponent } from '../config-page/config-page.component';
   templateUrl: './config-panel.component.html',
   styleUrl: './config-panel.component.scss',
   viewProviders: [provideIcons({ featherSettings, featherX })],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '(document:keydown.escape)': 'handleEscape()',
   },

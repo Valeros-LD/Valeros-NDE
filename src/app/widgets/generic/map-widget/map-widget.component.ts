@@ -5,6 +5,7 @@ import {
   ElementRef,
   inject,
   viewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import * as L from 'leaflet';
 import { isNodeModel, NodeModel } from '../../../node/types/node.model';
@@ -15,6 +16,7 @@ import { BaseWidget } from '../../base-widget';
 @Component({
   selector: 'app-map-widget',
   imports: [TooltipBadge],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './map-widget.component.html',
 })
 export class MapWidget extends BaseWidget implements AfterViewInit {

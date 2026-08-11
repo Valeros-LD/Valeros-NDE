@@ -1,4 +1,10 @@
-import { Component, computed, inject, LOCALE_ID } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  LOCALE_ID,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { BaseWidget } from '../../base-widget';
 
 interface FormattedDate {
@@ -39,6 +45,7 @@ function parseIsoDate(value: string): ParsedIsoDate | undefined {
 @Component({
   selector: 'app-date-widget',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './date-widget.component.html',
 })
 export class DateWidget extends BaseWidget {

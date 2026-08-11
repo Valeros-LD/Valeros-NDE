@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
 import {
   AssociatedMediaNode,
   hasIIIFPresentationManifest,
@@ -18,6 +18,7 @@ import { MediaWidgetOptions } from './media-widget.options';
     MiradorIiifWidget,
     UniversalviewerIiifWidget,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './media-widget.component.html',
 })
 export class MediaWidget extends BaseWidget {

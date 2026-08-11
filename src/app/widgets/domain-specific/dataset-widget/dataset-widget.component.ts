@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, Signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  Signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { IsPartOfNode } from '../../../node/types/is-part-of.node';
 import { NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
@@ -13,6 +18,7 @@ interface Dataset extends IsPartOfNode {
   selector: 'app-dataset-widget',
 
   imports: [CommonModule, LinkWidget],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './dataset-widget.component.html',
 })
 export class DatasetWidget extends BaseWidget {

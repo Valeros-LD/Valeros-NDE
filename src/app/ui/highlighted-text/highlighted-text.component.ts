@@ -4,6 +4,7 @@ import {
   inject,
   input,
   SecurityContext,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TruncatedTextComponent } from '../truncated-text/truncated-text.component';
@@ -16,6 +17,7 @@ import { TruncatedTextComponent } from '../truncated-text/truncated-text.compone
     [text]="sanitizedText()"
     [maxLength]="maxLength()"
   />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: `
     :host ::ng-deep mark {
       @apply bg-yellow-300 text-black;

@@ -1,4 +1,9 @@
-import { Component, computed, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgIconComponent } from '@ng-icons/core';
 import { getIconOrUndefined } from '../../../config/icon.registry';
 import { WidgetOptions } from '../types/node-presentation-config';
@@ -6,6 +11,7 @@ import { WidgetOptions } from '../types/node-presentation-config';
 @Component({
   selector: 'app-property-label-wrapper',
   imports: [NgIconComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './property-label-wrapper.component.html',
 })
 export class PropertyLabelWrapperComponent {

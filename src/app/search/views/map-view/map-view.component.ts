@@ -8,6 +8,7 @@ import {
   EnvironmentInjector,
   inject,
   viewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import * as L from 'leaflet';
 import { NodeComponent } from '../../../node/node.component';
@@ -21,6 +22,7 @@ import { BaseResultsView } from '../base-results-view';
   selector: 'app-map-view',
   imports: [TooltipBadge],
   templateUrl: './map-view.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './map-view.component.scss',
 })
 export class MapViewComponent extends BaseResultsView implements AfterViewInit {

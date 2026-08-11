@@ -1,5 +1,10 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, computed, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FacetsService } from '../../../search/search-page/facets/facets.service';
 import { DraggableListItem } from '../../../ui/draggable-list/draggable-list-item';
 import { DraggableList } from '../../../ui/draggable-list/draggable-list.component';
@@ -8,6 +13,7 @@ import { ConfigService } from '../config.service';
 @Component({
   selector: 'app-facets-config',
   imports: [DraggableList],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './facets-config.component.html',
 })
 export class FacetsConfig {

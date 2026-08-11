@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherAlertTriangle } from '@ng-icons/feather-icons';
 import { FacetsConfig } from './facets-config/facets-config.component';
@@ -14,6 +14,7 @@ import { ViewsConfigComponent } from './views-config/views-config.component';
     ThemeSwitcherComponent,
   ],
   templateUrl: './config-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherAlertTriangle })],
 })
 export class ConfigPageComponent {}

@@ -5,6 +5,7 @@ import {
   inject,
   signal,
   Signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ApiService } from '../../../api/api.service';
 import { normalizeToFirst } from '../../../data-utils/value-normalization.util';
@@ -21,6 +22,7 @@ import { BaseWidget } from '../../base-widget';
     LoadingSpinnerComponent,
     ErrorAlertComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './referring-nodes-widget.component.html',
 })
 export class ReferringNodesWidget extends BaseWidget {

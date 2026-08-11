@@ -7,6 +7,7 @@ import {
   input,
   output,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { Subject } from 'rxjs';
@@ -29,6 +30,7 @@ import { AutocompleteSuggestionItemComponent } from './autocomplete-suggestion-i
     AutocompleteSuggestionItemComponent,
     LoadingSpinnerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './autocomplete-dropdown.component.html',
 })
 export class AutocompleteDropdownComponent {

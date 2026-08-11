@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import localeNl from '@angular/common/locales/nl';
 import {
   ApplicationConfig,
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     { provide: LOCALE_ID, useValue: 'nl-NL' },
     { provide: UrlSerializer, useClass: ValerosUrlSerializer },
     { provide: ApiService, useClass: RestApiService },

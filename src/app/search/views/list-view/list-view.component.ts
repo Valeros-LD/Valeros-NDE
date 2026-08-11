@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NodeComponent } from '../../../node/node.component';
 import { BaseResultsView } from '../base-results-view';
 
 @Component({
   selector: 'app-list-view',
   imports: [NodeComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './list-view.component.html',
 })
 export class ListViewComponent extends BaseResultsView {}

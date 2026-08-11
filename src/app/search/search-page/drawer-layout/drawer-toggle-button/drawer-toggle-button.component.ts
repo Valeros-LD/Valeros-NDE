@@ -1,11 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import {
+  Component,
+  input,
+  output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { IconType, NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-drawer-toggle-button',
 
   imports: [CommonModule, NgIcon],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './drawer-toggle-button.component.html',
 })
 export class DrawerToggleButtonComponent {

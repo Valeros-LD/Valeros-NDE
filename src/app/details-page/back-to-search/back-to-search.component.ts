@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherArrowLeft } from '@ng-icons/feather-icons';
 import { BreadcrumbService } from '../breadcrumbs/breadcrumb.service';
@@ -7,6 +7,7 @@ import { BreadcrumbService } from '../breadcrumbs/breadcrumb.service';
   selector: 'app-back-to-search',
   imports: [NgIconComponent],
   templateUrl: './back-to-search.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherArrowLeft })],
 })
 export class BackToSearchComponent {

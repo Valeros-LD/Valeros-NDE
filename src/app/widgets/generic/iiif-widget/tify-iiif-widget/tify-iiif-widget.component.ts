@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import Tify, { TifyView } from 'tify';
 import { BaseIiifWidget } from '../base-iiif-widget';
 
@@ -11,6 +11,7 @@ interface IIIFManifest {
   selector: 'app-tify-iiif-widget',
   imports: [],
   templateUrl: '../base-iiif-widget.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       :host ::ng-deep {

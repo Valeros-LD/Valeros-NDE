@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherInfo } from '@ng-icons/feather-icons';
 
@@ -6,6 +6,7 @@ import { featherInfo } from '@ng-icons/feather-icons';
   selector: 'app-tooltip-badge',
   imports: [NgIconComponent],
   templateUrl: './tooltip-badge.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherInfo })],
 })
 export class TooltipBadge {

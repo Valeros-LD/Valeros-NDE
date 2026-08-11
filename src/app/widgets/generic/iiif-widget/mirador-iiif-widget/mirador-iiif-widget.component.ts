@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import Mirador, { MiradorConfig, MiradorInstance } from 'mirador';
 import { BaseIiifWidget } from '../base-iiif-widget';
 
 @Component({
   selector: 'app-mirador-iiif-widget',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: '../base-iiif-widget.html',
 })
 export class MiradorIiifWidget extends BaseIiifWidget<MiradorInstance> {

@@ -1,4 +1,10 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { IconType, NgIconComponent } from '@ng-icons/core';
 import { featherMoon, featherStar, featherSun } from '@ng-icons/feather-icons';
 
@@ -11,6 +17,7 @@ interface Theme {
 @Component({
   selector: 'app-theme-switcher',
   imports: [NgIconComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './theme-switcher.component.html',
 })
 export class ThemeSwitcherComponent implements OnInit {

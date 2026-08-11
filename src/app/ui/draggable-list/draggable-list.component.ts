@@ -1,5 +1,10 @@
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
-import { Component, input, output } from '@angular/core';
+import {
+  Component,
+  input,
+  output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { DraggableListItem } from './draggable-list-item';
 
@@ -7,6 +12,7 @@ import { DraggableListItem } from './draggable-list-item';
   selector: 'app-draggable-list',
   imports: [CdkDropList, CdkDrag, NgIcon],
   templateUrl: './draggable-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './draggable-list.component.scss',
 })
 export class DraggableList {

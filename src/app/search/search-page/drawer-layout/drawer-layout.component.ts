@@ -6,6 +6,7 @@ import {
   input,
   signal,
   viewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { featherX } from '@ng-icons/feather-icons';
 import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
@@ -14,6 +15,7 @@ import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggl
   selector: 'app-drawer-layout',
 
   imports: [CommonModule, DrawerToggleButtonComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './drawer-layout.component.html',
 })
 export class DrawerLayoutComponent implements AfterViewInit {

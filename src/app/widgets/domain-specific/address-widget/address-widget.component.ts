@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
 import { BaseWidget } from '../../base-widget';
 
 export interface PostalAddress {
@@ -18,6 +18,7 @@ interface FormattedAddress extends PostalAddress {
 @Component({
   selector: 'app-address-widget',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './address-widget.component.html',
 })
 export class AddressWidget extends BaseWidget {

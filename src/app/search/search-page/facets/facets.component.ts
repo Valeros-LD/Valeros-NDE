@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FilterStore } from '../../state/filter.store';
 import { SearchStore } from '../../state/search.store';
 
@@ -11,6 +16,7 @@ import { FacetsService } from './facets.service';
 
   imports: [CommonModule, NgIcon],
   templateUrl: './facets.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './facets.component.scss',
 })
 export class FacetsComponent {

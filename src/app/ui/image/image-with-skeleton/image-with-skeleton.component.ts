@@ -1,10 +1,17 @@
-import { Component, input, output, signal } from '@angular/core';
+import {
+  Component,
+  input,
+  output,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ImageSkeletonComponent } from '../image-skeleton/image-skeleton.component';
 
 @Component({
   selector: 'app-image-with-skeleton',
   imports: [ImageSkeletonComponent],
   templateUrl: './image-with-skeleton.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'block relative w-full h-full',
   },

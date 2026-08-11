@@ -6,6 +6,7 @@ import {
   OnDestroy,
   OnInit,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -35,6 +36,7 @@ import { BreadcrumbComponent } from './breadcrumbs/breadcrumb/breadcrumb.compone
     LoadingSpinnerComponent,
     ErrorAlertComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './details-page.component.html',
 })
 export class DetailsPageComponent implements OnInit, OnDestroy {

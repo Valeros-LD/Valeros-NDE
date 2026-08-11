@@ -1,4 +1,10 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchStore } from '../../state/search.store';
 
@@ -13,6 +19,7 @@ const SORT_OPTIONS = [
 @Component({
   selector: 'app-search-sort',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './search-sort.html',
 })
 export class SearchSort {

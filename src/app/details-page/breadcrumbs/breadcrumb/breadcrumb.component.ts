@@ -1,4 +1,9 @@
-import { Component, inject, Signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  Signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { featherChevronRight } from '@ng-icons/feather-icons';
 import { BreadcrumbItem, BreadcrumbService } from '../breadcrumb.service';
@@ -7,6 +12,7 @@ import { BreadcrumbItem, BreadcrumbService } from '../breadcrumb.service';
   selector: 'app-breadcrumb',
   imports: [NgIconComponent],
   templateUrl: './breadcrumb.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   viewProviders: [provideIcons({ featherChevronRight })],
 })
 export class BreadcrumbComponent {
