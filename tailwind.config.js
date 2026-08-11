@@ -22,7 +22,7 @@ module.exports = {
       {
         'valeros-light': {
           ...require('daisyui/src/theming/themes')['light'],
-          primary: '#00839F',
+          primary: '#007994',
           'primary-content': '#ffffff',
           '--rounded-btn': '9999px',
           '--app-bg': '#E1ECF2',
