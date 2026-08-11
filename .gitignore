@@ -44,3 +44,7 @@ Thumbs.db
 # VitePress
 docs/.vitepress/dist
 docs/.vitepress/cache
+
+# Playwright
+/e2e/playwright-report
+/e2e/test-results
