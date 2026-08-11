@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
-import { axeBuilder } from './axe-helper';
+import { axeBuilder } from './helpers/axe-helper';
 
 test.describe('Home page', () => {
-  test('WCAG 2.2 AA violations', async ({ page }) => {
+  test('has no WCAG 2.2 AA violations', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 
