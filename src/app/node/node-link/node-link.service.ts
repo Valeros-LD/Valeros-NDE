@@ -9,7 +9,8 @@ export class NodeLinkService {
   private configService = inject(ConfigService);
 
   isInternalLink(node: NodeModel): boolean {
-    // TODO: Bring back a way of considering links internal/external
-    return true;
+    // TODO: Find a more sustainable way of considering links internal/external (see https://codeberg.org/limburg/lol/issues/28#issuecomment-20897900)
+    const internalLinks = ['datalaag.valeros.nl', 'id.drapo.nl'];
+    return internalLinks.some((link) => node.id.includes(link));
   }
 }
