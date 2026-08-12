@@ -4,7 +4,9 @@
   sidebarTitle="Filters"
   closeLabel="Filters paneel sluiten"
   [initiallyOpen]="isDesktop()"
-  [sidebarTitleBadge]="activeFilterCount()"
+  [sidebarTitleBadge]="
+    activeFilterCount() ? activeFilterCount() + ' actief' : undefined
+  "
 >
   <div drawer-content>
     <app-header-banner />

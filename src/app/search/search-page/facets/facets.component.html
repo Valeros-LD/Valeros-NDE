@@ -25,9 +25,9 @@
             <span>{{ facetsService.getFacetLabel(facet.name) }}</span>
           </span>
           @if (getActiveFilterCount(facet.name) > 0) {
-            <span class="badge badge-primary badge-sm">{{
-              getActiveFilterCount(facet.name)
-            }}</span>
+            <span class="badge badge-primary badge-sm lowercase"
+              >{{ getActiveFilterCount(facet.name) }} actief</span
+            >
           }
         </div>
         <div class="collapse-content min-w-0">
