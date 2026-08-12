@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class PageTitleService {
-  private readonly PREFIX = 'Valeros - ';
+  private readonly PREFIX = 'Erfgoedzoeker • ';
   private titleService = inject(Title);
 
   setTitle(title: string): void {
