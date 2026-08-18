@@ -1,0 +1,11 @@
+fragment MediaObjectFields on MediaObject {
+  id
+  thumbnailUrl
+  contentUrl
+  license
+  copyrightNotice {
+    value
+    language
+  }
+  encodingFormat
+}

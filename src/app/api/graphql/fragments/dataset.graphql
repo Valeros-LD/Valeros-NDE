@@ -1,0 +1,11 @@
+fragment DatasetFields on Dataset {
+  id
+  label {
+    value
+    language
+  }
+  license
+  publisher {
+    ...PublisherReferenceFields
+  }
+}

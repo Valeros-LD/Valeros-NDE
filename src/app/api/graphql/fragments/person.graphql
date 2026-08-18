@@ -1,0 +1,18 @@
+fragment PersonFields on Person {
+  id
+  label {
+    value
+    language
+  }
+  birthDate
+  birthPlace {
+    ...PlaceReferenceFields
+  }
+  deathDate
+  deathPlace {
+    ...PlaceReferenceFields
+  }
+  hasOccupation {
+    ...OccupationReferenceFields
+  }
+}

@@ -1,0 +1,47 @@
+fragment DatasetReferenceFields on DatasetReference {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment PersonReferenceFields on PersonReference {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment PlaceReferenceFields on PlaceReference {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment TermReferenceFields on TermReference {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment PublisherReferenceFields on PublisherReference {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment OccupationReferenceFields on OccupationReference {
+  id
+  label {
+    value
+    language
+  }
+}

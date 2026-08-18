@@ -87,3 +87,63 @@ query ReferringNodes($id: IRI!, $perPage: Int) {
     }
   }
 }
+
+fragment ReferringCreativeWorkFields on CreativeWork {
+  id
+  type
+  name {
+    value
+    language
+  }
+  associatedMedia {
+    thumbnailUrl
+  }
+}
+
+fragment ReferringDatasetFields on Dataset {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment ReferringOccupationFields on Occupation {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment ReferringOrganizationFields on Organization {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment ReferringPersonFields on Person {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment ReferringPlaceFields on Place {
+  id
+  label {
+    value
+    language
+  }
+}
+
+fragment ReferringTermFields on Term {
+  id
+  label {
+    value
+    language
+  }
+}

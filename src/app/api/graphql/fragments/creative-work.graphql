@@ -1,0 +1,164 @@
+fragment CreativeWorkFields on CreativeWork {
+  id
+  type
+  name {
+    value
+    language
+  }
+  sdDatePublished
+  isPartOf {
+    ...DatasetReferenceFields
+  }
+  creator {
+    ...PersonReferenceFields
+  }
+  creatorName {
+    value
+    language
+  }
+  identifier
+  additionalType {
+    ...TermReferenceFields
+  }
+  description {
+    value
+    language
+  }
+  abstract {
+    value
+    language
+  }
+  text {
+    value
+    language
+  }
+  size {
+    value
+    language
+  }
+  contentLocation {
+    ...PlaceReferenceFields
+  }
+  temporalCoverage
+  locationCreated {
+    ...PlaceReferenceFields
+  }
+  dateCreated
+  about {
+    ...TermReferenceFields
+  }
+  material {
+    ...TermReferenceFields
+  }
+  genre {
+    ...TermReferenceFields
+  }
+  associatedMedia {
+    ...MediaObjectFields
+  }
+  iiifManifest
+  hasMedia
+}
+
+fragment CreativeWorkFacetFields on CreativeWorkFacets {
+  type {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  dataset {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  isPartOf {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  creator {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  additionalType {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  contentLocation {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  temporalCoverage {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  locationCreated {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  about {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  material {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  genre {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  license {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  hasMedia {
+    value
+    count
+  }
+}

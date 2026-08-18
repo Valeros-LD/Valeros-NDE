@@ -1,0 +1,7 @@
+fragment OccupationFields on Occupation {
+  id
+  label {
+    value
+    language
+  }
+}

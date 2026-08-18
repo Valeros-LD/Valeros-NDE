@@ -1,0 +1,10 @@
+fragment OrganizationFields on Organization {
+  id
+  label {
+    value
+    language
+  }
+  location {
+    ...PlaceReferenceFields
+  }
+}

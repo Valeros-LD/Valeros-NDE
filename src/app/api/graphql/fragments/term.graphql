@@ -1,0 +1,8 @@
+fragment TermFields on Term {
+  id
+  label {
+    value
+    language
+  }
+  sameAs
+}
