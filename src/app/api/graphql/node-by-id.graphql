@@ -1,4 +1,4 @@
-query NodeById($id: String!) {
+query NodeById($id: IRI!) {
   creativeWorks(where: { id: { in: [$id] } }, page: 1, perPage: 1) {
     items {
       ...CreativeWorkFields

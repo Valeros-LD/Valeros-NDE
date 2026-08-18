@@ -17,15 +17,15 @@ import {
   CreativeWorkOrderBy,
   CreativeWorkSortField,
   CreativeWorkWhere,
+  KeywordFilter,
   Pagination,
   SortDirection,
-  StringFilter,
 } from './graphql/schema-types';
 
 // TODO: Skip most of this normalization logic in favor of using the GraphQL types directly
 // This module is mostly here to keep the previously existing REST API surface intact
 type LocalizedValue = { value: string; language?: string | null };
-type ReferenceValue = { id: string; name: LocalizedValue[] };
+type ReferenceValue = { id: string; label: LocalizedValue[] };
 
 function isLocalizedValue(value: unknown): value is LocalizedValue {
   return (
@@ -38,7 +38,7 @@ function isLocalizedValue(value: unknown): value is LocalizedValue {
 
 function isReferenceValue(value: unknown): value is ReferenceValue {
   return (
-    !!value && typeof value === 'object' && 'id' in value && 'name' in value
+    !!value && typeof value === 'object' && 'id' in value && 'label' in value
   );
 }
 
@@ -59,7 +59,7 @@ function toReferenceNode(
 ): NodeModel {
   return {
     id: reference.id,
-    name: pickLocalizedValue(reference.name, preferredLanguage),
+    name: pickLocalizedValue(reference.label, preferredLanguage),
   };
 }
 
@@ -121,8 +121,11 @@ export function toFacets(
       name,
       orderedItems: buckets.map((bucket) => ({
         type: 'FacetValue' as const,
-        value: bucket.value,
-        label: pickLocalizedValue(bucket.label, preferredLanguage),
+        value: String(bucket.value),
+        label:
+          'label' in bucket
+            ? pickLocalizedValue(bucket.label, preferredLanguage)
+            : undefined,
         count: bucket.count,
       })),
     }));
@@ -150,7 +153,7 @@ export function toSearchResponse<TItem>(
 }
 
 export function toCreativeWorkWhere(filters: Filters): CreativeWorkWhere {
-  const where: Record<string, StringFilter | boolean> = {};
+  const where: Record<string, KeywordFilter | boolean> = {};
 
   for (const [facetName, values] of Object.entries(filters)) {
     if (values.size === 0) continue;

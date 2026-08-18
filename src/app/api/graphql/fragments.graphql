@@ -1,6 +1,6 @@
 fragment DatasetReferenceFields on DatasetReference {
   id
-  name {
+  label {
     value
     language
   }
@@ -8,7 +8,7 @@ fragment DatasetReferenceFields on DatasetReference {
 
 fragment PersonReferenceFields on PersonReference {
   id
-  name {
+  label {
     value
     language
   }
@@ -16,7 +16,7 @@ fragment PersonReferenceFields on PersonReference {
 
 fragment PlaceReferenceFields on PlaceReference {
   id
-  name {
+  label {
     value
     language
   }
@@ -24,15 +24,15 @@ fragment PlaceReferenceFields on PlaceReference {
 
 fragment TermReferenceFields on TermReference {
   id
-  name {
+  label {
     value
     language
   }
 }
 
-fragment OrganizationReferenceFields on OrganizationReference {
+fragment PublisherReferenceFields on PublisherReference {
   id
-  name {
+  label {
     value
     language
   }
@@ -40,7 +40,7 @@ fragment OrganizationReferenceFields on OrganizationReference {
 
 fragment OccupationReferenceFields on OccupationReference {
   id
-  name {
+  label {
     value
     language
   }
@@ -122,6 +122,14 @@ fragment CreativeWorkFields on CreativeWork {
 
 fragment CreativeWorkFacetFields on CreativeWorkFacets {
   type {
+    value
+    count
+    label {
+      value
+      language
+    }
+  }
+  dataset {
     value
     count
     label {
@@ -212,10 +220,6 @@ fragment CreativeWorkFacetFields on CreativeWorkFacets {
   hasMedia {
     value
     count
-    label {
-      value
-      language
-    }
   }
 }
 
@@ -236,7 +240,7 @@ fragment DatasetFields on Dataset {
   }
   license
   publisher {
-    ...OrganizationReferenceFields
+    ...PublisherReferenceFields
   }
 }
 
