@@ -55,7 +55,7 @@
                     (click)="onFacetToggle(facet.name, item.value)"
                   />
                   <span class="text-base-content/80">
-                    {{ item.label ?? item.value }}
+                    {{ formatFacetLabel(item) }}
                   </span>
                 </div>
                 <span class="text-base-content/60 text-xs">{{

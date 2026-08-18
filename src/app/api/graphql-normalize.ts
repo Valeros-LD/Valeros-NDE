@@ -129,7 +129,10 @@ export function toFacets(
       name,
       orderedItems: buckets.map((bucket) => ({
         type: 'FacetValue' as const,
-        value: String(bucket.value),
+        value:
+          typeof bucket.value === 'boolean'
+            ? bucket.value
+            : String(bucket.value),
         label:
           'label' in bucket
             ? pickLocalizedValue(bucket.label, preferredLanguage)

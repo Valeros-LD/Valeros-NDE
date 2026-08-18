@@ -1,6 +1,6 @@
 export interface FacetValue {
   type: 'FacetValue';
-  value: string;
+  value: string | boolean;
   label?: string;
   count: number;
 }
