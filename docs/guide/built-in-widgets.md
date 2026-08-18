@@ -57,6 +57,24 @@ Displays clickable links to entities and concepts. Uses `TextWidgetOptions` for 
 }
 ```
 
+## LiteralLinkWidget
+
+**Component ID**: `literal-link-widget`
+
+Thin passthrough to [`LinkWidget`](#linkwidget) for properties whose value is a literal (e.g. a plain URI string) rather than a node reference. Used so a property like a node's own `id` can still show up as a clickable link.
+
+**Example Properties**: `id`
+
+**Example**:
+
+```ts
+{
+  id: 'idAsLink',
+  properties: ['id'],
+  componentId: 'literal-link-widget'
+}
+```
+
 ## ImageGalleryWidget
 
 **Component ID**: `image-gallery-widget`
