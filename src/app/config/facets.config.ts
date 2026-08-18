@@ -8,9 +8,10 @@ export interface FacetConfig {
 }
 
 export const FACETS_CONFIG: FacetConfig[] = [
-  { name: 'dataset', label: 'Dataset', icon: 'archive' },
+  { name: 'dataset', label: 'Collectie', icon: 'archive' },
   { name: 'contentLocation', label: 'Locatie', icon: 'map-pin' },
   { name: 'creator', label: 'Vervaardiger', icon: 'user' },
+  { name: 'locationCreated', label: 'Locatie', icon: 'map-pin' },
   { name: 'subject', label: 'Onderwerp', icon: 'tag' },
   { name: 'genre', label: 'Genre', icon: 'tag' },
   { name: 'material', label: 'Materiaal', icon: 'package' },
