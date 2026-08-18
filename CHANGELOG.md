@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.10.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.9.0...valeros-nde-v0.10.0) (2026-08-18)
+
+
+### Features
+
+* add referring nodes query for GraphQL ([4384d0f](https://github.com/Valeros-LD/valeros-NDE/commit/4384d0f1c94698b09ae74259e187b7d5558f31c0))
+* allow hiding widgets ([c4acf54](https://github.com/Valeros-LD/valeros-NDE/commit/c4acf5487b33d9944f33c0aa8ac6802aff248a96))
+* consider links internal by (sub-)domain ([e23d30d](https://github.com/Valeros-LD/valeros-NDE/commit/e23d30d9cd23e1416e4376b5e7cf4dfb3a955312))
+* hide data for some properties ([a6c2896](https://github.com/Valeros-LD/valeros-NDE/commit/a6c2896dfd518cdd657125a82fa5a7f46406203a))
+* show (GraphQL) boolean facet values as Dutch strings ([6a91232](https://github.com/Valeros-LD/valeros-NDE/commit/6a91232627bece1e8b069689ec771a1aee13fc3a))
+* show explicit active label for active filters ([0fcbe37](https://github.com/Valeros-LD/valeros-NDE/commit/0fcbe37b16a50058ad967cd92cdef08c8c51d2d3))
+* update facet label ([e8097db](https://github.com/Valeros-LD/valeros-NDE/commit/e8097db6c09e34cc680d016d12c6d371f3fe65d2))
+* update GraphQL schema ([5c2f3c3](https://github.com/Valeros-LD/valeros-NDE/commit/5c2f3c34484eab23c605711c1df2640c18e4a0fa))
+* update user-facing project title ([961d6ad](https://github.com/Valeros-LD/valeros-NDE/commit/961d6ad6447282808659fcf8d39d96a4f70b6f36))
+* wait briefly after page load for home e2e test ([fa15c6f](https://github.com/Valeros-LD/valeros-NDE/commit/fa15c6f20da5cc03c12779f155619551fa89fcd9))
+
+
+### Documentation
+
+* create AGENTS.md ([d395172](https://github.com/Valeros-LD/valeros-NDE/commit/d395172c318f9e129b8348c1fa60de0ab646ca18))
+
 ## [0.9.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.8.0...valeros-nde-v0.9.0) (2026-08-11)
 
 
