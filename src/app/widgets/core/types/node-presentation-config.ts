@@ -16,6 +16,7 @@ export interface Widget {
    * but don't match any other widget.
    */
   isFallback?: boolean;
+  hidden?: boolean;
 }
 
 export type WidgetOptions = BaseWidgetOptions & Record<string, unknown>;

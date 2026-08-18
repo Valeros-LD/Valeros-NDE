@@ -71,6 +71,7 @@ export const materialWidget: Widget = {
 - **`componentId`** - The component used to render this widget (see [Built-in Widgets](/guide/built-in-widgets) for available components)
 - **`options`** - Configuration options passed to the widget component (optional)
 - **`isFallback`** - When true, this widget handles any properties that have data but don't match other widgets (optional, see [Handling Unmatched Properties](#handling-unmatched-properties))
+- **`hidden`** - When true, this widget is not shown (optional)
 
 ### Widget Options
 

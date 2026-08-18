@@ -36,7 +36,11 @@ export class WidgetService {
       }
     });
 
-    presentationConfig.widgets.forEach((widget) => {
+    const widgets = presentationConfig.widgets.filter(
+      (widget) => !widget.hidden,
+    );
+
+    widgets.forEach((widget) => {
       const widgetProperties = widget.properties ?? [];
       const widgetHasProperties = widgetProperties.length > 0;
       if (widget.isFallback) {
