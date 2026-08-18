@@ -32,6 +32,12 @@ import {
 
 export const DETAILS_PRESENTATION_CONFIG: NodePresentationConfig = {
   widgets: [
+    {
+      id: 'hideProperties',
+      properties: ['label', 'sdDatePublished', 'hasMedia', 'identifier'],
+      componentId: 'text-widget',
+      hidden: true,
+    },
     nameWidget,
     descriptionHeaderWidget,
     textWidget,
