@@ -1,0 +1,89 @@
+query ReferringNodes($id: IRI!, $perPage: Int) {
+  creativeWorks(
+    where: {
+      or: [
+        { about: { in: [$id] } }
+        { additionalType: { in: [$id] } }
+        { genre: { in: [$id] } }
+        { material: { in: [$id] } }
+        { creator: { in: [$id] } }
+        { contentLocation: { in: [$id] } }
+        { locationCreated: { in: [$id] } }
+        { dataset: { in: [$id] } }
+        { isPartOf: { in: [$id] } }
+      ]
+    }
+    page: 1
+    perPage: $perPage
+  ) {
+    items {
+      ...ReferringCreativeWorkFields
+    }
+    pagination {
+      total
+    }
+  }
+  datasets(where: { publisher: { in: [$id] } }, page: 1, perPage: $perPage) {
+    items {
+      ...ReferringDatasetFields
+    }
+    pagination {
+      total
+    }
+  }
+  occupations(where: { dataset: { in: [$id] } }, page: 1, perPage: $perPage) {
+    items {
+      ...ReferringOccupationFields
+    }
+    pagination {
+      total
+    }
+  }
+  organizations(
+    where: { or: [{ dataset: { in: [$id] } }, { location: { in: [$id] } }] }
+    page: 1
+    perPage: $perPage
+  ) {
+    items {
+      ...ReferringOrganizationFields
+    }
+    pagination {
+      total
+    }
+  }
+  persons(
+    where: {
+      or: [
+        { dataset: { in: [$id] } }
+        { birthPlace: { in: [$id] } }
+        { deathPlace: { in: [$id] } }
+        { hasOccupation: { in: [$id] } }
+      ]
+    }
+    page: 1
+    perPage: $perPage
+  ) {
+    items {
+      ...ReferringPersonFields
+    }
+    pagination {
+      total
+    }
+  }
+  places(where: { dataset: { in: [$id] } }, page: 1, perPage: $perPage) {
+    items {
+      ...ReferringPlaceFields
+    }
+    pagination {
+      total
+    }
+  }
+  terms(where: { dataset: { in: [$id] } }, page: 1, perPage: $perPage) {
+    items {
+      ...ReferringTermFields
+    }
+    pagination {
+      total
+    }
+  }
+}

@@ -1,16 +1,16 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
   inject,
   signal,
   Signal,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ApiService } from '../../../api/api.service';
 import { normalizeToFirst } from '../../../data-utils/value-normalization.util';
 import { NodeLinkListComponent } from '../../../node/node-link-list/node-link-list.component';
-import { SearchResponse } from '../../../search/types/search-response';
+import { ReferringNodesResponse } from '../../../search/types/referring-node';
 import { ErrorAlertComponent } from '../../../ui/error-alert/error-alert.component';
 import { LoadingSpinnerComponent } from '../../../ui/loading-spinner/loading-spinner.component';
 import { BaseWidget } from '../../base-widget';
@@ -26,7 +26,8 @@ import { BaseWidget } from '../../base-widget';
   templateUrl: './referring-nodes-widget.component.html',
 })
 export class ReferringNodesWidget extends BaseWidget {
-  protected readonly searchResponse = signal<SearchResponse | null>(null);
+  protected readonly referringNodesResponse =
+    signal<ReferringNodesResponse | null>(null);
   protected readonly loading = signal<boolean>(false);
   protected readonly error = signal<string | null>(null);
 
@@ -38,11 +39,11 @@ export class ReferringNodesWidget extends BaseWidget {
   });
 
   protected readonly totalReferringNodes = computed(
-    () => this.searchResponse()?.partOf.totalItems ?? 0,
+    () => this.referringNodesResponse()?.totalCount ?? 0,
   );
 
   protected readonly referringNodes = computed(
-    () => this.searchResponse()?.orderedItems ?? [],
+    () => this.referringNodesResponse()?.nodes ?? [],
   );
 
   protected readonly hasResults = computed(
@@ -67,21 +68,15 @@ export class ReferringNodesWidget extends BaseWidget {
     this.loading.set(true);
     this.error.set(null);
 
-    // TODO: Remove rawFilter (only works for REST) and implement more generic approach that works for both GraphQL and REST (see https://codeberg.org/limburg/lol/issues/28#issuecomment-20481218)
-    this.apiService
-      .search({
-        page: 0,
-        rawFilterRest: `*.id:${id}`,
-      })
-      .subscribe({
-        next: (response: SearchResponse) => {
-          this.searchResponse.set(response);
-          this.loading.set(false);
-        },
-        error: (err) => {
-          this.error.set('Failed to load referring nodes: ' + err.message);
-          this.loading.set(false);
-        },
-      });
+    this.apiService.referringNodes(id).subscribe({
+      next: (response: ReferringNodesResponse) => {
+        this.referringNodesResponse.set(response);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set('Failed to load referring nodes: ' + err.message);
+        this.loading.set(false);
+      },
+    });
   }
 }

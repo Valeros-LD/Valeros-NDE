@@ -1,6 +1,7 @@
 import { NodeModel } from '../node/types/node.model';
 import { Facet } from '../search/types/facet';
 import { Filters } from '../search/types/filters';
+import { ReferringNodesResponse } from '../search/types/referring-node';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
 import {
@@ -11,6 +12,13 @@ import {
   OrganizationFieldsFragment,
   PersonFieldsFragment,
   PlaceFieldsFragment,
+  ReferringDatasetFieldsFragment,
+  ReferringNodesQuery,
+  ReferringOccupationFieldsFragment,
+  ReferringOrganizationFieldsFragment,
+  ReferringPersonFieldsFragment,
+  ReferringPlaceFieldsFragment,
+  ReferringTermFieldsFragment,
   TermFieldsFragment,
 } from './graphql/generated';
 import {
@@ -256,4 +264,72 @@ export function mapTerm(
     normalizedNode['name'] = normalizedNode['label'];
   }
   return normalizedNode;
+}
+
+function mapReferringLabelledNode(
+  item:
+    | ReferringDatasetFieldsFragment
+    | ReferringOccupationFieldsFragment
+    | ReferringOrganizationFieldsFragment
+    | ReferringPersonFieldsFragment
+    | ReferringPlaceFieldsFragment
+    | ReferringTermFieldsFragment,
+  preferredLanguage: string,
+): NodeModel {
+  const node = normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+  if ('label' in node) {
+    node['name'] = node['label'];
+  }
+  return node;
+}
+
+export function toReferringNodesResponse(
+  data: ReferringNodesQuery,
+  preferredLanguage: string,
+): ReferringNodesResponse {
+  const {
+    creativeWorks,
+    datasets,
+    occupations,
+    organizations,
+    persons,
+    places,
+    terms,
+  } = data;
+
+  const items: NodeModel[] = [
+    ...creativeWorks.items.map(
+      (item) => normalizeGraphQlItem(item, preferredLanguage) as NodeModel,
+    ),
+    ...datasets.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+    ...occupations.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+    ...organizations.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+    ...persons.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+    ...places.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+    ...terms.items.map((item) =>
+      mapReferringLabelledNode(item, preferredLanguage),
+    ),
+  ];
+
+  const totalItems = [
+    creativeWorks,
+    datasets,
+    occupations,
+    organizations,
+    persons,
+    places,
+    terms,
+  ].reduce((sum, result) => sum + result.pagination.total, 0);
+
+  return { totalCount: totalItems, nodes: items };
 }

@@ -4,6 +4,7 @@ import { map, Observable, throwError } from 'rxjs';
 import { ConfigService } from '../config/config-page/config.service';
 import { NodeModel } from '../node/types/node.model';
 import { Filters } from '../search/types/filters';
+import { ReferringNodesResponse } from '../search/types/referring-node';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
 import { ApiService } from './api.service';
@@ -86,6 +87,18 @@ export class RestApiService extends ApiService {
 
     return observable.pipe(
       map((node) => this.mockDataService.enrichNodeWithMockData(node)),
+    );
+  }
+
+  referringNodes(id: string): Observable<ReferringNodesResponse> {
+    return this.search({
+      page: 0,
+      rawFilterRest: `*.id:${id}`,
+    }).pipe(
+      map((response) => ({
+        totalCount: response.partOf.totalItems,
+        nodes: response.orderedItems,
+      })),
     );
   }
 

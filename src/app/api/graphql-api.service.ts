@@ -4,6 +4,7 @@ import { GraphQLClient } from 'graphql-request';
 import { defer, map, Observable } from 'rxjs';
 import { ConfigService } from '../config/config-page/config.service';
 import { NodeModel } from '../node/types/node.model';
+import { ReferringNodesResponse } from '../search/types/referring-node';
 import { SearchQuery } from '../search/types/search-query';
 import { SearchResponse } from '../search/types/search-response';
 import { ApiService } from './api.service';
@@ -18,6 +19,7 @@ import {
   toCreativeWorkOrderBy,
   toCreativeWorkWhere,
   toFacets,
+  toReferringNodesResponse,
   toSearchResponse,
   toSearchVariables,
 } from './graphql-normalize';
@@ -25,6 +27,9 @@ import {
   NodeByIdDocument,
   NodeByIdQuery,
   NodeByIdQueryVariables,
+  ReferringNodesDocument,
+  ReferringNodesQuery,
+  ReferringNodesQueryVariables,
   SearchCreativeWorksDocument,
   SearchCreativeWorksQuery,
   SearchCreativeWorksQueryVariables,
@@ -116,6 +121,17 @@ export class GraphqlApiService extends ApiService {
 
         throw new Error(`No node found with id: ${id}`);
       }),
+    );
+  }
+
+  referringNodes(id: string): Observable<ReferringNodesResponse> {
+    const perPage = 20;
+
+    return this.request<ReferringNodesQuery, ReferringNodesQueryVariables>(
+      ReferringNodesDocument,
+      { id, perPage },
+    ).pipe(
+      map((data) => toReferringNodesResponse(data, this.preferredLanguage)),
     );
   }
 
