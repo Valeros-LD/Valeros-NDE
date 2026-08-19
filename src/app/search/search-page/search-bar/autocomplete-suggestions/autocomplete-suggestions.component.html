@@ -1,0 +1,28 @@
+<ul
+  [id]="id()"
+  role="listbox"
+  tabindex="-1"
+  aria-label="Zoeksuggesties"
+  class="dropdown-content menu bg-base-100 rounded-box z-[1] w-full p-2 shadow-lg border border-base-300 mt-2"
+  (mousedown)="$event.preventDefault()"
+>
+  @if (loading()) {
+    <li>
+      <app-loading-spinner size="sm" />
+    </li>
+  } @else {
+    @for (suggestion of suggestions(); track suggestion; let i = $index) {
+      <li>
+        <a
+          role="option"
+          [attr.aria-selected]="i === activeIndex()"
+          [class.bg-base-200]="i === activeIndex()"
+          (click)="selectSuggestion.emit(suggestion)"
+          (mouseenter)="hoverIndex.emit(i)"
+        >
+          {{ suggestion }}
+        </a>
+      </li>
+    }
+  }
+</ul>

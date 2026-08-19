@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   effect,
   inject,
   signal,
-  viewChild,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,26 +12,29 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { featherSearch } from '@ng-icons/feather-icons';
 import { LoadingSpinnerComponent } from '../../../ui/loading-spinner/loading-spinner.component';
 import { SearchStore } from '../../state/search.store';
-import { AutocompleteDropdownComponent } from './autocomplete-dropdown/autocomplete-dropdown.component';
+import { AutocompleteSuggestionsComponent } from './autocomplete-suggestions/autocomplete-suggestions.component';
+import { AutocompleteService } from './autocomplete.service';
 
 @Component({
   selector: 'app-search-bar',
   imports: [
     CommonModule,
     FormsModule,
-    AutocompleteDropdownComponent,
     NgIcon,
     LoadingSpinnerComponent,
+    AutocompleteSuggestionsComponent,
   ],
   templateUrl: './search-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ featherSearch })],
+  providers: [AutocompleteService],
 })
 export class SearchBarComponent {
   store = inject(SearchStore);
+  protected autocomplete = inject(AutocompleteService);
   private router = inject(Router);
 
-  autocomplete = viewChild<AutocompleteDropdownComponent>('autocomplete');
+  protected readonly listboxId = 'search-autocomplete-listbox';
 
   protected readonly placeholder = signal(
     (() => {
@@ -44,40 +46,17 @@ export class SearchBarComponent {
     })(),
   );
 
-  private debounceTimer: ReturnType<typeof setTimeout> | null = null;
-  private skipFirstDebouncedSearch = true;
-  private enableDebounce = false;
-
   protected readonly searchInputValue = signal('');
 
   constructor() {
     effect(() => {
       this.searchInputValue.set(this.store.searchTerm());
     });
-
-    effect(() => {
-      if (!this.enableDebounce) {
-        return;
-      }
-
-      const searchTerm = this.searchInputValue();
-
-      if (this.debounceTimer) {
-        clearTimeout(this.debounceTimer);
-      }
-
-      this.debounceTimer = setTimeout(() => {
-        if (this.skipFirstDebouncedSearch) {
-          this.skipFirstDebouncedSearch = false;
-          return;
-        }
-        this.performSearch(searchTerm);
-      }, 300);
-    });
   }
 
   onSearchTermChange(value: string): void {
     this.searchInputValue.set(value);
+    this.autocomplete.search(value);
   }
 
   private performSearch(searchTerm: string): void {
@@ -88,24 +67,49 @@ export class SearchBarComponent {
   }
 
   onSearch(): void {
-    this.autocomplete()?.hideAndSuppress();
-    if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
-    }
+    this.autocomplete.cancel();
     this.performSearch(this.searchInputValue());
   }
 
   onSuggestionSelect(suggestion: string): void {
     this.searchInputValue.set(suggestion);
-    this.autocomplete()?.hideAndSuppress();
+    this.autocomplete.cancel();
     this.performSearch(suggestion);
   }
 
   onInputFocus(): void {
-    this.autocomplete()?.showCachedResults();
+    if (this.searchInputValue()) {
+      this.autocomplete.show();
+    }
   }
 
   onInputBlur(): void {
-    this.autocomplete()?.hide();
+    this.autocomplete.close();
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this.autocomplete.moveActiveDown();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this.autocomplete.moveActiveUp();
+        break;
+      case 'Enter': {
+        const suggestion = this.autocomplete.activeSuggestion();
+        if (suggestion) {
+          event.preventDefault();
+          this.onSuggestionSelect(suggestion);
+        } else {
+          this.onSearch();
+        }
+        break;
+      }
+      case 'Escape':
+        this.autocomplete.close();
+        break;
+    }
   }
 }

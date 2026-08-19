@@ -1,13 +1,21 @@
 <div class="form-control">
-  <div class="relative">
+  <div
+    class="dropdown w-full"
+    [class.dropdown-open]="autocomplete.showSuggestions()"
+  >
     <label class="input input-bordered rounded-full flex items-center gap-2">
       <input
         type="text"
         [placeholder]="placeholder()"
         class="grow min-w-0"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-haspopup="listbox"
+        [attr.aria-expanded]="autocomplete.showSuggestions()"
+        [attr.aria-controls]="listboxId"
         [ngModel]="searchInputValue()"
         (ngModelChange)="onSearchTermChange($event)"
-        (keyup.enter)="onSearch()"
+        (keydown)="onKeydown($event)"
         (focus)="onInputFocus()"
         (blur)="onInputBlur()"
       />
@@ -24,10 +32,15 @@
       </button>
     </label>
 
-    <app-autocomplete-dropdown
-      #autocomplete
-      [searchTerm]="searchInputValue()"
-      (selectSuggestion)="onSuggestionSelect($event)"
-    />
+    @if (autocomplete.showSuggestions()) {
+      <app-autocomplete-suggestions
+        [id]="listboxId"
+        [suggestions]="autocomplete.suggestions()"
+        [loading]="autocomplete.loading()"
+        [activeIndex]="autocomplete.activeIndex()"
+        (selectSuggestion)="onSuggestionSelect($event)"
+        (hoverIndex)="autocomplete.setActiveIndex($event)"
+      />
+    }
   </div>
 </div>
