@@ -70,6 +70,7 @@ All views support the following **base options** (see `BaseViewOptions` in `src/
 - **`showResultsCount`** - Whether to show the total results count (default: `true`)
 - **`showSort`** - Whether to show sort controls (default: `true`)
 - **`hidden`** - Whether to hide the view from the view switcher (default: `false`)
+- **`defaultSort`** - Sort applied by default when switching to this view, e.g. `'dateCreated:asc'` (default: unset, falls back to relevance)
 
 ## Common Tasks
 

@@ -96,10 +96,13 @@ export class SearchStore {
         this.searchTerm.set(query);
         this.currentPage.set(page);
         this.currentView.set(view);
-        this.currentSort.set(sort);
 
-        const defaultPageSize =
-          this.viewService.getViewOptions(view).pageSize ?? 10;
+        const viewOptions = this.viewService.getViewOptions(view);
+        const defaultSort = viewOptions.defaultSort ?? null;
+        const resolvedSort = sort ?? defaultSort;
+        this.currentSort.set(resolvedSort);
+
+        const defaultPageSize = viewOptions.pageSize ?? 10;
         const resolvedPageSize = pageSize ?? defaultPageSize;
         this.pageSize.set(resolvedPageSize);
 
@@ -108,7 +111,7 @@ export class SearchStore {
           ...(filters && { filters }),
           ...(page > 1 && { page: page.toString() }),
           ...(view !== this.viewService.getDefaultViewType() && { view }),
-          ...(sort && { sort }),
+          ...(resolvedSort !== defaultSort && { sort: resolvedSort }),
           ...(resolvedPageSize !== defaultPageSize && {
             pageSize: resolvedPageSize.toString(),
           }),
