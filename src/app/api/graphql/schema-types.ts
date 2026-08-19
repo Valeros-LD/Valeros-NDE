@@ -2,12 +2,12 @@ export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  IRI: { input: unknown; output: unknown; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  IRI: { input: unknown; output: unknown };
 };
 
 export type BooleanBucket = {
@@ -103,7 +103,7 @@ export enum CreativeWorkSortField {
   DateCreated = 'DATE_CREATED',
   Name = 'NAME',
   Relevance = 'RELEVANCE',
-  SdDatePublished = 'SD_DATE_PUBLISHED'
+  SdDatePublished = 'SD_DATE_PUBLISHED',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -179,7 +179,7 @@ export type DatasetSearchResult = {
 
 export enum DatasetSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -274,7 +274,7 @@ export type OccupationSearchResult = {
 
 export enum OccupationSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -327,7 +327,7 @@ export type OrganizationSearchResult = {
 
 export enum OrganizationSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -406,7 +406,7 @@ export enum PersonSortField {
   BirthDate = 'BIRTH_DATE',
   DeathDate = 'DEATH_DATE',
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -484,7 +484,7 @@ export type PlaceSearchResult = {
 
 export enum PlaceSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -539,7 +539,7 @@ export type PublisherSearchResult = {
 
 export enum PublisherSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -563,7 +563,6 @@ export type Query = {
   terms: TermSearchResult;
 };
 
-
 export type QueryCreativeWorksArgs = {
   orderBy?: InputMaybe<CreativeWorkOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -571,7 +570,6 @@ export type QueryCreativeWorksArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<CreativeWorkWhere>;
 };
-
 
 export type QueryDatasetsArgs = {
   orderBy?: InputMaybe<DatasetOrderBy>;
@@ -581,7 +579,6 @@ export type QueryDatasetsArgs = {
   where?: InputMaybe<DatasetWhere>;
 };
 
-
 export type QueryOccupationsArgs = {
   orderBy?: InputMaybe<OccupationOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -589,7 +586,6 @@ export type QueryOccupationsArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<OccupationWhere>;
 };
-
 
 export type QueryOrganizationsArgs = {
   orderBy?: InputMaybe<OrganizationOrderBy>;
@@ -599,7 +595,6 @@ export type QueryOrganizationsArgs = {
   where?: InputMaybe<OrganizationWhere>;
 };
 
-
 export type QueryPersonsArgs = {
   orderBy?: InputMaybe<PersonOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -607,7 +602,6 @@ export type QueryPersonsArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<PersonWhere>;
 };
-
 
 export type QueryPlacesArgs = {
   orderBy?: InputMaybe<PlaceOrderBy>;
@@ -617,7 +611,6 @@ export type QueryPlacesArgs = {
   where?: InputMaybe<PlaceWhere>;
 };
 
-
 export type QueryPublishersArgs = {
   orderBy?: InputMaybe<PublisherOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -625,7 +618,6 @@ export type QueryPublishersArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<PublisherWhere>;
 };
-
 
 export type QueryTermsArgs = {
   orderBy?: InputMaybe<TermOrderBy>;
@@ -637,7 +629,7 @@ export type QueryTermsArgs = {
 
 export enum SortDirection {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type Term = {
@@ -686,7 +678,7 @@ export type TermSearchResult = {
 
 export enum TermSortField {
   Label = 'LABEL',
-  Relevance = 'RELEVANCE'
+  Relevance = 'RELEVANCE',
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
