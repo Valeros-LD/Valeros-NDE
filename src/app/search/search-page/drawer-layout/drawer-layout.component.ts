@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  effect,
   ElementRef,
   input,
   signal,
@@ -22,18 +23,20 @@ export class DrawerLayoutComponent implements AfterViewInit {
   drawerId = input<string>('drawer');
   sidebarWidth = input<string>('18rem');
   closeLabel = input<string>('Close drawer');
-  initiallyOpen = input<boolean>(true);
+  forceOpen = input<boolean>(true);
   sidebarTitle = input<string>('');
   sidebarTitleBadge = input<string>();
 
   drawerCheckbox = viewChild<ElementRef<HTMLInputElement>>('drawerCheckbox');
 
-  isOpen = signal(this.initiallyOpen());
+  isOpen = signal(this.forceOpen());
 
   protected readonly featherX = featherX;
 
-  ngOnInit() {
-    this.isOpen.set(this.initiallyOpen());
+  constructor() {
+    effect(() => {
+      this.isOpen.set(this.forceOpen());
+    });
   }
 
   ngAfterViewInit() {

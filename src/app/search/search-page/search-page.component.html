@@ -3,7 +3,7 @@
   drawerId="facets-drawer"
   sidebarTitle="Filters"
   closeLabel="Filters paneel sluiten"
-  [initiallyOpen]="isDesktop()"
+  [forceOpen]="isDesktop()"
   [sidebarTitleBadge]="
     activeFilterCount() ? activeFilterCount() + ' actief' : undefined
   "
