@@ -12,7 +12,8 @@
         aria-autocomplete="list"
         aria-haspopup="listbox"
         [attr.aria-expanded]="autocomplete.showSuggestions()"
-        [attr.aria-controls]="listboxId"
+        [attr.aria-controls]="autocomplete.listboxId"
+        [attr.aria-activedescendant]="autocomplete.activeDescendantId()"
         [ngModel]="searchInputValue()"
         (ngModelChange)="onSearchTermChange($event)"
         (keydown)="onKeydown($event)"
@@ -34,7 +35,6 @@
 
     @if (autocomplete.showSuggestions()) {
       <app-autocomplete-suggestions
-        [id]="listboxId"
         [suggestions]="autocomplete.suggestions()"
         [loading]="autocomplete.loading()"
         [activeIndex]="autocomplete.activeIndex()"

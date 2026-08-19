@@ -29,6 +29,16 @@ export class AutocompleteService {
     return index >= 0 && index < suggestions.length ? suggestions[index] : null;
   });
 
+  readonly listboxId = 'search-autocomplete-listbox';
+  readonly activeDescendantId = computed(() => {
+    const index = this.activeIndex();
+    return index >= 0 ? this.optionId(index) : null;
+  });
+
+  optionId(index: number): string {
+    return `${this.listboxId}-option-${index}`;
+  }
+
   private readonly searchTermChanges = new Subject<string>();
   private readonly cancelled = new Subject<void>();
 

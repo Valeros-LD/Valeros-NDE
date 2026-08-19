@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   input,
   output,
 } from '@angular/core';
 import { LoadingSpinnerComponent } from '../../../../ui/loading-spinner/loading-spinner.component';
+import { AutocompleteService } from '../autocomplete.service';
 
 @Component({
   selector: 'app-autocomplete-suggestions',
@@ -14,7 +16,8 @@ import { LoadingSpinnerComponent } from '../../../../ui/loading-spinner/loading-
   templateUrl: './autocomplete-suggestions.component.html',
 })
 export class AutocompleteSuggestionsComponent {
-  id = input.required<string>();
+  protected autocomplete = inject(AutocompleteService);
+
   suggestions = input<string[]>([]);
   loading = input<boolean>(false);
   activeIndex = input<number>(-1);

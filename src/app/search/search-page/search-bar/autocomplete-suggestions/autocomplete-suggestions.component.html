@@ -1,5 +1,5 @@
 <ul
-  [id]="id()"
+  [id]="autocomplete.listboxId"
   role="listbox"
   tabindex="-1"
   aria-label="Zoeksuggesties"
@@ -14,6 +14,7 @@
     @for (suggestion of suggestions(); track suggestion; let i = $index) {
       <li>
         <a
+          [id]="autocomplete.optionId(i)"
           role="option"
           [attr.aria-selected]="i === activeIndex()"
           [class.bg-base-200]="i === activeIndex()"

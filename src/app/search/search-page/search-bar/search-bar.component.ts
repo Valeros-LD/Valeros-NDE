@@ -34,8 +34,6 @@ export class SearchBarComponent {
   protected autocomplete = inject(AutocompleteService);
   private router = inject(Router);
 
-  protected readonly listboxId = 'search-autocomplete-listbox';
-
   protected readonly placeholder = signal(
     (() => {
       const placeholderExamples = ['mijnbouw', 'bloem', 'brief', 'instrument'];
