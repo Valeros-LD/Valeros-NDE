@@ -19,7 +19,7 @@ test.describe('Home page', () => {
   }) => {
     await page.goto('/');
 
-    const searchInput = page.getByRole('textbox').first();
+    const searchInput = page.getByRole('combobox').first();
     await searchInput.focus();
     await expect(searchInput).toBeFocused();
 
