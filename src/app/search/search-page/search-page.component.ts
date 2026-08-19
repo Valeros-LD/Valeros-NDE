@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -8,16 +9,19 @@ import {
   signal,
   viewChild,
   ViewContainerRef,
-  ChangeDetectionStrategy,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationStart, Router } from '@angular/router';
 import { featherFilter } from '@ng-icons/feather-icons';
+import { filter } from 'rxjs';
 import { BreadcrumbService } from '../../details-page/breadcrumbs/breadcrumb.service';
 import { BreakpointService } from '../../ui/breakpoint/breakpoint.service';
 import { ErrorAlertComponent } from '../../ui/error-alert/error-alert.component';
 import { HeaderBannerComponent } from '../../ui/header-banner/header-banner.component';
 import { PageTitleService } from '../../ui/page-title/page-title.service';
 import { FilterStore } from '../state/filter.store';
+import { SearchResponseCacheStore } from '../state/search-response-cache.store';
+import { SearchScrollPositionStore } from '../state/search-scroll-position.store';
 import { SearchStore } from '../state/search.store';
 import { ViewService } from '../views/view.service';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
@@ -50,8 +54,9 @@ import { ViewSwitcherComponent } from './view-switcher/view-switcher.component';
 export class SearchPageComponent implements OnInit {
   store = inject(SearchStore);
   filterStore = inject(FilterStore);
+  private searchCache = inject(SearchResponseCacheStore);
+  private scrollPositions = inject(SearchScrollPositionStore);
   private breadcrumbService = inject(BreadcrumbService);
-  private route = inject(ActivatedRoute);
   private router = inject(Router);
   private breakpointService = inject(BreakpointService);
   private viewService = inject(ViewService);
@@ -76,10 +81,22 @@ export class SearchPageComponent implements OnInit {
     this.loadViewWhenContainerIsReady();
     this.updatePageTitleOnSearchChange();
     this.scrollToTopOnSearchOrPageChange();
+    this.saveScrollPositionOnNavigateAway();
   }
 
   ngOnInit(): void {
     this.breadcrumbService.reset();
+  }
+
+  private saveScrollPositionOnNavigateAway(): void {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationStart),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => {
+        this.scrollPositions.saveCurrent(window.scrollY);
+      });
   }
 
   private loadViewWhenContainerIsReady(): void {
@@ -129,8 +146,22 @@ export class SearchPageComponent implements OnInit {
       this.store.currentSort();
       this.filterStore.activeFilterCount();
       this.store.results();
+      const isLoading = this.store.loading();
+      this.searchCache.currentSearchKey();
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (isLoading) {
+        return;
+      }
+
+      const savedScrollY = this.scrollPositions.popForCurrent();
+
+      requestAnimationFrame(() => {
+        if (savedScrollY !== undefined) {
+          window.scrollTo({ top: savedScrollY });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
     });
   }
 }

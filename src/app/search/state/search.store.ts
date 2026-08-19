@@ -12,6 +12,7 @@ import {
   loadSearchParamsFromSessionStorage,
   saveSearchParamsToSessionStorage,
 } from './search-params-storage.util';
+import { SearchResponseCacheStore } from './search-response-cache.store';
 
 interface SearchUrlParams {
   q: string;
@@ -31,6 +32,7 @@ export class SearchStore {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private viewService = inject(ViewService);
+  private searchCache = inject(SearchResponseCacheStore);
 
   searchTerm = signal('');
   results = signal<NodeModel[]>([]);
@@ -127,27 +129,38 @@ export class SearchStore {
       // return;
     }
 
+    const pageSize = this.pageSize();
+    const sort = this.currentSort();
+    const filters = this.filterStore.selectedFilters();
+    const searchKey = this.searchCache.setSearchKey(
+      trimmedTerm,
+      page,
+      pageSize,
+      sort,
+      this.filterStore.serialize(filters) || '',
+    );
+
+    const cachedResponse = this.searchCache.get(searchKey);
+    if (cachedResponse) {
+      this.applySearchResponse(cachedResponse);
+      return;
+    }
+
     this.loading.set(true);
     this.error.set(null);
-
-    const filters = this.filterStore.selectedFilters();
 
     this.searchApiService
       .search({
         q: trimmedTerm,
-        size: this.pageSize(),
+        size: pageSize,
         page,
         ...(Object.keys(filters).length > 0 && { filters }),
-        ...(this.currentSort() && { sort: this.currentSort()! }),
+        ...(sort && { sort }),
       })
       .subscribe({
         next: (response: SearchResponse) => {
-          this.results.set(response.orderedItems);
-          this.totalResults.set(response.partOf.totalItems);
-          this.facets.set(response.partOf.facets || []);
-          this.nextPage.set(response.next);
-          this.prevPage.set(response.prev);
-          this.loading.set(false);
+          this.searchCache.set(searchKey, response);
+          this.applySearchResponse(response);
 
           console.log('Search results:', response);
         },
@@ -159,5 +172,14 @@ export class SearchStore {
           this.facets.set([]);
         },
       });
+  }
+
+  private applySearchResponse(response: SearchResponse): void {
+    this.results.set(response.orderedItems);
+    this.totalResults.set(response.partOf.totalItems);
+    this.facets.set(response.partOf.facets || []);
+    this.nextPage.set(response.next);
+    this.prevPage.set(response.prev);
+    this.loading.set(false);
   }
 }
