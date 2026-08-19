@@ -42,7 +42,7 @@ export const SEARCH_VIEWS_CONFIG: ViewsConfig = {
 
 - **`views`** - Array of view configurations. Each view has:
   - **`type`** - Unique identifier of the view's `ViewType` (e.g., `'grid'`, `'list'`, or `'map'`)
-  - **`componentId`** - Component to render (`'list-view'`, `'grid-view'`, `'map-view'`, as defined in `src/app/config/views/view-component.registry.ts`)
+  - **`componentId`** - Component to render (`'list-view'`, `'grid-view'`, `'map-view'`, `'timeline-view'`, as defined in `src/app/config/views/view-component.registry.ts`)
   - **`options`** - View-specific options (see [View Options](#view-options))
   - **`icon`** - Icon name for the view switcher (see [Icon Registry](/guide/icon-registry))
   - **`label`** - Display label for the view switcher
@@ -59,6 +59,7 @@ Valeros supports the following built-in view types:
 - **`'list'`** - List view with thumbnails and metadata (component: `'list-view'`)
 - **`'grid'`** - Grid/masonry view for image-heavy collections (component: `'grid-view'`)
 - **`'map'`** - Map view for geographic exploration (component: `'map-view'`)
+- **`'timeline'`** - Timeline view for exploring results by year (component: `'timeline-view'`)
 
 ## View Options
 

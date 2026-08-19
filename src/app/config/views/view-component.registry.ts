@@ -3,11 +3,13 @@ import { BaseResultsView } from '../../search/views/base-results-view';
 import { GridViewComponent } from '../../search/views/grid-view/grid-view.component';
 import { ListViewComponent } from '../../search/views/list-view/list-view.component';
 import { MapViewComponent } from '../../search/views/map-view/map-view.component';
+import { TimelineViewComponent } from '../../search/views/timeline-view/timeline-view.component';
 
 export const VIEW_COMPONENT_REGISTRY = {
   'list-view': ListViewComponent,
   'grid-view': GridViewComponent,
   'map-view': MapViewComponent,
+  'timeline-view': TimelineViewComponent,
 } as const;
 
 export type ViewComponentKey = keyof typeof VIEW_COMPONENT_REGISTRY;

@@ -2,6 +2,7 @@ import { ViewsConfig } from '../../search/views/types/view-config';
 import { GRID_PRESENTATION_CONFIG } from '../node-presentation/grid-presentation.config';
 import { LIST_PRESENTATION_CONFIG } from '../node-presentation/list-presentation.config';
 import { MAP_PRESENTATION_CONFIG } from '../node-presentation/map-presentation.config';
+import { TIMELINE_PRESENTATION_CONFIG } from '../node-presentation/timeline-presentation.config';
 
 export const SEARCH_VIEWS_CONFIG: ViewsConfig = {
   views: [
@@ -41,6 +42,18 @@ export const SEARCH_VIEWS_CONFIG: ViewsConfig = {
       icon: 'map',
       label: 'Kaart weergave',
       presentationConfig: MAP_PRESENTATION_CONFIG,
+    },
+    {
+      type: 'timeline',
+      componentId: 'timeline-view',
+      options: {
+        pageSize: 10,
+        showPagination: true,
+        showResultsCount: true,
+      },
+      icon: 'calendar',
+      label: 'Tijdlijn weergave',
+      presentationConfig: TIMELINE_PRESENTATION_CONFIG,
     },
   ],
   defaultView: 'list',
