@@ -1,3 +1,4 @@
+# TODO: Generate this automatically for all fields that refer to an IRI
 query ReferringNodes($id: IRI!, $perPage: Int) {
   creativeWorks(
     where: {
