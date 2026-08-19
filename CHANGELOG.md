@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.11.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.10.0...valeros-nde-v0.11.0) (2026-08-19)
+
+
+### Features
+
+* add literal link widget ([ef2e875](https://github.com/Valeros-LD/valeros-NDE/commit/ef2e8754c60a1bbf343fd05dcfbccd7d88c0f0d2))
+* add timeline view ([c2ebea4](https://github.com/Valeros-LD/valeros-NDE/commit/c2ebea488a495e55acc5100bb75ad283242cfa33))
+* allow setting default sort per view ([fc014b0](https://github.com/Valeros-LD/valeros-NDE/commit/fc014b0cb2d01eb60fecd8ac5070fb9fe2e64aff))
+* configure if links are external at the widget/property level ([002759a](https://github.com/Valeros-LD/valeros-NDE/commit/002759a05abd728566250aaed2291a2e94634ec4))
+* navigate back to /search instead of home from search breadcrumb ([6e88df5](https://github.com/Valeros-LD/valeros-NDE/commit/6e88df5bebf158c568076f99637ab93b11668957))
+* only trigger search on search page ([3ea8ca3](https://github.com/Valeros-LD/valeros-NDE/commit/3ea8ca3791ef31f322c3d9dce66f9df04f98e922))
+* reset page size on view change ([5da94ee](https://github.com/Valeros-LD/valeros-NDE/commit/5da94ee4198aa4d8bcdf14c3a9dee538f4ce8f01))
+* save and maintain search page scroll position ([75837ff](https://github.com/Valeros-LD/valeros-NDE/commit/75837ffce4884314ade33a6af8abe1848f2ec94b))
+* select autocomplete suggestions using keyboard arrows ([31deb00](https://github.com/Valeros-LD/valeros-NDE/commit/31deb005309a233585e64b8724886b9e4ff1445a))
+* set default sort for timeline view ([2554d51](https://github.com/Valeros-LD/valeros-NDE/commit/2554d51e4e8eed2b3ddb3d6b66e6959adcd1e684))
+
+
+### Bug Fixes
+
+* allow screen readers to correctly identify the active autocomplete option ([9b07231](https://github.com/Valeros-LD/valeros-NDE/commit/9b07231c83652db114220853d2d32c4a13acde04))
+* always force filter panel open on desktop ([0ffc66f](https://github.com/Valeros-LD/valeros-NDE/commit/0ffc66f34ec8f45a04c26261a56e1c2505987bc8))
+
 ## [0.10.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.9.0...valeros-nde-v0.10.0) (2026-08-18)
 
 
