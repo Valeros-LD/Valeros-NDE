@@ -75,8 +75,8 @@ export class BreadcrumbService {
 
     const searchBreadcrumb: BreadcrumbItem = {
       label,
-      route: ['/'],
-      queryParams,
+      route: ['/search'],
+      queryParams: { q: '', ...queryParams },
     };
 
     const current = this.breadcrumbs();
