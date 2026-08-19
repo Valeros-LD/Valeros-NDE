@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { distinctUntilChanged, map } from 'rxjs';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { distinctUntilChanged, filter, map } from 'rxjs';
 import { ApiService } from '../../api/api.service';
 import { NodeModel } from '../../node/types/node.model';
 import { Facet } from '../types/facet';
@@ -29,6 +29,7 @@ export class SearchStore {
   private searchApiService = inject(ApiService);
   private filterStore = inject(FilterStore);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private viewService = inject(ViewService);
 
   searchTerm = signal('');
@@ -60,6 +61,7 @@ export class SearchStore {
 
     this.route.queryParams
       .pipe(
+        filter(() => this.router.url.split('?')[0] === '/search'),
         map(
           (params): SearchUrlParams => ({
             q: params['q'] || '',
