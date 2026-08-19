@@ -15,7 +15,6 @@ import { ImageWithSkeletonComponent } from '../../ui/image/image-with-skeleton/i
 import { NodeImageResolverService } from '../node-image-resolver.service';
 import { NodeModel } from '../types/node.model';
 import { NodeLinkVariant } from './node-link-variant';
-import { NodeLinkService } from './node-link.service';
 
 @Component({
   selector: 'app-node-link',
@@ -29,12 +28,14 @@ export class NodeLinkComponent {
   readonly node = input.required<NodeModel>();
   readonly showType = input<boolean>(true);
   readonly variant = input<NodeLinkVariant>('inline');
+  readonly isExternal = input<boolean | undefined>(undefined);
 
-  private nodeLinkService = inject(NodeLinkService);
   private imageResolver = inject(NodeImageResolverService);
 
   readonly isInternalLink = computed(() => {
-    return this.nodeLinkService.isInternalLink(this.node());
+    const isExternal = this.isExternal();
+    if (isExternal !== undefined) return !isExternal;
+    return true;
   });
 
   readonly isImageCard = computed(() => {

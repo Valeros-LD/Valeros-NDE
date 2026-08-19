@@ -19,6 +19,7 @@ export class NodeLinkListComponent {
   readonly nodes = input.required<NodeModel[]>();
   readonly showType = input<boolean>(false);
   readonly mode = input<NodeLinkVariant | 'auto'>('auto');
+  readonly isExternal = input<boolean | undefined>(undefined);
 
   protected imageResolver = inject(NodeImageResolverService);
 

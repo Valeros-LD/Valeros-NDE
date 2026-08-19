@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { NodeLinkListComponent } from '../../../node/node-link-list/node-link-list.component';
 import { isNodeModel, NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
 import { TextWidget } from '../text-widget/text-widget.component';
-import { TextWidgetOptions } from '../text-widget/text-widget.options';
+import { LinkWidgetOptions } from './link-widget.options';
 
 @Component({
   selector: 'app-link-widget',
@@ -26,7 +26,7 @@ export class LinkWidget extends BaseWidget {
     literals: this.literalValues(),
   }));
 
-  typedOptions = computed(() => this.options() as TextWidgetOptions);
+  typedOptions = computed(() => this.options() as LinkWidgetOptions);
 
   textOptions = computed(() => ({
     showPropertyLabel: false,

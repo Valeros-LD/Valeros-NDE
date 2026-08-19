@@ -1,5 +1,9 @@
 @if (nodeValues().length > 0) {
-  <app-node-link-list [nodes]="nodeValues()" [showType]="false" />
+  <app-node-link-list
+    [nodes]="nodeValues()"
+    [showType]="false"
+    [isExternal]="typedOptions().isExternal"
+  />
 }
 
 @if (literalValues().length > 0) {
