@@ -50,6 +50,7 @@ export const SEARCH_VIEWS_CONFIG: ViewsConfig = {
         pageSize: 10,
         showPagination: true,
         showResultsCount: true,
+        defaultSort: 'dateCreated:asc',
       },
       icon: 'calendar',
       label: 'Tijdlijn weergave',
