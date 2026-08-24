@@ -103,7 +103,7 @@ fragment ReferringCreativeWorkFields on CreativeWork {
 
 fragment ReferringDatasetFields on Dataset {
   id
-  label {
+  name {
     value
     language
   }
@@ -111,7 +111,7 @@ fragment ReferringDatasetFields on Dataset {
 
 fragment ReferringOccupationFields on Occupation {
   id
-  label {
+  name {
     value
     language
   }
@@ -119,7 +119,7 @@ fragment ReferringOccupationFields on Occupation {
 
 fragment ReferringOrganizationFields on Organization {
   id
-  label {
+  name {
     value
     language
   }
@@ -127,7 +127,7 @@ fragment ReferringOrganizationFields on Organization {
 
 fragment ReferringPersonFields on Person {
   id
-  label {
+  name {
     value
     language
   }
@@ -135,7 +135,7 @@ fragment ReferringPersonFields on Person {
 
 fragment ReferringPlaceFields on Place {
   id
-  label {
+  name {
     value
     language
   }
@@ -143,7 +143,7 @@ fragment ReferringPlaceFields on Place {
 
 fragment ReferringTermFields on Term {
   id
-  label {
+  name {
     value
     language
   }

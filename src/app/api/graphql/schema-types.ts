@@ -2,12 +2,12 @@ export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
-  IRI: { input: unknown; output: unknown };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  IRI: { input: unknown; output: unknown; }
 };
 
 export type BooleanBucket = {
@@ -57,7 +57,7 @@ export type CreativeWorkCriterion = {
   id?: InputMaybe<CreativeWorkFilter>;
   identifier?: InputMaybe<KeywordFilter>;
   isPartOf?: InputMaybe<DatasetFilter>;
-  license?: InputMaybe<KeywordFilter>;
+  license?: InputMaybe<IriFilter>;
   locationCreated?: InputMaybe<PlaceFilter>;
   material?: InputMaybe<TermFilter>;
   sdDatePublished?: InputMaybe<DateRange>;
@@ -75,7 +75,7 @@ export type CreativeWorkFacets = {
   genre: Array<IriBucket>;
   hasMedia: Array<BooleanBucket>;
   isPartOf: Array<IriBucket>;
-  license: Array<ValueBucket>;
+  license: Array<IriBucket>;
   locationCreated: Array<IriBucket>;
   material: Array<IriBucket>;
   temporalCoverage: Array<ValueBucket>;
@@ -103,7 +103,7 @@ export enum CreativeWorkSortField {
   DateCreated = 'DATE_CREATED',
   Name = 'NAME',
   Relevance = 'RELEVANCE',
-  SdDatePublished = 'SD_DATE_PUBLISHED',
+  SdDatePublished = 'SD_DATE_PUBLISHED'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -121,7 +121,7 @@ export type CreativeWorkWhere = {
   id?: InputMaybe<CreativeWorkFilter>;
   identifier?: InputMaybe<KeywordFilter>;
   isPartOf?: InputMaybe<DatasetFilter>;
-  license?: InputMaybe<KeywordFilter>;
+  license?: InputMaybe<IriFilter>;
   locationCreated?: InputMaybe<PlaceFilter>;
   material?: InputMaybe<TermFilter>;
   /** A disjunction: a document matches when ANY of these criteria holds. Combined with the sibling keys by AND, so it widens across fields without widening the query as a whole. */
@@ -135,22 +135,23 @@ export type Dataset = {
   __typename?: 'Dataset';
   description: Array<LanguageString>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
   landingPage?: Maybe<Scalars['String']['output']>;
-  license: Array<Scalars['String']['output']>;
+  license: Array<Scalars['IRI']['output']>;
+  /** The dataset’s display name, read from its `dcterms:title` in the register. Served as `name` like every other collection’s display field, so a client that renders a result never has to know which profile described it. */
+  name: Array<LanguageString>;
   publisher: Array<PublisherReference>;
 };
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
 export type DatasetCriterion = {
   id?: InputMaybe<DatasetFilter>;
-  license?: InputMaybe<KeywordFilter>;
+  license?: InputMaybe<IriFilter>;
   publisher?: InputMaybe<PublisherFilter>;
 };
 
 export type DatasetFacets = {
   __typename?: 'DatasetFacets';
-  license: Array<ValueBucket>;
+  license: Array<IriBucket>;
   publisher: Array<IriBucket>;
 };
 
@@ -166,8 +167,13 @@ export type DatasetOrderBy = {
 
 export type DatasetReference = {
   __typename?: 'DatasetReference';
+  description: Array<LanguageString>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  landingPage?: Maybe<Scalars['String']['output']>;
+  license: Array<Scalars['IRI']['output']>;
+  /** The dataset’s display name, read from its `dcterms:title` in the register. Served as `name` like every other collection’s display field, so a client that renders a result never has to know which profile described it. */
+  name: Array<LanguageString>;
+  publisher: Array<PublisherReference>;
 };
 
 export type DatasetSearchResult = {
@@ -178,8 +184,8 @@ export type DatasetSearchResult = {
 };
 
 export enum DatasetSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -187,7 +193,7 @@ export type DatasetWhere = {
   /** Further groups of conditions, all of which apply. The way to carry a second `or` disjunction alongside the first. */
   and?: InputMaybe<Array<DatasetWhere>>;
   id?: InputMaybe<DatasetFilter>;
-  license?: InputMaybe<KeywordFilter>;
+  license?: InputMaybe<IriFilter>;
   /** A disjunction: a document matches when ANY of these criteria holds. Combined with the sibling keys by AND, so it widens across fields without widening the query as a whole. */
   or?: InputMaybe<Array<DatasetCriterion>>;
   publisher?: InputMaybe<PublisherFilter>;
@@ -210,6 +216,11 @@ export type IriBucket = {
   value: Scalars['IRI']['output'];
 };
 
+/** Matches a field holding IRIs that belong to no collection this API serves. */
+export type IriFilter = {
+  in?: InputMaybe<Array<Scalars['IRI']['input']>>;
+};
+
 /** Matches a field holding literal values. */
 export type KeywordFilter = {
   in?: InputMaybe<Array<Scalars['String']['input']>>;
@@ -223,19 +234,19 @@ export type LanguageString = {
 
 export type MediaObject = {
   __typename?: 'MediaObject';
-  contentUrl?: Maybe<Scalars['String']['output']>;
+  contentUrl?: Maybe<Scalars['IRI']['output']>;
   copyrightNotice: Array<LanguageString>;
   encodingFormat: Array<Scalars['String']['output']>;
   id?: Maybe<Scalars['IRI']['output']>;
-  license?: Maybe<Scalars['String']['output']>;
-  thumbnailUrl?: Maybe<Scalars['String']['output']>;
+  license?: Maybe<Scalars['IRI']['output']>;
+  thumbnailUrl?: Maybe<Scalars['IRI']['output']>;
 };
 
 export type Occupation = {
   __typename?: 'Occupation';
   dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
@@ -261,8 +272,9 @@ export type OccupationOrderBy = {
 
 export type OccupationReference = {
   __typename?: 'OccupationReference';
+  dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 export type OccupationSearchResult = {
@@ -273,8 +285,8 @@ export type OccupationSearchResult = {
 };
 
 export enum OccupationSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -291,8 +303,8 @@ export type Organization = {
   __typename?: 'Organization';
   dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
   location: Array<PlaceReference>;
+  name: Array<LanguageString>;
 };
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
@@ -326,8 +338,8 @@ export type OrganizationSearchResult = {
 };
 
 export enum OrganizationSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -357,7 +369,7 @@ export type Person = {
   deathPlace: Array<PlaceReference>;
   hasOccupation: Array<OccupationReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
@@ -391,8 +403,14 @@ export type PersonOrderBy = {
 
 export type PersonReference = {
   __typename?: 'PersonReference';
+  birthDate?: Maybe<Scalars['String']['output']>;
+  birthPlace: Array<PlaceReference>;
+  dataset?: Maybe<DatasetReference>;
+  deathDate?: Maybe<Scalars['String']['output']>;
+  deathPlace: Array<PlaceReference>;
+  hasOccupation: Array<OccupationReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 export type PersonSearchResult = {
@@ -405,8 +423,8 @@ export type PersonSearchResult = {
 export enum PersonSortField {
   BirthDate = 'BIRTH_DATE',
   DeathDate = 'DEATH_DATE',
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -431,9 +449,9 @@ export type Place = {
   addressRegion: Array<Scalars['String']['output']>;
   dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
   latitude?: Maybe<Scalars['Float']['output']>;
   longitude?: Maybe<Scalars['Float']['output']>;
+  name: Array<LanguageString>;
   postalCode: Array<Scalars['String']['output']>;
   streetAddress: Array<Scalars['String']['output']>;
 };
@@ -471,8 +489,16 @@ export type PlaceOrderBy = {
 
 export type PlaceReference = {
   __typename?: 'PlaceReference';
+  addressCountry: Array<Scalars['String']['output']>;
+  addressLocality: Array<Scalars['String']['output']>;
+  addressRegion: Array<Scalars['String']['output']>;
+  dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  name: Array<LanguageString>;
+  postalCode: Array<Scalars['String']['output']>;
+  streetAddress: Array<Scalars['String']['output']>;
 };
 
 export type PlaceSearchResult = {
@@ -483,8 +509,8 @@ export type PlaceSearchResult = {
 };
 
 export enum PlaceSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -507,7 +533,7 @@ export type PlaceWhere = {
 export type Publisher = {
   __typename?: 'Publisher';
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
@@ -528,7 +554,7 @@ export type PublisherOrderBy = {
 export type PublisherReference = {
   __typename?: 'PublisherReference';
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
 };
 
 export type PublisherSearchResult = {
@@ -538,8 +564,8 @@ export type PublisherSearchResult = {
 };
 
 export enum PublisherSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */
@@ -563,6 +589,7 @@ export type Query = {
   terms: TermSearchResult;
 };
 
+
 export type QueryCreativeWorksArgs = {
   orderBy?: InputMaybe<CreativeWorkOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -570,6 +597,7 @@ export type QueryCreativeWorksArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<CreativeWorkWhere>;
 };
+
 
 export type QueryDatasetsArgs = {
   orderBy?: InputMaybe<DatasetOrderBy>;
@@ -579,6 +607,7 @@ export type QueryDatasetsArgs = {
   where?: InputMaybe<DatasetWhere>;
 };
 
+
 export type QueryOccupationsArgs = {
   orderBy?: InputMaybe<OccupationOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -586,6 +615,7 @@ export type QueryOccupationsArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<OccupationWhere>;
 };
+
 
 export type QueryOrganizationsArgs = {
   orderBy?: InputMaybe<OrganizationOrderBy>;
@@ -595,6 +625,7 @@ export type QueryOrganizationsArgs = {
   where?: InputMaybe<OrganizationWhere>;
 };
 
+
 export type QueryPersonsArgs = {
   orderBy?: InputMaybe<PersonOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -602,6 +633,7 @@ export type QueryPersonsArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<PersonWhere>;
 };
+
 
 export type QueryPlacesArgs = {
   orderBy?: InputMaybe<PlaceOrderBy>;
@@ -611,6 +643,7 @@ export type QueryPlacesArgs = {
   where?: InputMaybe<PlaceWhere>;
 };
 
+
 export type QueryPublishersArgs = {
   orderBy?: InputMaybe<PublisherOrderBy>;
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -618,6 +651,7 @@ export type QueryPublishersArgs = {
   query?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<PublisherWhere>;
 };
+
 
 export type QueryTermsArgs = {
   orderBy?: InputMaybe<TermOrderBy>;
@@ -629,14 +663,14 @@ export type QueryTermsArgs = {
 
 export enum SortDirection {
   Asc = 'ASC',
-  Desc = 'DESC',
+  Desc = 'DESC'
 }
 
 export type Term = {
   __typename?: 'Term';
   dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
   sameAs: Array<Scalars['String']['output']>;
 };
 
@@ -665,8 +699,10 @@ export type TermOrderBy = {
 
 export type TermReference = {
   __typename?: 'TermReference';
+  dataset?: Maybe<DatasetReference>;
   id: Scalars['IRI']['output'];
-  label: Array<LanguageString>;
+  name: Array<LanguageString>;
+  sameAs: Array<Scalars['String']['output']>;
 };
 
 export type TermSearchResult = {
@@ -677,8 +713,8 @@ export type TermSearchResult = {
 };
 
 export enum TermSortField {
-  Label = 'LABEL',
-  Relevance = 'RELEVANCE',
+  Name = 'NAME',
+  Relevance = 'RELEVANCE'
 }
 
 /** Sibling keys are combined with AND. Use `or` for a disjunction, and `and` when a query needs more than one of them. */

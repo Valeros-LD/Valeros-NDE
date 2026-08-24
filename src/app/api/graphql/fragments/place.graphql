@@ -1,6 +1,6 @@
 fragment PlaceFields on Place {
   id
-  label {
+  name {
     value
     language
   }

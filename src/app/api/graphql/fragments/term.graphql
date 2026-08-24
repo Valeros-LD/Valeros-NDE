@@ -1,6 +1,6 @@
 fragment TermFields on Term {
   id
-  label {
+  name {
     value
     language
   }

@@ -6,6 +6,9 @@ fragment CreativeWorkFields on CreativeWork {
     language
   }
   sdDatePublished
+  dataset {
+    ...DatasetReferenceFields
+  }
   isPartOf {
     ...DatasetReferenceFields
   }

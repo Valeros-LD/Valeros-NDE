@@ -1,6 +1,6 @@
 fragment DatasetFields on Dataset {
   id
-  label {
+  name {
     value
     language
   }

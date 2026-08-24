@@ -1,14 +1,23 @@
 fragment DatasetReferenceFields on DatasetReference {
   id
-  label {
+  name {
     value
     language
   }
+  publisher {
+    ...PublisherReferenceFields
+  }
+  license
+  description {
+    value
+    language
+  }
+  landingPage
 }
 
 fragment PersonReferenceFields on PersonReference {
   id
-  label {
+  name {
     value
     language
   }
@@ -16,7 +25,7 @@ fragment PersonReferenceFields on PersonReference {
 
 fragment PlaceReferenceFields on PlaceReference {
   id
-  label {
+  name {
     value
     language
   }
@@ -24,7 +33,7 @@ fragment PlaceReferenceFields on PlaceReference {
 
 fragment TermReferenceFields on TermReference {
   id
-  label {
+  name {
     value
     language
   }
@@ -32,7 +41,7 @@ fragment TermReferenceFields on TermReference {
 
 fragment PublisherReferenceFields on PublisherReference {
   id
-  label {
+  name {
     value
     language
   }
@@ -40,7 +49,7 @@ fragment PublisherReferenceFields on PublisherReference {
 
 fragment OccupationReferenceFields on OccupationReference {
   id
-  label {
+  name {
     value
     language
   }

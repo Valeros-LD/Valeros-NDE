@@ -1,6 +1,6 @@
 fragment PersonFields on Person {
   id
-  label {
+  name {
     value
     language
   }

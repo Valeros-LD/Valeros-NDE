@@ -12,13 +12,7 @@ import {
   OrganizationFieldsFragment,
   PersonFieldsFragment,
   PlaceFieldsFragment,
-  ReferringDatasetFieldsFragment,
   ReferringNodesQuery,
-  ReferringOccupationFieldsFragment,
-  ReferringOrganizationFieldsFragment,
-  ReferringPersonFieldsFragment,
-  ReferringPlaceFieldsFragment,
-  ReferringTermFieldsFragment,
   TermFieldsFragment,
 } from './graphql/generated';
 import {
@@ -33,7 +27,8 @@ import {
 // TODO: Skip most of this normalization logic in favor of using the GraphQL types directly
 // This module is mostly here to keep the previously existing REST API surface intact
 type LocalizedValue = { value: string; language?: string | null };
-type ReferenceValue = { id: string; label: LocalizedValue[] };
+
+type ReferenceValue = { id: string; name: LocalizedValue[] };
 
 function isLocalizedValue(value: unknown): value is LocalizedValue {
   return (
@@ -46,7 +41,7 @@ function isLocalizedValue(value: unknown): value is LocalizedValue {
 
 function isReferenceValue(value: unknown): value is ReferenceValue {
   return (
-    !!value && typeof value === 'object' && 'id' in value && 'label' in value
+    !!value && typeof value === 'object' && 'id' in value && 'name' in value
   );
 }
 
@@ -61,16 +56,6 @@ function pickLocalizedValue(
   );
 }
 
-function toReferenceNode(
-  reference: ReferenceValue,
-  preferredLanguage: string,
-): NodeModel {
-  return {
-    id: reference.id,
-    name: pickLocalizedValue(reference.label, preferredLanguage),
-  };
-}
-
 function normalizeGraphQlValue(
   value: unknown,
   preferredLanguage: string,
@@ -81,15 +66,16 @@ function normalizeGraphQlValue(
       return pickLocalizedValue(value, preferredLanguage);
     }
     if (value.every(isReferenceValue)) {
-      return value.map((reference) =>
-        toReferenceNode(reference, preferredLanguage),
+      return value.map(
+        (reference) =>
+          normalizeGraphQlItem(reference, preferredLanguage) as NodeModel,
       );
     }
     return value;
   }
 
   if (isReferenceValue(value)) {
-    return toReferenceNode(value, preferredLanguage);
+    return normalizeGraphQlItem(value, preferredLanguage) as NodeModel;
   }
 
   return value;
@@ -259,31 +245,7 @@ export function mapTerm(
   item: TermFieldsFragment,
   preferredLanguage: string,
 ): NodeModel {
-  const normalizedNode = normalizeGraphQlItem(
-    item,
-    preferredLanguage,
-  ) as NodeModel;
-  if ('label' in normalizedNode) {
-    normalizedNode['name'] = normalizedNode['label'];
-  }
-  return normalizedNode;
-}
-
-function mapReferringLabelledNode(
-  item:
-    | ReferringDatasetFieldsFragment
-    | ReferringOccupationFieldsFragment
-    | ReferringOrganizationFieldsFragment
-    | ReferringPersonFieldsFragment
-    | ReferringPlaceFieldsFragment
-    | ReferringTermFieldsFragment,
-  preferredLanguage: string,
-): NodeModel {
-  const node = normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
-  if ('label' in node) {
-    node['name'] = node['label'];
-  }
-  return node;
+  return normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
 }
 
 export function toReferringNodesResponse(
@@ -300,28 +262,17 @@ export function toReferringNodesResponse(
     terms,
   } = data;
 
+  const normalize = (item: object) =>
+    normalizeGraphQlItem(item, preferredLanguage) as NodeModel;
+
   const items: NodeModel[] = [
-    ...creativeWorks.items.map(
-      (item) => normalizeGraphQlItem(item, preferredLanguage) as NodeModel,
-    ),
-    ...datasets.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
-    ...occupations.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
-    ...organizations.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
-    ...persons.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
-    ...places.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
-    ...terms.items.map((item) =>
-      mapReferringLabelledNode(item, preferredLanguage),
-    ),
+    ...creativeWorks.items.map(normalize),
+    ...datasets.items.map(normalize),
+    ...occupations.items.map(normalize),
+    ...organizations.items.map(normalize),
+    ...persons.items.map(normalize),
+    ...places.items.map(normalize),
+    ...terms.items.map(normalize),
   ];
 
   const totalItems = [

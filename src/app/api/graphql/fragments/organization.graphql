@@ -1,6 +1,6 @@
 fragment OrganizationFields on Organization {
   id
-  label {
+  name {
     value
     language
   }
