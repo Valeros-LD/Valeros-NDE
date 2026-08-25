@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.12.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.11.0...valeros-nde-v0.12.0) (2026-08-25)
+
+
+### Features
+
+* add size widget ([5cf990c](https://github.com/Valeros-LD/valeros-NDE/commit/5cf990c3977426e371dee99e827df46a3725f8fd))
+* retrieve description for datasets ([c03632c](https://github.com/Valeros-LD/valeros-NDE/commit/c03632ceb6e7b382694f937252270d62becafaf2))
+* show map widget for locationCreated ([d9e0cc0](https://github.com/Valeros-LD/valeros-NDE/commit/d9e0cc00b6df96e5939bfb9d68eb3620ec5a57f0))
+* update GraphQL schema ([255592f](https://github.com/Valeros-LD/valeros-NDE/commit/255592f0c4ae2b4fc6ffb2e8c5a98a62e450b673))
+
+
+### Bug Fixes
+
+* resolve literal link widget issue ([0193671](https://github.com/Valeros-LD/valeros-NDE/commit/0193671eb368674a282465b894ad6acad1f52b25))
+
 ## [0.11.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.10.0...valeros-nde-v0.11.0) (2026-08-19)
 
 
