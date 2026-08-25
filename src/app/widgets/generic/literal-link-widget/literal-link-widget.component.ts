@@ -14,4 +14,9 @@ export class LiteralLinkWidget extends BaseWidget {
     id: 'literal-link-values',
     values: this.values().map((value): NodeModel => ({ id: String(value) })),
   }));
+
+  linkOptions = computed(() => ({
+    ...this.options(),
+    propertyPath: undefined,
+  }));
 }
