@@ -4,6 +4,10 @@ fragment DatasetFields on Dataset {
     value
     language
   }
+  description {
+    value
+    language
+  }
   license
   publisher {
     ...PublisherReferenceFields
