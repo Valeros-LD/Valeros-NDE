@@ -16,6 +16,7 @@ import {
   featherList,
   featherMap,
   featherMapPin,
+  featherMaximize2,
   featherPackage,
   featherTag,
   featherUser,
@@ -43,6 +44,7 @@ export const ICON_REGISTRY = {
   tag: featherTag,
   user: featherUser,
   users: featherUsers,
+  maximize: featherMaximize2,
 } as const;
 
 export type IconKey = keyof typeof ICON_REGISTRY;

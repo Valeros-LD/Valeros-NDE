@@ -337,3 +337,13 @@ export const fallbackWidget: Widget = {
   componentId: 'json-widget',
   isFallback: true,
 };
+
+export const sizeWidget: Widget = {
+  id: 'size',
+  componentId: 'text-widget',
+  properties: ['size'],
+  options: {
+    propertyLabel: 'Grootte',
+    icon: 'maximize',
+  },
+};
