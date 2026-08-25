@@ -151,7 +151,7 @@ export const aboutWidget: Widget = {
 
 export const contentLocationWidget: Widget = {
   id: 'content-location',
-  properties: ['contentLocation', 'location'],
+  properties: ['contentLocation', 'location', 'locationCreated'],
   componentId: 'map-widget',
   options: {
     propertyLabel: 'Locatie',
