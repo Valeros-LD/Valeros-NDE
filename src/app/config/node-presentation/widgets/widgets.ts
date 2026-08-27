@@ -175,7 +175,7 @@ export const deathPlaceWidget: Widget = {
 
 export const mediaWidget: Widget = {
   id: 'media',
-  properties: ['associatedMedia'],
+  properties: ['iiifManifest'],
   componentId: 'media-widget',
   options: {
     showPropertyLabel: false,

@@ -6,10 +6,6 @@ import {
   OnDestroy,
   Signal,
 } from '@angular/core';
-import {
-  AssociatedMediaNode,
-  isIIIFPresentationManifest,
-} from '../../../node/types/associated-media.node';
 import { BaseWidget } from '../../base-widget';
 import { IiifUrlTransformerService } from './iiif-url-transformer.service';
 
@@ -25,10 +21,9 @@ export abstract class BaseIiifWidget<T = unknown>
   override readonly stopClickPropagation = true;
 
   manifestUrls: Signal<string[]> = computed(() => {
-    return (this.values() as AssociatedMediaNode[])
-      .filter(isIIIFPresentationManifest)
-      .map((v) => v.id)
-      .filter((url): url is string => typeof url === 'string' && url !== '');
+    return (this.values() as string[]).filter(
+      (url): url is string => typeof url === 'string' && url !== '',
+    );
   });
 
   ngAfterViewInit(): void {

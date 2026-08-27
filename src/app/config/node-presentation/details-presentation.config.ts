@@ -40,6 +40,7 @@ export const DETAILS_PRESENTATION_CONFIG: NodePresentationConfig = {
         'identifier',
         'isPartOf',
         'iiifManifest',
+        'associatedMedia',
         'type',
       ],
       componentId: 'text-widget',

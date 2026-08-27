@@ -1,8 +1,4 @@
-import { Component, computed, ChangeDetectionStrategy } from '@angular/core';
-import {
-  AssociatedMediaNode,
-  hasIIIFPresentationManifest,
-} from '../../../node/types/associated-media.node';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { BaseWidget } from '../../base-widget';
 import { MiradorIiifWidget } from '../iiif-widget/mirador-iiif-widget/mirador-iiif-widget.component';
 import { TifyIiifWidget } from '../iiif-widget/tify-iiif-widget/tify-iiif-widget.component';
@@ -25,8 +21,7 @@ export class MediaWidget extends BaseWidget {
   override readonly stopClickPropagation = true;
 
   readonly hasManifest = computed(() => {
-    const media = this.values() as AssociatedMediaNode[];
-    return hasIIIFPresentationManifest(media);
+    return this.values().length > 0;
   });
 
   readonly viewerType = computed(() => {
