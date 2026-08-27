@@ -3,5 +3,5 @@ export interface ApiConfig {
 }
 
 export const API_CONFIG: ApiConfig = {
-  baseUrl: 'https://datalaag.valeros.nl/v1',
+  baseUrl: 'http://localhost:4000/graphql',
 };
