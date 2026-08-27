@@ -36,7 +36,7 @@ export class SearchBarComponent {
 
   protected readonly placeholder = signal(
     (() => {
-      const placeholderExamples = ['mijnbouw', 'bloem', 'brief', 'instrument'];
+      const placeholderExamples = ['kopje', 'servies', 'bord', 'melkkan'];
       const randomIndex = Math.floor(
         Math.random() * placeholderExamples.length,
       );
