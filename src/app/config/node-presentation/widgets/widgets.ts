@@ -1,5 +1,6 @@
 import { Widget } from '../../../widgets/core/types/node-presentation-config';
 import { ImageGalleryWidgetOptions } from '../../../widgets/generic/image-gallery-widget/image-gallery-widget.options';
+import { LinkWidgetOptions } from '../../../widgets/generic/link-widget/link-widget.options';
 import { MediaWidgetOptions } from '../../../widgets/generic/media-widget/media-widget.options';
 import { TextWidgetOptions } from '../../../widgets/generic/text-widget/text-widget.options';
 
@@ -39,18 +40,17 @@ export const additionalTypeWidget: Widget = {
   properties: ['additionalType'],
   componentId: 'link-widget',
   options: {
-    propertyLabel: 'Soort (aanvullend)',
-    propertyPath: 'name',
+    propertyLabel: 'Soort',
     icon: 'grid',
   },
 };
 
 export const datasetWidget: Widget = {
   id: 'dataset',
-  properties: ['isPartOf'],
-  componentId: 'dataset-widget',
+  properties: ['dataset'],
+  componentId: 'link-widget',
   options: {
-    propertyLabel: 'Dataset',
+    propertyLabel: 'Collectie',
     icon: 'archive',
   },
 };
@@ -89,23 +89,14 @@ export const descriptionHeaderWidget: Widget = {
   } as TextWidgetOptions,
 };
 
-export const isMockDataWidget: Widget = {
-  id: 'is-mock-data',
-  properties: ['isMockData'],
-  componentId: 'text-widget',
-  options: {
-    propertyLabel: 'Testdata',
-    icon: 'alert-triangle',
-  },
-};
-
 export const licenseWidget: Widget = {
   id: 'license',
   properties: ['license'],
-  componentId: 'link-widget',
+  componentId: 'literal-link-widget',
   options: {
     propertyLabel: 'Licentie',
     icon: 'file-text',
+    isExternal: true,
   },
 };
 
@@ -149,9 +140,9 @@ export const aboutWidget: Widget = {
   },
 };
 
-export const contentLocationWidget: Widget = {
-  id: 'content-location',
-  properties: ['contentLocation', 'location', 'locationCreated'],
+export const locationWidget: Widget = {
+  id: 'location',
+  properties: ['location', 'contentLocation', 'locationCreated'],
   componentId: 'map-widget',
   options: {
     propertyLabel: 'Locatie',
@@ -260,28 +251,6 @@ export const addressWidget: Widget = {
   },
 };
 
-export const isPartOfLicenseWidget: Widget = {
-  id: 'is-part-of-license',
-  properties: ['isPartOf'],
-  componentId: 'link-widget',
-  options: {
-    propertyLabel: 'Licentie',
-    propertyPath: 'license',
-    icon: 'file-text',
-  },
-};
-
-export const isPartOfPublisherWidget: Widget = {
-  id: 'is-part-of-publisher',
-  properties: ['isPartOf'],
-  componentId: 'link-widget',
-  options: {
-    propertyLabel: 'Uitgever',
-    propertyPath: 'publisher',
-    icon: 'users',
-  },
-};
-
 export const isBasedOnWidget: Widget = {
   id: 'is-based-on',
   properties: ['isBasedOn'],
@@ -315,13 +284,25 @@ export const imageThumbLeftWidget: Widget = {
   } as ImageGalleryWidgetOptions,
 };
 
-export const datasetWithoutLabelWidget: Widget = {
-  id: 'dataset-without-label',
-  properties: ['isPartOf'],
-  componentId: 'dataset-widget',
+export const sizeWidget: Widget = {
+  id: 'size',
+  componentId: 'text-widget',
+  properties: ['size'],
   options: {
-    showPropertyLabel: false,
+    propertyLabel: 'Grootte',
+    icon: 'maximize',
   },
+};
+
+export const idAsLinkWidget: Widget = {
+  id: 'idAsLink',
+  componentId: 'literal-link-widget',
+  properties: ['id'],
+  options: {
+    propertyLabel: 'Gebaseerd op',
+    icon: 'external-link',
+    isExternal: true,
+  } as LinkWidgetOptions,
 };
 
 export const separatorWidget: Widget = {
@@ -336,14 +317,4 @@ export const fallbackWidget: Widget = {
   id: 'fallback',
   componentId: 'json-widget',
   isFallback: true,
-};
-
-export const sizeWidget: Widget = {
-  id: 'size',
-  componentId: 'text-widget',
-  properties: ['size'],
-  options: {
-    propertyLabel: 'Grootte',
-    icon: 'maximize',
-  },
 };
