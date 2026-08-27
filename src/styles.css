@@ -87,6 +87,10 @@
   --app-bg-dark: #d8cfe0;
 }
 
+html {
+  font-size: 125%;
+}
+
 html,
 body {
   @apply min-h-screen bg-app-bg;
