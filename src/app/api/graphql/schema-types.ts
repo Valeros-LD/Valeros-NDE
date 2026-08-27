@@ -32,6 +32,7 @@ export type CreativeWork = {
   hasMedia: Scalars['Boolean']['output'];
   id: Scalars['IRI']['output'];
   identifier: Array<Scalars['String']['output']>;
+  /** The work’s IIIF Presentation manifest, if it publishes one. Filled however the publisher states it – the profile’s own `associatedMedia` entry, or the `isBasedOn` target older versions used – so a IIIF-aware client dereferences this and never reads `associatedMedia` to find it. */
   iiifManifest?: Maybe<Scalars['String']['output']>;
   isPartOf: Array<DatasetReference>;
   locationCreated: Array<PlaceReference>;
@@ -447,7 +448,8 @@ export type Place = {
   addressCountry: Array<Scalars['String']['output']>;
   addressLocality: Array<Scalars['String']['output']>;
   addressRegion: Array<Scalars['String']['output']>;
-  dataset?: Maybe<DatasetReference>;
+  authority?: Maybe<Scalars['String']['output']>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   id: Scalars['IRI']['output'];
   latitude?: Maybe<Scalars['Float']['output']>;
   longitude?: Maybe<Scalars['Float']['output']>;
@@ -461,7 +463,8 @@ export type PlaceCriterion = {
   addressCountry?: InputMaybe<KeywordFilter>;
   addressLocality?: InputMaybe<KeywordFilter>;
   addressRegion?: InputMaybe<KeywordFilter>;
-  dataset?: InputMaybe<DatasetFilter>;
+  authority?: InputMaybe<KeywordFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   id?: InputMaybe<PlaceFilter>;
   latitude?: InputMaybe<FloatRange>;
   longitude?: InputMaybe<FloatRange>;
@@ -474,7 +477,7 @@ export type PlaceFacets = {
   addressCountry: Array<ValueBucket>;
   addressLocality: Array<ValueBucket>;
   addressRegion: Array<ValueBucket>;
-  dataset: Array<IriBucket>;
+  authority: Array<ValueBucket>;
 };
 
 /** Matches a field holding IRIs of Place. */
@@ -492,7 +495,8 @@ export type PlaceReference = {
   addressCountry: Array<Scalars['String']['output']>;
   addressLocality: Array<Scalars['String']['output']>;
   addressRegion: Array<Scalars['String']['output']>;
-  dataset?: Maybe<DatasetReference>;
+  authority?: Maybe<Scalars['String']['output']>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   id: Scalars['IRI']['output'];
   latitude?: Maybe<Scalars['Float']['output']>;
   longitude?: Maybe<Scalars['Float']['output']>;
@@ -509,6 +513,7 @@ export type PlaceSearchResult = {
 };
 
 export enum PlaceSortField {
+  FetchedAt = 'FETCHED_AT',
   Name = 'NAME',
   Relevance = 'RELEVANCE'
 }
@@ -520,7 +525,8 @@ export type PlaceWhere = {
   addressRegion?: InputMaybe<KeywordFilter>;
   /** Further groups of conditions, all of which apply. The way to carry a second `or` disjunction alongside the first. */
   and?: InputMaybe<Array<PlaceWhere>>;
-  dataset?: InputMaybe<DatasetFilter>;
+  authority?: InputMaybe<KeywordFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   id?: InputMaybe<PlaceFilter>;
   latitude?: InputMaybe<FloatRange>;
   longitude?: InputMaybe<FloatRange>;
