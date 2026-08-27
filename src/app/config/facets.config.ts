@@ -19,10 +19,11 @@ export const FACETS_CONFIG: FacetConfig[] = [
     name: 'type',
     label: 'Soort',
     icon: 'grid',
+    hidden: true,
   },
   {
     name: 'additionalType',
-    label: 'Soort (aanvullend)',
+    label: 'Soort',
     icon: 'grid',
   },
   { name: 'publisher', label: 'Uitgever', icon: 'users' },
