@@ -20,11 +20,11 @@ Tailwind strips all default browser styles, so elements like `<h2>` won't have a
 
 ## DaisyUI Components
 
-DaisyUI provides pre-styled components like buttons, cards, and modals. Refer to the [DaisyUI documentation](https://v4.daisyui.com/components/) for available components and their usage.
+DaisyUI provides pre-styled components like buttons, cards, and modals. Refer to the [DaisyUI documentation](https://daisyui.com/components/) for available components and their usage.
 
 ## Themes
 
-Valeros includes three pre-configured themes: **valeros-light** (default), **valeros-dark**, and **valeros-purple**.
+Valeros includes three pre-configured themes: **light** (default), **dark**, and **valeros-purple**.
 
 <video controls>
   <source src="./theme-switching.mp4" type="video/mp4">
@@ -33,44 +33,32 @@ Valeros includes three pre-configured themes: **valeros-light** (default), **val
 
 <span class="video-caption">Video: Switching between themes through the <a href="/guide/config-ui">Configuration UI</a></span>
 
-Themes are defined in `tailwind.config.js` using DaisyUI's theme system with CSS variables for dynamic switching.
+Configuration is CSS-first: themes are defined in `src/styles.css`.
 
 ### Adding or Modifying Themes
 
-Each theme is defined with CSS variables that control fonts, colors, and other properties:
+Each theme is registered with the `@plugin "daisyui"` block, then defined with its own styles via `@plugin "daisyui/theme"`.
 
-```js
-daisyui: {
-  themes: [
-    {
-      'valeros-light': {
-        ...require('daisyui/src/theming/themes')['light'],
-        primary: '#00839F',
-        'primary-content': '#ffffff',
-        '--app-bg': '#E1ECF2',
-        '--app-bg-dark': '#D1DCE2',
-        '--font-sans': '"Familjen Grotesk", sans-serif',
-        '--font-mono': '"Space Mono", monospace',
-      },
-    },
-  ],
+**`light` and `dark` customize DaisyUI's built-in themes of the same name.** DaisyUI [inherits any value you don't override](https://daisyui.com/docs/themes/#how-to-customize-an-existing-theme) from the built-in theme when the `name` matches exactly, so only the values that differ from the DaisyUI default need to be listed:
+
+```css
+@plugin 'daisyui' {
+  themes:
+    light --default,
+    dark,
+    valeros-purple;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'light';
+  default: true;
+  --color-primary: #007994;
+  --color-primary-content: #ffffff;
+  --radius-field: 9999px;
 }
 ```
 
-The Tailwind config references these CSS variables:
-
-```js
-fontFamily: {
-  sans: ['var(--font-sans)', 'sans-serif'],
-  mono: ['var(--font-mono)', 'monospace'],
-},
-colors: {
-  'app-bg': 'var(--app-bg)',
-  'app-bg-dark': 'var(--app-bg-dark)',
-}
-```
-
-See the [DaisyUI Theme Generator](https://v4.daisyui.com/theme-generator/) for more customization options.
+See the [DaisyUI Theme Generator](https://daisyui.com/theme-generator/) for more customization options.
 
 ::: tip
 When adding a new theme, remember to also add it to the theme switcher component at `src/app/config/config-page/theme-switcher/theme-switcher.component.ts`.

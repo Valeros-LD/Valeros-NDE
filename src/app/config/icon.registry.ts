@@ -1,4 +1,3 @@
-import { IconType } from '@ng-icons/core';
 import {
   featherAlertTriangle,
   featherAlignLeft,
@@ -49,10 +48,10 @@ export const ICON_REGISTRY = {
 
 export type IconKey = keyof typeof ICON_REGISTRY;
 
-export function getIcon(key: IconKey): IconType {
+export function getIcon(key: IconKey): string {
   return ICON_REGISTRY[key];
 }
 
-export function getIconOrUndefined(key?: IconKey): IconType | undefined {
+export function getIconOrUndefined(key?: IconKey): string | undefined {
   return key ? ICON_REGISTRY[key] : undefined;
 }

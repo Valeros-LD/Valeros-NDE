@@ -1,17 +1,17 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   OnInit,
   signal,
-  ChangeDetectionStrategy,
 } from '@angular/core';
-import { IconType, NgIconComponent } from '@ng-icons/core';
+import { NgIconComponent } from '@ng-icons/core';
 import { featherMoon, featherStar, featherSun } from '@ng-icons/feather-icons';
 
 interface Theme {
   id: string;
   name: string;
-  icon: IconType;
+  icon: string;
 }
 
 @Component({
@@ -22,8 +22,8 @@ interface Theme {
 })
 export class ThemeSwitcherComponent implements OnInit {
   protected readonly themes: Theme[] = [
-    { id: 'valeros-light', name: 'Licht', icon: featherSun },
-    { id: 'valeros-dark', name: 'Donker', icon: featherMoon },
+    { id: 'light', name: 'Licht', icon: featherSun },
+    { id: 'dark', name: 'Donker', icon: featherMoon },
     { id: 'valeros-purple', name: 'Paars', icon: featherStar },
   ];
 

@@ -1,3 +1,5 @@
+@reference '#styles.css';
+
 .collapse-title,
 :where(.collapse > input[type='checkbox']),
 :where(.collapse > input[type='radio']) {

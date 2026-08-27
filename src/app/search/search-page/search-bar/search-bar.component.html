@@ -3,7 +3,9 @@
     class="dropdown w-full"
     [class.dropdown-open]="autocomplete.showSuggestions()"
   >
-    <label class="input input-bordered rounded-full flex items-center gap-2">
+    <label
+      class="input input-bordered rounded-full flex items-center gap-2 w-full"
+    >
       <input
         type="text"
         [placeholder]="placeholder()"
@@ -21,7 +23,7 @@
         (blur)="onInputBlur()"
       />
       <button
-        class="btn btn-primary btn-sm rounded-full"
+        class="btn btn-primary btn-sm h-7 rounded-full"
         (click)="onSearch()"
         [disabled]="store.loading()"
       >

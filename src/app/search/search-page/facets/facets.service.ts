@@ -1,5 +1,4 @@
 import { Injectable, computed, inject } from '@angular/core';
-import { IconType } from '@ng-icons/core';
 import { ConfigService } from '../../../config/config-page/config.service';
 import { IconKey, getIcon } from '../../../config/icon.registry';
 
@@ -29,7 +28,7 @@ export class FacetsService {
     return this.facetConfigMap().get(facetName)?.icon;
   }
 
-  getFacetIcon(facetName: string): IconType | undefined {
+  getFacetIcon(facetName: string): string | undefined {
     const iconKey = this.getFacetIconKey(facetName);
     return iconKey ? getIcon(iconKey) : undefined;
   }

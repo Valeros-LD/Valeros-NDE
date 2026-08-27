@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   input,
   output,
-  ChangeDetectionStrategy,
 } from '@angular/core';
-import { IconType, NgIcon } from '@ng-icons/core';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-drawer-toggle-button',
@@ -20,7 +20,7 @@ export class DrawerToggleButtonComponent {
   labelWhenClosed = input<string>('Toon filters');
   buttonClass = input<string>('btn');
   isOpen = input<boolean>(true);
-  icon = input<IconType>();
+  icon = input<string>();
   iconSize = input<string>('16');
   iconOnly = input<boolean>(false);
   badge = input<string>();

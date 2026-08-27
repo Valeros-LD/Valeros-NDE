@@ -1,6 +1,9 @@
 {
   "name": "valeros-nde",
   "version": "0.12.0",
+  "imports": {
+    "#styles.css": "./src/styles.css"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -52,10 +55,10 @@
     "@graphql-codegen/typescript": "^6.1.0",
     "@graphql-codegen/typescript-operations": "^6.1.2",
     "@playwright/test": "^1.62.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/leaflet": "^1.9.22",
-    "autoprefixer": "^10.5.4",
     "daisyui": "^5.7.20",
-    "mermaid": "^11.17.0",
+    "mermaid": "11.16.1",
     "postcss": "^8.5.9",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
