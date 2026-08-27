@@ -71,14 +71,6 @@ query ReferringNodes($id: IRI!, $perPage: Int) {
       total
     }
   }
-  places(where: { dataset: { in: [$id] } }, page: 1, perPage: $perPage) {
-    items {
-      ...ReferringPlaceFields
-    }
-    pagination {
-      total
-    }
-  }
   terms(where: { dataset: { in: [$id] } }, page: 1, perPage: $perPage) {
     items {
       ...ReferringTermFields
@@ -126,14 +118,6 @@ fragment ReferringOrganizationFields on Organization {
 }
 
 fragment ReferringPersonFields on Person {
-  id
-  name {
-    value
-    language
-  }
-}
-
-fragment ReferringPlaceFields on Place {
   id
   name {
     value

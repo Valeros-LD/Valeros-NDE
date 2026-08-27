@@ -258,7 +258,6 @@ export function toReferringNodesResponse(
     occupations,
     organizations,
     persons,
-    places,
     terms,
   } = data;
 
@@ -271,7 +270,6 @@ export function toReferringNodesResponse(
     ...occupations.items.map(normalize),
     ...organizations.items.map(normalize),
     ...persons.items.map(normalize),
-    ...places.items.map(normalize),
     ...terms.items.map(normalize),
   ];
 
@@ -281,7 +279,6 @@ export function toReferringNodesResponse(
     occupations,
     organizations,
     persons,
-    places,
     terms,
   ].reduce((sum, result) => sum + result.pagination.total, 0);
 
