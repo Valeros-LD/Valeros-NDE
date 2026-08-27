@@ -105,3 +105,16 @@ body {
 .badge {
   @apply rounded-full;
 }
+
+.btn:focus-visible,
+.input:focus,
+.input:focus-within,
+.select:focus,
+.select:focus-within,
+.select:open,
+.checkbox:focus-visible,
+.collapse:focus-visible,
+.collapse:has(> input:is([type='checkbox'], [type='radio']):focus-visible),
+.collapse:has(summary:focus-visible) {
+  outline-color: #bcc5cc;
+}
