@@ -3,7 +3,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --breakpoint-xs: 320px;
+  --breakpoint-xs: 375px;
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --color-app-bg: var(--app-bg);
@@ -87,8 +87,10 @@
   --app-bg-dark: #d8cfe0;
 }
 
-html {
-  font-size: 125%;
+@media (width >= theme(--breakpoint-md)) {
+  html {
+    font-size: 125%;
+  }
 }
 
 html,

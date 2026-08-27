@@ -3,7 +3,7 @@
     @for (view of availableViews(); track view.type) {
       <button
         type="button"
-        class="btn btn-lg join-item"
+        class="btn xl:btn-lg join-item"
         [class.btn-active]="currentView() === view.type"
         (click)="onViewChange(view.type)"
         [attr.aria-label]="view.label"
