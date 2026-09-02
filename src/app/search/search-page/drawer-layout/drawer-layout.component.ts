@@ -22,7 +22,6 @@ import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggl
 export class DrawerLayoutComponent implements AfterViewInit {
   drawerId = input<string>('drawer');
   sidebarWidth = input<string>('18rem');
-  closeLabel = input<string>('Close drawer');
   forceOpen = input<boolean>(true);
   sidebarTitle = input<string>('');
   sidebarTitleBadge = input<string>();

@@ -12,11 +12,7 @@
   </div>
 
   <div class="drawer-side z-20">
-    <label
-      [for]="drawerId()"
-      [attr.aria-label]="closeLabel()"
-      class="drawer-overlay"
-    ></label>
+    <label [for]="drawerId()" aria-hidden="true" class="drawer-overlay"></label>
     <div class="bg-app-bg-dark min-h-full p-4" [style.width]="sidebarWidth()">
       @if (sidebarTitle()) {
         <div class="flex items-center justify-between mb-4">
