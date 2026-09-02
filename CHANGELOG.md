@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.13.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.12.0...valeros-nde-v0.13.0) (2026-09-02)
+
+
+### Features
+
+* add comment to generated json schema ([7de847a](https://github.com/Valeros-LD/valeros-NDE/commit/7de847a322db1f5392ef24f9107c11a4bed80891))
+* add user-select none to facet checkbox ([271a75e](https://github.com/Valeros-LD/valeros-NDE/commit/271a75efb7db14e7c1c5d12e1239c81a2e1e99b6))
+* add vitest unit test for validating JSON schema against Zod schema ([5642aa6](https://github.com/Valeros-LD/valeros-NDE/commit/5642aa6b8126f6d8b21f165a136a717e7b3550b5))
+* create custom creator widget to show creators and their role ([94e9dbe](https://github.com/Valeros-LD/valeros-NDE/commit/94e9dbe8b93cc78d3c7036956ca9cf12ccdf0acc))
+* create separate page for if config loading fails ([e0adf5d](https://github.com/Valeros-LD/valeros-NDE/commit/e0adf5dfa64189c89e910323e83c4e6552b20192))
+* increase font size ([da30563](https://github.com/Valeros-LD/valeros-NDE/commit/da3056384ad02ec213ac2ee06c3059ac7503510e))
+* normalize all GraphQL objects, not just reference value objects with id and name ([48d0fc6](https://github.com/Valeros-LD/valeros-NDE/commit/48d0fc6b234bdca9be2bc757dffa7d273f0522c6))
+* remove config panel ([c871884](https://github.com/Valeros-LD/valeros-NDE/commit/c871884979256d62115b89ce42e5a7cc7b26e9f9))
+* remove unused config files ([0da1122](https://github.com/Valeros-LD/valeros-NDE/commit/0da112271572768aaf07ad348ff09012931210ca))
+* show error message on config load fail ([52bdc79](https://github.com/Valeros-LD/valeros-NDE/commit/52bdc79e6ce16dbc388655e0d2d94d328c3ac291))
+* show IIIF viewer from iiifManifest field instead of extracting it from associatedMedia ([0549122](https://github.com/Valeros-LD/valeros-NDE/commit/054912204e8fcb5c3ff7c3685776971525333c45))
+* show names of creators with null IDs ([964c19b](https://github.com/Valeros-LD/valeros-NDE/commit/964c19b24987bf1d2cb4b64090740b0d3d52ac77))
+* tweak styling ([dd7648c](https://github.com/Valeros-LD/valeros-NDE/commit/dd7648c1d6b695a21a338ff4e2d9df9e4c765459))
+* update facets presentation ([c70d9b2](https://github.com/Valeros-LD/valeros-NDE/commit/c70d9b2875504e42944f37b8ab6ed8a26d1e90d1))
+* update focus outline color ([fac0c16](https://github.com/Valeros-LD/valeros-NDE/commit/fac0c166fd8633536dcc540f4373871d5ab9fb78))
+* update GraphQL codegen output filename ([e49327e](https://github.com/Valeros-LD/valeros-NDE/commit/e49327e3be501e6e9bd9b709eae5745dd6b28d03))
+* update GraphQL schema ([03ab9ae](https://github.com/Valeros-LD/valeros-NDE/commit/03ab9ae2b8a8118c0a3a9891213215da6e9fb3dc))
+* update GraphQL schema ([4b25ed4](https://github.com/Valeros-LD/valeros-NDE/commit/4b25ed49bd4146c8eb0e44f628155e3d09b25a27))
+* update home page links ([60e50c5](https://github.com/Valeros-LD/valeros-NDE/commit/60e50c53c2d225478b6f7a25ac1b1b01655b621d))
+* update image loading failed svg ([01d8c8a](https://github.com/Valeros-LD/valeros-NDE/commit/01d8c8a0b6e21f1c17a2e78d5dac310859d368ea))
+* update map tile layer ([7161806](https://github.com/Valeros-LD/valeros-NDE/commit/716180601a4c767a144beada019bbe584fc599af))
+* update search bar placeholders ([60e5476](https://github.com/Valeros-LD/valeros-NDE/commit/60e5476f058de29227019e264b068d8036147b38))
+* update timeline styling ([e1019d2](https://github.com/Valeros-LD/valeros-NDE/commit/e1019d2fb169b8f7116e84bad05c95b56b21360d))
+* update widgets for Boerenbont datasets ([0a15745](https://github.com/Valeros-LD/valeros-NDE/commit/0a157454885a853b7b3e223118362b7df0d04edb))
+* use (localhost) GraphQL API service ([302ec20](https://github.com/Valeros-LD/valeros-NDE/commit/302ec20c5d106142f17775770a54d9928361215d))
+* use centralized JSON config through Zod schema ([080c1cf](https://github.com/Valeros-LD/valeros-NDE/commit/080c1cfb92bf49a2ef9795c5514dfc9936b65b7a))
+
+
+### Bug Fixes
+
+* resolve WCAG issue with drawer overlay label ([9cdebc8](https://github.com/Valeros-LD/valeros-NDE/commit/9cdebc8851985ee61cc379e2ef3efe3eff10e107))
+* Tailwind and DaisyUI upgrade issues ([ae350f4](https://github.com/Valeros-LD/valeros-NDE/commit/ae350f42c864b1ff613a5ba1194333f1bd8e3836))
+* update file path for generating json schema ([3820681](https://github.com/Valeros-LD/valeros-NDE/commit/3820681f11fec33d4d23d17f4b91cf0a5548a919))
+
 ## [0.12.0](https://github.com/Valeros-LD/valeros-NDE/compare/valeros-nde-v0.11.0...valeros-nde-v0.12.0) (2026-08-25)
 
 
