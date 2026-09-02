@@ -9,14 +9,18 @@ import { isNodeModel, NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
 import { LinkWidget } from '../../generic/link-widget/link-widget.component';
 
+interface ObjectWithName {
+  name?: string;
+  [key: string]: unknown;
+}
+
 interface RawCreator {
   role?: string[];
-  creator?: NodeModel[];
+  creator?: ObjectWithName[];
 }
 
 interface NormalizedCreator {
   role: string[];
-  creators: NodeModel[];
   nodeWithCreators: NodeModel;
 }
 
@@ -33,13 +37,26 @@ export class CreatorWidget extends BaseWidget {
     return this.values()
       .map((value) => value as RawCreator)
       .map((wrapper) => {
-        const creators = normalizeToArray(wrapper.creator).filter(isNodeModel);
+        const allCreators: unknown[] = normalizeToArray(wrapper.creator);
+        const creators: (NodeModel | string)[] = allCreators.flatMap<
+          NodeModel | string
+        >((creator) => {
+          if (isNodeModel(creator)) return [creator];
+
+          // Creators without an ID, but with a name
+          const name = (creator as ObjectWithName).name;
+          const creatorHasValidName =
+            typeof name === 'string' && name.length > 0;
+          return creatorHasValidName ? [name] : [];
+        });
         return {
           role: normalizeToArray(wrapper.role),
-          creators,
           nodeWithCreators: { id: 'creators', creators } as NodeModel,
         };
       })
-      .filter((normalizedCreator) => normalizedCreator.creators.length > 0);
+      .filter(
+        (normalizedCreator) =>
+          normalizedCreator.nodeWithCreators['creators'].length > 0,
+      );
   });
 }
