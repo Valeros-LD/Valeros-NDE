@@ -3,6 +3,7 @@ import { ConfigPageComponent } from '../config/config-page/config-page.component
 import { DetailsPageComponent } from '../details-page/details-page.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { SearchPageComponent } from '../search/search-page/search-page.component';
+import { ConfigErrorPageComponent } from '../ui/config-error-page/config-error-page.component';
 import { NotFoundComponent } from '../ui/not-found/not-found.component';
 import { detailsRouteMatcher } from './details-route.matcher';
 
@@ -18,6 +19,10 @@ export const appRoutes: Route[] = [
   {
     path: 'config',
     component: ConfigPageComponent,
+  },
+  {
+    path: 'config-error',
+    component: ConfigErrorPageComponent,
   },
   {
     matcher: detailsRouteMatcher,

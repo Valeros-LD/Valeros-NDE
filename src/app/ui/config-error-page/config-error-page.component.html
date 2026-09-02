@@ -1,0 +1,9 @@
+<div class="flex flex-col items-center justify-center min-h-screen gap-4 p-8">
+  <div class="alert alert-error w-full" role="alert">
+    @if (errorMessage(); as message) {
+      <span [innerHTML]="message"></span>
+    } @else {
+      <span>Configuratie kon niet worden geladen.</span>
+    }
+  </div>
+</div>

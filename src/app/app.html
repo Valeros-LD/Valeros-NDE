@@ -1,8 +1,2 @@
-@if (configLoadError(); as errorMessage) {
-<div class="m-4">
-  <app-error-alert [message]="errorMessage" />
-</div>
-} @else {
 <router-outlet></router-outlet>
 <app-config-panel />
-}
