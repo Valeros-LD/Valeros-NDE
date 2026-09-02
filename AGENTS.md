@@ -15,13 +15,25 @@ Valeros as a presentation layer consumes a "data layer", which is the term NDE u
 
 Developers currently configure what/how data is shown via config files in `src/app/config/`. An experimental in-app configuration UI (`src/app/config/config-panel/`, `src/app/config/config-page/`, documented in `docs/guide/config-ui.md`) is being built towards replacing this with a fully UI-driven system. Treat the config files as the current contract, not the end state.
 
+## Testing
+
+### Unit tests (Vitest)
+
+The project uses [Vitest](https://vitest.dev/) for unit tests. Test files live alongside the source they cover and use the `.spec.ts` suffix.
+
+- Run all unit tests: `npm run test:unit`
+- Run a single file: `npx vitest run <path/to/file.spec.ts>`
+
+### E2E / Accessibility tests (Playwright)
+
+Playwright is used as the project's e2e testing tool. Accessibility checks are part of that suite. Run `npm run test:e2e` to execute (among others) the accessibility specs in `e2e/a11y/`, which scan key pages with `@axe-core/playwright` (WCAG 2.0/2.1/2.2 A+AA tags). Run `npm run test:e2e:install` once to fetch browsers before the first run. Add a spec for any new route/widget you add.
+
 ## Accessibility
 
 The app must conform to **WCAG 2.2 Level AA** across the board.
 
 - Treat WCAG 2.2 AA as a blocking requirement for any UI change, not just new features.
 - Don't regress existing conformance.
-- Playwright is used as the project's e2e testing tool. Accessibility checks are part of that suite. Run `npm run test:e2e` to execute (among others) the accessibility specs in `e2e/a11y/`, which scan key pages with `@axe-core/playwright` (WCAG 2.0/2.1/2.2 A+AA tags). Run `npm run test:e2e:install` once to fetch browsers before the first run. Add a spec for any new route/widget you add.
 - axe-core misses some checks (e.g. focus-not-obscured, dragging alternatives, reading order). For non-trivial UI changes, also do a manual keyboard-only pass and spot-check with AXE DevTools/Lighthouse.
 - Pay particular attention to interactive/custom widgets (`src/app/ui/draggable-list`, map/image viewers, custom presentation widgets) as these are the most likely to silently break keyboard or screen-reader support.
 
