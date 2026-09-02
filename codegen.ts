@@ -4,7 +4,7 @@ const config: CodegenConfig = {
   schema: 'http://localhost:4000/graphql',
   documents: ['src/app/api/graphql/**/*.graphql'],
   generates: {
-    'src/app/api/graphql/schema-types.ts': {
+    'src/app/api/graphql/generated-schema-types.ts': {
       plugins: ['typescript'],
       config: {
         skipTypename: false,
@@ -16,7 +16,7 @@ const config: CodegenConfig = {
       config: {
         skipTypename: false,
         avoidOptionals: false,
-        importSchemaTypesFrom: 'src/app/api/graphql/schema-types',
+        importSchemaTypesFrom: 'src/app/api/graphql/generated-schema-types',
       },
     },
   },

@@ -22,7 +22,7 @@ import {
   KeywordFilter,
   Pagination,
   SortDirection,
-} from './graphql/schema-types';
+} from './graphql/generated-schema-types';
 
 // TODO: Skip most of this normalization logic in favor of using the GraphQL types directly
 // This module is mostly here to keep the previously existing REST API surface intact
