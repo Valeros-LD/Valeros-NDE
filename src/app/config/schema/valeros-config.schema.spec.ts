@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { ValerosConfigSchema } from '../valeros-config.schema';
+import { ValerosConfigSchema } from './valeros-config.schema';
 import { buildJsonSchema } from './build-json-schema';
 
 const ROOT = resolve(import.meta.dirname, '../../../../..');
