@@ -6,7 +6,7 @@ import * as z from 'zod';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 const { ValerosConfigSchema } = await import(
-  resolve(ROOT, 'src/app/config/valeros-config.schema.ts')
+  resolve(ROOT, 'src/app/config/schema/valeros-config.schema.ts')
 );
 
 const schema = z.toJSONSchema(ValerosConfigSchema, {
@@ -14,10 +14,15 @@ const schema = z.toJSONSchema(ValerosConfigSchema, {
   reused: 'inline',
 });
 
-schema.$schema = 'https://json-schema.org/draft/2020-12/schema';
-schema.$id = 'https://valeros.nl/config/valeros.config.schema.json';
-schema.title = 'ValerosConfig';
+const output = {
+  $comment:
+    'Auto-generated — do not edit directly. Run `npm run generate:config-schema` to regenerate from src/app/config/schema/valeros-config.schema.ts.',
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  $id: 'https://valeros.nl/config/valeros.config.schema.json',
+  title: 'ValerosConfig',
+  ...schema,
+};
 
 const schemaPath = resolve(ROOT, 'public/config/valeros.config.schema.json');
-writeFileSync(schemaPath, JSON.stringify(schema, null, 2) + '\n');
+writeFileSync(schemaPath, JSON.stringify(output, null, 2) + '\n');
 console.log('Schema written to', schemaPath);
