@@ -6,7 +6,10 @@ import { MapViewComponent } from '../search/views/map-view/map-view.component';
 import { TimelineViewComponent } from '../search/views/timeline-view/timeline-view.component';
 import { ViewComponentKey } from './schema/valeros-config.schema';
 
-export const VIEW_COMPONENT_REGISTRY = {
+export const VIEW_COMPONENT_REGISTRY: Record<
+  ViewComponentKey,
+  Type<BaseResultsView>
+> = {
   'list-view': ListViewComponent,
   'grid-view': GridViewComponent,
   'map-view': MapViewComponent,

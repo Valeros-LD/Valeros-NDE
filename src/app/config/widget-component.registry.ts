@@ -15,7 +15,10 @@ import { SeparatorWidget } from '../widgets/generic/separator-widget/separator-w
 import { TextWidget } from '../widgets/generic/text-widget/text-widget.component';
 import { WidgetComponentKey } from './schema/valeros-config.schema';
 
-export const WIDGET_COMPONENT_REGISTRY = {
+export const WIDGET_COMPONENT_REGISTRY: Record<
+  WidgetComponentKey,
+  Type<BaseWidget>
+> = {
   'text-widget': TextWidget,
   'link-widget': LinkWidget,
   'literal-link-widget': LiteralLinkWidget,
