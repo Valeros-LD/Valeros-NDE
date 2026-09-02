@@ -13,8 +13,8 @@ import {
   viewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { getWidgetComponent } from '../../../config/node-presentation/widgets/widget-component.registry';
 import { Widget } from '../../../config/schema/valeros-config.schema';
+import { getWidgetComponent } from '../../../config/widget-component.registry';
 import { NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
 import { LinkWidget } from '../../generic/link-widget/link-widget.component';

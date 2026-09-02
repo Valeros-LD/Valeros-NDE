@@ -6,7 +6,7 @@ import {
   ViewOptions,
   ViewType,
 } from '../../config/schema/valeros-config.schema';
-import { getViewComponent } from '../../config/views/view-component.registry';
+import { getViewComponent } from '../../config/view-component.registry';
 import { BaseResultsView } from './base-results-view';
 
 @Injectable({ providedIn: 'root' })
