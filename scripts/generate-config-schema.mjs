@@ -8,7 +8,7 @@ const { ValerosConfigSchema } = await import(
   resolve(ROOT, 'src/app/config/schema/valeros-config.schema.ts')
 );
 const { buildJsonSchema } = await import(
-  resolve(ROOT, 'src/app/config/schema/validation/build-json-schema.ts')
+  resolve(ROOT, 'src/app/config/schema/build-json-schema.ts')
 );
 
 const schemaPath = resolve(ROOT, 'public/config/valeros.config.schema.json');
