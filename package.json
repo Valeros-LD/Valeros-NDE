@@ -14,6 +14,7 @@
     "docs:preview": "vitepress preview docs",
     "graphql-codegen": "graphql-codegen --config codegen.ts",
     "generate:config-schema": "node --import tsx/esm scripts/generate-config-schema.mjs",
+    "test:unit": "vitest run",
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "test:e2e": "playwright test",
@@ -67,6 +68,7 @@
     "typescript": "~6.0.3",
     "vitepress": "^1.5.0",
     "vitepress-plugin-mermaid": "^2.0.17",
+    "vitest": "^4.1.11",
     "vue": "^3.5.41",
     "zod": "^4.5.4"
   },
