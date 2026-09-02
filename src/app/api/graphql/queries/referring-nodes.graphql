@@ -55,7 +55,6 @@ query ReferringNodes($id: IRI!, $perPage: Int) {
   persons(
     where: {
       or: [
-        { dataset: { in: [$id] } }
         { birthPlace: { in: [$id] } }
         { deathPlace: { in: [$id] } }
         { hasOccupation: { in: [$id] } }

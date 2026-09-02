@@ -13,11 +13,11 @@ fragment CreativeWorkFields on CreativeWork {
     ...DatasetReferenceFields
   }
   creator {
-    ...PersonReferenceFields
-  }
-  creatorName {
-    value
-    language
+    id
+    role
+    creator {
+      ...PersonReferenceFields
+    }
   }
   identifier
   additionalType {

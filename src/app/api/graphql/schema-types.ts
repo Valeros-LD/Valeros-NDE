@@ -16,6 +16,25 @@ export type BooleanBucket = {
   value: Scalars['Boolean']['output'];
 };
 
+export type ContributorRole = {
+  __typename?: 'ContributorRole';
+  contributor: Array<PersonReference>;
+  id?: Maybe<Scalars['IRI']['output']>;
+  role: Array<Scalars['String']['output']>;
+};
+
+/** A condition on ContributorRole: the ids its entries reference, or a condition on one entry. */
+export type ContributorRoleFilter = {
+  in?: InputMaybe<Array<Scalars['IRI']['input']>>;
+  where?: InputMaybe<ContributorRoleWhere>;
+};
+
+/** Sibling keys are combined with AND, and all of them must hold of the SAME entry. */
+export type ContributorRoleWhere = {
+  contributor?: InputMaybe<PersonFilter>;
+  role?: InputMaybe<KeywordFilter>;
+};
+
 export type CreativeWork = {
   __typename?: 'CreativeWork';
   about: Array<TermReference>;
@@ -23,8 +42,8 @@ export type CreativeWork = {
   additionalType: Array<TermReference>;
   associatedMedia: Array<MediaObject>;
   contentLocation: Array<PlaceReference>;
-  creator: Array<PersonReference>;
-  creatorName: Array<LanguageString>;
+  contributor: Array<ContributorRole>;
+  creator: Array<CreatorRole>;
   dataset?: Maybe<DatasetReference>;
   dateCreated?: Maybe<Scalars['String']['output']>;
   description: Array<LanguageString>;
@@ -50,7 +69,8 @@ export type CreativeWorkCriterion = {
   about?: InputMaybe<TermFilter>;
   additionalType?: InputMaybe<TermFilter>;
   contentLocation?: InputMaybe<PlaceFilter>;
-  creator?: InputMaybe<PersonFilter>;
+  contributor?: InputMaybe<ContributorRoleFilter>;
+  creator?: InputMaybe<CreatorRoleFilter>;
   dataset?: InputMaybe<DatasetFilter>;
   dateCreated?: InputMaybe<DateRange>;
   genre?: InputMaybe<TermFilter>;
@@ -71,6 +91,7 @@ export type CreativeWorkFacets = {
   about: Array<IriBucket>;
   additionalType: Array<IriBucket>;
   contentLocation: Array<IriBucket>;
+  contributor: Array<IriBucket>;
   creator: Array<IriBucket>;
   dataset: Array<IriBucket>;
   genre: Array<IriBucket>;
@@ -114,7 +135,8 @@ export type CreativeWorkWhere = {
   /** Further groups of conditions, all of which apply. The way to carry a second `or` disjunction alongside the first. */
   and?: InputMaybe<Array<CreativeWorkWhere>>;
   contentLocation?: InputMaybe<PlaceFilter>;
-  creator?: InputMaybe<PersonFilter>;
+  contributor?: InputMaybe<ContributorRoleFilter>;
+  creator?: InputMaybe<CreatorRoleFilter>;
   dataset?: InputMaybe<DatasetFilter>;
   dateCreated?: InputMaybe<DateRange>;
   genre?: InputMaybe<TermFilter>;
@@ -130,6 +152,25 @@ export type CreativeWorkWhere = {
   sdDatePublished?: InputMaybe<DateRange>;
   temporalCoverage?: InputMaybe<KeywordFilter>;
   type?: InputMaybe<KeywordFilter>;
+};
+
+export type CreatorRole = {
+  __typename?: 'CreatorRole';
+  creator: Array<PersonReference>;
+  id?: Maybe<Scalars['IRI']['output']>;
+  role: Array<Scalars['String']['output']>;
+};
+
+/** A condition on CreatorRole: the ids its entries reference, or a condition on one entry. */
+export type CreatorRoleFilter = {
+  in?: InputMaybe<Array<Scalars['IRI']['input']>>;
+  where?: InputMaybe<CreatorRoleWhere>;
+};
+
+/** Sibling keys are combined with AND, and all of them must hold of the SAME entry. */
+export type CreatorRoleWhere = {
+  creator?: InputMaybe<PersonFilter>;
+  role?: InputMaybe<KeywordFilter>;
 };
 
 export type Dataset = {
@@ -363,11 +404,13 @@ export type Pagination = {
 
 export type Person = {
   __typename?: 'Person';
+  alternateName: Array<LanguageString>;
+  authority?: Maybe<Scalars['String']['output']>;
   birthDate?: Maybe<Scalars['String']['output']>;
   birthPlace: Array<PlaceReference>;
-  dataset?: Maybe<DatasetReference>;
   deathDate?: Maybe<Scalars['String']['output']>;
   deathPlace: Array<PlaceReference>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   hasOccupation: Array<OccupationReference>;
   id: Scalars['IRI']['output'];
   name: Array<LanguageString>;
@@ -375,19 +418,20 @@ export type Person = {
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
 export type PersonCriterion = {
+  authority?: InputMaybe<KeywordFilter>;
   birthDate?: InputMaybe<DateRange>;
   birthPlace?: InputMaybe<PlaceFilter>;
-  dataset?: InputMaybe<DatasetFilter>;
   deathDate?: InputMaybe<DateRange>;
   deathPlace?: InputMaybe<PlaceFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   hasOccupation?: InputMaybe<OccupationFilter>;
   id?: InputMaybe<PersonFilter>;
 };
 
 export type PersonFacets = {
   __typename?: 'PersonFacets';
+  authority: Array<ValueBucket>;
   birthPlace: Array<IriBucket>;
-  dataset: Array<IriBucket>;
   deathPlace: Array<IriBucket>;
   hasOccupation: Array<IriBucket>;
 };
@@ -404,13 +448,15 @@ export type PersonOrderBy = {
 
 export type PersonReference = {
   __typename?: 'PersonReference';
+  alternateName: Array<LanguageString>;
+  authority?: Maybe<Scalars['String']['output']>;
   birthDate?: Maybe<Scalars['String']['output']>;
   birthPlace: Array<PlaceReference>;
-  dataset?: Maybe<DatasetReference>;
   deathDate?: Maybe<Scalars['String']['output']>;
   deathPlace: Array<PlaceReference>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   hasOccupation: Array<OccupationReference>;
-  id: Scalars['IRI']['output'];
+  id?: Maybe<Scalars['IRI']['output']>;
   name: Array<LanguageString>;
 };
 
@@ -424,6 +470,7 @@ export type PersonSearchResult = {
 export enum PersonSortField {
   BirthDate = 'BIRTH_DATE',
   DeathDate = 'DEATH_DATE',
+  FetchedAt = 'FETCHED_AT',
   Name = 'NAME',
   Relevance = 'RELEVANCE'
 }
@@ -432,11 +479,12 @@ export enum PersonSortField {
 export type PersonWhere = {
   /** Further groups of conditions, all of which apply. The way to carry a second `or` disjunction alongside the first. */
   and?: InputMaybe<Array<PersonWhere>>;
+  authority?: InputMaybe<KeywordFilter>;
   birthDate?: InputMaybe<DateRange>;
   birthPlace?: InputMaybe<PlaceFilter>;
-  dataset?: InputMaybe<DatasetFilter>;
   deathDate?: InputMaybe<DateRange>;
   deathPlace?: InputMaybe<PlaceFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   hasOccupation?: InputMaybe<OccupationFilter>;
   id?: InputMaybe<PersonFilter>;
   /** A disjunction: a document matches when ANY of these criteria holds. Combined with the sibling keys by AND, so it widens across fields without widening the query as a whole. */
@@ -674,7 +722,10 @@ export enum SortDirection {
 
 export type Term = {
   __typename?: 'Term';
+  alternateName: Array<LanguageString>;
+  authority?: Maybe<Scalars['String']['output']>;
   dataset?: Maybe<DatasetReference>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   id: Scalars['IRI']['output'];
   name: Array<LanguageString>;
   sameAs: Array<Scalars['String']['output']>;
@@ -682,13 +733,16 @@ export type Term = {
 
 /** A condition on exactly one field. Used inside `or`, where the criteria are alternatives. */
 export type TermCriterion = {
+  authority?: InputMaybe<KeywordFilter>;
   dataset?: InputMaybe<DatasetFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   id?: InputMaybe<TermFilter>;
   sameAs?: InputMaybe<KeywordFilter>;
 };
 
 export type TermFacets = {
   __typename?: 'TermFacets';
+  authority: Array<ValueBucket>;
   dataset: Array<IriBucket>;
   sameAs: Array<ValueBucket>;
 };
@@ -705,7 +759,10 @@ export type TermOrderBy = {
 
 export type TermReference = {
   __typename?: 'TermReference';
+  alternateName: Array<LanguageString>;
+  authority?: Maybe<Scalars['String']['output']>;
   dataset?: Maybe<DatasetReference>;
+  fetchedAt?: Maybe<Scalars['String']['output']>;
   id: Scalars['IRI']['output'];
   name: Array<LanguageString>;
   sameAs: Array<Scalars['String']['output']>;
@@ -719,6 +776,7 @@ export type TermSearchResult = {
 };
 
 export enum TermSortField {
+  FetchedAt = 'FETCHED_AT',
   Name = 'NAME',
   Relevance = 'RELEVANCE'
 }
@@ -727,7 +785,9 @@ export enum TermSortField {
 export type TermWhere = {
   /** Further groups of conditions, all of which apply. The way to carry a second `or` disjunction alongside the first. */
   and?: InputMaybe<Array<TermWhere>>;
+  authority?: InputMaybe<KeywordFilter>;
   dataset?: InputMaybe<DatasetFilter>;
+  fetchedAt?: InputMaybe<DateRange>;
   id?: InputMaybe<TermFilter>;
   /** A disjunction: a document matches when ANY of these criteria holds. Combined with the sibling keys by AND, so it widens across fields without widening the query as a whole. */
   or?: InputMaybe<Array<TermCriterion>>;
