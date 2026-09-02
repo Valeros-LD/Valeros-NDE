@@ -9,6 +9,8 @@ import {
 export class ConfigService {
   private config = signal<ValerosConfig | null>(null);
 
+  readonly loadError = signal<string | null>(null);
+
   readonly apiBaseUrl = computed(() => this.config()?.api.baseUrl ?? '');
   readonly facets = computed(() => this.config()?.facets ?? []);
   readonly presentation = computed(() => this.config()?.presentation);
@@ -19,6 +21,10 @@ export class ConfigService {
 
   initialize(config: ValerosConfig): void {
     this.config.set(config);
+  }
+
+  setLoadError(message: string): void {
+    this.loadError.set(message);
   }
 
   updateConfig(updates: Partial<ValerosConfig>): void {
