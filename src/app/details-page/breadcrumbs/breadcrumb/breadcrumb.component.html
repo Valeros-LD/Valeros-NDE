@@ -4,7 +4,7 @@
       class="flex flex-col text-sm md:flex-row md:items-center md:flex-nowrap"
     >
       @for (crumb of breadcrumbs(); track $index; let last = $last) {
-        <li class="flex items-center md:!pl-0 md:flex-shrink-0">
+        <li class="flex items-center md:pl-0! md:shrink-0">
           @if ($index > 0) {
             <span
               class="mr-2 md:mx-2 text-base-content/40 inline-flex items-center"
