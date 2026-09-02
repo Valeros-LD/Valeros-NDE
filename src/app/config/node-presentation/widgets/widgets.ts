@@ -197,7 +197,7 @@ export const materialWidget: Widget = {
 export const creatorWidget: Widget = {
   id: 'creator',
   properties: ['creator'],
-  componentId: 'link-widget',
+  componentId: 'creator-widget',
   options: {
     propertyLabel: 'Vervaardiger',
     icon: 'user',
