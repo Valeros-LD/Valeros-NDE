@@ -1,12 +1,13 @@
 import { Injectable, Type, computed, inject } from '@angular/core';
 import { ConfigService } from '../../config/config-page/config.service';
-import { SearchResultsPresentationConfig } from '../../config/types/valeros-config';
+import {
+  NodePresentationConfig,
+  ViewDefinition,
+  ViewOptions,
+  ViewType,
+} from '../../config/schema/valeros-config.schema';
 import { getViewComponent } from '../../config/views/view-component.registry';
-import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
 import { BaseResultsView } from './base-results-view';
-import { ViewDefinition } from './types/view-config';
-import { ViewOptions } from './types/view-options';
-import { ViewType } from './types/view-type';
 
 @Injectable({ providedIn: 'root' })
 export class ViewService {
@@ -40,9 +41,6 @@ export class ViewService {
   getViewPresentationConfig(
     viewType: ViewType,
   ): NodePresentationConfig | undefined {
-    const presentation = this.configService.presentation();
-    const searchResults =
-      presentation?.searchResults as SearchResultsPresentationConfig;
-    return searchResults?.[viewType];
+    return this.getViewDefinition(viewType)?.presentationConfig;
   }
 }

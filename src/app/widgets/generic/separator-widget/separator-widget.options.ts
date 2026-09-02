@@ -1,4 +1,4 @@
-import { WidgetOptions } from '../../core/types/node-presentation-config';
+import { WidgetOptions } from '../../../config/schema/valeros-config.schema';
 
 export interface SeparatorWidgetOptions extends WidgetOptions {
   header?: string;

@@ -12,7 +12,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "codegen": "graphql-codegen --config codegen.ts",
+    "graphql-codegen": "graphql-codegen --config codegen.ts",
+    "generate:config-schema": "node --import tsx/esm scripts/generate-config-schema.mjs",
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
     "test:e2e": "playwright test",
@@ -62,10 +63,12 @@
     "postcss": "^8.5.9",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
     "typescript": "~6.0.3",
     "vitepress": "^1.5.0",
     "vitepress-plugin-mermaid": "^2.0.17",
-    "vue": "^3.5.41"
+    "vue": "^3.5.41",
+    "zod": "^4.5.4"
   },
   "allowScripts": {
     "@parcel/watcher@2.5.6": true,

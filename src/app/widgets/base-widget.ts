@@ -1,8 +1,8 @@
 import { computed, Directive, input } from '@angular/core';
+import { BaseWidgetOptions } from '../config/schema/valeros-config.schema';
 import { applyPropertyPath } from '../data-utils/property-path.util';
 import { normalizeToArray } from '../data-utils/value-normalization.util';
 import { NodeModel } from '../node/types/node.model';
-import { BaseWidgetOptions } from './core/types/node-presentation-config';
 
 @Directive()
 export abstract class BaseWidget {

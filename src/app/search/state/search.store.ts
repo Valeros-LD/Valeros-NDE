@@ -2,10 +2,10 @@ import { Injectable, inject, signal } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { distinctUntilChanged, filter, map } from 'rxjs';
 import { ApiService } from '../../api/api.service';
+import { ViewType } from '../../config/schema/valeros-config.schema';
 import { NodeModel } from '../../node/types/node.model';
 import { Facet } from '../types/facet';
 import { SearchResponse } from '../types/search-response';
-import { ViewType } from '../views/types/view-type';
 import { ViewService } from '../views/view.service';
 import { FilterStore } from './filter.store';
 import {
@@ -64,20 +64,18 @@ export class SearchStore {
     this.route.queryParams
       .pipe(
         filter(() => this.router.url.split('?')[0] === '/search'),
-        map(
-          (params): SearchUrlParams => ({
-            q: params['q'] || '',
-            filters: params['filters'] || null,
-            page: params['page'] ? parseInt(params['page'], 10) : 1,
-            view:
-              (params['view'] as ViewType) ||
-              this.viewService.getDefaultViewType(),
-            sort: params['sort'] || null,
-            pageSize: params['pageSize']
-              ? parseInt(params['pageSize'], 10)
-              : null,
-          }),
-        ),
+        map((params): SearchUrlParams => ({
+          q: params['q'] || '',
+          filters: params['filters'] || null,
+          page: params['page'] ? parseInt(params['page'], 10) : 1,
+          view:
+            (params['view'] as ViewType) ||
+            this.viewService.getDefaultViewType(),
+          sort: params['sort'] || null,
+          pageSize: params['pageSize']
+            ? parseInt(params['pageSize'], 10)
+            : null,
+        })),
         distinctUntilChanged((prev: SearchUrlParams, curr: SearchUrlParams) => {
           const paramKeys = Object.keys(prev) as (keyof SearchUrlParams)[];
           const noParamsChanged = paramKeys.every(

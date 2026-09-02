@@ -1,7 +1,9 @@
 import { Directive, input } from '@angular/core';
+import {
+  BaseViewOptions,
+  NodePresentationConfig,
+} from '../../config/schema/valeros-config.schema';
 import { NodeModel } from '../../node/types/node.model';
-import { NodePresentationConfig } from '../../widgets/core/types/node-presentation-config';
-import { BaseViewOptions } from './types/view-options';
 
 @Directive()
 export abstract class BaseResultsView {

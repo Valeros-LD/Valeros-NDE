@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "api": {
+      "type": "object",
+      "properties": {
+        "baseUrl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "baseUrl"
+      ],
+      "additionalProperties": false
+    },
+    "facets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "icon": {
+            "$ref": "#/$defs/iconKey"
+          },
+          "hidden": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "views": {
+      "type": "object",
+      "properties": {
+        "views": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/$defs/viewType"
+              },
+              "componentId": {
+                "$ref": "#/$defs/viewComponentKey"
+              },
+              "icon": {
+                "$ref": "#/$defs/iconKey"
+              },
+              "label": {
+                "type": "string"
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "pageSize": {
+                    "type": "number"
+                  },
+                  "showPagination": {
+                    "type": "boolean"
+                  },
+                  "showResultsCount": {
+                    "type": "boolean"
+                  },
+                  "showSort": {
+                    "type": "boolean"
+                  },
+                  "hidden": {
+                    "type": "boolean"
+                  },
+                  "defaultSort": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": {}
+              },
+              "presentationConfig": {
+                "$ref": "#/$defs/nodePresentationConfig"
+              }
+            },
+            "required": [
+              "type",
+              "componentId",
+              "icon",
+              "label",
+              "options",
+              "presentationConfig"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "defaultView": {
+          "$ref": "#/$defs/viewType"
+        }
+      },
+      "required": [
+        "views",
+        "defaultView"
+      ],
+      "additionalProperties": false
+    },
+    "presentation": {
+      "type": "object",
+      "properties": {
+        "imagePaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "details": {
+          "$ref": "#/$defs/nodePresentationConfig"
+        }
+      },
+      "required": [
+        "imagePaths",
+        "details"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "api",
+    "facets",
+    "views",
+    "presentation"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "iconKey": {
+      "type": "string",
+      "enum": [
+        "alert-triangle",
+        "align-left",
+        "archive",
+        "briefcase",
+        "calendar",
+        "external-link",
+        "file-text",
+        "filter",
+        "grid",
+        "home",
+        "image",
+        "info",
+        "link",
+        "list",
+        "map",
+        "map-pin",
+        "package",
+        "tag",
+        "user",
+        "users",
+        "maximize"
+      ]
+    },
+    "viewType": {
+      "type": "string",
+      "enum": [
+        "list",
+        "grid",
+        "map",
+        "timeline"
+      ]
+    },
+    "viewComponentKey": {
+      "type": "string",
+      "enum": [
+        "list-view",
+        "grid-view",
+        "map-view",
+        "timeline-view"
+      ]
+    },
+    "nodePresentationConfig": {
+      "type": "object",
+      "properties": {
+        "widgets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "componentId": {
+                "$ref": "#/$defs/widgetComponentKey"
+              },
+              "properties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "showPropertyLabel": {
+                    "type": "boolean"
+                  },
+                  "propertyLabel": {
+                    "type": "string"
+                  },
+                  "propertyPath": {
+                    "type": "string"
+                  },
+                  "icon": {
+                    "$ref": "#/$defs/iconKey"
+                  },
+                  "position": {
+                    "$ref": "#/$defs/widgetPosition"
+                  },
+                  "noPadding": {
+                    "type": "boolean"
+                  },
+                  "showOriginalLink": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": {}
+              },
+              "isFallback": {
+                "type": "boolean"
+              },
+              "hidden": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "componentId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "showArrowIndicator": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "widgets"
+      ],
+      "additionalProperties": false
+    },
+    "widgetComponentKey": {
+      "type": "string",
+      "enum": [
+        "text-widget",
+        "link-widget",
+        "literal-link-widget",
+        "json-widget",
+        "image-gallery-widget",
+        "map-widget",
+        "media-widget",
+        "dataset-widget",
+        "creator-widget",
+        "address-widget",
+        "date-widget",
+        "referring-nodes-widget",
+        "separator-widget"
+      ]
+    },
+    "widgetPosition": {
+      "type": "string",
+      "enum": [
+        "top",
+        "left",
+        "main",
+        "right",
+        "bottom"
+      ]
+    }
+  },
+  "$id": "https://valeros.nl/config/valeros.config.schema.json",
+  "title": "ValerosConfig"
+}

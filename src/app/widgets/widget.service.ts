@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NodePresentationConfig } from './core/types/node-presentation-config';
+import { NodePresentationConfig } from '../config/schema/valeros-config.schema';
 import {
   WidgetsByPosition,
   WidgetWithProperty,

@@ -13,6 +13,7 @@ import { MediaWidget } from '../../../widgets/generic/media-widget/media-widget.
 import { ReferringNodesWidget } from '../../../widgets/generic/referring-nodes-widget/referring-nodes-widget.component';
 import { SeparatorWidget } from '../../../widgets/generic/separator-widget/separator-widget.component';
 import { TextWidget } from '../../../widgets/generic/text-widget/text-widget.component';
+import { WidgetComponentKey } from '../../schema/valeros-config.schema';
 
 export const WIDGET_COMPONENT_REGISTRY = {
   'text-widget': TextWidget,
@@ -29,8 +30,6 @@ export const WIDGET_COMPONENT_REGISTRY = {
   'referring-nodes-widget': ReferringNodesWidget,
   'separator-widget': SeparatorWidget,
 } as const;
-
-export type WidgetComponentKey = keyof typeof WIDGET_COMPONENT_REGISTRY;
 
 export function getWidgetComponent(key: WidgetComponentKey): Type<BaseWidget> {
   return WIDGET_COMPONENT_REGISTRY[key];

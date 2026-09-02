@@ -1,6 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ComponentRef,
   computed,
@@ -11,14 +12,13 @@ import {
   signal,
   viewChild,
   ViewContainerRef,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { getWidgetComponent } from '../../../config/node-presentation/widgets/widget-component.registry';
+import { Widget } from '../../../config/schema/valeros-config.schema';
 import { NodeModel } from '../../../node/types/node.model';
 import { BaseWidget } from '../../base-widget';
 import { LinkWidget } from '../../generic/link-widget/link-widget.component';
 import { PropertyLabelWrapperComponent } from '../property-label-wrapper/property-label-wrapper.component';
-import { Widget } from '../types/node-presentation-config';
 
 @Component({
   selector: 'app-dynamic-widget',

@@ -1,4 +1,7 @@
-import { Widget, WidgetPosition } from './node-presentation-config';
+import {
+  Widget,
+  WidgetPosition,
+} from '../../../config/schema/valeros-config.schema';
 
 export interface WidgetWithProperty {
   property: string;

@@ -1,4 +1,4 @@
-import { IconKey } from './icon.registry';
+import { IconKey } from './schema/valeros-config.schema';
 
 export interface FacetConfig {
   name: string;

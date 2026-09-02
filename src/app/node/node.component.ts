@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
   input,
   Signal,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NodePresentationConfig } from '../config/schema/valeros-config.schema';
 import { addUriPrefix } from '../routing/details-page-uri-prefix';
 import { DynamicWidgetComponent } from '../widgets/core/dynamic-widget/dynamic-widget.component';
-import { NodePresentationConfig } from '../widgets/core/types/node-presentation-config';
 import { WidgetsByPosition } from '../widgets/core/types/widgets-by-position';
 import { WidgetService } from '../widgets/widget.service';
 import { ArrowIndicatorComponent } from './arrow-indicator/arrow-indicator.component';

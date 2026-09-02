@@ -1,11 +1,12 @@
-import { computed, effect, Injectable, signal } from '@angular/core';
-import { ViewsConfig } from '../../search/views/types/view-config';
-import { FacetConfig } from '../facets.config';
-import { ValerosConfig } from '../types/valeros-config';
+import { computed, Injectable, signal } from '@angular/core';
+import {
+  FacetConfig,
+  ValerosConfig,
+  ViewsConfig,
+} from '../schema/valeros-config.schema';
 
 @Injectable({ providedIn: 'root' })
 export class ConfigService {
-  private readonly STORAGE_KEY = 'valerosConfig';
   private config = signal<ValerosConfig | null>(null);
 
   readonly apiBaseUrl = computed(() => this.config()?.api.baseUrl ?? '');
@@ -16,36 +17,8 @@ export class ConfigService {
     () => this.config()?.views?.defaultView ?? 'list',
   );
 
-  constructor() {
-    this.initSaveConfigToSessionStorageOnChange();
-  }
-
-  initSaveConfigToSessionStorageOnChange() {
-    effect(() => {
-      const config = this.config();
-      if (config) {
-        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(config));
-      }
-    });
-  }
-
   initialize(config: ValerosConfig): void {
-    // TODO: Validate config structure
-    const savedConfig = this.loadConfigFromSessionStorage();
-    this.config.set(savedConfig ?? config);
-  }
-
-  private loadConfigFromSessionStorage(): ValerosConfig | null {
-    return null;
-
-    // const stored = sessionStorage.getItem(this.STORAGE_KEY);
-    // if (!stored) return null;
-
-    // try {
-    //   return JSON.parse(stored);
-    // } catch {
-    //   return null;
-    // }
+    this.config.set(config);
   }
 
   updateConfig(updates: Partial<ValerosConfig>): void {

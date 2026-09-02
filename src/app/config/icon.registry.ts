@@ -21,8 +21,9 @@ import {
   featherUser,
   featherUsers,
 } from '@ng-icons/feather-icons';
+import { IconKey } from './schema/valeros-config.schema';
 
-export const ICON_REGISTRY = {
+export const ICON_REGISTRY: Record<IconKey, string> = {
   'alert-triangle': featherAlertTriangle,
   'align-left': featherAlignLeft,
   archive: featherArchive,
@@ -44,9 +45,7 @@ export const ICON_REGISTRY = {
   user: featherUser,
   users: featherUsers,
   maximize: featherMaximize2,
-} as const;
-
-export type IconKey = keyof typeof ICON_REGISTRY;
+};
 
 export function getIcon(key: IconKey): string {
   return ICON_REGISTRY[key];

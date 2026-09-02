@@ -1,14 +1,14 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   inject,
   input,
   output,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIconComponent } from '@ng-icons/core';
 import { getIcon } from '../../../config/icon.registry';
-import { ViewType } from '../../views/types/view-type';
+import { ViewType } from '../../../config/schema/valeros-config.schema';
 import { ViewService } from '../../views/view.service';
 
 @Component({

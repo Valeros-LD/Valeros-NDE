@@ -1,12 +1,12 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   input,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgIconComponent } from '@ng-icons/core';
 import { getIconOrUndefined } from '../../../config/icon.registry';
-import { WidgetOptions } from '../types/node-presentation-config';
+import { WidgetOptions } from '../../../config/schema/valeros-config.schema';
 
 @Component({
   selector: 'app-property-label-wrapper',

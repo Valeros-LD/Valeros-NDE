@@ -1,4 +1,4 @@
-import { WidgetOptions } from '../../core/types/node-presentation-config';
+import { WidgetOptions } from '../../../config/schema/valeros-config.schema';
 
 export interface TextWidgetOptions extends WidgetOptions {
   asH2?: boolean;

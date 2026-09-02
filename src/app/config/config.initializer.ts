@@ -1,32 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { API_CONFIG } from './api.config';
+import { firstValueFrom } from 'rxjs';
 import { ConfigService } from './config-page/config.service';
-import { FACETS_CONFIG } from './facets.config';
-import { IMAGE_PATHS_CONFIG } from './image-paths.config';
-import { DETAILS_PRESENTATION_CONFIG } from './node-presentation/details-presentation.config';
-import { GRID_PRESENTATION_CONFIG } from './node-presentation/grid-presentation.config';
-import { LIST_PRESENTATION_CONFIG } from './node-presentation/list-presentation.config';
-import { MAP_PRESENTATION_CONFIG } from './node-presentation/map-presentation.config';
-import { TIMELINE_PRESENTATION_CONFIG } from './node-presentation/timeline-presentation.config';
-import { SEARCH_VIEWS_CONFIG } from './views/views.config';
+import { ValerosConfig } from './schema/valeros-config.schema';
 
-export function initializeAppConfig() {
+export async function initializeAppConfig(): Promise<void> {
   const configService = inject(ConfigService);
+  const http = inject(HttpClient);
 
-  configService.initialize({
-    api: API_CONFIG,
-    facets: FACETS_CONFIG,
-    presentation: {
-      default: LIST_PRESENTATION_CONFIG,
-      details: DETAILS_PRESENTATION_CONFIG,
-      searchResults: {
-        list: LIST_PRESENTATION_CONFIG,
-        grid: GRID_PRESENTATION_CONFIG,
-        map: MAP_PRESENTATION_CONFIG,
-        timeline: TIMELINE_PRESENTATION_CONFIG,
-      },
-    },
-    views: SEARCH_VIEWS_CONFIG,
-    imagePaths: IMAGE_PATHS_CONFIG,
-  });
+  const config = await firstValueFrom(
+    http.get<ValerosConfig>('/config/valeros.config.json'),
+  );
+
+  configService.initialize(config);
 }

@@ -9,7 +9,7 @@ export class NodeImageResolverService {
   private configService = inject(ConfigService);
 
   private imagePaths = computed(
-    () => this.configService.getConfig()?.imagePaths ?? ['image'],
+    () => this.configService.getConfig()?.presentation.imagePaths ?? ['image'],
   );
 
   getImageUrl(node: NodeModel): string | null {
