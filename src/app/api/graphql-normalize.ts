@@ -28,8 +28,6 @@ import {
 // This module is mostly here to keep the previously existing REST API surface intact
 type LocalizedValue = { value: string; language?: string | null };
 
-type ReferenceValue = { id: string; name: LocalizedValue[] };
-
 function isLocalizedValue(value: unknown): value is LocalizedValue {
   return (
     !!value &&
@@ -39,10 +37,8 @@ function isLocalizedValue(value: unknown): value is LocalizedValue {
   );
 }
 
-function isReferenceValue(value: unknown): value is ReferenceValue {
-  return (
-    !!value && typeof value === 'object' && 'id' in value && 'name' in value
-  );
+function isObject(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === 'object' && !Array.isArray(value);
 }
 
 function pickLocalizedValue(
@@ -65,17 +61,18 @@ function normalizeGraphQlValue(
     if (value.every(isLocalizedValue)) {
       return pickLocalizedValue(value, preferredLanguage);
     }
-    if (value.every(isReferenceValue)) {
-      return value.map(
-        (reference) =>
-          normalizeGraphQlItem(reference, preferredLanguage) as NodeModel,
-      );
+    if (value.every(isObject)) {
+      return value.map((item) => normalizeGraphQlItem(item, preferredLanguage));
     }
     return value;
   }
 
-  if (isReferenceValue(value)) {
-    return normalizeGraphQlItem(value, preferredLanguage) as NodeModel;
+  if (isLocalizedValue(value)) {
+    return value.value;
+  }
+
+  if (isObject(value)) {
+    return normalizeGraphQlItem(value, preferredLanguage);
   }
 
   return value;
