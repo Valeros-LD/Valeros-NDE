@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build @valeros/config-schema
+        run: pnpm --filter @valeros/config-schema run build
+
       - name: Run unit tests
         run: pnpm run test:unit
 
@@ -43,6 +46,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build @valeros/config-schema
+        run: pnpm --filter @valeros/config-schema run build
 
       - name: Install Playwright browsers
         run: pnpm run test:e2e:install
