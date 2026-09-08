@@ -15,7 +15,9 @@
     "test:unit": "pnpm --filter @valeros/app run test:unit",
     "test:e2e": "pnpm --filter @valeros/app run test:e2e",
     "test:e2e:install": "pnpm --filter @valeros/app run test:e2e:install",
-    "format": "pnpm --filter @valeros/app run format"
+    "format": "pnpm --filter @valeros/app run format",
+    "configurator:dev": "pnpm --filter @valeros/configurator run dev",
+    "configurator:build": "pnpm --filter @valeros/configurator run build"
   },
   "devDependencies": {
     "vitepress": "^1.5.0",

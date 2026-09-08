@@ -3,11 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@valeros/config-schema": "workspace:*",
-    "zod": "^4.5.4"
+    "@rjsf/core": "^6.8.0",
+    "@rjsf/daisyui": "^6.8.0",
+    "@rjsf/utils": "^6.8.0",
+    "@rjsf/validator-ajv8": "^6.8.0",
+    "daisyui": "^5.7.28",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "typescript": "~6.0.3"
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.2.2"
   }
 }
