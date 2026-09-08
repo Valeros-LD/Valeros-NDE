@@ -8,7 +8,8 @@ import { FacetRowTemplate } from './FacetRowTemplate';
 import { PresentationConfigTemplate } from './PresentationConfigTemplate';
 import { ViewRowTemplate } from './ViewRowTemplate';
 
-const schema = rawSchema as RJSFSchema;
+const { $schema: _, ...rest } = rawSchema;
+const schema = rest as RJSFSchema;
 const formData = defaultConfig as Record<string, unknown>;
 
 const uiSchema: UiSchema = {
