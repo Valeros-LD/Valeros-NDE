@@ -33,7 +33,7 @@ jobs:
 
       - name: Package build artifacts
         run: |
-          tar -czf app.tar.gz -C dist/valeros-nde/browser .
+          tar -czf app.tar.gz -C apps/valeros/dist/valeros-nde/browser .
           tar -czf docs.tar.gz -C docs/.vitepress/dist .
 
       - name: Upload artifacts to VPS

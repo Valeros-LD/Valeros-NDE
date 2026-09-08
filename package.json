@@ -1,76 +1,32 @@
 {
-  "name": "valeros-nde",
+  "name": "valeros-workspace",
+  "private": true,
   "version": "0.13.0",
   "imports": {
     "#styles.css": "./src/styles.css"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "pnpm --filter @valeros/app run start",
+    "build": "pnpm --filter @valeros/app run build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "graphql-codegen": "graphql-codegen --config codegen.ts",
-    "generate:config-schema": "node --import tsx/esm scripts/generate-config-schema.mjs",
-    "test:unit": "vitest run",
-    "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
-    "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"e2e/**/*.ts\" \"*.ts\"",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:install": "playwright install --with-deps chromium firefox webkit"
+    "generate:config-schema": "pnpm --filter @valeros/config-schema run generate:config-schema",
+    "test:unit": "pnpm --filter @valeros/app run test:unit",
+    "test:e2e": "pnpm --filter @valeros/app run test:e2e",
+    "test:e2e:install": "pnpm --filter @valeros/app run test:e2e:install",
+    "format": "pnpm --filter @valeros/app run format"
   },
-  "private": true,
+  "devDependencies": {
+    "vitepress": "^1.5.0",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vue": "^3.5.41",
+    "mermaid": "11.16.1"
+  },
   "overrides": {
     "react-i18next": {
       "typescript": "$typescript"
     }
-  },
-  "dependencies": {
-    "@angular/cdk": "^22.1.3",
-    "@angular/common": "^22.1.3",
-    "@angular/compiler": "^22.1.3",
-    "@angular/core": "^22.1.3",
-    "@angular/forms": "^22.1.3",
-    "@angular/platform-browser": "^22.1.3",
-    "@angular/router": "^22.1.3",
-    "@ng-icons/core": "^35.0.1",
-    "@ng-icons/feather-icons": "^35.0.1",
-    "graphql": "^16.14.2",
-    "graphql-request": "^7.4.0",
-    "leaflet": "^1.9.4",
-    "mirador": "^4.2.3",
-    "photoswipe": "^5.4.4",
-    "rxjs": "~7.8.0",
-    "tify": "^0.35.0",
-    "tslib": "^2.3.0",
-    "universalviewer": "^4.4.4"
-  },
-  "devDependencies": {
-    "@angular/build": "^22.1.5",
-    "@angular/cli": "^22.1.5",
-    "@angular/compiler-cli": "^22.1.3",
-    "@axe-core/playwright": "^4.13.0",
-    "@graphql-codegen/cli": "^7.3.0",
-    "@graphql-codegen/typed-document-node": "^7.1.0",
-    "@graphql-codegen/typescript": "^6.1.0",
-    "@graphql-codegen/typescript-operations": "^6.1.2",
-    "@playwright/test": "^1.62.1",
-    "@tailwindcss/postcss": "^4.3.3",
-    "@types/leaflet": "^1.9.22",
-    "daisyui": "^5.7.20",
-    "mermaid": "11.16.1",
-    "postcss": "^8.5.9",
-    "prettier": "^3.9.6",
-    "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.13",
-    "typescript": "~6.0.3",
-    "vitepress": "^1.5.0",
-    "vitepress-plugin-mermaid": "^2.0.17",
-    "vitest": "^4.1.11",
-    "vue": "^3.5.41",
-    "zod": "^4.5.4"
   },
   "packageManager": "pnpm@12.3.4"
 }

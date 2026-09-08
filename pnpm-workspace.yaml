@@ -1,5 +1,9 @@
 shamefullyHoist: true
 
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
 allowBuilds:
   '@parcel/watcher': true
   canvas: true

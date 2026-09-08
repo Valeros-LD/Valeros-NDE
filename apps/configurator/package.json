@@ -1,0 +1,13 @@
+{
+  "name": "@valeros/configurator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@valeros/config-schema": "workspace:*",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
+  }
+}

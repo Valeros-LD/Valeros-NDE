@@ -1,0 +1,30 @@
+{
+  "name": "@valeros/config-schema",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "generate:config-schema": "node --import tsx/esm scripts/generate-config-schema.mjs"
+  },
+  "peerDependencies": {
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.13",
+    "typescript": "~6.0.3",
+    "zod": "^4.5.4"
+  }
+}
