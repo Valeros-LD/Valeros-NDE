@@ -3,7 +3,9 @@ import type { ViewDefinition } from '@valeros/config-schema';
 import { clsx } from 'clsx';
 import { Collapse } from './Collapse';
 
-const viewRowFields = ['type', 'componentId', 'icon', 'label'];
+const viewRowFields = ['type', 'componentId', 'icon', 'label'] as ReadonlyArray<
+  keyof ViewDefinition
+>;
 
 export function ViewRowTemplate({
   properties,

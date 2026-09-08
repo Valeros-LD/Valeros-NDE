@@ -2,7 +2,9 @@ import type { ObjectFieldTemplateProps } from '@rjsf/utils';
 import type { FacetConfig } from '@valeros/config-schema';
 import { clsx } from 'clsx';
 
-const facetFieldOrder = ['name', 'label', 'icon', 'hidden'];
+const facetFieldOrder = ['name', 'label', 'icon', 'hidden'] as ReadonlyArray<
+  keyof FacetConfig
+>;
 
 export function FacetRowTemplate({
   properties,
