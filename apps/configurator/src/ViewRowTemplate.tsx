@@ -2,6 +2,7 @@ import type { ObjectFieldTemplateProps } from '@rjsf/utils';
 import type { ViewDefinition } from '@valeros/config-schema';
 import { clsx } from 'clsx';
 import { Collapse } from './Collapse';
+import { ConfigRowTitle } from './ConfigRowTitle';
 
 const viewRowFields = ['type', 'componentId', 'icon', 'label'] as ReadonlyArray<
   keyof ViewDefinition
@@ -19,6 +20,7 @@ export function ViewRowTemplate({
 
   return (
     <div className={clsx(hidden && 'opacity-40')}>
+      <ConfigRowTitle label={view?.label} />
       <div className="flex items-center gap-3">
         {viewRowFields.map((name) => {
           const p = prop(name);
