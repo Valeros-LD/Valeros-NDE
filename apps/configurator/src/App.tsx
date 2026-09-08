@@ -4,6 +4,7 @@ import validator from '@rjsf/validator-ajv8';
 
 import defaultConfig from '../../valeros/public/config/valeros.config.json';
 import rawSchema from '../../valeros/public/config/valeros.config.schema.json';
+import { FacetRowTemplate } from './FacetRowTemplate';
 
 const schema = rawSchema as RJSFSchema;
 const formData = defaultConfig as Record<string, unknown>;
@@ -11,6 +12,15 @@ const formData = defaultConfig as Record<string, unknown>;
 const uiSchema: UiSchema = {
   $schema: {
     'ui:readonly': true,
+  },
+  facets: {
+    items: {
+      'ui:ObjectFieldTemplate': FacetRowTemplate,
+      name: { 'ui:title': 'Naam' },
+      label: { 'ui:title': 'Label' },
+      icon: { 'ui:title': 'Icoon' },
+      hidden: { 'ui:title': 'Verborgen' },
+    },
   },
 };
 
