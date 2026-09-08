@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 @source "../node_modules/@rjsf/daisyui";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'light';
+  default: true;
+  --color-primary: #007994;
+  --color-primary-content: #ffffff;
 }
