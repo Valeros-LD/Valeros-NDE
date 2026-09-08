@@ -1,26 +1,9 @@
 {
   "packages": {
-    ".": {
-      "release-type": "node",
-      "package-name": "valeros-workspace",
-      "changelog-sections": [
-        { "type": "feat", "section": "Features" },
-        { "type": "fix", "section": "Bug Fixes" },
-        { "type": "revert", "section": "Reverts" },
-        { "type": "perf", "section": "Performance Improvements" },
-        { "type": "docs", "section": "Documentation", "hidden": false },
-        { "type": "build", "hidden": true },
-        { "type": "ci", "hidden": true },
-        { "type": "refactor", "hidden": true },
-        { "type": "style", "hidden": true },
-        { "type": "test", "hidden": true },
-        { "type": "chore", "hidden": true }
-      ]
-    },
     "apps/valeros": {
       "release-type": "node",
       "package-name": "@valeros/app",
-      "component": "valeros",
+      "component": "valeros-nde",
       "include-component-in-tag": true,
       "changelog-sections": [
         { "type": "feat", "section": "Features" },
