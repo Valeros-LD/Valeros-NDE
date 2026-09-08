@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
   OnDestroy,
   OnInit,
   signal,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api/api.service';
-import { ConfigService } from '../config/config-page/config.service';
+import { ConfigService } from '../config/config.service';
 import { normalizeToFirst } from '../data-utils/value-normalization.util';
 import { NodeComponent } from '../node/node.component';
 import { NodeModel } from '../node/types/node.model';

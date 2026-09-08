@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, Signal } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
-import { ConfigService } from '../config/config-page/config.service';
+import { ConfigService } from '../config/config.service';
 import { NodeModel } from '../node/types/node.model';
 import { Filters } from '../search/types/filters';
 import { ReferringNodesResponse } from '../search/types/referring-node';

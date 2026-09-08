@@ -1,5 +1,5 @@
 import { Injectable, computed, inject } from '@angular/core';
-import { ConfigService } from '../config/config-page/config.service';
+import { ConfigService } from '../config/config.service';
 import { getNestedValue } from '../data-utils/property-path.util';
 import { normalizeToFirst } from '../data-utils/value-normalization.util';
 import { NodeModel } from './types/node.model';
@@ -9,7 +9,7 @@ export class NodeImageResolverService {
   private configService = inject(ConfigService);
 
   private imagePaths = computed(
-    () => this.configService.getConfig()?.presentation.imagePaths ?? ['image'],
+    () => this.configService.presentation()?.imagePaths ?? ['image'],
   );
 
   getImageUrl(node: NodeModel): string | null {

@@ -2,7 +2,7 @@ import { inject, Injectable, LOCALE_ID, Signal } from '@angular/core';
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import { GraphQLClient } from 'graphql-request';
 import { defer, map, Observable } from 'rxjs';
-import { ConfigService } from '../config/config-page/config.service';
+import { ConfigService } from '../config/config.service';
 import { NodeModel } from '../node/types/node.model';
 import { ReferringNodesResponse } from '../search/types/referring-node';
 import { SearchQuery } from '../search/types/search-query';

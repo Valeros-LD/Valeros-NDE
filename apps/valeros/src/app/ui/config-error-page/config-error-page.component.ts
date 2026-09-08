@@ -5,7 +5,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfigService } from '../../config/config-page/config.service';
+import { ConfigService } from '../../config/config.service';
 
 @Component({
   selector: 'app-config-error-page',

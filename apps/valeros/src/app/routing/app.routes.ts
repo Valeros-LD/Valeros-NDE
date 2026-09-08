@@ -1,5 +1,4 @@
 import { Route } from '@angular/router';
-import { ConfigPageComponent } from '../config/config-page/config-page.component';
 import { DetailsPageComponent } from '../details-page/details-page.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { SearchPageComponent } from '../search/search-page/search-page.component';
@@ -15,10 +14,6 @@ export const appRoutes: Route[] = [
   {
     path: 'search',
     component: SearchPageComponent,
-  },
-  {
-    path: 'config',
-    component: ConfigPageComponent,
   },
   {
     path: 'config-error',

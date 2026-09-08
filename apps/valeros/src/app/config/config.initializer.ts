@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValerosConfigSchema } from '@valeros/config-schema';
 import { firstValueFrom } from 'rxjs';
-import { ConfigService } from './config-page/config.service';
+import { ConfigService } from './config.service';
 
 export async function initializeAppConfig(): Promise<void> {
   const configService = inject(ConfigService);

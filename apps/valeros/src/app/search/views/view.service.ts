@@ -1,11 +1,11 @@
 import { Injectable, Type, computed, inject } from '@angular/core';
-import { ConfigService } from '../../config/config-page/config.service';
 import {
   NodePresentationConfig,
   ViewDefinition,
   ViewOptions,
   ViewType,
 } from '@valeros/config-schema';
+import { ConfigService } from '../../config/config.service';
 import { getViewComponent } from '../../config/view-component.registry';
 import { BaseResultsView } from './base-results-view';
 
